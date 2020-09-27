@@ -4,23 +4,11 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import styles from "./styles";
 import { firebase } from "../../firebase/config";
 
-import { AppLoading } from "expo";
-import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/montserrat";
-
 export default function RegistrationScreen({ navigation }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  const Authenticate = () => {
-    let [fontsLoaded, error] = useFonts({
-      Montserrat_400Regular,
-    });
-    if (!fontsLoaded) {
-      return <AppLoading />;
-    }
-  };
 
   const onFooterLinkPress = () => {
     navigation.navigate("Login");

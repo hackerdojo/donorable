@@ -6,6 +6,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { LoginScreen, HomeScreen, RegistrationScreen } from "./src/screens";
 import { decode, encode } from "base-64";
 
+import { AppLoading } from "expo";
+import { useFonts } from "expo-font";
+import { Montserrat_400Regular } from "@expo-google-fonts/montserrat";
+
 if (!global.btoa) {
   global.btoa = encode;
 }
@@ -16,6 +20,14 @@ if (!global.atob) {
 const Stack = createStackNavigator();
 
 export default function App() {
+  /* Import custom Google font */
+  let fontsLoaded = useFonts({
+    Montserrat_400Regular,
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
