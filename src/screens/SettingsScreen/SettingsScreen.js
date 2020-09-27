@@ -4,49 +4,31 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import styles from "./styles";
 import { firebase } from "../../firebase/config";
 
-import { AppLoading } from "expo";
-import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/montserrat";
-
-export default function RegistrationScreen({ navigation }) {
-  const [fullName, setFullName] = useState("");
+export default function SettingsScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const Authenticate = () => {
-    let [fontsLoaded, error] = useFonts({
-      Montserrat_400Regular,
-    });
-    if (!fontsLoaded) {
-      return <AppLoading />;
-    }
-  };
 
   const onFooterLinkPress = () => {
-    navigation.navigate("Login");
+    navigation.navigate("Registration");
   };
 
-  const onRegisterPress = () => {
-    if (password !== confirmPassword) {
-      alert("Passwords don't match.");
-      return;
-    }
+  const onLoginPress = () => {
     firebase
       .auth()
-      .createUserWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(email, password)
       .then((response) => {
         const uid = response.user.uid;
-        const data = {
-          id: uid,
-          email,
-          fullName,
-        };
         const usersRef = firebase.firestore().collection("users");
         usersRef
           .doc(uid)
-          .set(data)
-          .then(() => {
-            navigation.navigate("Home", { user: data });
+          .get()
+          .then((firestoreDocument) => {
+            if (!firestoreDocument.exists) {
+              alert("User does not exist anymore.");
+              return;
+            }
+            const user = firestoreDocument.data();
+            navigation.navigate("Home", { user });
           })
           .catch((error) => {
             alert(error);
@@ -69,15 +51,6 @@ export default function RegistrationScreen({ navigation }) {
         />
         <TextInput
           style={styles.input}
-          placeholder="Full Name"
-          placeholderTextColor="#aaaaaa"
-          onChangeText={(text) => setFullName(text)}
-          value={fullName}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
           placeholder="E-mail"
           placeholderTextColor="#aaaaaa"
           onChangeText={(text) => setEmail(text)}
@@ -95,27 +68,14 @@ export default function RegistrationScreen({ navigation }) {
           underlineColorAndroid="transparent"
           autoCapitalize="none"
         />
-        <TextInput
-          style={styles.input}
-          placeholderTextColor="#aaaaaa"
-          secureTextEntry
-          placeholder="Confirm Password"
-          onChangeText={(text) => setConfirmPassword(text)}
-          value={confirmPassword}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => onRegisterPress()}
-        >
-          <Text style={styles.buttonTitle}>Create account</Text>
+        <TouchableOpacity style={styles.button} onPress={() => onLoginPress()}>
+          <Text style={styles.buttonTitle}>Log in</Text>
         </TouchableOpacity>
         <View style={styles.footerView}>
           <Text style={styles.footerText}>
-            Already have an account?{" "}
+            Don't have an account?{" "}
             <Text onPress={onFooterLinkPress} style={styles.footerLink}>
-              Log in
+              Sign up
             </Text>
           </Text>
         </View>

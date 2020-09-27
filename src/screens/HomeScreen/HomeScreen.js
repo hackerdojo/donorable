@@ -10,12 +10,24 @@ import {
 import styles from "./styles";
 import { firebase } from "../../firebase/config";
 
+import { AppLoading } from "expo";
+import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/montserrat";
+
 export default function HomeScreen(props) {
   const [entityText, setEntityText] = useState("");
   const [entities, setEntities] = useState([]);
 
   const entityRef = firebase.firestore().collection("entities");
   const userID = props.extraData.id;
+
+  const Authenticate = () => {
+    let [fontsLoaded, error] = useFonts({
+      Montserrat_400Regular,
+    });
+    if (!fontsLoaded) {
+      return <AppLoading />;
+    }
+  };
 
   useEffect(() => {
     entityRef
