@@ -8,7 +8,7 @@ export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onFooterLinkPress = () => {
+  const onSignUpPress = () => {
     navigation.navigate("Registration");
   };
 
@@ -68,17 +68,19 @@ export default function LoginScreen({ navigation }) {
           underlineColorAndroid="transparent"
           autoCapitalize="none"
         />
-        <TouchableOpacity style={styles.button} onPress={() => onLoginPress()}>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => onLoginPress()}
+        >
           <Text style={styles.buttonTitle}>Log in</Text>
         </TouchableOpacity>
-        <View style={styles.footerView}>
-          <Text style={styles.footerText}>
-            Don't have an account?{" "}
-            <Text onPress={onFooterLinkPress} style={styles.footerLink}>
-              Sign up
-            </Text>
-          </Text>
-        </View>
+
+        <TouchableOpacity
+          style={styles.signupButton}
+          onPress={() => onSignUpPress()}
+        >
+          <Text style={styles.buttonTitle}>Sign up</Text>
+        </TouchableOpacity>
       </KeyboardAwareScrollView>
     </View>
   );
