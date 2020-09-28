@@ -4,6 +4,10 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import styles from "./styles";
 //import { firebase } from "../../firebase/config";
 
+const onDonePress = () => {
+  navigation.navigate("Home");
+};
+
 export default function SettingsScreen({ navigation }) {
   return (
     <View style={styles.container}>
@@ -23,7 +27,7 @@ export default function SettingsScreen({ navigation }) {
         <TouchableOpacity style={styles.button} onPress={() => onLoginPress()}>
           <Text style={styles.buttonTitle}>Log in</Text>
         </TouchableOpacity>
-        <View style={styles.footerView}>
+        <View onPress={onDonePress} style={styles.footerView}>
           <Text>Done button (return to Home Screen)</Text>
         </View>
       </KeyboardAwareScrollView>

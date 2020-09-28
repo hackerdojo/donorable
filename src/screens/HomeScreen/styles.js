@@ -56,4 +56,10 @@ export default StyleSheet.create({
     fontSize: 20,
     color: "#333333",
   },
+  settingsIcon: {
+    height: 35,
+    width: 35,
+    margin: 10,
+    alignSelf: "stretch",
+  },
 });

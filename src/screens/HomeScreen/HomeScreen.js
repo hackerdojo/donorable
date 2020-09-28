@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  Image,
   FlatList,
   Keyboard,
   Text,
@@ -37,6 +38,10 @@ export default function HomeScreen(props) {
       );
   }, []);
 
+  const onSettingsPress = () => {
+    props.navigation.navigate("Settings");
+  };
+
   const onAddButtonPress = () => {
     if (entityText && entityText.length > 0) {
       const timestamp = firebase.firestore.FieldValue.serverTimestamp();
@@ -69,10 +74,18 @@ export default function HomeScreen(props) {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.settingsIcon} onPress={onSettingsPress}>
+        <Image
+          style={styles.settingsIcon}
+          source={require("../../../assets/settings-icon.png")}
+        />
+      </TouchableOpacity>
+
+      <Image source={require("../../../assets/donorable-title.png")} />
       <View style={styles.formContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Add new entity"
+          placeholder="Add new item"
           placeholderTextColor="#aaaaaa"
           onChangeText={(text) => setEntityText(text)}
           value={entityText}

@@ -3,7 +3,12 @@ import React, { useEffect, useState } from "react";
 import { firebase } from "./src/firebase/config";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { LoginScreen, HomeScreen, RegistrationScreen } from "./src/screens";
+import {
+  LoginScreen,
+  HomeScreen,
+  RegistrationScreen,
+  SettingsScreen,
+} from "./src/screens";
 import { decode, encode } from "base-64";
 
 import { AppLoading } from "expo";
@@ -60,9 +65,12 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         {user ? (
-          <Stack.Screen name="Home">
-            {(props) => <HomeScreen {...props} extraData={user} />}
-          </Stack.Screen>
+          <>
+            <Stack.Screen name="Home">
+              {(props) => <HomeScreen {...props} extraData={user} />}
+            </Stack.Screen>
+            <Stack.Screen name="Settings" component={SettingsScreen} />
+          </>
         ) : (
           <>
             <Stack.Screen name="Login" component={LoginScreen} />
