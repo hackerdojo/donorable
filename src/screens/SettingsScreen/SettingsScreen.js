@@ -1,35 +1,33 @@
 import React, { useState } from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+-import { Image, Text, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
 //import { firebase } from "../../firebase/config";
 
-const onDonePress = () => {
-  navigation.navigate("Home");
-};
-
-export default function SettingsScreen({ navigation }) {
+export default function SettingsScreen(props) {
+  const onDonePress = () => {
+    props.navigation.navigate("Home");
+  };
   return (
     <View style={styles.container}>
       <KeyboardAwareScrollView
         style={{ flex: 1, width: "100%" }}
         keyboardShouldPersistTaps="always"
       >
-        <Image
-          //style={styles.logo}
-          source={require("../../../assets/donorable-title.png")}
-        />
-        <Text>
-          ACCOUNT SETTINGS -- Phone Number email password Location ---
-          Notifications Contact us Delete account Logout
-        </Text>
+        <Image source={require("../../../assets/donorable-title.png")} />
+        <Text>ACCOUNT SETTINGS</Text>
+        <Text>Phone Number</Text>
+        <Text>Email</Text>
+        <Text>Password</Text>
+        <Text>Location</Text>
+        <Text>Notifications</Text>
+        <Text>Contact Us</Text>
+        <Text>Delete Account</Text>
+        <Text>Logout</Text>
 
-        <TouchableOpacity style={styles.button} onPress={() => onLoginPress()}>
-          <Text style={styles.buttonTitle}>Log in</Text>
+        <TouchableOpacity style={styles.button} onPress={() => onDonePress()}>
+          <Text style={styles.buttonTitle}>Done</Text>
         </TouchableOpacity>
-        <View onPress={onDonePress} style={styles.footerView}>
-          <Text>Done button (return to Home Screen)</Text>
-        </View>
       </KeyboardAwareScrollView>
     </View>
   );
