@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream
-import { StyleSheet } from "react-native";
-=======
 /* CSS styles for Registration Screen */
 import { StyleSheet } from 'react-native';
->>>>>>> Stashed changes
 
 export default StyleSheet.create({
   container: {
