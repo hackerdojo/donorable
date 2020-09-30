@@ -103,7 +103,5 @@ export default function RegistrationScreen({navigation}) {
                 </View>
             </KeyboardAwareScrollView>
         </View>
-      </KeyboardAwareScrollView>
-    </View>
-  );
+    );
 }

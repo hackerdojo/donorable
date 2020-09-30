@@ -12,8 +12,6 @@ import styles from "./styles";
 import { firebase } from "../../firebase/config";
 
 export default function HomeScreen(props) {
-  const [entityText, setEntityText] = useState("");
-  const [entities, setEntities] = useState([]);
 
     const [entityText, setEntityText] = useState('') // for what user input data
     const [entities, setEntities] = useState([]) // to show data after user input data
@@ -70,16 +68,8 @@ export default function HomeScreen(props) {
             </View>
         )
     }
-    /* View for the Home Screen */
-    return (
-      <View style={styles.entityContainer}>
-        <Text style={styles.entityText}>
-          {index}. {item.text}
-        </Text>
-      </View>
-    );
-  };
 
+  /* View for the Home Screen */
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.settingsIcon} onPress={onSettingsPress}>
