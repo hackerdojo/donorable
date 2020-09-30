@@ -1,5 +1,5 @@
-import React, { useState } from "react";
--import { Image, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
 //import { firebase } from "../../firebase/config";
@@ -15,15 +15,15 @@ export default function SettingsScreen(props) {
         keyboardShouldPersistTaps="always"
       >
         <Image source={require("../../../assets/donorable-title.png")} />
-        <Text>ACCOUNT SETTINGS</Text>
-        <Text>Phone Number</Text>
-        <Text>Email</Text>
-        <Text>Password</Text>
-        <Text>Location</Text>
-        <Text>Notifications</Text>
-        <Text>Contact Us</Text>
-        <Text>Delete Account</Text>
-        <Text>Logout</Text>
+        <Text style={styles.text}>ACCOUNT SETTINGS</Text>
+        <Text style={styles.text}>Phone Number</Text>
+        <Text style={styles.text}>Email</Text>
+        <Text style={styles.text}>Password</Text>
+        <Text style={styles.text}>Location</Text>
+        <Text style={styles.text}>Notifications</Text>
+        <Text style={styles.text}>Contact Us</Text>
+        <Text style={styles.text}>Delete Account</Text>
+        <Text style={styles.text}>Logout</Text>
 
         <TouchableOpacity style={styles.button} onPress={() => onDonePress()}>
           <Text style={styles.buttonTitle}>Done</Text>
