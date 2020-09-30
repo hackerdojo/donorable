@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import "react-native-gesture-handler";
 import React, { useEffect, useState } from "react";
 import { firebase } from "./src/firebase/config";
@@ -21,8 +22,19 @@ if (!global.btoa) {
 if (!global.atob) {
   global.atob = decode;
 }
+=======
+import 'react-native-gesture-handler'; // gesture library of react-native
+import React, { useEffect, useState } from 'react' // react library
+import { firebase } from './src/firebase/config' // firebase configuration
+import { NavigationContainer } from '@react-navigation/native' // react libraries for the navigation
+import { createStackNavigator } from '@react-navigation/stack'
+import { LoginScreen, HomeScreen, RegistrationScreen } from './src/screens' // different screens of the app
+import {decode, encode} from 'base-64' // for the decode and encode of the text
+if (!global.btoa) {  global.btoa = encode } // encodes to Base64
+if (!global.atob) { global.atob = decode } // decodes from Base64
+>>>>>>> Stashed changes
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator(); // react-native navigation
 
 export default function App() {
   /* Import custom Google font */
@@ -33,9 +45,16 @@ export default function App() {
     return <AppLoading />;
   }
 
+<<<<<<< Updated upstream
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+=======
+  const [loading, setLoading] = useState(true) // variable handling for user's data
+  const [user, setUser] = useState(null)
+>>>>>>> Stashed changes
 
+/* firebase persistent login */
+/* user just login once and no need to login again */
   useEffect(() => {
     const usersRef = firebase.firestore().collection("users");
     firebase.auth().onAuthStateChanged((user) => {
@@ -60,7 +79,7 @@ export default function App() {
   if (loading) {
     return <></>;
   }
-
+  /* Routes & Navigation of different screens */
   return (
     <NavigationContainer>
       <Stack.Navigator>
