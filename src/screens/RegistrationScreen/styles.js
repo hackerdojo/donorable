@@ -1,18 +1,13 @@
 /* CSS styles for Registration Screen */
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
   },
-  title: {},
-  logo: {
-    flex: 1,
-    height: 120,
-    width: 90,
-    alignSelf: "center",
-    margin: 30,
+  title: {
+    marginBottom: 40,
   },
   input: {
     fontFamily: "Montserrat_400Regular",
@@ -20,14 +15,24 @@ export default StyleSheet.create({
     borderRadius: 5,
     overflow: "hidden",
     backgroundColor: "white",
-    marginTop: 10,
-    marginBottom: 10,
+    margin: 15,
     marginLeft: 30,
     marginRight: 30,
     paddingLeft: 16,
   },
-  button: {
+  regButton: {
     backgroundColor: "#6200ee",
+    marginLeft: 30,
+    marginRight: 30,
+    marginTop: 60,
+    marginBottom: 20,
+    height: 48,
+    borderRadius: 5,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logButton: {
+    backgroundColor: "#03dac5",
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,
@@ -41,20 +46,5 @@ export default StyleSheet.create({
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
-  },
-  footerView: {
-    flex: 1,
-    alignItems: "center",
-    marginTop: 20,
-  },
-  footerText: {
-    fontFamily: "Montserrat_400Regular",
-    fontSize: 16,
-    color: "#2e2e2d",
-  },
-  footerLink: {
-    color: "#03dac5",
-    fontWeight: "bold",
-    fontSize: 16,
   },
 });

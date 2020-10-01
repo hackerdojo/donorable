@@ -1,18 +1,14 @@
 /* CSS styles for Login Screen */
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
   },
-  title: {},
-  logo: {
-    flex: 1,
-    height: 120,
-    width: 90,
-    alignSelf: "center",
-    margin: 30,
+  title: {
+    marginTop: 10,
+    marginBottom: 100,
   },
   input: {
     fontFamily: "Montserrat_400Regular",
@@ -20,8 +16,7 @@ export default StyleSheet.create({
     borderRadius: 5,
     overflow: "hidden",
     backgroundColor: "white",
-    marginTop: 10,
-    marginBottom: 10,
+    margin: 20,
     marginLeft: 30,
     marginRight: 30,
     paddingLeft: 16,
@@ -30,7 +25,7 @@ export default StyleSheet.create({
     backgroundColor: "#6200ee",
     marginLeft: 30,
     marginRight: 30,
-    marginTop: 20,
+    marginTop: 100,
     height: 48,
     borderRadius: 5,
     alignItems: "center",
@@ -40,7 +35,7 @@ export default StyleSheet.create({
     backgroundColor: "#03dac5",
     marginLeft: 30,
     marginRight: 30,
-    marginTop: 20,
+    marginTop: 40,
     height: 48,
     borderRadius: 5,
     alignItems: "center",
