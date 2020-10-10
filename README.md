@@ -1,10 +1,10 @@
-#Donorable
+Donorable
 ---
 
 Donorable is an easier way for donors to connect with nonprofits. Taking design inspiration from popular dating apps, Donorable turns away from traditional donation services in favor of a more human approach. Excessive details are stripped away to center conversation and connection between nonprofits and donors.
 
 
-##Built With
+Built With
 ---
 
 * [React Native](https://reactnative.dev/)
@@ -12,7 +12,7 @@ Donorable is an easier way for donors to connect with nonprofits. Taking design 
 * [Firebase](https://firebase.google.com/)
 
 
-##Contributors 
+Contributors 
 ---
 
 * **Ed Choudry** - *Project Manager* - [Linkedin](https://www.linkedin.com/in/echoudhry/)
@@ -22,19 +22,19 @@ Donorable is an easier way for donors to connect with nonprofits. Taking design 
 * **Joshua Dorn** - *Software Developer* - [Linkedin](https://www.linkedin.com/in/joshdorn/)
 
 
-##Support 
+Support 
 ---
 
 Connect with Hacker Dojo on our:
 
-* [Website](hackerdojo.com)
+* [Website](https://hackerdojo.com)
 
 * [Instagram](https://www.instagram.com/hackerdojo/)
 
 * [Twitter](https://twitter.com/hackerdojo)
 
 
-##License
+License
 ---
 
 Copyright © Hacker Dojo. All rights reserved.
