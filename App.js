@@ -4,7 +4,7 @@ import { firebase } from "./src/firebase/config"; // firebase configuration
 import { NavigationContainer } from "@react-navigation/native"; // react libraries for the navigation
 import { createStackNavigator } from "@react-navigation/stack";
 import {
-  LoginScreen,
+  IntroScreen,
   HomeScreen,
   RegistrationScreen,
   SettingsScreen,
@@ -76,7 +76,7 @@ export default function App() {
           </>
         ) : (
           <>
-            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Intro" component={IntroScreen} />
             <Stack.Screen name="Registration" component={RegistrationScreen} />
           </>
         )}

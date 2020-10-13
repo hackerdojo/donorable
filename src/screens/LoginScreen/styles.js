@@ -31,7 +31,7 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  signupButton: {
+  regButton: {
     backgroundColor: "#03dac5",
     marginLeft: 30,
     marginRight: 30,

@@ -11,8 +11,8 @@ export default function RegistrationScreen({ navigation }) {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const onLoginPress = () => {
-    // Link to login page if user already register
-    navigation.navigate("Login");
+    // Link to into page if user already registered
+    navigation.navigate("Intro");
   };
 
   /* firebase logic for creating new account with email & password */

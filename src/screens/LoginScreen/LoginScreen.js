@@ -1,3 +1,5 @@
+/* Not functional yet, to be implemented in app after Intro Screen is deployed */
+
 import React, { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -9,7 +11,7 @@ export default function LoginScreen({ navigation }) {
   const [password, setPassword] = useState("");
 
   /* Create account */
-  const onSignUpPress = () => {
+  const onRegPress = () => {
     navigation.navigate("Registration");
   };
 
@@ -41,7 +43,7 @@ export default function LoginScreen({ navigation }) {
       });
   };
 
-  /* View for the Login screen */
+  /* View for the Intro screen */
   return (
     <View style={styles.container}>
       <KeyboardAwareScrollView
@@ -75,14 +77,11 @@ export default function LoginScreen({ navigation }) {
           style={styles.loginButton}
           onPress={() => onLoginPress()}
         >
-          <Text style={styles.buttonTitle}>Log in</Text>
+          <Text style={styles.buttonTitle}>Login</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.signupButton}
-          onPress={() => onSignUpPress()}
-        >
-          <Text style={styles.buttonTitle}>Sign up</Text>
+        <TouchableOpacity style={styles.regButton} onPress={() => onRegPress()}>
+          <Text style={styles.buttonTitle}>Register</Text>
         </TouchableOpacity>
       </KeyboardAwareScrollView>
     </View>
