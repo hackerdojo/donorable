@@ -1,4 +1,6 @@
-/* Not functional yet, to be implemented in app after Intro Screen is deployed */
+/* needs routing */
+/* title, then text input borders and labels */
+/* button design and position*/
 
 import React, { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -28,7 +30,7 @@ export default function LoginScreen({ navigation }) {
           .get()
           .then((firestoreDocument) => {
             if (!firestoreDocument.exists) {
-              alert("User does not exist anymore.");
+              alert("User not found.");
               return;
             }
             const user = firestoreDocument.data();
@@ -43,7 +45,7 @@ export default function LoginScreen({ navigation }) {
       });
   };
 
-  /* View for the Intro screen */
+  /* View for the Login screen */
   return (
     <View style={styles.container}>
       <KeyboardAwareScrollView
@@ -54,35 +56,50 @@ export default function LoginScreen({ navigation }) {
           source={require("../../../assets/donorable-title.png")}
           style={styles.title}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="E-mail"
-          placeholderTextColor="#aaaaaa"
-          onChangeText={(text) => setEmail(text)}
-          value={email}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholderTextColor="#aaaaaa"
-          secureTextEntry
-          placeholder="Password"
-          onChangeText={(text) => setPassword(text)}
-          value={password}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => onLoginPress()}
-        >
-          <Text style={styles.buttonTitle}>Login</Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity style={styles.regButton} onPress={() => onRegPress()}>
-          <Text style={styles.buttonTitle}>Register</Text>
-        </TouchableOpacity>
+        <Text style={styles.label}>login</Text>
+
+        <Text style={styles.inputLabel}>Email</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            label="E-mail"
+            placeholderTextColor="#aaaaaa"
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+            underlineColorAndroid="transparent"
+            autoCapitalize="none"
+          />
+        </View>
+
+        <Text style={styles.inputLabel}>Password</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholderTextColor="#aaaaaa"
+            secureTextEntry
+            label="Password"
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+            underlineColorAndroid="transparent"
+            autoCapitalize="none"
+          />
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => onRegPress()}
+          >
+            <Text style={styles.buttonTitle}>Back</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={() => onLoginPress()}
+          >
+            <Text style={styles.buttonTitle}>Login</Text>
+          </TouchableOpacity>
+        </View>
       </KeyboardAwareScrollView>
     </View>
   );

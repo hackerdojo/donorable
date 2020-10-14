@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native"; // react librari
 import { createStackNavigator } from "@react-navigation/stack";
 import {
   IntroScreen,
+  LoginScreen,
   HomeScreen,
   RegistrationScreen,
   SettingsScreen,
@@ -77,6 +78,7 @@ export default function App() {
         ) : (
           <>
             <Stack.Screen name="Intro" component={IntroScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Registration" component={RegistrationScreen} />
           </>
         )}

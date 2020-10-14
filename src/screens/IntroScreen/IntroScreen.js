@@ -8,12 +8,17 @@ import styles from "./styles";
 complete registration page in new branch */
 
 export default function IntroScreen({ navigation }) {
-  /* Create account */
+  /* Go to RegistrationScreen */
   const onRegPress = () => {
     navigation.navigate("Registration");
   };
 
-  /* View for the Intro screen */
+  /* Go to LoginScreen */
+  const onLoginPress = () => {
+    navigation.navigate("Login");
+  };
+
+  /* View for the IntroScreen */
   return (
     <View style={styles.container}>
       <KeyboardAwareScrollView
