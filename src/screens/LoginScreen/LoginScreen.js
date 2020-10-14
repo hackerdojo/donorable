@@ -1,6 +1,5 @@
 /* needs routing */
 /* title, then text input borders and labels */
-/* button design and position*/
 
 import React, { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
