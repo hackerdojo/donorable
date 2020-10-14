@@ -1,5 +1,4 @@
-/* needs routing */
-/* title, then text input borders and labels */
+/* To-do: registration page */
 
 import React, { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -12,8 +11,8 @@ export default function LoginScreen({ navigation }) {
   const [password, setPassword] = useState("");
 
   /* Create account */
-  const onRegPress = () => {
-    navigation.navigate("Registration");
+  const onBackPress = () => {
+    navigation.navigate("Intro");
   };
 
   /* firebase logic for user to login, if the user has already registered */
@@ -88,7 +87,7 @@ export default function LoginScreen({ navigation }) {
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.backButton}
-            onPress={() => onRegPress()}
+            onPress={() => onBackPress()}
           >
             <Text style={styles.buttonTitle}>Back</Text>
           </TouchableOpacity>

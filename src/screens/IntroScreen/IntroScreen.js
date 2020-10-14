@@ -3,10 +3,6 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
 
-/* Design matches wireframe */
-/* To-do: design Login page and route to it via the Login button, 
-complete registration page in new branch */
-
 export default function IntroScreen({ navigation }) {
   /* Go to RegistrationScreen */
   const onRegPress = () => {
