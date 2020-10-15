@@ -6,7 +6,7 @@ import styles from "./styles";
 export default function IntroScreen({ navigation }) {
   /* Go to RegistrationScreen */
   const onRegPress = () => {
-    navigation.navigate("Registration");
+    navigation.navigate("Reg2");
   };
 
   /* Go to LoginScreen */
