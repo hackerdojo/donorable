@@ -7,6 +7,7 @@ import {
   IntroScreen,
   LoginScreen,
   HomeScreen,
+  RegScreen1,
   RegScreen2,
   SettingsScreen,
 } from "./src/screens"; // different screens of the app
@@ -79,6 +80,7 @@ export default function App() {
           <>
             <Stack.Screen name="Intro" component={IntroScreen} />
             <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Reg1" component={RegScreen1} />
             <Stack.Screen name="Reg2" component={RegScreen2} />
           </>
         )}

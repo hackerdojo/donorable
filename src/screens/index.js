@@ -5,6 +5,8 @@ export { default as IntroScreen } from "./IntroScreen/IntroScreen";
 
 export { default as LoginScreen } from "./LoginScreen/LoginScreen";
 
+export { default as RegScreen1 } from "./RegScreen1/RegScreen1";
+
 export { default as RegScreen2 } from "./RegScreen2/RegScreen2";
 
 export { default as HomeScreen } from "./HomeScreen/HomeScreen";

@@ -3,18 +3,18 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
 
-export default function IntroScreen({ navigation }) {
-  /* Go to RegistrationScreen */
+export default function RegScreen1({ navigation }) {
+  /* Needs event handler */
   const onRegPress = () => {
-    navigation.navigate("Reg1");
+    navigation.navigate("Reg2");
   };
 
-  /* Go to LoginScreen */
+  /* Needs event handler */
   const onLoginPress = () => {
-    navigation.navigate("Login");
+    navigation.navigate("Reg2");
   };
 
-  /* View for the IntroScreen */
+  /* View for the RegScreen */
   return (
     <View style={styles.container}>
       <KeyboardAwareScrollView
@@ -26,18 +26,17 @@ export default function IntroScreen({ navigation }) {
           style={styles.title}
         />
 
-        <Text style={styles.slogan}>an easier way</Text>
-        <Text style={styles.slogan}>to donate</Text>
+        <Text style={styles.slogan}>create an account</Text>
 
         <TouchableOpacity
           style={styles.loginButton}
           onPress={() => onLoginPress()}
         >
-          <Text style={styles.buttonTitle}>Login</Text>
+          <Text style={styles.buttonTitle}>Donor</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.regButton} onPress={() => onRegPress()}>
-          <Text style={styles.buttonTitle}>Register</Text>
+          <Text style={styles.buttonTitle}>Nonprofit</Text>
         </TouchableOpacity>
       </KeyboardAwareScrollView>
     </View>
