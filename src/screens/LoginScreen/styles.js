@@ -76,6 +76,5 @@ export default StyleSheet.create({
     fontFamily: "Montserrat_400Regular",
     color: "white",
     fontSize: 26,
-    fontWeight: "bold",
   },
 });

@@ -9,8 +9,8 @@ export default function RegScreen2({ navigation }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const onLoginPress = () => {
-    // Link to into page if user already registered
+  const onBackPress = () => {
+    // Link to intro page if user already registered
     navigation.navigate("Intro");
   };
 
@@ -107,7 +107,7 @@ export default function RegScreen2({ navigation }) {
         <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.enterButton}
-          onPress={() => onLoginPress()}
+          onPress={() => onBackPress()}
         >
           <Text style={styles.buttonTitle}>Back</Text>
         </TouchableOpacity>

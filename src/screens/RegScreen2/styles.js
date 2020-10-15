@@ -75,7 +75,6 @@ export default StyleSheet.create({
   buttonTitle: {
     fontFamily: "Montserrat_400Regular",
     color: "white",
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 26,
   },
 });
