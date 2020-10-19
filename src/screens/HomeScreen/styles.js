@@ -60,7 +60,10 @@ export default StyleSheet.create({
   settingsIcon: {
     height: 35,
     width: 35,
-    margin: 10,
+    margin: 7,
     alignSelf: "stretch",
   },
+  donorableTitle: {
+    marginTop: -30,
+  }
 });
