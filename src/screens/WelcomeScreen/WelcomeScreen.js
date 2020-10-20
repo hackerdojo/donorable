@@ -4,7 +4,8 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import styles from "./styles";
 
 export default function WelcomeScreen({ navigation }) {
-  /* Start walkthrough (needs to be implemented) */
+  /* Start walkthrough  */
+  /*(needs to be implemented) */
   const onWalkPress = () => {
     navigation.navigate("Home");
   };

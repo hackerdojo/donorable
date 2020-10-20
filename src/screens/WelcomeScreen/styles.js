@@ -6,13 +6,6 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
-  title: {
-    marginTop: 30,
-    marginBottom: 40,
-    marginLeft: 50,
-    maxWidth: 310,
-    maxHeight: 140,
-  },
   header: {
     fontFamily: "Montserrat_400Regular",
     color: "#363c3d",
