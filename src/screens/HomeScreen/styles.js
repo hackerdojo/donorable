@@ -57,13 +57,17 @@ export default StyleSheet.create({
     fontSize: 20,
     color: "#333333",
   },
-  settingsIcon: {
+  settingsIcon: {     // styles for settings icon
     height: 35,
     width: 35,
     margin: 7,
     alignSelf: "stretch",
   },
-  donorableTitle: {
-    marginTop: -30,
+  messageIcon: {      // styles for message icon
+    marginLeft: 155,
+    marginTop: -19,
+  },
+  donorableTitle: {   // styles for donorable app logo
+    marginTop: -50,
   }
 });
