@@ -13,12 +13,19 @@ export default StyleSheet.create({
     maxWidth: 310,
     maxHeight: 140,
   },
-  slogan: {
+  header: {
     fontFamily: "Montserrat_400Regular",
-    color: "#5e5e5e",
-    fontSize: 26,
+    color: "#363c3d",
+    fontSize: 30,
     textAlign: "center",
-    padding: 15,
+    padding: 3,
+  },
+  hViewTop: {
+    marginTop:30,
+    marginBottom: 30,
+  },
+  hViewBottom: {
+    marginBottom:20,
   },
   input: {
     fontFamily: "Montserrat_400Regular",
@@ -31,22 +38,22 @@ export default StyleSheet.create({
     marginRight: 30,
     paddingLeft: 16,
   },
-  loginButton: {
+  walkButton: {
     backgroundColor: "#6200ee",
     marginLeft: 80,
     marginRight: 80,
-    marginTop: 50,
-    marginBottom: 90,
+    marginTop: 25,
+    marginBottom: 20,
     height: 85,
     borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
   },
-  regButton: {
+  startButton: {
     backgroundColor: "#03dac5",
     marginLeft: 80,
     marginRight: 80,
-    marginTop: 10,
+    marginTop: 5,
     height: 85,
     borderRadius: 15,
     alignItems: "center",

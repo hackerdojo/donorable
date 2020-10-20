@@ -4,14 +4,14 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import styles from "./styles";
 
 export default function WelcomeScreen({ navigation }) {
-  /* Go to RegistrationScreen */
-  const onRegPress = () => {
-    navigation.navigate("Reg1");
+  /* Start walkthrough (needs to be implemented) */
+  const onWalkPress = () => {
+    navigation.navigate("Home");
   };
 
-  /* Go to LoginScreen */
-  const onLoginPress = () => {
-    navigation.navigate("Login");
+  /* Go strait to HomeScreen */
+  const onStartPress = () => {
+    navigation.navigate("Home");
   };
 
   /* View for the WelcomeScreen */
@@ -21,25 +21,32 @@ export default function WelcomeScreen({ navigation }) {
         style={{ flex: 1, width: "100%" }}
         keyboardShouldPersistTaps="always"
       >
+
+        <View style={styles.hViewTop}>
+            <Text style={styles.header}>Welcome to</Text>
+            <Text style={styles.header}>Donorable!</Text>
+        </View>
+
+        <View style={styles.hViewBottom}>
+            <Text style={styles.header}>Meet people.</Text>
+            <Text style={styles.header}>Make a difference.</Text>
+        </View>
+
+
         <Image
-          source={require("../../../assets/donorable-title.png")}
-          style={styles.title}
+          source={require("../../../assets/coffee.png")}
         />
 
-        <Text style={styles.slogan}>Welcome to Donorable!</Text>
-        <Text style={styles.slogan}>Meet people.</Text>
-        <Text style={styles.slogan}>Make a difference.</Text>
-
         <TouchableOpacity
-        style={styles.loginButton}
-        onPress={() => onLoginPress()}
+        style={styles.walkButton}
+        onPress={() => onWalkPress()}
         >
           <Text style={styles.buttonTitle}>Walkthrough</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
-        style={styles.regButton} 
-        onPress={() => onRegPress()}
+        style={styles.startButton} 
+        onPress={() => onStartPress()}
         >
           <Text style={styles.buttonTitle}>Start Swiping</Text>
         </TouchableOpacity>
