@@ -28,7 +28,6 @@ export default function RegScreen2({ navigation }) {
         const data = {
           id: uid,
           email,
-          fullName,
         };
         const usersRef = firebase.firestore().collection("users");
         usersRef
