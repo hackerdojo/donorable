@@ -10,6 +10,7 @@ import {
   RegScreen1,
   RegScreen2,
   SettingsScreen,
+  WelcomeScreen,
 } from "./src/screens"; // different screens of the app
 import { decode, encode } from "base-64"; // for the decode and encode of the text
 
@@ -71,6 +72,7 @@ export default function App() {
       <Stack.Navigator>
         {user ? (
           <>
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Home">
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>

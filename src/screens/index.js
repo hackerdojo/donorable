@@ -12,3 +12,5 @@ export { default as RegScreen2 } from "./RegScreen2/RegScreen2";
 export { default as HomeScreen } from "./HomeScreen/HomeScreen";
 
 export { default as SettingsScreen } from "./SettingsScreen/SettingsScreen";
+
+export { default as WelcomeScreen } from "./WelcomeScreen/WelcomeScreen";
