@@ -86,6 +86,13 @@ export default function HomeScreen(props) {
         />
       </TouchableOpacity>
 
+      {/* <TouchableOpacity style={styles.messageIcon}>     // for the message icon logo
+        <Image
+            style={styles.messageIcon}
+            source={require("../../../assets/message-icon.png")}
+        />
+      </TouchableOpacity> */}
+
       <Image
         style={styles.donorableTitle}
         source={require("../../../assets/donorable-title.png")}
