@@ -65,9 +65,9 @@ export default StyleSheet.create({
   },
   messageIcon: {      // styles for message icon
     marginLeft: 155,
-    marginTop: -19,
+    marginTop: -17,
   },
   donorableTitle: {   // styles for donorable app logo
-    marginTop: -50,
+    marginTop: -35,
   }
 });
