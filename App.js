@@ -8,6 +8,7 @@ import {
   HomeScreen,
   RegistrationScreen,
   SettingsScreen,
+  MessageScreen,
 } from "./src/screens"; // different screens of the app
 import { decode, encode } from "base-64"; // for the decode and encode of the text
 
@@ -73,6 +74,7 @@ export default function App() {
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>
             <Stack.Screen name="Settings" component={SettingsScreen} />
+            <Stack.Screen name="Message" component={MessageScreen} />
           </>
         ) : (
           <>
