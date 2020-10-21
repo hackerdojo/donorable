@@ -63,4 +63,7 @@ export default StyleSheet.create({
     margin: 10,
     alignSelf: "stretch",
   },
+  donorableIcon: {
+    marginTop: -40,
+  }
 });
