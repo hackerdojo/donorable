@@ -67,6 +67,8 @@ export default function App() {
     return <></>;
   }
   /* Routes & Navigation of different screens */
+
+  /* TEMPORARY: FIX LOGOUT */
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -77,6 +79,12 @@ export default function App() {
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>
             <Stack.Screen name="Settings" component={SettingsScreen} />
+
+            <Stack.Screen name="Intro" component={IntroScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Reg1" component={RegScreen1} />
+            <Stack.Screen name="Reg2" component={RegScreen2} />
+            
           </>
         ) : (
           <>
