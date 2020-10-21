@@ -63,6 +63,10 @@ export default StyleSheet.create({
     margin: 10,
     alignSelf: "stretch",
   },
+  messageIcon: {      // styles for message icon
+    marginLeft: 155,
+    marginTop: -17,
+  },
   donorableIcon: {
     marginTop: -40,
   }

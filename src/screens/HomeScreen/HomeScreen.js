@@ -43,7 +43,7 @@ export default function HomeScreen(props) {
     props.navigation.navigate("Settings");
   };
 
-  const onSettingsPress = () => {
+  const onMessagePress = () => {
     props.navigation.navigate("Message");
   };
 
@@ -91,7 +91,7 @@ export default function HomeScreen(props) {
 
       <TouchableOpacity style={styles.messageIcon} onPress={onMessagePress}>
         <Image
-          style={styles.settingsIcon}
+          style={styles.messageIcon}
           source={require("../../../assets/message.png")}
         />
       </TouchableOpacity>
