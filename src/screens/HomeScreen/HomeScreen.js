@@ -44,6 +44,7 @@ export default function HomeScreen(props) {
     props.navigation.navigate("Settings");
   };
 
+  /* Navigate to message screen */
   const onMessagePress = () => {
     props.navigation.navigate("Message");
   };
