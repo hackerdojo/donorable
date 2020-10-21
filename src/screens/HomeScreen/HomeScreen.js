@@ -44,6 +44,10 @@ export default function HomeScreen(props) {
     props.navigation.navigate("Settings");
   };
 
+  const onMessagePress = () => {
+    props.navigation.navigate("Message");
+  };
+
   /* data to get what user input */
   // const onAddButtonPress = () => {
   //   if (entityText && entityText.length > 0) {
@@ -86,12 +90,12 @@ export default function HomeScreen(props) {
         />
       </TouchableOpacity>
 
-      {/* <TouchableOpacity style={styles.messageIcon}>     // for the message icon logo
+      <TouchableOpacity style={styles.messageIcon} onPress={onMessagePress}>
         <Image
-            style={styles.messageIcon}
-            source={require("../../../assets/message-icon.png")}
+          style={styles.messageIcon}
+          source={require("../../../assets/message.png")}
         />
-      </TouchableOpacity> */}
+      </TouchableOpacity>
 
       <Image
         style={styles.donorableTitle}
