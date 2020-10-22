@@ -8,9 +8,12 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
+  Dimensions,
+  Animated
 } from "react-native";
 import styles from "./styles";
 import { firebase } from "../../firebase/config";
+
 
 export default function HomeScreen(props) {
   /* Navigate to settings screen */
@@ -23,10 +26,15 @@ export default function HomeScreen(props) {
     props.navigation.navigate("Message");
   };
 
+  /* Profile Card Variables */
+
+
+
 
   /* View for the Home Screen */
   return (
     <View style={styles.container}>
+      {/* Setting Icon Press */}
       <TouchableOpacity style={styles.settingsIcon} onPress={onSettingsPress}>
         <Image
           style={styles.settingsIcon}
@@ -34,6 +42,7 @@ export default function HomeScreen(props) {
         />
       </TouchableOpacity>
 
+      {/* Message Icon on Press */}
       <TouchableOpacity style={styles.messageIcon} onPress={onMessagePress}>
         <Image
           style={styles.messageIcon}
@@ -41,6 +50,7 @@ export default function HomeScreen(props) {
         />
       </TouchableOpacity>
 
+      {/* Donorable App Logo */}
       <Image
         style={styles.donorableTitle}
         source={require("../../../assets/donorable-title.png")}
