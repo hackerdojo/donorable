@@ -10,6 +10,7 @@
   "dependencies": {
     "@expo-google-fonts/dev": "^0.1.0",
     "@expo-google-fonts/montserrat": "^0.1.0",
+    "@expo/vector-icons": "^10.2.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^5.7.4",
     "@react-navigation/stack": "^5.9.1",
@@ -22,11 +23,13 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
+    "react-native-deck-swiper": "^2.0.5",
     "react-native-gesture-handler": "~1.7.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.2",
-    "react-native-reanimated": "~1.13.0",
+    "react-native-reanimated": "^1.13.1",
     "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
+    "react-native-view-overflow": "^0.0.5",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
