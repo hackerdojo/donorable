@@ -12,6 +12,7 @@ import {
   Animated
 } from "react-native";
 import styles from "./styles";
+import Swiper from 'react-native-deck-swiper'
 import { firebase } from "../../firebase/config";
 
 
@@ -55,6 +56,11 @@ export default function HomeScreen(props) {
         style={styles.donorableTitle}
         source={require("../../../assets/donorable-title.png")}
       />
+      {/* <Swiper
+        // cards={}
+        // cardIndex={}
+        // renderCard={}
+      /> */}
     </View>
   );
 }
