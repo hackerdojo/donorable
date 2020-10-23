@@ -1,5 +1,3 @@
-/* To-do: registration page */
-
 import React, { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -12,7 +10,12 @@ export default function LoginScreen({ navigation }) {
 
   /* Create account */
   const onBackPress = () => {
-    navigation.navigate("Intro");
+    navigation.goBack();
+  };
+
+  /* Send email to reset user's password */
+  const onRecoverPress = () => {
+    navigation.navigate("Recover");
   };
 
   /* firebase logic for user to login, if the user has already registered */
@@ -84,7 +87,7 @@ export default function LoginScreen({ navigation }) {
           />
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => onRecoverPress()}>
           <Text style={styles.forgotPW}>Forgot password?</Text>
         </TouchableOpacity>
         

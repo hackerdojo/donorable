@@ -11,6 +11,7 @@ import {
   RegScreen2,
   SettingsScreen,
   WelcomeScreen,
+  RecoverScreen,
 } from "./src/screens"; // different screens of the app
 import { decode, encode } from "base-64"; // for the decode and encode of the text
 
@@ -98,6 +99,7 @@ export default function App() {
           <>
             <Stack.Screen name="Intro" component={IntroScreen} />
             <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Recover" component={RecoverScreen} />
             <Stack.Screen name="Reg1" component={RegScreen1} />
             <Stack.Screen name="Reg2" component={RegScreen2} />
           </>
