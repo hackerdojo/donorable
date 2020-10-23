@@ -44,13 +44,14 @@ export default function App() {
   const [loading, setLoading] = useState(true); // variable handling for user's data
   const [user, setUser] = useState(null);
 
-  /* firebase login */
+  /* Firebase login */
   useEffect(() => {
     const usersRef = firebase.firestore().collection("users");
     firebase
       .auth()
       .onAuthStateChanged((user) => {
         if (user) {
+          //User is signed in
           usersRef
             .doc(user.uid)
             .get()
@@ -63,8 +64,9 @@ export default function App() {
               setLoading(false);
             });
         } else {
+          //User is not signed in
+          //Return to Intro on logout
           setLoading(false);
-          //
           setUser(null);
         }
       });
@@ -73,14 +75,6 @@ export default function App() {
   if (loading) {
     return <></>;
   }
-
-
-
-
-
-
-
-
 
   /* Initialize React Navigation stack navigator */
   /* allows app to transition between screens and manage navigation history */
@@ -98,8 +92,6 @@ export default function App() {
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
-            
-
             <Stack.Screen name="Settings" component={SettingsScreen} />
           </>
         ) : (
