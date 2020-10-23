@@ -84,6 +84,10 @@ export default function LoginScreen({ navigation }) {
           />
         </View>
 
+        <TouchableOpacity>
+          <Text style={styles.forgotPW}>Forgot password?</Text>
+        </TouchableOpacity>
+        
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.backButton}

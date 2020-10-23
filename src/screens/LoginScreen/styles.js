@@ -25,7 +25,7 @@ export default StyleSheet.create({
     color: "#6200ee",
     fontSize: 26,
     marginLeft: 35,
-    marginTop: 50,
+    marginTop: 30,
     marginBottom: 10,
     padding: 12,
   },
@@ -47,7 +47,7 @@ export default StyleSheet.create({
   buttonContainer: {
     flex: 1,
     flexDirection: "row",
-    marginTop: 80,
+    marginTop: 50,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -76,5 +76,13 @@ export default StyleSheet.create({
     fontFamily: "Montserrat_400Regular",
     color: "white",
     fontSize: 26,
+  },
+  forgotPW: {
+    fontFamily: "Montserrat_400Regular",
+    color: "#6200ee",
+    fontSize: 26,
+    marginTop: 40,
+    marginBottom: 20,
+    marginLeft: 45,
   },
 });
