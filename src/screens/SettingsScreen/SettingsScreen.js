@@ -8,7 +8,8 @@ export default function SettingsScreen(props) {
 
   /* Click to finish changing settings and return home */
   const onDonePress = () => {
-    props.navigation.navigate("Home");
+    props.navigation.goBack();
+    //props.navigation.navigate("Home");
   };
 
   /* Click to logout and return to IntroScreen */
@@ -18,7 +19,7 @@ export default function SettingsScreen(props) {
       .signOut()
       .then( () => {
         console.log("User signed out")
-        props.navigation.navigate("Intro")
+       // props.navigation.navigate("Intro")
       })
       .catch((error) => {
         alert(error);

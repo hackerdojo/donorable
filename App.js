@@ -26,9 +26,10 @@ if (!global.atob) {
   global.atob = decode;
 } // decodes from Base64
 
-const Stack = createStackNavigator(); // react-native navigation
 
 export default function App() {
+
+  
   /* Import custom Google font */
   let fontsLoaded = useFonts({
     Montserrat_400Regular,
@@ -37,11 +38,13 @@ export default function App() {
     return <AppLoading />;
   }
 
+  
+ 
+  
   const [loading, setLoading] = useState(true); // variable handling for user's data
   const [user, setUser] = useState(null);
 
   /* firebase persistent login */
-  /* user just login once and no need to login again */
   useEffect(() => {
     const usersRef = firebase.firestore().collection("users");
     firebase.auth().onAuthStateChanged((user) => {
@@ -66,25 +69,30 @@ export default function App() {
   if (loading) {
     return <></>;
   }
-  /* Routes & Navigation of different screens */
 
-  /* TEMPORARY: FIX LOGOUT */
+
+
+
+
+
+
+
+  /* Initialize React Navigation stack navigator */
+  /* allows app to transition between screens and manage navigation history */
+  const Stack = createStackNavigator(); 
+
+  /* Routes & Navigation of different screens */
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Intro">
         {user ? (
           <>
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Home">
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>
-            <Stack.Screen name="Settings" component={SettingsScreen} />
 
-            <Stack.Screen name="Intro" component={IntroScreen} />
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Reg1" component={RegScreen1} />
-            <Stack.Screen name="Reg2" component={RegScreen2} />
-            
+            <Stack.Screen name="Settings" component={SettingsScreen} />
           </>
         ) : (
           <>
