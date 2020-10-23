@@ -1,33 +1,63 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { firebase } from "../../firebase/config";
 import styles from "./styles";
-//import { firebase } from "../../firebase/config";
 
 export default function SettingsScreen(props) {
+
+  /* Click to finish changing settings and return home */
   const onDonePress = () => {
-    props.navigation.navigate("Home");
+    props.navigation.goBack();
   };
+
+  /* Click to logout and return to IntroScreen */
+  const onLogoutPress = () => {
+    firebase
+      .auth()
+      .signOut()
+      .catch((error) => {
+        alert(error);
+      })
+  };
+
   return (
     <View style={styles.container}>
+
       <KeyboardAwareScrollView
         style={{ flex: 1, width: "100%" }}
         keyboardShouldPersistTaps="always"
       >
-        <Image source={require("../../../assets/donorable-title.png")} />
-        <Text style={styles.text}>ACCOUNT SETTINGS</Text>
-        <Text style={styles.text}>Phone Number</Text>
-        <Text style={styles.text}>Email</Text>
-        <Text style={styles.text}>Password</Text>
-        <Text style={styles.text}>Location</Text>
-        <Text style={styles.text}>Notifications</Text>
-        <Text style={styles.text}>Contact Us</Text>
-        <Text style={styles.text}>Delete Account</Text>
-        <Text style={styles.text}>Logout</Text>
+
+        <Text style={styles.header}> Settings </Text>
+
+        <Text style={styles.bar}>_____________________________</Text>
+
+        <View style={styles.textWrapper}>
+          <Text style={styles.text}>Profile picture</Text>
+          <Text style={styles.text}>Phone number</Text>
+          <Text style={styles.text}>Email</Text>
+          <Text style={styles.text}>Password</Text>
+          <Text style={styles.text}>Location</Text>
+        </View>
+
+        <Text style={styles.bar}>_____________________________</Text>
+
+        <View style={styles.textWrapper}>
+          <Text style={styles.text}>Go anonymous</Text>
+          <Text style={styles.text}>Notifications</Text>
+          <Text style={styles.text}>Delete account</Text>
+
+          <TouchableOpacity onPress={() => onLogoutPress()}>
+            <Text style={styles.text}>Logout</Text>
+          </TouchableOpacity>
+
+        </View>
 
         <TouchableOpacity style={styles.button} onPress={() => onDonePress()}>
           <Text style={styles.buttonTitle}>Done</Text>
         </TouchableOpacity>
+
       </KeyboardAwareScrollView>
     </View>
   );
