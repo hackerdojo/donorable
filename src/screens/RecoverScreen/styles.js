@@ -25,7 +25,7 @@ export default StyleSheet.create({
     color: "#6200ee",
     fontSize: 26,
     marginLeft: 35,
-    marginTop: 30,
+    marginTop: 60,
     marginBottom: 10,
     padding: 12,
   },
@@ -47,7 +47,7 @@ export default StyleSheet.create({
   buttonContainer: {
     flex: 1,
     flexDirection: "row",
-    marginTop: 50,
+    marginTop: 247,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -62,7 +62,7 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  loginButton: {
+  enterButton: {
     backgroundColor: "#6200ee",
     padding: 10,
     paddingLeft: 20,

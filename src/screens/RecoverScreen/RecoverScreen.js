@@ -6,9 +6,15 @@ import styles from "./styles";
 
 export default function RecoverScreen( {navigation} ) {
 
+    /* Return to Login  */
     const onBackPress = () => {
         navigation.goBack();
       };
+
+    /* Send password recovery email */
+    const onEnterPress = () => {
+         /* FIREBASE LOGIN NEEDED */
+    }
 
   
 
@@ -37,13 +43,19 @@ export default function RecoverScreen( {navigation} ) {
             autoCapitalize="none"
           />
         </View>
-
+                
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => onBackPress()}
           >
             <Text style={styles.buttonTitle}>Back</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.enterButton}
+            onPress={() => onEnterPress()}
+          >
+            <Text style={styles.buttonTitle}>Enter</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAwareScrollView>
