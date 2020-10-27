@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View, Alert } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { firebase } from "../../firebase/config";
 import styles from "./styles";
@@ -19,6 +19,25 @@ export default function SettingsScreen(props) {
       .catch((error) => {
         alert(error);
       })
+  };
+
+  /* Delete account and return to IntroScreen */
+  const onDelPress = () => {
+    let user = firebase.auth().currentUser;
+    Alert.alert(
+      'WARNING',
+      'Are you sure you want to delete your account? This action cannot be reversed.',
+      [
+        {text: 'Return'},
+        {text: 'Delete', onPress: () => user
+          .delete()
+          .catch((error) => {
+            alert(error);
+          })
+      },
+        {cancelable: false }
+      ]
+    )
   };
 
   return (
@@ -46,7 +65,11 @@ export default function SettingsScreen(props) {
         <View style={styles.textWrapper}>
           <Text style={styles.text}>Go anonymous</Text>
           <Text style={styles.text}>Notifications</Text>
-          <Text style={styles.text}>Delete account</Text>
+
+          <TouchableOpacity onPress={() => onDelPress()}>
+            <Text style={styles.text}>Delete account</Text>
+          </TouchableOpacity>
+          
 
           <TouchableOpacity onPress={() => onLogoutPress()}>
             <Text style={styles.text}>Logout</Text>
