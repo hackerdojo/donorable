@@ -1,8 +1,9 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
+import { firebase } from "../../firebase/config";
 
 export default function RecoverScreen( {navigation} ) {
 
@@ -12,10 +13,20 @@ export default function RecoverScreen( {navigation} ) {
       };
 
     /* Send password recovery email */
-    const onEnterPress = () => {
-         /* FIREBASE LOGIN NEEDED */
+    const onEnterPress = (email) => {
+         firebase
+         .auth()
+         .sendPasswordResetEmail(email)
+         .then(() => {
+            alert('An email has been send with further instructions.')
+         }) 
+         .catch((error) => {
+             alert(error);
+         })
     }
 
+    /* Variables to capture text input value, and send that value to firebase */
+    const [email, setEmail] = useState('');
   
 
   /* View for the Recover screen */
@@ -32,32 +43,38 @@ export default function RecoverScreen( {navigation} ) {
 
         <Text style={styles.label}>recover password</Text>
 
+
         <Text style={styles.inputLabel}>Email</Text>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
             label="E-mail"
             placeholderTextColor="#aaaaaa"
-            onChangeText={(text) => setEmail(text)}
             underlineColorAndroid="transparent"
             autoCapitalize="none"
+            onChangeText={email => setEmail(email)}
           />
         </View>
                 
+
         <View style={styles.buttonContainer}>
+
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => onBackPress()}
           >
             <Text style={styles.buttonTitle}>Back</Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.enterButton}
-            onPress={() => onEnterPress()}
+            onPress={() => onEnterPress(email)}
           >
             <Text style={styles.buttonTitle}>Enter</Text>
           </TouchableOpacity>
+
         </View>
+
       </KeyboardAwareScrollView>
     </View>
   );
