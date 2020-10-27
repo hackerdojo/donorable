@@ -63,6 +63,8 @@ export default function App() {
   if (loading) {
     return <></>;
   }
+
+
   /* Routes & Navigation of different screens */
   return (
     <NavigationContainer>
