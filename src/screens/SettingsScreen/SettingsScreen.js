@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, View, Alert } from "react-native";
+import { Text, TouchableOpacity, View, Alert, Modal } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { firebase } from "../../firebase/config";
 import styles from "./styles";
@@ -13,12 +13,21 @@ export default function SettingsScreen(props) {
 
   /* Click to logout and return to IntroScreen */
   const onLogoutPress = () => {
-    firebase
-      .auth()
-      .signOut()
-      .catch((error) => {
-        alert(error);
-      })
+    Alert.alert(
+      'WARNING',
+      'Are you sure you want to log out?',
+      [
+        {text: 'No'},
+        {text: 'Yes', onPress: () => firebase
+          .auth()
+          .signOut()
+          .catch((error) => {
+            alert(error);
+        })
+        },
+          {cancelable: false }
+      ]
+    )
   };
 
   /* Delete account and return to IntroScreen */
@@ -40,6 +49,17 @@ export default function SettingsScreen(props) {
     )
   };
 
+  /* Change email of current user */
+  const onEmPress = () => {
+    Alert.alert('email was pressed')
+  }
+
+
+  /* Change password of current user */
+  const onPwPress = () => {
+    Alert.alert('password was pressed')
+  }
+
   return (
     <View style={styles.container}>
 
@@ -55,8 +75,15 @@ export default function SettingsScreen(props) {
         <View style={styles.textWrapper}>
           <Text style={styles.text}>Profile picture</Text>
           <Text style={styles.text}>Phone number</Text>
+
+        <TouchableOpacity onPress={() => onEmPress()}>
           <Text style={styles.text}>Email</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => onPwPress()}>
           <Text style={styles.text}>Password</Text>
+        </TouchableOpacity>
+          
           <Text style={styles.text}>Location</Text>
         </View>
 
