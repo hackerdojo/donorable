@@ -85,7 +85,7 @@ export default function HomeScreen(props) {
     props.navigation.navigate("Settings");
   };
 
-  //   /* Navigate to message screen */
+  /* Navigate to message screen */
   const onMessagePress = () => {
     props.navigation.navigate("Message");
   };
@@ -184,7 +184,7 @@ export default function HomeScreen(props) {
           {/* X red button */}
           <MaterialCommunityIcons.Button
             name='close'
-            size={94}
+            size={90}
             backgroundColor='transparent'
             underlayColor='transparent'
             activeOpacity={0.3}
@@ -194,7 +194,7 @@ export default function HomeScreen(props) {
           {/* O blue button */}
           <MaterialCommunityIcons.Button
             name='circle-outline'
-            size={94}
+            size={90}
             backgroundColor='transparent'
             underlayColor='transparent'
             activeOpacity={0.3}
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
   bottomContainerButtons: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    top: 80,
+    top: 65,
   },
   header: {
     flex: 0.5,
