@@ -28,15 +28,15 @@ export default [
     },
     {
       id: '70078463',
-      price: '$49.99',
-      name: 'PELLO',
+      price: 'Goal is to help each other',
+      name: 'Helping Hands',
       image:
         'https://www.ikea.com/us/en/images/products/pello-armchair__38296_PE130209_S5.JPG?f=xs'
     },
     {
       id: '99305926',
-      price: '$99.00',
-      name: 'POÄNG',
+      price: 'Best Filipino Nonprofit Organization',
+      name: 'Bayanihan',
       image:
         'https://www.ikea.com/us/en/images/products/poaeng-armchair__0497130_PE628957_S5.JPG?f=xs'
     },
