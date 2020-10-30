@@ -10,6 +10,7 @@ import {
   RegScreen1,
   RegScreen2,
   SettingsScreen,
+  MessageScreen,
   WelcomeScreen,
 } from "./src/screens"; // different screens of the app
 import { decode, encode } from "base-64"; // for the decode and encode of the text
