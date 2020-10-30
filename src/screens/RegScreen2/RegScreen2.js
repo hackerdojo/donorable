@@ -4,15 +4,14 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import styles from "./styles";
 import { firebase } from "../../firebase/config";
 
-export default function RegistrationScreen({ navigation }) {
-  const [fullName, setFullName] = useState(""); // variables for fullName, email and password
+export default function RegScreen2({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const onLoginPress = () => {
-    // Link to login page if user already register
-    navigation.navigate("Login");
+  const onBackPress = () => {
+    // Link to intro page if user already registered
+    navigation.navigate("Intro");
   };
 
   /* firebase logic for creating new account with email & password */
@@ -29,14 +28,13 @@ export default function RegistrationScreen({ navigation }) {
         const data = {
           id: uid,
           email,
-          fullName,
         };
         const usersRef = firebase.firestore().collection("users");
         usersRef
           .doc(uid)
           .set(data)
           .then(() => {
-            navigation.navigate("Home", { user: data });
+            navigation.navigate("Welcome", { user: data });
           })
           .catch((error) => {
             alert(error);
@@ -58,57 +56,69 @@ export default function RegistrationScreen({ navigation }) {
           source={require("../../../assets/donorable-title.png")}
           style={styles.title}
         />
+
+        <Text style={styles.label}>create an account</Text>
+
+        <Text style={styles.inputLabel}>Email</Text>
+
+        <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Full Name"
-          placeholderTextColor="#aaaaaa"
-          onChangeText={(text) => setFullName(text)}
-          value={fullName}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="E-mail"
+          label="E-mail"
           placeholderTextColor="#aaaaaa"
           onChangeText={(text) => setEmail(text)}
           value={email}
           underlineColorAndroid="transparent"
           autoCapitalize="none"
         />
+        </View>
+
+
+        <Text style={styles.inputLabel}>Password</Text>
+        <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholderTextColor="#aaaaaa"
           secureTextEntry
-          placeholder="Password"
+          label="Password"
           onChangeText={(text) => setPassword(text)}
           value={password}
           underlineColorAndroid="transparent"
           autoCapitalize="none"
         />
+        </View>
+
+
+        <Text style={styles.inputLabel}>Confirm password</Text>
+        <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholderTextColor="#aaaaaa"
           secureTextEntry
-          placeholder="Confirm Password"
+          label="Confirm Password"
           onChangeText={(text) => setConfirmPassword(text)}
           value={confirmPassword}
           underlineColorAndroid="transparent"
           autoCapitalize="none"
         />
+        </View>
+
+        <View style={styles.buttonContainer}>
         <TouchableOpacity
-          style={styles.regButton}
-          onPress={() => onRegisterPress()}
+          style={styles.enterButton}
+          onPress={() => onBackPress()}
         >
-          <Text style={styles.buttonTitle}>Create account</Text>
+          <Text style={styles.buttonTitle}>Back</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.logButton}
-          onPress={() => onLoginPress()}
+          style={styles.backButton}
+          onPress={() => onRegisterPress()}
         >
-          <Text style={styles.buttonTitle}>Return to login</Text>
+          <Text style={styles.buttonTitle}>Enter</Text>
         </TouchableOpacity>
+        </View>
+
       </KeyboardAwareScrollView>
     </View>
   );

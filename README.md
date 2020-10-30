@@ -12,17 +12,19 @@ Built With
 * [Firebase](https://firebase.google.com/)
 
 
-Contributors 
+Contributors
 ---
 
-* **Ed Choudry** - *Project Manager* - [Linkedin](https://www.linkedin.com/in/echoudhry/)
+* **Ed Choudhry** - *Project Manager* - [Linkedin](https://www.linkedin.com/in/echoudhry/)
 
-* **Eliezer Santiago** - *Software Developer* - [Linkedin](https://www.linkedin.com/in/eliezer-santiago-aaa653148/) 
+* **Eliezer Santiago** - *Software Developer* - [Linkedin](https://www.linkedin.com/in/santiagoelie/)
 
 * **Joshua Dorn** - *Software Developer* - [Linkedin](https://www.linkedin.com/in/joshdorn/)
 
+* **Van Dinh** - *Software Developer* - [Linkedin](https://www.linkedin.com/in/vandinh124/)
 
-Support 
+
+Support
 ---
 
 Connect with Hacker Dojo on our:

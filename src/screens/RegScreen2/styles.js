@@ -1,4 +1,4 @@
-/* CSS styles for Login Screen */
+/* CSS styles for Registration Screen */
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
@@ -8,7 +8,7 @@ export default StyleSheet.create({
   },
   title: {
     marginTop: 30,
-    marginBottom: 40,
+    marginBottom: 20,
     marginLeft: 50,
     maxWidth: 310,
     maxHeight: 140,
@@ -18,14 +18,21 @@ export default StyleSheet.create({
     color: "#5e5e5e",
     fontSize: 26,
     textAlign: "center",
-    marginTop: 10,
+    marginTop: 5,
+  },
+  input: {
+    fontFamily: "Montserrat_400Regular",
+    fontSize: 26,
+    height: 35,
+    overflow: "hidden",
+    backgroundColor: "white",
   },
   inputLabel: {
     fontFamily: "Montserrat_400Regular",
     color: "#6200ee",
     fontSize: 26,
     marginLeft: 35,
-    marginTop: 50,
+    marginTop: 25,
     marginBottom: 10,
     padding: 12,
   },
@@ -37,21 +44,7 @@ export default StyleSheet.create({
     marginRight: 47,
     borderColor: "#5e5e5e",
   },
-  input: {
-    fontFamily: "Montserrat_400Regular",
-    fontSize: 26,
-    height: 35,
-    overflow: "hidden",
-    backgroundColor: "white",
-  },
-  buttonContainer: {
-    flex: 1,
-    flexDirection: "row",
-    marginTop: 80,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  backButton: {
+  enterButton: {
     backgroundColor: "#03dac5",
     marginRight: 90,
     padding: 10,
@@ -62,13 +55,20 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  loginButton: {
+  backButton: {
     backgroundColor: "#6200ee",
     padding: 10,
     paddingLeft: 20,
     paddingRight: 20,
     height: 70,
     borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: "row",
+    marginTop: 80,
     alignItems: "center",
     justifyContent: "center",
   },
