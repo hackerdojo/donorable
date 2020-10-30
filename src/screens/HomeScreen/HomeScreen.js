@@ -14,6 +14,7 @@ import data from './data';
 import Swiper from 'react-native-deck-swiper';
 import { Transitioning, Transition } from 'react-native-reanimated';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+// import styles from "./styles";
 import { firebase } from "../../firebase/config";
 import { AdventPro_200ExtraLight } from "@expo-google-fonts/dev";
 
