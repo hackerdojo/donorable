@@ -15,7 +15,6 @@ import {
 } from "./src/screens"; // different screens of the app
 import { decode, encode } from "base-64"; // for the decode and encode of the text
 
-
 /* Async loading Google Font */
 import { AppLoading } from "expo";
 import { useFonts } from "expo-font";
@@ -39,6 +38,8 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
+
+
 
   
  

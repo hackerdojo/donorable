@@ -20,13 +20,6 @@ export default StyleSheet.create({
     textAlign: "center",
     marginTop: 5,
   },
-  input: {
-    fontFamily: "Montserrat_400Regular",
-    fontSize: 26,
-    height: 35,
-    overflow: "hidden",
-    backgroundColor: "white",
-  },
   inputLabel: {
     fontFamily: "Montserrat_400Regular",
     color: "#6200ee",
@@ -43,6 +36,15 @@ export default StyleSheet.create({
     marginLeft: 47,
     marginRight: 47,
     borderColor: "#5e5e5e",
+    backgroundColor: "white",
+  },
+  input: {
+    fontFamily: "Montserrat_400Regular",
+    fontSize: 26,
+    height: 40,
+    marginLeft: 7,
+    overflow: "hidden",
+    backgroundColor: "white",
   },
   enterButton: {
     backgroundColor: "#03dac5",
@@ -68,7 +70,7 @@ export default StyleSheet.create({
   buttonContainer: {
     flex: 1,
     flexDirection: "row",
-    marginTop: 80,
+    marginTop: 45,
     alignItems: "center",
     justifyContent: "center",
   },

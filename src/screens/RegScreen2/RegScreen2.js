@@ -65,7 +65,6 @@ export default function RegScreen2({ navigation }) {
         <TextInput
           style={styles.input}
           label="E-mail"
-          placeholderTextColor="#aaaaaa"
           onChangeText={(text) => setEmail(text)}
           value={email}
           underlineColorAndroid="transparent"
@@ -78,7 +77,6 @@ export default function RegScreen2({ navigation }) {
         <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholderTextColor="#aaaaaa"
           secureTextEntry
           label="Password"
           onChangeText={(text) => setPassword(text)}
@@ -93,7 +91,6 @@ export default function RegScreen2({ navigation }) {
         <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholderTextColor="#aaaaaa"
           secureTextEntry
           label="Confirm Password"
           onChangeText={(text) => setConfirmPassword(text)}

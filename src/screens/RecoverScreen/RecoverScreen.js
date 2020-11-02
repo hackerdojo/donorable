@@ -49,7 +49,6 @@ export default function RecoverScreen( {navigation} ) {
           <TextInput
             style={styles.input}
             label="E-mail"
-            placeholderTextColor="#aaaaaa"
             underlineColorAndroid="transparent"
             autoCapitalize="none"
             onChangeText={email => setEmail(email)}
