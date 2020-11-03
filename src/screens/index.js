@@ -16,3 +16,5 @@ export { default as HomeScreen } from "./HomeScreen/HomeScreen";
 export { default as SettingsScreen } from "./SettingsScreen/SettingsScreen";
 
 export { default as WelcomeScreen } from "./WelcomeScreen/WelcomeScreen";
+
+export { default as MessageScreen } from "./MessageScreen/MessageScreen";
