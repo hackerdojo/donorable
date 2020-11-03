@@ -96,7 +96,7 @@ export default function HomeScreen(props) {
           transform: [{ rotate: '45deg' }, { scale: 1.6 }],
           position: 'absolute',
           left: -15,
-          top: 140
+          top: 140,
         }}
       />
       <StatusBar hidden={true} />
@@ -215,6 +215,7 @@ export default function HomeScreen(props) {
             style={styles.donorableTitle}
             source={require("../../../assets/donorable-title.png")}
           />
+          <View style = {styles.lineStyle}/>
         </View>
       </View>
     </SafeAreaView>

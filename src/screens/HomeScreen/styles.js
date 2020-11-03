@@ -51,7 +51,7 @@ export default StyleSheet.create({
         shadowOffset: { width: 0, height: 0 },
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.white
+        backgroundColor: colors.white,
       },
       text: {
         textAlign: 'center',
@@ -83,7 +83,7 @@ export default StyleSheet.create({
         position: 'absolute',
         left: 5,
         right: 5,
-        top: -599,
+        top: -590,
         bottom: 0,
         height: 35,
         width: 5,
@@ -93,14 +93,19 @@ export default StyleSheet.create({
         position: 'absolute',
         left: 320,
         right: 5,
-        top: -589,
+        top: -580,
         bottom: 0,
       },
       donorableTitle: {
         position: 'absolute',
         left: 95,
         right: 5,
-        top: -608,
+        top: -600,
         bottom: 0,
+        // borderBottomColor: '#000000',
       },
+      // lineStyle: {
+      //   borderWidth: StyleSheet.hairlineWidth,
+      //   margin: -530,
+      // }
 });
