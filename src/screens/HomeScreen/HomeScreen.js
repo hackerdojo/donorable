@@ -15,6 +15,7 @@ import styles from "./styles";
 import data from './data';
 import Swiper from 'react-native-deck-swiper';
 import { Transitioning, Transition } from 'react-native-reanimated';
+
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 /* new **************************/
@@ -181,26 +182,18 @@ export default function HomeScreen(props) {
 
       {/* Bottom Container Buttons */}
       <View style={styles.bottomContainerButtons}>
-        {/* X red button */}
-        <MaterialCommunityIcons.Button
-          name='close'
-          size={90}
-          backgroundColor='transparent'
-          underlayColor='transparent'
-          activeOpacity={0.3}
-          color="red"
-          onPress={() => swiperRef.current.swipeLeft()}
-        />
-        {/* O blue button */}
-        <MaterialCommunityIcons.Button
-          name='circle-outline'
-          size={90}
-          backgroundColor='transparent'
-          underlayColor='transparent'
-          activeOpacity={0.3}
-          color="blue"
-          onPress={() => swiperRef.current.swipeRight()}
-        />
+
+        {/* Dislike button */}
+        <TouchableOpacity
+          onPress={() => swiperRef.current.swipeLeft()}>
+          <Image source={require("../../../assets/dislike.png")}/>
+        </TouchableOpacity>
+
+        {/* Like button */}
+        <TouchableOpacity
+          onPress={() => swiperRef.current.swipeRight()}>
+          <Image source={require("../../../assets/heart.png")}/>
+        </TouchableOpacity>
       </View>
 
       {/* Header Icon & Image */}
