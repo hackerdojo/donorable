@@ -12,7 +12,8 @@ import {
   SettingsScreen,
   WelcomeScreen,
   RecoverScreen,
-  MessageScreen
+  MessageScreen,
+  LearnMoreScreen
 } from "./src/screens"; // different screens of the app
 import { decode, encode } from "base-64"; // for the decode and encode of the text
 
@@ -103,6 +104,7 @@ export default function App() {
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Settings" component={SettingsScreen} />
             <Stack.Screen name="Message" component={MessageScreen} />
+            <Stack.Screen name="LearnMore" component={LearnMoreScreen} />
           </>
         ) : (
           <>

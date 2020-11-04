@@ -88,6 +88,11 @@ export default function HomeScreen(props) {
       props.navigation.navigate("Message");
     };
 
+    const onLikePress = () => {
+      props.navigation.navigate("LearnMore");
+    };
+
+    
  /**************************** */
 
 
@@ -199,8 +204,13 @@ export default function HomeScreen(props) {
         </TouchableOpacity>
 
         {/* Like button */}
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => swiperRef.current.swipeRight()}>
+          <Image style={styles.likeButton} source={require("../../../assets/heart.png")}/>
+        </TouchableOpacity> */}
+
+        <TouchableOpacity
+          onPress={onLikePress}>
           <Image style={styles.likeButton} source={require("../../../assets/heart.png")}/>
         </TouchableOpacity>
       </View>
