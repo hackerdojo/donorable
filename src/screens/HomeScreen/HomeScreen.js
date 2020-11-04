@@ -180,19 +180,28 @@ export default function HomeScreen(props) {
       <CardDetails index={index} />
       </Transitioning.View>
 
+      {/* Div Bar */}
+      <Image style={styles.divBar} source={require("../../../assets/div-bar.png")}/>
+
       {/* Bottom Container Buttons */}
       <View style={styles.bottomContainerButtons}>
+
+        {/* Undo Button */}
+        <Image style={styles.undoButton} source={require("../../../assets/undo.png")}/>
+
+        {/* Map Button */}
+        <Image style={styles.mapButton} source={require("../../../assets/map.png")}/>
 
         {/* Dislike button */}
         <TouchableOpacity
           onPress={() => swiperRef.current.swipeLeft()}>
-          <Image source={require("../../../assets/dislike.png")}/>
+          <Image style={styles.dislikeButton} source={require("../../../assets/dislike.png")}/>
         </TouchableOpacity>
 
         {/* Like button */}
         <TouchableOpacity
           onPress={() => swiperRef.current.swipeRight()}>
-          <Image source={require("../../../assets/heart.png")}/>
+          <Image style={styles.likeButton} source={require("../../../assets/heart.png")}/>
         </TouchableOpacity>
       </View>
 

@@ -1,5 +1,6 @@
 /* CSS styles for Home Screen */
 import { StyleSheet } from 'react-native';
+//import { block } from 'react-native-reanimated';
 
 
 
@@ -76,10 +77,10 @@ export default StyleSheet.create({
         left: 5,
         right: 5,
         top: -599,
-        bottom: 0,
         height: 35,
         width: 5,
         margin: 7,
+        marginBottom:20,
       },
       messageIcon: {
         position: 'absolute',
@@ -90,9 +91,36 @@ export default StyleSheet.create({
       },
       donorableTitle: {
         position: 'absolute',
-        left: 95,
-        right: 5,
-        top: -608,
+        left: 60,
+        right: 40,
+        top: -610,
         bottom: 0,
+        maxWidth: "70%",
+        maxHeight: "40%",
+        //maxWidth: 310,
+        //maxHeight: 140,
+      },
+      divBar: {
+        position: 'absolute',
+        top: 150,
+        left: 10,
+      },
+
+      undoButton: {
+        top: 15,
+        left: 55,
+      },
+      mapButton: {
+        left: 117,
+      },
+
+      dislikeButton: {
+        top: 88,
+        right: 115,
+      },
+
+      likeButton: {
+        top: 90,
+        right: 70,
       },
 });

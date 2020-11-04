@@ -1,71 +1,45 @@
-// url: https://www.ikea.com/us/en/cat/chairs-fu002/
-// script
-/*
-let data = [];
-let elms = document.getElementsByClassName('product-compact')
-for(var i=0; i < elms.length; i++) {
-    const curr = elms[i];
-    const price = curr.getElementsByClassName('product-compact__price__value')[0].innerText;
-    const name = curr.getElementsByClassName('product-compact__name')[0].innerText;
-    const image = curr.getElementsByTagName('img')[0].src;
-    data.push({
-      id: curr.dataset.refId,
-      price,
-      name,
-      image
-    })
-}
-JSON.stringify(data, null, 2)
-*/
+
 export default [
     {
       id: '40454230',
-      price: 'Placeholder',
+      price: 'Community Tech Hub',
       name: 'Hacker Dojo',
       image:
-        'https://www.ikea.com/us/en/images/products/bingsta-armchair__0793271_PE765307_S5.JPG?f=xs'
-        // 'https://venngage.com/templates/logos/golf-club-creative-logo-0de507c7-5f23-42c7-9bdd-0d206ef3531a'
+      'https://hackerdojo.com/wp-content/uploads/2019/09/ToriOnlyFill-300x300.png'
     },
     {
       id: '70078463',
-      price: 'Placeholder',
+      price: 'Support Your Community by Volunteering',
       name: 'HandsOn',
       image:
-        'https://www.ikea.com/us/en/images/products/pello-armchair__38296_PE130209_S5.JPG?f=xs'
+        'https://www.handsonconnect.org/wp-content/uploads/2018/05/client_id_43683_logo_1451932800-1.jpg'
     },
     {
       id: '99305926',
-      price: 'Placeholder',
+      price: 'Domestic Violence Support and Prevention',
       name: 'La Casa de las Madres',
       image:
-        'https://www.ikea.com/us/en/images/products/poaeng-armchair__0497130_PE628957_S5.JPG?f=xs'
+        'https://cdn.greatnonprofits.org/images/logos/Redlogo.jpg'
     },
     {
       id: '99305926',
-      price: 'Placeholder',
+      price: 'Bay Area Tutoring',
       name: 'Aspire',
       image:
-        'https://www.ikea.com/us/en/images/products/poaeng-armchair__0497130_PE628957_S5.JPG?f=xs'
+        'https://res.cloudinary.com/dktp1ybbx/image/upload/f_auto,fl_lossy,q_auto/v1554482830/organization/prod/78637/9ECisDNEkn.png'
     },
     {
       id: '99305926',
-      price: 'Placeholder',
+      price: 'For Families Free of Violence',
       name: 'STAND!',
       image:
-        'https://www.ikea.com/us/en/images/products/poaeng-armchair__0497130_PE628957_S5.JPG?f=xs'
+        'https://static1.squarespace.com/static/54834847e4b02725c6ada9d1/t/54d3db4ce4b0d3bb68b60f15/1603749668202/?format=1500w'
     },
     {
       id: '99305926',
       price: 'Filipino Community Center',
       name: 'Bayanihan',
       image:
-        'https://www.ikea.com/us/en/images/products/poaeng-armchair__0497130_PE628957_S5.JPG?f=xs'
-    },
-    {
-      id: '90359829',
-      price: '$249.00',
-      name: 'STRANDMON',
-      image:
-        'https://www.ikea.com/us/en/images/products/strandmon-wing-chair__0325432_PE517964_S5.JPG?f=xs'
+        'https://www.bayanihancc.org/uploads/1/0/8/6/108621871/published/1396417967.png?1499277227'
     }
   ];
