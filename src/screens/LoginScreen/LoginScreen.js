@@ -8,7 +8,7 @@ export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState(""); // variable for email and password
   const [password, setPassword] = useState("");
 
-  /* Create account */
+  /* Return to previous page */
   const onBackPress = () => {
     navigation.goBack();
   };
