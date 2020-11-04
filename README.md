@@ -15,7 +15,7 @@ Built With
 Contributors 
 ---
 
-* **Ed Choudry** - *Project Manager* - [Linkedin](https://www.linkedin.com/in/echoudhry/)
+* **Ed Choudhry** - *Project Manager* - [Linkedin](https://www.linkedin.com/in/echoudhry/)
 
 * **Eliezer Santiago** - *Software Developer* - [Linkedin](https://www.linkedin.com/in/eliezer-santiago-aaa653148/) 
 
