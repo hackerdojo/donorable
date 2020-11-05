@@ -49,16 +49,54 @@ export default function SettingsScreen(props) {
     )
   };
 
+  /******************* * TO DO***************************** */
   /* Change email of current user */
   const onEmPress = () => {
-    Alert.alert('email was pressed')
+
+    let user = firebase.auth().currentUser;
+
+    /**re-authenticate */
+    let credential; 
+    user.reauthenticateWithCredential(credential).then(function(){
+      Alert.alert('authenticated')})
+    .catch(function(error) {
+      Alert.alert('errpr')
+    });
+
+    user.updateEmail("jr_dorn@yahoo.com")
+    .then(function() {
+      Alert.alert('success')
+      .catch(function(error){
+        Alert.alert('fail')
+      })
+    });
   }
 
-
+  /******************* * TO DO***************************** */
   /* Change password of current user */
   const onPwPress = () => {
-    Alert.alert('password was pressed')
+    let user = firebase.auth().currentUser;
+    let newPassword = 'fake213';
+
+    /**re-authenticate */
+    let credential; 
+    user.reauthenticateWithCredential(credential).then(function(){
+      Alert.alert('authenticated')})
+    .catch(function(error) {
+      Alert.alert('errpr')
+    });
+      
+
+
+    user.updatePassword(newPassword).then(function() {
+      Alert.alert('success')
+      .catch(function(error) {
+        Alert.alert('fail');
+      });
+    })
   }
+
+    /******************* ********************************* */
 
   return (
     <View style={styles.container}>
