@@ -47,6 +47,7 @@ export default StyleSheet.create({
         backgroundColor: "white",
       },
       text: {
+        fontFamily: "Montserrat_400Regular",
         textAlign: 'center',
         fontSize: 50,
         backgroundColor: 'transparent'
@@ -57,9 +58,6 @@ export default StyleSheet.create({
         color: "white",
         backgroundColor: 'transparent'
       },
-      text: {
-        fontFamily: 'Courier'
-      },
       heading: {
         fontSize: 24,
         marginBottom: 10,
@@ -67,7 +65,7 @@ export default StyleSheet.create({
         top: 65,
       },
       price: {
-        color: "blue",
+        fontFamily: "Montserrat_400Regular",
         fontSize: 15,
         fontWeight: '500',
         top: 60,

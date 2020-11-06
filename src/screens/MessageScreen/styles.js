@@ -59,12 +59,10 @@ export default StyleSheet.create({
     margin: 15,
     marginLeft: 65,
   },
-  nonprofitTitle: {
-    color: "#5f5e5f",
-    marginLeft: 65,
-    fontSize: 20,
-  },
+
   msgPreview: {
+    fontFamily: "Montserrat_400Regular",
+    fontSize: 26,
     color: "#929292",
     marginLeft: 65,
     
