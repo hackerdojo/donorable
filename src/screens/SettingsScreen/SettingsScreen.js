@@ -56,30 +56,38 @@ export default function SettingsScreen(props) {
     let user = firebase.auth().currentUser;
 
     /**re-authenticate */
-    let credential; 
-    user.reauthenticateWithCredential(credential).then(function(){
+    let credential = firebase.auth.EmailAuthProvider.credential(
+      user.email,
+      'key123'
+    ); 
+    user.reauthenticateWithCredential(credential).then(() => {
       Alert.alert('authenticated')})
-    .catch(function(error) {
-      Alert.alert('errpr')
+    .catch((error) => {
+      alert(error);
     });
 
-    user.updateEmail("jr_dorn@yahoo.com")
-    .then(function() {
+    user.updateEmail("lime@key.com")
+    .then(() => {
       Alert.alert('success')
-      .catch(function(error){
-        Alert.alert('fail')
+      .catch((error) => {
+        alert(error);   
       })
     });
   }
+
+
 
   /******************* * TO DO***************************** */
   /* Change password of current user */
   const onPwPress = () => {
     let user = firebase.auth().currentUser;
-    let newPassword = 'fake213';
+    let newPassword = 'key123';
 
     /**re-authenticate */
-    let credential; 
+    let credential = firebase.auth.EmailAuthProvider.credential(
+      user.email,
+      'fake213'
+    ); 
     user.reauthenticateWithCredential(credential).then(function(){
       Alert.alert('authenticated')})
     .catch(function(error) {

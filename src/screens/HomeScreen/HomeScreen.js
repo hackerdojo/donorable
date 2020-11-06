@@ -16,7 +16,6 @@ import data from './data';
 import Swiper from 'react-native-deck-swiper';
 import { Transitioning, Transition } from 'react-native-reanimated';
 
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 /* new **************************/
 const { width } = Dimensions.get('window');
@@ -94,17 +93,7 @@ export default function HomeScreen(props) {
   /* View for the Home Screen */
   return (
     <SafeAreaView style={styles.container}>
-      <MaterialCommunityIcons
-      name='crop-square'
-      size={width}
-      style={{
-        opacity: 0.05,
-        transform: [{ rotate: '45deg' }, { scale: 1.6 }],
-        position: 'absolute',
-        left: -15,
-        top: 140
-      }}
-      />
+
       <StatusBar hidden={true} />
 
       <View style={styles.swiperContainer}>
