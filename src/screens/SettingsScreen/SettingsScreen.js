@@ -12,14 +12,8 @@ export default function SettingsScreen(props) {
   };
 
 
-  /**          ************              ************ */
-
-
-
-
-  /* Click to logout and return to IntroScreen */
-
-  const log2Alert = () =>
+  /* Additional logout dialogue */
+  const log2Alert = () => {
   Alert.alert(
     'WARNING',
     'Are you sure?',
@@ -37,9 +31,10 @@ export default function SettingsScreen(props) {
       },
         { cancelable: false }
     ]
-  );
+  )
+  };
 
-
+  /* Click to logout and return to IntroScreen */
   const onLogoutPress = () => {
     Alert.alert(
       'WARNING',
@@ -53,33 +48,45 @@ export default function SettingsScreen(props) {
         }
       ],
           {cancelable: false }
-      
     )
   };
 
 
-
-
-  /**          ************              ************ */
-
-
+  /* Additional account deletion dialogue */
+  const del2Alert = () => {
+    let user = firebase.auth().currentUser;
+    Alert.alert(
+      'WARNING',
+      'This action cannot be reversed. All data will be permanently deleted.',
+      [
+        {
+          text:'Return'
+        },
+        {
+          text: 'Delete', onPress: () => user
+            .delete()
+            .catch((error) => {
+              alert(error);
+            })
+        },
+          { cancelable: false }
+      ]
+    )
+    };
 
 
   /* Delete account and return to IntroScreen */
   const onDelPress = () => {
-    let user = firebase.auth().currentUser;
     Alert.alert(
       'WARNING',
-      'Are you sure you want to delete your account? This action cannot be reversed.',
+      'Are you sure you want to delete your account?',
       [
-        {text: 'Return'},
-        {text: 'Delete', onPress: () => user
-          .delete()
-          .catch((error) => {
-            alert(error);
-          })
+        {
+          text: 'No'
+        },
+        {
+          text: 'Yes', onPress: () => del2Alert()
       },
-      
         {cancelable: false }
       ]
     )
