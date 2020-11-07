@@ -11,24 +11,59 @@ export default function SettingsScreen(props) {
     props.navigation.goBack();
   };
 
+
+  /**          ************              ************ */
+
+
+
+
   /* Click to logout and return to IntroScreen */
-  const onLogoutPress = () => {
-    Alert.alert(
-      'WARNING',
-      'Are you sure you want to log out?',
-      [
-        {text: 'No'},
-        {text: 'Yes', onPress: () => firebase
+
+  const log2Alert = () =>
+  Alert.alert(
+    'WARNING',
+    'Are you sure?',
+    [
+      {
+        text:'Return'
+      },
+      {
+        text: 'Logout', onPress: () => firebase
           .auth()
           .signOut()
           .catch((error) => {
             alert(error);
-        })
+          })
+      },
+        { cancelable: false }
+    ]
+  );
+
+
+  const onLogoutPress = () => {
+    Alert.alert(
+      'WARNING',
+      'Do you want to log out?',
+      [
+        {
+          text: 'No'
         },
+        {
+          text: 'Yes', onPress: () => log2Alert()
+        }
+      ],
           {cancelable: false }
-      ]
+      
     )
   };
+
+
+
+
+  /**          ************              ************ */
+
+
+
 
   /* Delete account and return to IntroScreen */
   const onDelPress = () => {
@@ -44,10 +79,12 @@ export default function SettingsScreen(props) {
             alert(error);
           })
       },
+      
         {cancelable: false }
       ]
     )
   };
+
 
   /******************* * TO DO***************************** */
   /* Change email of current user */
