@@ -67,12 +67,14 @@ const CardDetails = ({ index }) => (
 
 
 
-export default function HomeScreen(props) {
+export default function HomeScreen({ navigation }) {
   
     
   /* Navigate to settings screen */
   const onSettingsPress = () => {
-    props.navigation.navigate("Settings");
+    navigation.navigate("Settings");
+   // props.navigation.navigate("Settings");
+
   };
 
   /** new **********************/
@@ -84,7 +86,8 @@ export default function HomeScreen(props) {
 
     /* Navigate to message screen, NEED TO IMPLEMENT*/
     const onMessagePress = () => {
-      props.navigation.navigate("Message");
+      navigation.navigate("Message");
+      //props.navigation.navigate("Message");
     };
 
  /**************************** */

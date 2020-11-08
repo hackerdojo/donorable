@@ -4,11 +4,11 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { firebase } from "../../firebase/config";
 import styles from "./styles";
 
-export default function SettingsScreen(props) {
+export default function SettingsScreen({ navigation }) {
 
   /* Click to finish changing settings and return home */
   const onDonePress = () => {
-    props.navigation.goBack();
+    navigation.goBack();
   };
 
 
