@@ -121,4 +121,10 @@ export default StyleSheet.create({
         top: 90,
         right: 70,
       },
+      divTop: {
+        top: 100,
+        left: 10,
+        marginTop: 10,
+        marginBottom: 15,
+      },
 });

@@ -73,7 +73,6 @@ export default function HomeScreen({ navigation }) {
   /* Navigate to settings screen */
   const onSettingsPress = () => {
     navigation.navigate("Settings");
-   // props.navigation.navigate("Settings");
 
   };
 
@@ -87,7 +86,6 @@ export default function HomeScreen({ navigation }) {
     /* Navigate to message screen, NEED TO IMPLEMENT*/
     const onMessagePress = () => {
       navigation.navigate("Message");
-      //props.navigation.navigate("Message");
     };
 
  /**************************** */
@@ -99,6 +97,9 @@ export default function HomeScreen({ navigation }) {
 
       <StatusBar hidden={true} />
 
+      {/* Div Bar */}
+      <Image style={styles.divTop} source={require("../../../assets/div-bar.png")}/>
+      
       <View style={styles.swiperContainer}>
         {/* Profile Card Swiper */}
         <Swiper
@@ -215,6 +216,8 @@ export default function HomeScreen({ navigation }) {
           source={require("../../../assets/donorable-title.png")}
         />
       </View>
+      
+      
     </View>
   </SafeAreaView>
 );

@@ -28,8 +28,7 @@ export default StyleSheet.create({
   buttonContainer: {
     flex: 1,
     flexDirection: "row",
-    marginTop: 50,
-   // alignItems: "center",
+    marginTop: 65,
     justifyContent: "center",
   },
   backButton: {
@@ -55,9 +54,7 @@ export default StyleSheet.create({
     marginLeft: 70,
   },
   divBar: {
-    maxWidth: "70%",
-    margin: 15,
-    marginLeft: 65,
+    margin: 17,
   },
 
   msgPreview: {
