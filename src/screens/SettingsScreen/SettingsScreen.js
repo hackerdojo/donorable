@@ -1,8 +1,10 @@
-import React from "react";
-import { Text, TouchableOpacity, View, Alert, Modal } from "react-native";
+import React, { useState } from "react";
+import { Text, TouchableOpacity, View, Alert, Modal, TouchableHighlightBase } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { firebase } from "../../firebase/config";
 import styles from "./styles";
+
+import { FocusTrap } from "focus-trap-react";
 
 export default function SettingsScreen({ navigation }) {
 
@@ -121,12 +123,83 @@ export default function SettingsScreen({ navigation }) {
 
 
 
-  /******************* * TO DO***************************** */
+  /*****************************TO DO********************************************************** */
+  /* Test modal */
+
+  const [shown, setShown ] = useState(0);
+
+  const Container = () => {
+    {this.state.isShown ? (<Modal/>) : null }
+    <React.Fragment>
+      <TriggerButton
+        showModal={this.showModal}
+        buttonRef={(n) => (this.TriggerButton = n)}
+        triggerText={this.props.triggerText}
+      />
+      {this.state.isShown ? (
+        <Modal 
+          onSubmit={this.props.onSubmit}
+          modalRef={(n) => (this.modal = n)}
+          buttonRef={(n) => (this.closeButton = n)}
+          closeModal={this.closeModal}
+          onKeyDown={this.onKeyDown}
+          onClickOutside={this.onClickOutside}
+        />
+      ) : null
+      }
+    </React.Fragment>
+  }
+
+showModal = () => {
+  this.setState({ isShown: true}, () => {
+    this.closeButton.focus();
+    this.toggleScrollLock();
+  });
+};
+
+toggleScrollLock = () => {
+  document.querySelector('html').classList.toggle('scroll-lock');
+}
+
+closeModal = () => {
+  this.setState({ isShown: false });
+  thisTriggerButton.focus();
+  this.toggleScrollLock();
+}
+
+onKeyDown = (event) => {
+  if(event.keyCode === 27) {
+    this.closeModal();
+  }
+}
+
+onClickOutside = (event) => {
+  if (this.modal && this.modal.contains(event.target)) return
+  this.closeModal();
+}
+
+const Trigger = ({ triggerText, buttonRef, showModal }) => {
+  return (
+    <button
+      ref={buttonRef}
+      onClick={showModal}
+    >
+      {triggerText}
+    </button>
+  )
+}
+
+
+  
+
+
+
+/******TEST MODAL********************************************************/
+
   /* Change password of current user */
   const onPwPress = () => {
     let user = firebase.auth().currentUser;
     let newPassword = 'key123';
-
     /**re-authenticate */
     let credential = firebase.auth.EmailAuthProvider.credential(
       user.email,
@@ -135,11 +208,8 @@ export default function SettingsScreen({ navigation }) {
     user.reauthenticateWithCredential(credential).then(function(){
       Alert.alert('authenticated')})
     .catch(function(error) {
-      Alert.alert('errpr')
+      Alert.alert('error')
     });
-      
-
-
     user.updatePassword(newPassword).then(function() {
       Alert.alert('success')
       .catch(function(error) {
@@ -148,7 +218,7 @@ export default function SettingsScreen({ navigation }) {
     })
   }
 
-    /******************* ********************************* */
+    /********************************************************************************* */
 
   return (
     <View style={styles.container}>
