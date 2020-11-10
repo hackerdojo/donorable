@@ -26,51 +26,62 @@ export default function KeywordScreen({ navigation }) {
 
 
         <View style={styles.buttonRow}>
-            <View style={styles.buttonContainer}>
-            <TouchableOpacity
-                style={styles.localButton}
-                onPress={() => onBackPress()}
-            >
-                <Text style={styles.localTitle}>Local</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.globalButton}
-                onPress={() => onLoginPress()}
-            >
-                <Text style={styles.globalTitle}>Global</Text>
-            </TouchableOpacity>
-            </View>
+
 
             <View style={styles.buttonContainer}>
             <TouchableOpacity
-                style={styles.healthButton}
+                style={[styles.keyButton, styles.localButton]}
                 onPress={() => onBackPress()}
             >
-                <Text style={styles.healthTitle}>Health</Text>
+                <Text style={styles.keyTitle}>Local</Text>
             </TouchableOpacity>
+
             <TouchableOpacity
-                style={styles.stemButton}
+                style={[styles.keyButton, styles.globalButton]}
                 onPress={() => onLoginPress()}
             >
-                <Text style={styles.stemTitle}>STEM</Text>
+                <Text style={styles.keyTitle}>Global</Text>
             </TouchableOpacity>
             </View>
+
+
 
             <View style={styles.buttonContainer}>
             <TouchableOpacity
-                style={styles.artsButton}
+                style={[styles.keyButton, styles.healthButton]}
                 onPress={() => onBackPress()}
             >
-                <Text style={styles.artsTitle}>Arts</Text>
+                <Text style={styles.keyTitle}>Health</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
-                style={styles.faithButton}
+                style={[styles.keyButton, styles.stemButton]}
                 onPress={() => onLoginPress()}
             >
-                <Text style={styles.faithTitle}>Faith</Text>
+                <Text style={styles.keyTitle}>STEM</Text>
             </TouchableOpacity>
             </View>
+
+
+
+
+            <View style={styles.buttonContainer}>
+            <TouchableOpacity
+                style={[styles.keyButton, styles.artsButton]}
+                onPress={() => onBackPress()}
+            >
+                <Text style={[styles.keyTitle, styles.artsTitle]}>Arts</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style={[styles.keyButton, styles.faithButton]}
+                onPress={() => onLoginPress()}
+            >
+                <Text style={[styles.keyTitle, styles.faithTitle]}>Faith</Text>
+            </TouchableOpacity>
+            </View>
+
+
         </View>
 
 
