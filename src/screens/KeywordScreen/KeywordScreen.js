@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState} from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
+import { Nav } from "react-bootstrap/Nav";
 
 export default function KeywordScreen({ navigation }) {
 
+    
   /* Go to Welcome Screen */
   const onDonePress = () => {   
     navigation.navigate("Welcome");
   };
+
   
-  /* Go strait to HomeScreen */
-  const onKeyPress = () => {   
-      navigation.navigate("Welcome")
-    };
+  const [key, setKey] = useState('local');
+  
+  /* Select/ unselect keywords */
+  const onKeyPress = (k) => {  
+    setKey(k); 
+    console.log(k);
+};
 
 
   /* View for the KeywordScreen */
@@ -31,20 +37,24 @@ export default function KeywordScreen({ navigation }) {
 
 
 
-        <View style={styles.buttonRow}>
+        <View style={styles.buttonRow}
+            activeKey={key}
+        >
 
 
             <View style={styles.buttonContainer}>
             <TouchableOpacity
                 style={[styles.keyButton, styles.localButton, styles.unButton]}
-                onPress={() => onKeyPress()}
+                eventKey="local"
+                onPress={(k) => onKeyPress(k)}
             >
                 <Text style={[styles.keyTitle, styles.unText]}>Local</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                 style={[styles.keyButton, styles.globalButton, styles.unButton]}
-                onPress={() => onKeyPress()}
+                onPress={(k) => onKeyPress(k)}
+                eventKey="global"
             >
                 <Text style={[styles.keyTitle, styles.unText]}>Global</Text>
             </TouchableOpacity>
@@ -55,14 +65,16 @@ export default function KeywordScreen({ navigation }) {
             <View style={styles.buttonContainer}>
             <TouchableOpacity
                 style={[styles.keyButton, styles.healthButton, styles.unButton]}
-                onPress={() => onKeyPress()}
+                onPress={(k) => onKeyPress(k)}
+                eventKey="health"
             >
                 <Text style={[styles.keyTitle, styles.unText]}>Health</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                 style={[styles.keyButton, styles.stemButton, styles.unButton]}
-                onPress={() => onKeyPress()}
+                onPress={(k) => onKeyPress(k)}
+                eventKey="stem"
             >
                 <Text style={[styles.keyTitle, styles.unText]}>STEM</Text>
             </TouchableOpacity>
@@ -74,14 +86,16 @@ export default function KeywordScreen({ navigation }) {
             <View style={styles.buttonContainer}>
             <TouchableOpacity
                 style={[styles.keyButton, styles.artsButton, styles.unButton]}
-                onPress={() => onKeyPress()}
+                onPress={(k) => onKeyPress(k)}
+                eventKey="arts"
             >
                 <Text style={[styles.keyTitle, styles.artsTitle, styles.unText]}>Arts</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                 style={[styles.keyButton, styles.faithButton, styles.unButton]}
-                onPress={() => onKeyPress()}
+                onPress={(k) => onKeyPress(k)}
+                eventKey="faith"
             >
                 <Text style={[styles.keyTitle, styles.faithTitle, styles.unText]}>Faith</Text>
             </TouchableOpacity>
