@@ -34,7 +34,7 @@ export default function RegScreen2({ navigation }) {
           .doc(uid)
           .set(data)
           .then(() => {
-            navigation.navigate("Welcome", { user: data });
+            navigation.navigate("Keyword", { user: data });
           })
           .catch((error) => {
             alert(error);

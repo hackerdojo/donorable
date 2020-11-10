@@ -245,6 +245,7 @@ export default function SettingsScreen({ navigation }) {
         </TouchableOpacity>
           
           <Text style={styles.text}>Location</Text>
+          <Text style={styles.text}>Keywords</Text>
         </View>
 
         <Text style={styles.bar}>_____________________________</Text>
