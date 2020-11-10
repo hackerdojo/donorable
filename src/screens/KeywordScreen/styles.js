@@ -49,10 +49,8 @@ export default StyleSheet.create({
       justifyContent: "center",
   },
 
-  //    borderColor: "#03dac5",
-  //borderWidth: 2,
-  //backgroundColor: "white",
-  //font color: "#03dac5",
+
+
 
   keyButton: {
     backgroundColor: "#03dac5",
@@ -81,13 +79,12 @@ export default StyleSheet.create({
   },
 
 
-
-
-  globalButton: {
-    paddingLeft: 20,
-    paddingRight: 20,
-    left: -15,
-  },
+   globalButton: {
+     paddingLeft: 20,
+     paddingRight: 20,
+     left: -15,
+   },
+  
 
 
 
@@ -136,7 +133,14 @@ export default StyleSheet.create({
 
 
 
-
+  unButton: {
+    borderWidth: 1,
+    borderColor: "#03dac5",
+    backgroundColor: "white",
+  },
+  unText: {
+    color: "#03dac5",
+  },
 
 
 
