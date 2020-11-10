@@ -28,46 +28,47 @@ export default function KeywordScreen({ navigation }) {
         <View style={styles.buttonRow}>
             <View style={styles.buttonContainer}>
             <TouchableOpacity
-                style={styles.leftButton}
+                style={styles.localButton}
                 onPress={() => onBackPress()}
             >
-                <Text style={styles.buttonTitle}>Local</Text>
+                <Text style={styles.localTitle}>Local</Text>
             </TouchableOpacity>
             <TouchableOpacity
-                style={styles.rightButton}
+                style={styles.globalButton}
                 onPress={() => onLoginPress()}
             >
-                <Text style={styles.buttonTitle}>Global</Text>
+                <Text style={styles.globalTitle}>Global</Text>
             </TouchableOpacity>
             </View>
 
             <View style={styles.buttonContainer}>
             <TouchableOpacity
-                style={styles.leftButton}
+                style={styles.healthButton}
                 onPress={() => onBackPress()}
             >
-                <Text style={styles.buttonTitle}>Health</Text>
+                <Text style={styles.healthTitle}>Health</Text>
             </TouchableOpacity>
             <TouchableOpacity
-                style={styles.rightButton}
+                style={styles.stemButton}
                 onPress={() => onLoginPress()}
             >
-                <Text style={styles.buttonTitle}>STEM</Text>
+                <Text style={styles.stemTitle}>STEM</Text>
             </TouchableOpacity>
             </View>
 
             <View style={styles.buttonContainer}>
             <TouchableOpacity
-                style={styles.leftButton}
+                style={styles.artsButton}
                 onPress={() => onBackPress()}
             >
-                <Text style={styles.buttonTitle}>Arts</Text>
+                <Text style={styles.artsTitle}>Arts</Text>
             </TouchableOpacity>
+
             <TouchableOpacity
-                style={styles.rightButton}
+                style={styles.faithButton}
                 onPress={() => onLoginPress()}
             >
-                <Text style={styles.buttonTitle}>Faith</Text>
+                <Text style={styles.faithTitle}>Faith</Text>
             </TouchableOpacity>
             </View>
         </View>
