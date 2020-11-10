@@ -69,8 +69,8 @@ const CardDetails = ({ index }) => (
 
 
 export default function HomeScreen(props) {
-  
-    
+
+
   /* Navigate to settings screen */
   const onSettingsPress = () => {
     props.navigation.navigate("Settings");
@@ -131,9 +131,9 @@ export default function HomeScreen(props) {
             title: 'NOPE',
             style: {
               label: {
-                backgroundColor: "red",
-                borderColor: "red",
-                color: "red",
+                backgroundColor: 'red',
+                borderColor: 'red',
+                color: 'white',
                 borderWidth: 1,
                 fontSize: 24
               },
@@ -150,9 +150,9 @@ export default function HomeScreen(props) {
             title: 'LIKE',
             style: {
               label: {
-                backgroundColor: "blue",
-                borderColor: "blue",
-                color: "blue",
+                backgroundColor: 'blue',
+                borderColor: 'blue',
+                color: 'white',
                 borderWidth: 1,
                 fontSize: 24
               },
