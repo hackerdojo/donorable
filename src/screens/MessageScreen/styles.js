@@ -24,7 +24,6 @@ export default StyleSheet.create({
     borderColor: "#5e5e5e",
     backgroundColor: "white",
   },
-
   buttonContainer: {
     flex: 1,
     flexDirection: "row",
@@ -42,7 +41,6 @@ export default StyleSheet.create({
     justifyContent: "center",
     top: -50,
   },
-
   buttonTitle: {
     fontFamily: "Montserrat_400Regular",
     color: "white",
@@ -51,17 +49,18 @@ export default StyleSheet.create({
   smallCard: {
     maxWidth: "10%",
     maxHeight: "5%",
-    marginLeft: 70,
+    marginLeft: 50,
+    top: 20,
   },
   divBar: {
     margin: 17,
   },
-
   msgPreview: {
     fontFamily: "Montserrat_400Regular",
     fontSize: 26,
     color: "#929292",
     marginLeft: 65,
-    
+    left: 50,
+    bottom: 15,
   },
 });
