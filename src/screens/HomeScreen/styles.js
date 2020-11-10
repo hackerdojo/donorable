@@ -2,6 +2,13 @@
 import { StyleSheet } from 'react-native';
 //import { block } from 'react-native-reanimated';
 
+// colors = {
+//   red: '#ec2379',
+//   blue: '#0070ff',
+//   gray: '#777777',
+//   black: '#000000',
+//   white: '#ffffff'
+// }
 
 
 export default StyleSheet.create({
@@ -76,7 +83,7 @@ export default StyleSheet.create({
         position: 'absolute',
         left: 5,
         right: 5,
-        top: -599,
+        top: -560,
         height: 35,
         width: 5,
         margin: 7,
@@ -86,17 +93,17 @@ export default StyleSheet.create({
         position: 'absolute',
         left: 320,
         right: 5,
-        top: -589,
+        top: -550,
         bottom: 0,
       },
       donorableTitle: {
         position: 'absolute',
-        left: 60,
+        left: 100,
         right: 40,
-        top: -610,
+        top: -570,
         bottom: 0,
-        maxWidth: "70%",
-        maxHeight: "40%",
+        // maxWidth: "70%",
+        // maxHeight: "40%",
         //maxWidth: 310,
         //maxHeight: 140,
       },
