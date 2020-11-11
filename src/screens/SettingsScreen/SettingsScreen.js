@@ -14,7 +14,7 @@ export default function SettingsScreen({ navigation }) {
   };
 
   const onKeyPresss = () => {
-    navigation.navigate('Keyword');
+    navigation.navigate('Keyword', { params: 'set' });
   }
 
 

@@ -4,12 +4,18 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import styles from "./styles";
 
 
-export default function KeywordScreen({ navigation }) {
+export default function KeywordScreen({ route, navigation }) {
 
     
-  /* Go to Welcome Screen */
-  const onDonePress = () => {   
-    navigation.navigate("Welcome");
+  /* Go to Welcome Screen, or return to Settings */
+  const { params } = route.params;
+  const onDonePress = () => {  
+    if (params === 'set') {
+        console.log(params);
+        navigation.goBack();
+    } else {
+        navigation.navigate("Welcome");
+    }
   };
 
   
