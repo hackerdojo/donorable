@@ -13,6 +13,10 @@ export default function SettingsScreen({ navigation }) {
     navigation.goBack();
   };
 
+  const onKeyPresss = () => {
+    navigation.navigate('Keyword');
+  }
+
 
   /* Additional logout dialogue */
   const log2Alert = () => {
@@ -245,7 +249,11 @@ export default function SettingsScreen({ navigation }) {
         </TouchableOpacity>
           
           <Text style={styles.text}>Location</Text>
+
+        <TouchableOpacity onPress={() => onKeyPresss()}>
           <Text style={styles.text}>Keywords</Text>
+        </TouchableOpacity>
+
         </View>
 
         <Text style={styles.bar}>_____________________________</Text>

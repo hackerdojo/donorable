@@ -30,6 +30,10 @@ if (!global.atob) {
 } // decodes from Base64
 
 
+	/*for demo*/
+import { LogBox } from 'react-native';
+LogBox.ignoreAllLogs();
+/* for demo */
 
 
 
