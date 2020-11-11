@@ -210,7 +210,7 @@ export default function HomeScreen(props) {
         </TouchableOpacity> */}
 
         <TouchableOpacity
-          onPress={onLikePress}>
+          onPress={() => onLikePress()}>
           <Image style={styles.likeButton} source={require("../../../assets/heart.png")}/>
         </TouchableOpacity>
       </View>

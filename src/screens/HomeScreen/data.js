@@ -5,7 +5,8 @@ export default [
       price: 'Community Tech Hub',
       name: 'Hacker Dojo',
       image:
-      'https://hackerdojo.com/wp-content/uploads/2019/09/ToriOnlyFill-300x300.png'
+      'https://hackerdojo.com/wp-content/uploads/2019/09/ToriOnlyFill-300x300.png',
+      
     },
     {
       id: '70078463',
