@@ -30,15 +30,8 @@ if (!global.atob) {
 } // decodes from Base64
 
 
-	/*for demo*/
-import { LogBox } from 'react-native';
-LogBox.ignoreAllLogs();
-/* for demo */
-
-
 
 export default function App() {
-
 
   
 
@@ -51,10 +44,6 @@ export default function App() {
   }
 
 
-
-  
- 
-  
   const [loading, setLoading] = useState(true); // variable handling for user's data
   const [user, setUser] = useState(null);
 
