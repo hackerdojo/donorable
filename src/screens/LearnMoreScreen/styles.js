@@ -4,10 +4,13 @@ export default StyleSheet.create({
     container: {
         justifyContent: 'space-between',
         margin: 10,
+        
     },
     name: {
-       fontSize: 50,
-       textAlign: 'center'
+       fontSize: 30,
+       textAlign: 'center',
+       color: 'red',
+       fontWeight: 'bold',
     },
     lineStyle:{
         margin: 5,
@@ -25,14 +28,14 @@ export default StyleSheet.create({
         marginRight: 70,
         marginBottom: 20,
         alignSelf: 'flex-end',
-        width: 60,
-        height: 60,
-
+        width: 70,
+        height: 70,
 
     },
    questions: {
        fontSize: 30,
        alignItems: 'center',
+       textAlign: 'center',
    },
    icons: {
        flexDirection: 'row',
