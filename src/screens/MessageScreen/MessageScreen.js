@@ -13,6 +13,11 @@ export default function MessageScreen(props) {
   };
 
 
+  /* Quick Donate option */
+  /* to be implemented in "like screen" in future */
+  const onCardPress = () => {
+    props.navigation.navigate("QuickDonate");
+  };
 
 
 
@@ -30,11 +35,19 @@ export default function MessageScreen(props) {
 
         <Image style={styles.divBar} source={require("../../../assets/div-bar.png")}/>  
 
+
+
+
         <Image
-          source={require("../../../assets/card_hackerdojo.png")}
-          style={styles.smallCard}
-        />  
-        <Text style={styles.msgPreview}>Hi</Text>
+              source={require("../../../assets/card_hackerdojo.png")}
+              style={styles.smallCard}
+            /> 
+        <TouchableOpacity
+            onPress={() => onCardPress()}
+          >
+            <Text style={styles.msgPreview}>Hi</Text>
+          </TouchableOpacity>
+        
 
         <Image style={styles.divBar} source={require("../../../assets/div-bar.png")}/>  
 

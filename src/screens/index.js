@@ -20,3 +20,5 @@ export { default as WelcomeScreen } from "./WelcomeScreen/WelcomeScreen";
 export { default as MessageScreen } from "./MessageScreen/MessageScreen";
 
 export { default as KeywordScreen } from "./KeywordScreen/KeywordScreen";
+
+export { default as QuickDonateScreen } from "./QuickDonateScreen/QuickDonateScreen";
