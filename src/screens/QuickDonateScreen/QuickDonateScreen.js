@@ -8,7 +8,7 @@ export default function QuickDonateScreen(props) {
 
     
   /* Return to previous screen */
-  const onDonePress = () => {  
+  const onReturnPress = () => {  
         props.navigation.goBack();
     }
 
@@ -40,11 +40,37 @@ export default function QuickDonateScreen(props) {
         </View>
 
 
+        <View style={styles.buttonContainer}>
+            <View style={styles.buttonRow}>
+
+                <TouchableOpacity style={styles.donButton}>
+                    <Text style={styles.donTitle}>$5</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.donButton}>
+                    <Text style={styles.donTitle}>$10</Text>
+                </TouchableOpacity>
+
+            </View>
+
+            <View style={styles.buttonRow}>
+                <TouchableOpacity style={styles.donButton}>
+                    <Text style={styles.donTitle}>$15</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.donButton}>
+                    <Text style={styles.donTitle}>$20</Text>
+                </TouchableOpacity>
+            </View>
+
+        </View>
+
+
         <TouchableOpacity
-            style={styles.doneButton}
-            onPress={() => onDonePress()}
+            style={styles.returnButton}
+            onPress={() => onReturnPress()}
           >
-            <Text style={styles.buttonTitle}>Done</Text>
+            <Text style={styles.buttonTitle}>Return</Text>
           </TouchableOpacity>
 
       </KeyboardAwareScrollView>

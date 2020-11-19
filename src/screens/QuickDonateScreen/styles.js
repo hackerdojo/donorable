@@ -67,19 +67,38 @@ export default StyleSheet.create({
 
 
   buttonRow: {
-    marginTop: 20,
+    marginTop: 10,
   },
   
   buttonContainer: {
       flex: 1,
       flexDirection: "row",
-      marginTop: 80,
+      marginTop: 20,
       alignItems: "center",
       justifyContent: "center",
   },
 
+  donButton: {
+    backgroundColor: "#03dac5",
+    padding: 10,
+    height: 80,
+    width: 110,
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 40,
+    marginBottom: 0,
+  },
+  donTitle: {
+    fontFamily: "Montserrat_400Regular",
+    color: "white",
+    fontSize: 26,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+
   
-  doneButton: {
+  returnButton: {
     backgroundColor: "#6200ee",
     padding: 10,
     paddingLeft: 20,
