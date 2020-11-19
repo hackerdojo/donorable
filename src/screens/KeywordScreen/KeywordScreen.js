@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
@@ -85,9 +85,6 @@ export default function KeywordScreen({ route, navigation }) {
             <Text style={styles.header}>What do you</Text>
             <Text style={styles.header}>care about?</Text>
         </View>
-
-
-
 
         <View style={styles.buttonRow}
         >
