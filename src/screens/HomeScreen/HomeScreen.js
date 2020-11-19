@@ -73,7 +73,6 @@ export default function HomeScreen({ navigation }) {
   /* Navigate to settings screen */
   const onSettingsPress = () => {
     navigation.navigate("Settings");
-    //navigation.navigate("Keyword");
   };
 
   /** new **********************/
