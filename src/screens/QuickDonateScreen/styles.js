@@ -8,13 +8,24 @@ export default StyleSheet.create({
   },
   header: {
     fontFamily: "Montserrat_400Regular",
-    color: "#363c3d",
+    color: "#6200ee",
     fontSize: 30,
     textAlign: "center",
     padding: 3,
   },
   headView: {
-    marginTop: 40,
+    marginTop: 50,
+  },
+  title: {
+    fontFamily: "Montserrat_400Regular",
+    color: "#8d9293",
+    fontSize: 30,
+    textAlign: "center",
+    padding: 3,
+    margin: 10,
+  },
+  titleView: {
+    marginTop: 50,
   },
   input: {
     fontFamily: "Montserrat_400Regular",
@@ -33,8 +44,26 @@ export default StyleSheet.create({
     fontSize: 26,
   },
 
-
-
+  inputContainer: {
+    flex: 1,
+    justifyContent: "center",
+    borderWidth: 1,
+    marginLeft: 47,
+    marginRight: 47,
+    marginTop: 40,
+    borderColor: "#5e5e5e",
+    backgroundColor: "white",
+    borderRadius: 15,
+    borderWidth: 3,
+  },
+  input: {
+    fontFamily: "Montserrat_400Regular",
+    fontSize: 26,
+    height: 40,
+    marginLeft: 7,
+    backgroundColor: "white",
+    borderRadius: 15,
+  },
 
 
   buttonRow: {
@@ -49,101 +78,7 @@ export default StyleSheet.create({
       justifyContent: "center",
   },
 
-
-
-
-  keyButton: {
-    backgroundColor: "#03dac5",
-    padding: 10,
-    height: 70,
-    borderRadius: 15,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  keyTitle: {
-    fontFamily: "Montserrat_400Regular",
-    color: "white",
-    fontSize: 26,
-    marginLeft: 10,
-    marginRight: 10,
-  },
-
-
-
-
-  localButton: {
-    marginRight: 90,
-    paddingLeft: 25,
-    paddingRight: 25,
-    left: 7,
-  },
-
-
-   globalButton: {
-     paddingLeft: 20,
-     paddingRight: 20,
-     left: -15,
-   },
   
-
-
-
-
-  healthButton: {
-    marginRight: 90,
-    paddingLeft: 20,
-    paddingRight: 20,
-    left: 10,
-  },
-
-
-
-  stemButton: {
-    paddingLeft: 25,
-    paddingRight: 25,
-    left: -20,
-  },
-
-
-
-
-
-  artsButton: {
-    marginRight: 90,
-    paddingLeft: 30,
-    paddingRight: 30,
-    left: 15,
-    },
-  artsTitle: {
-    marginLeft: 20,
-    marginRight: 20,
-  },
-
-
-
-  faithButton: {
-    paddingLeft: 25,
-    paddingRight: 25,
-    left: -25,
-    },
-  faithTitle: {
-    marginLeft: 15,
-    marginRight: 15,
-  },
-
-
-
-  unButton: {
-    borderWidth: 1,
-    borderColor: "#03dac5",
-    backgroundColor: "white",
-  },
-  unText: {
-    color: "#03dac5",
-  },
-
-
-
   doneButton: {
     backgroundColor: "#6200ee",
     padding: 10,

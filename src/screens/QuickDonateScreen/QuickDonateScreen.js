@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View, TextInput} from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
 
@@ -22,11 +22,22 @@ export default function QuickDonateScreen(props) {
       >
 
         <View style={styles.headView}>
-            <Text style={styles.header}>T E S T</Text>
+            <Text style={styles.header}>Quick Donate</Text>
         </View>
 
+        <View style={styles.titleView}>
+            <Text style={styles.title}>Send a message to</Text>
+            <Text style={styles.title}>Hacker Dojo</Text>
+        </View>
 
-
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            label="ShortMessage"
+            underlineColorAndroid="transparent"
+            autoCapitalize="none"
+          />
+        </View>
 
 
         <TouchableOpacity
