@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image, Modal, ScrollView, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import styles from './styles';
+import ModalView from './ModalView';
 
-export default function LearnMoreScreen ({navigation}) {
+export default  LearnMoreScreen = ({navigation})=> {
     const { nonprofit } = navigation.state.params;
 
-    const [showModal, setShowModal] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
 
-    const toggleModal = () => {
-        setShowModal(!showModal);
+    const showModal = (selectedItem) => {
+        setModalVisible(true);
+        setSelectedItem(selectedItem)
     }  
+
+    const hideModal = () => {
+        setModalVisible(false)
+    }
 
     return (    
         <View style={styles.container}> 
@@ -18,35 +25,26 @@ export default function LearnMoreScreen ({navigation}) {
             <View style={styles.questions}>                
                 <FlatList
                     data={nonprofit.QAs}
-                    keyExtractor={question => question.id.toString()}                
-                    renderItem={({item: {question, answer}}) => {
+                    keyExtractor={(item) => item.id.toString()}                                  
+                    renderItem={({item}) => {
                         return (
                             <View>
-                                <TouchableOpacity onPress={toggleModal}>
-                                    <Text style={styles.textQ}>{question}</Text>
+                                <TouchableOpacity onPress={()=> showModal(item)}>
+                                    <Text style={styles.textQ}>{item.question}</Text>
                                 </TouchableOpacity>
-                                
-                                <Modal
-                                    animationType="slide"
-                                    transparent={true}
-                                    visible={showModal}
-                                >
-                                    <View style={styles.centeredModal}>
-                                        <View style={styles.modalView}>                                            
-                                            <Image style={styles.logoStyle} source={{uri: nonprofit.image}} />
-                                            <View style ={styles.lineStyle}></View>                      
-                                            <ScrollView style={styles.scroolView}>
-                                                <Text style={styles.textModal}>{answer}</Text>                                                        
-                                            </ScrollView>
-                                            <Text style={styles.buttonModal} onPress={toggleModal}>Got it</Text>
-                                        </View>
-                                    </View>
-                                    
-                                </Modal>
                             </View>    
                         )
                     }}
                 />
+                { modalVisible && 
+                <ModalView 
+                    modalVisible={modalVisible}
+                    selectedItem={selectedItem}
+                    hideModal={hideModal}
+                    nonprofit={nonprofit}
+                />
+}
+               
                 <View style={styles.info}>
                     <Text>Budget:       {nonprofit.budget}</Text>
                     <Text>Org Type:     {nonprofit.type}</Text>
