@@ -17,7 +17,7 @@ export default function LearnMoreScreen ({navigation}) {
             <View style={styles.lineStyle}></View>          
             <View style={styles.questions}>                
                 <FlatList
-                    data={nonprofit.questions}
+                    data={nonprofit.QAs}
                     keyExtractor={question => question.id.toString()}                
                     renderItem={({item: {question, answer}}) => {
                         return (
