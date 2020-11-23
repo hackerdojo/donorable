@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
@@ -6,32 +6,32 @@ import styles from "./styles";
 
 export default function LikedScreen() {
 
-    /* */
+    /* Save nonprofit to heart list */
     const onHeartPress = () => {
         console.log('heart');
     };
 
-    /* */
+    /* View LearnMoreScreen of nonprofit **NEEDS TO BE IMPLEMENTED** */
     const onLearnPress = () => {
         console.log('learn');
     };
 
-    /* */
+    /* Go to MessageScreen */
     const onMessagePress = () => {
         console.log('message');
     };
 
-    /* */
+    /* Schedule a live chat via calendar **NEEDS TO BE IMPLEMENTED** */
     const onChatPress = () => {
         console.log('chat');
     };
 
-    /* */
+    /* Go to QuickDonateScreen */
     const onDonatePress = () => {
         console.log('donate');
     };
 
-    /* */
+    /* Return to HomeScreen to keep swiping */
     const onSwipePress = () => {
             console.log('swipe');
         };
