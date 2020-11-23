@@ -4,7 +4,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import styles from "./styles";
 
 
-export default function LikedScreen() {
+export default function LikedScreen(props) {
 
     /* Save nonprofit to heart list */
     const onHeartPress = () => {
@@ -18,7 +18,7 @@ export default function LikedScreen() {
 
     /* Go to MessageScreen */
     const onMessagePress = () => {
-        console.log('message');
+        props.navigation.navigate("Message");
     };
 
     /* Schedule a live chat via calendar **NEEDS TO BE IMPLEMENTED** */
@@ -28,12 +28,12 @@ export default function LikedScreen() {
 
     /* Go to QuickDonateScreen */
     const onDonatePress = () => {
-        console.log('donate');
+        props.navigation.navigate('QuickDonate');
     };
 
     /* Return to HomeScreen to keep swiping */
     const onSwipePress = () => {
-            console.log('swipe');
+            props.navigation.goBack();
         };
 
 
@@ -48,52 +48,61 @@ export default function LikedScreen() {
         <View style={styles.headView}>
             <Text style={styles.header}>You liked</Text>
             <Text style={styles.header}>Hacker Dojo!</Text>
+            <Text></Text>
             <Text style={styles.header}>Now do you want to...</Text>
         </View>
 
-        <View 
-        >
+  
 
-            <View >
 
-            <TouchableOpacity
-                onPress={() => onHeartPress()}
-            >
-                <Text>Save to heart list</Text>
-            </TouchableOpacity>
+            <View style={styles.buttonView}>
+                <TouchableOpacity
+                    onPress={() => onHeartPress()}
+                    style={styles.purpleButton}
+                >
+                    <Text style={styles.purpleTitle}>Save to heart list</Text>
+                </TouchableOpacity>
+            </View>
 
-            <TouchableOpacity
-                onPress={() => onLearnPress()}
-            >
-                <Text >Learn more</Text>
-            </TouchableOpacity>
+            <View style={styles.buttonView}>
+                <TouchableOpacity
+                    onPress={() => onLearnPress()}
+                    style={styles.tealButton}
+                >
+                    <Text style={styles.tealTitle}>Learn more</Text>
+                </TouchableOpacity>
+            </View>
+
+
 
             <TouchableOpacity
                 onPress={() => onMessagePress()}
+                style={styles.purpleButton}
             >
-                <Text>Send a message</Text>
+                <Text style={styles.purpleTitle}>Send a message</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                 onPress={() => onChatPress()}
+                style={styles.tealButton}
             >
-                <Text >Schedule a live chat</Text>
+                <Text style={styles.tealTitle}>Schedule a live chat</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                 onPress={() => onDonatePress()}
+                style={styles.purpleButton}
             >
-                <Text>Donate now</Text>
+                <Text style={styles.purpleTitle}>Donate now</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                 onPress={() => onSwipePress()}
+                style={styles.tealButton}
             >
-                <Text>Keep swiping</Text>
+                <Text style={styles.tealTitle}>Keep swiping</Text>
             </TouchableOpacity>
 
-            </View>
-        </View>
       </KeyboardAwareScrollView>
     </View>
   );

@@ -16,59 +16,39 @@ export default StyleSheet.create({
   headView: {
     marginTop: 40,
   },
-  input: {
-    fontFamily: "Montserrat_400Regular",
-    height: 48,
-    borderRadius: 5,
-    overflow: "hidden",
-    backgroundColor: "white",
-    margin: 20,
-    marginLeft: 30,
-    marginRight: 30,
-    paddingLeft: 16,
-  },
-  buttonTitle: {
-    fontFamily: "Montserrat_400Regular",
-    color: "white",
-    fontSize: 26,
-  },
-
-
-
-
-
-
-  keyButton: {
-    backgroundColor: "#03dac5",
+  tealButton: {
     padding: 10,
     height: 70,
     borderRadius: 15,
+    borderWidth: 5,
+    borderColor: "#03dac5",
     alignItems: "center",
     justifyContent: "center",
   },
-  keyTitle: {
+  tealTitle: {
     fontFamily: "Montserrat_400Regular",
-    color: "white",
+    color: "#03dac5",
     fontSize: 26,
     marginLeft: 10,
     marginRight: 10,
   },
-
-
-
-
-  localButton: {
-    marginRight: 90,
-    paddingLeft: 25,
-    paddingRight: 25,
-    left: 7,
+  purpleButton:{
+    padding: 10,
+    height: 70,
+    borderRadius: 15,
+    borderWidth: 5,
+    borderColor: "#6200ee",
+    alignItems: "center",
+    justifyContent: "center",
   },
-
-
-   globalButton: {
-     paddingLeft: 20,
-     paddingRight: 20,
-     left: -15,
-   },
-
+  purpleTitle: {
+    fontFamily: "Montserrat_400Regular",
+    color: "#6200ee",
+    fontSize: 26,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  buttonView: {
+    padding: 10,
+  },
 });
