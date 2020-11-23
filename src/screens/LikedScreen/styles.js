@@ -53,4 +53,11 @@ export default StyleSheet.create({
     marginLeft: 35,
     marginRight: 35,
   },
+  greenHeart: {
+    position: 'absolute',
+    left: 217,
+    top: 216,
+    maxWidth: "50%",
+    maxHeight: "50%",
+  },
 });

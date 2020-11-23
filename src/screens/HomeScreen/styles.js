@@ -55,7 +55,7 @@ export default StyleSheet.create({
       done: {
         textAlign: 'center',
         fontSize: 30,
-        color: "white",
+        color: 'white',
         backgroundColor: 'transparent'
       },
       heading: {

@@ -1,7 +1,8 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View, Image } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
+import heart from "../../../assets/heart.png";
 
 
 export default function LikedScreen(props) {
@@ -52,7 +53,9 @@ export default function LikedScreen(props) {
             <Text style={styles.header}>Now do you want to...</Text>
         </View>
 
-  
+
+
+        <Image source={heart} style={styles.greenHeart}></Image>
 
 
             <View style={styles.buttonView}>
@@ -60,7 +63,7 @@ export default function LikedScreen(props) {
                     onPress={() => onHeartPress()}
                     style={styles.purpleButton}
                 >
-                    <Text style={styles.purpleTitle}>Save to heart list</Text>
+                    <Text style={styles.purpleTitle}>Save to        list</Text>
                 </TouchableOpacity>
             </View>
 
