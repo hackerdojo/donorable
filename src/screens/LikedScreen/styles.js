@@ -9,7 +9,7 @@ export default StyleSheet.create({
   header: {
     fontFamily: "Montserrat_400Regular",
     color: "#363c3d",
-    fontSize: 30,
+    fontSize: 26,
     textAlign: "center",
     padding: 3,
   },
@@ -49,6 +49,8 @@ export default StyleSheet.create({
     marginRight: 10,
   },
   buttonView: {
-    padding: 10,
+    marginTop: 28,
+    marginLeft: 35,
+    marginRight: 35,
   },
 });

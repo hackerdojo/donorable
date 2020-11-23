@@ -74,34 +74,42 @@ export default function LikedScreen(props) {
             </View>
 
 
+            <View style={styles.buttonView}>
+                <TouchableOpacity
+                    onPress={() => onMessagePress()}
+                    style={styles.purpleButton}
+                >
+                    <Text style={styles.purpleTitle}>Send a message</Text>
+                </TouchableOpacity>
+            </View>
 
-            <TouchableOpacity
-                onPress={() => onMessagePress()}
-                style={styles.purpleButton}
-            >
-                <Text style={styles.purpleTitle}>Send a message</Text>
-            </TouchableOpacity>
+            <View style={styles.buttonView}>
+                <TouchableOpacity
+                    onPress={() => onChatPress()}
+                    style={styles.tealButton}
+                >
+                    <Text style={styles.tealTitle}>Schedule a live chat</Text>
+                </TouchableOpacity>
+            </View>
 
-            <TouchableOpacity
-                onPress={() => onChatPress()}
-                style={styles.tealButton}
-            >
-                <Text style={styles.tealTitle}>Schedule a live chat</Text>
-            </TouchableOpacity>
+            <View style={styles.buttonView}>
+                <TouchableOpacity
+                    onPress={() => onDonatePress()}
+                    style={styles.purpleButton}
+                >
+                    <Text style={styles.purpleTitle}>Donate now</Text>
+                </TouchableOpacity>
+            </View>
 
-            <TouchableOpacity
-                onPress={() => onDonatePress()}
-                style={styles.purpleButton}
-            >
-                <Text style={styles.purpleTitle}>Donate now</Text>
-            </TouchableOpacity>
+            <View style={styles.buttonView}>
+                <TouchableOpacity
+                    onPress={() => onSwipePress()}
+                    style={styles.tealButton}
+                >
+                    <Text style={styles.tealTitle}>Keep swiping</Text>
+                </TouchableOpacity>
+            </View>
 
-            <TouchableOpacity
-                onPress={() => onSwipePress()}
-                style={styles.tealButton}
-            >
-                <Text style={styles.tealTitle}>Keep swiping</Text>
-            </TouchableOpacity>
 
       </KeyboardAwareScrollView>
     </View>
