@@ -80,9 +80,10 @@ export default function HomeScreen({ navigation }) {
   const onSwiped = () => {
     transitionRef.current.animateNextTransition();
     setIndex((index + 1) % data.length);
+    navigation.navigate("Liked");
   };
 
-    /* Navigate to message screen, NEED TO IMPLEMENT*/
+    /* Navigate to message screen*/
     const onMessagePress = () => {
       navigation.navigate("Message");
     };

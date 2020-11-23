@@ -4,18 +4,9 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import styles from "./styles";
 
 
-export default function LikedScreen({ route, navigation }) {
+export default function LikedScreen() {
 
     
-  /* Go to Welcome Screen, or return to Settings */
-  const { params } = route.params;
-  const onDonePress = () => {  
-    if (params === 'set') {
-        navigation.goBack();
-    } else {
-        navigation.navigate("Welcome");
-    }
-  };
 
 
 
