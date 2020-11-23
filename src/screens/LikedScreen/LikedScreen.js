@@ -5,7 +5,10 @@ import styles from "./styles";
 import heart from "../../../assets/heart.png";
 
 
-export default function LikedScreen(props) {
+export default function LikedScreen({navigation, route}) {
+
+    /* Get nonprofit name from HomeScreen */
+    const { params } = route.params;
 
     /* Save nonprofit to heart list */
     const onHeartPress = () => {
@@ -19,7 +22,7 @@ export default function LikedScreen(props) {
 
     /* Go to MessageScreen */
     const onMessagePress = () => {
-        props.navigation.navigate("Message");
+        navigation.navigate("Message");
     };
 
     /* Schedule a live chat via calendar **NEEDS TO BE IMPLEMENTED** */
@@ -29,13 +32,13 @@ export default function LikedScreen(props) {
 
     /* Go to QuickDonateScreen */
     const onDonatePress = () => {
-        props.navigation.navigate('QuickDonate');
+        navigation.navigate('QuickDonate');
     };
 
     /* Return to HomeScreen to keep swiping */
     const onSwipePress = () => {
-            props.navigation.goBack();
-        };
+            navigation.goBack();
+    };
 
 
   /* View for the KeywordScreen */
@@ -48,7 +51,7 @@ export default function LikedScreen(props) {
 
         <View style={styles.headView}>
             <Text style={styles.header}>You liked</Text>
-            <Text style={styles.header}>Hacker Dojo!</Text>
+            <Text style={styles.header}>{ params }</Text>
             <Text></Text>
             <Text style={styles.header}>Now do you want to...</Text>
         </View>
