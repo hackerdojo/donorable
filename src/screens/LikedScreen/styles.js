@@ -37,20 +37,6 @@ export default StyleSheet.create({
 
 
 
-  buttonRow: {
-    marginTop: 20,
-  },
-  
-  buttonContainer: {
-      flex: 1,
-      flexDirection: "row",
-      marginTop: 80,
-      alignItems: "center",
-      justifyContent: "center",
-  },
-
-
-
 
   keyButton: {
     backgroundColor: "#03dac5",
@@ -84,77 +70,5 @@ export default StyleSheet.create({
      paddingRight: 20,
      left: -15,
    },
-  
 
-
-
-
-  healthButton: {
-    marginRight: 90,
-    paddingLeft: 20,
-    paddingRight: 20,
-    left: 10,
-  },
-
-
-
-  stemButton: {
-    paddingLeft: 25,
-    paddingRight: 25,
-    left: -20,
-  },
-
-
-
-
-
-  artsButton: {
-    marginRight: 90,
-    paddingLeft: 30,
-    paddingRight: 30,
-    left: 15,
-    },
-  artsTitle: {
-    marginLeft: 20,
-    marginRight: 20,
-  },
-
-
-
-  faithButton: {
-    paddingLeft: 25,
-    paddingRight: 25,
-    left: -25,
-    },
-  faithTitle: {
-    marginLeft: 15,
-    marginRight: 15,
-  },
-
-
-
-  unButton: {
-    borderWidth: 1,
-    borderColor: "#03dac5",
-    backgroundColor: "white",
-  },
-  unText: {
-    color: "#03dac5",
-  },
-
-
-
-  doneButton: {
-    backgroundColor: "#6200ee",
-    padding: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
-    marginLeft: 140,
-    marginRight: 140,
-    marginTop: 80,
-    height: 70,
-    borderRadius: 15,
-    alignItems: "center",
-    justifyContent: "center",
-  },
 });
