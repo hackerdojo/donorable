@@ -4,7 +4,9 @@ import styles from './styles';
 import ModalView from './ModalView';
 
 export default  LearnMoreScreen = ({navigation})=> {
+    
     const { nonprofit } = navigation.state.params;
+    let nameSize = nonprofit.name.length;
 
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
@@ -19,38 +21,44 @@ export default  LearnMoreScreen = ({navigation})=> {
     }
 
     return (    
-        <View style={styles.container}> 
-            <Text style={styles.name}>{nonprofit.name}</Text>  
-            <View style={styles.lineStyle}></View>          
+        <View style={styles.container}>
+            <View>
+                <Text style={[styles.name, {fontSize: nameSize > 25 ? 20 : 30 }]}>{nonprofit.name}</Text>  
+                <Text style={styles.description}>{nonprofit.description}</Text> 
+                <View style={styles.lineStyle}></View>
+            </View>
+
+                      
             <View style={styles.questions}>                
                 <FlatList
                     data={nonprofit.QAs}
                     keyExtractor={(item) => item.id.toString()}                                  
-                    renderItem={({item}) => {
+                    renderItem={({item, index}) => {
                         return (
-                            <View>
+                            <View >
                                 <TouchableOpacity onPress={()=> showModal(item)}>
-                                    <Text style={styles.textQ}>{item.question}</Text>
+                                    <Text style={[styles.textQ, { color: index % 2 === 0 ? 'purple' : 'green'}]}>{item.question}</Text>
                                 </TouchableOpacity>
                             </View>    
                         )
                     }}
                 />
-                { modalVisible && 
-                <ModalView 
-                    modalVisible={modalVisible}
-                    selectedItem={selectedItem}
-                    hideModal={hideModal}
-                    nonprofit={nonprofit}
-                />
-}
-               
+                { 
+                    modalVisible && 
+                    <ModalView 
+                        modalVisible={modalVisible}
+                        selectedItem={selectedItem}
+                        hideModal={hideModal}
+                        nonprofit={nonprofit}
+                    />
+                }
+        </View>               
                 <View style={styles.info}>
-                    <Text>Budget:       {nonprofit.budget}</Text>
-                    <Text>Org Type:     {nonprofit.type}</Text>
-                    <Text>Keywords:     {nonprofit.keywords}</Text>
+                    <Text style={styles.infoStyle}>Budget:       {nonprofit.budget}</Text>
+                    <Text style={styles.infoStyle}>Org Type:     {nonprofit.type}</Text>
+                    <Text style={styles.infoStyle}>Keywords:     {nonprofit.keywords}</Text>
                 </View>
-            </View>                         
+                                    
             <View style={styles.icons}> 
                 <TouchableOpacity>
                     <Image

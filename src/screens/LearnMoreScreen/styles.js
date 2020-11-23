@@ -7,15 +7,17 @@ export default StyleSheet.create({
         
     },
     name: {
-       fontSize: 30,
+       fontSize: 28,
        textAlign: 'center',
-       color: 'red',
        fontWeight: 'bold',
+       color: 'red',
+       marginBottom: 10,
     },
     lineStyle:{
         margin: 5,
         borderBottomWidth: 1,
-        borderBottomColor: 'black'
+        borderBottomColor: 'black',
+        margin: 10
    },
    disLikeIcon: {
        marginLeft :70,
@@ -33,7 +35,6 @@ export default StyleSheet.create({
 
     },
    questions: {
-       fontSize: 30,
        alignItems: 'center',
        textAlign: 'center',
    },
@@ -42,11 +43,10 @@ export default StyleSheet.create({
        justifyContent: 'space-between',
        flexWrap: 'wrap',
        alignItems: 'flex-end',
-       marginTop: 50
-       
+       marginTop: 10       
    },
    info: {
-       marginTop: 60,
+       marginTop: 30,
        margin:10,
    }, 
    modalView: {
@@ -54,7 +54,7 @@ export default StyleSheet.create({
         margin: 50,
         padding: 20,
         borderRadius: 10,
-        flex: 1
+        flex: 1,
     }, 
     textModal: {
         fontSize: 15,
@@ -77,11 +77,26 @@ export default StyleSheet.create({
     textQ: {
         textDecorationLine: 'underline',
         padding: 10,
+        textAlign: 'center',
+        fontSize: 18,
+
     }, 
     logoStyle: {
         width: '100%',
+        height: '20%'
+
+        
     }, 
     scrollView: {
         marginHorizontal: 20
+    },
+
+    description: {
+        fontStyle: 'italic',
+        fontSize: 16,
+        textAlign: 'center',
+    }, 
+    infoStyle: {
+        fontSize: 20,
     }
 })
