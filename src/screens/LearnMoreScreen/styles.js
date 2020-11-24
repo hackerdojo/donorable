@@ -15,7 +15,7 @@ export default StyleSheet.create({
     color: "#5e5e5e",
   },
   textWrapper: {
-    marginBottom: 30,
+    marginBottom: 20,
   },
   purpleText: {
     fontFamily: "Montserrat_400Regular",
@@ -42,21 +42,15 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
-
-  button: {
-    backgroundColor: "#03dac5",
-    marginLeft: 150,
-    marginRight: 150,
-    marginTop: 70,
-    marginBottom: 90,
-    height: 70,
-    borderRadius: 15,
-    alignItems: "center",
-    justifyContent: "center",
+  undo: {
+    left: 90,
+    top: 15,
   },
-  buttonTitle: {
-    fontFamily: "Montserrat_400Regular",
-    color: "white",
-    fontSize: 26,
+  heart: {
+    left: 250,
+    top: -30,
+  },
+  subWrap: {
+    marginLeft: 30,
   },
 });

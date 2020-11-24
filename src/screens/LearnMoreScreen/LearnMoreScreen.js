@@ -1,17 +1,22 @@
 import React from "react";
-import { Text, TouchableOpacity, View, Alert, Modal, TouchableHighlightBase } from "react-native";
+import { Text, TouchableOpacity, View, Image } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { firebase } from "../../firebase/config";
 import styles from "./styles";
 
+import undo from "../../../assets/undo.png";
+import heart from "../../../assets/heart.png";
 
 export default function LearnMoreScreen({ navigation }) {
 
-  /* Click to finish changing settings and return home */
+  /* Go back */
   const onDonePress = () => {
     navigation.goBack();
   };
 
+  /* Save to heart list */
+  const onHeartPress = () => {
+    console.log('heart');
+  };
 
 
   return (
@@ -63,13 +68,18 @@ export default function LearnMoreScreen({ navigation }) {
 
         </View>
 
+        <View style={styles.subWrap}>
+          <Text style={styles.text}>Budget: $491,679</Text>
+          <Text style={styles.text}>Org type: 501(c)(3)</Text>
+          <Text style={styles.text}>Keywords: community center, technology</Text>
+        </View>
 
-        <Text style={styles.text}>Budget: $491,679</Text>
-        <Text style={styles.text}>Org type: 501(c)(3)</Text>
-        <Text style={styles.text}>Keywords: community center, technology</Text>
+        <TouchableOpacity style={styles.undo} onPress={() => onDonePress()}>
+          <Image source={undo}></Image>
+        </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={() => onDonePress()}>
-          <Text style={styles.buttonTitle}>Done</Text>
+        <TouchableOpacity style={styles.heart} onPress={() => onHeartPress()}>
+          <Image source={heart}></Image>
         </TouchableOpacity>
 
 
