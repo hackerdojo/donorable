@@ -15,7 +15,8 @@ import {
   MessageScreen,
   KeywordScreen,
   QuickDonateScreen,
-  LikedScreen
+  LikedScreen,
+  LearnMoreScreen
 } from "./src/screens"; // different screens of the app
 import { decode, encode } from "base-64"; // for the decode and encode of the text
 
@@ -102,6 +103,7 @@ export default function App() {
             <Stack.Screen name="Message" component={MessageScreen} />
             <Stack.Screen name="QuickDonate" component={QuickDonateScreen} />
             <Stack.Screen name="Liked" component={LikedScreen} />
+            <Stack.Screen name="LearnMore" component={LearnMoreScreen} />
           </>
         ) : (
           <>
