@@ -95,6 +95,7 @@ export default StyleSheet.create({
         bottom: 0,
         maxWidth: "70%",
         maxHeight: "40%",
+
         //maxWidth: 310,
         //maxHeight: 140,
       },

@@ -68,8 +68,8 @@ const CardDetails = ({ index }) => (
 
 
 export default function HomeScreen({ navigation }) {
-  
-    
+
+
   /* Navigate to settings screen */
   const onSettingsPress = () => {
     navigation.navigate("Settings");
@@ -77,11 +77,17 @@ export default function HomeScreen({ navigation }) {
 
   /** new **********************/
   const [index, setIndex] = React.useState(0);
-  const onSwiped = () => {
+  const handleSwipedRight = () => {
     transitionRef.current.animateNextTransition();
     setIndex((index + 1) % data.length);
     navigation.navigate('Liked', { params: data[index].name });
   };
+
+  const handleSwipedLeft = () => {
+    transitionRef.current.animateNextTransition();
+    setIndex((index + 1) % data.length);
+//    navigation.navigate('Liked', { params: data[index].name });
+  }
 
     /* Navigate to message screen*/
     const onMessagePress = () => {
@@ -97,9 +103,9 @@ export default function HomeScreen({ navigation }) {
 
       <StatusBar hidden={true} />
 
-      {/* Div Bar */}
+      {/* Div Bar
       <Image style={styles.divTop} source={require("../../../assets/div-bar.png")}/>
-      
+ */}
       <View style={styles.swiperContainer}>
         {/* Profile Card Swiper */}
         <Swiper
@@ -109,7 +115,8 @@ export default function HomeScreen({ navigation }) {
         renderCard={card => <Card card={card} />}
         infinite
         backgroundColor={'transparent'}
-        onSwiped={onSwiped}
+        onSwipedLeft={handleSwipedLeft}
+        onSwipedRight={handleSwipedRight}
         onTapCard={() => swiperRef.current.swipeLeft()}
         cardVerticalMargin={50}
         stackSize={stackSize}
@@ -216,8 +223,8 @@ export default function HomeScreen({ navigation }) {
           source={require("../../../assets/donorable-title.png")}
         />
       </View>
-      
-      
+
+
     </View>
   </SafeAreaView>
 );

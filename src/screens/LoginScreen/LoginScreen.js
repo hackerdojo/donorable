@@ -18,6 +18,10 @@ export default function LoginScreen({ navigation }) {
     navigation.navigate("Recover");
   };
 
+  const onTestPress = () => {
+    navigation.navigate("Recover")
+  }
+
   /* firebase logic for user to login, if the user has already registered */
   const onLoginPress = () => {
     firebase
@@ -53,11 +57,10 @@ export default function LoginScreen({ navigation }) {
         keyboardShouldPersistTaps="always"
       >
         <Image
-          source={require("../../../assets/donorable-title.png")}
+          source={require("../../../assets/DonorableHeartLogo.png")}
           style={styles.title}
         />
 
-        <Text style={styles.label}>login</Text>
 
         <Text style={styles.inputLabel}>Email</Text>
         <View style={styles.inputContainer}>
@@ -87,7 +90,7 @@ export default function LoginScreen({ navigation }) {
         <TouchableOpacity onPress={() => onRecoverPress()}>
           <Text style={styles.forgotPW}>Forgot password?</Text>
         </TouchableOpacity>
-        
+
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.backButton}

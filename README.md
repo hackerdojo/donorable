@@ -17,6 +17,17 @@ Contributors
 
 * **Ed Choudhry** - *Project Manager* - [Linkedin](https://www.linkedin.com/in/echoudhry/)
 
+****Current****
+
+* **Louis Roehrs** - *Project Lead* - [LinkedIn](https://www.linkedin.com/in/LouisRoehrs)
+
+
+
+* **Wayne Liu** - Software Developer - Web
+* **Raffi** - Software Developer - iOS and Android 
+
+****Previous****
+
 * **Eliezer Santiago** - *Software Developer* - [Linkedin](https://www.linkedin.com/in/santiagoelie/)
 
 * **Joshua Dorn** - *Software Developer* - [Linkedin](https://www.linkedin.com/in/joshdorn/)

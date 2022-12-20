@@ -19,7 +19,7 @@ export default function RecoverScreen( {navigation} ) {
          .sendPasswordResetEmail(email)
          .then(() => {
             alert('An email has been send with further instructions.')
-         }) 
+         })
          .catch((error) => {
              alert(error);
          })
@@ -27,7 +27,7 @@ export default function RecoverScreen( {navigation} ) {
 
     /* Variables to capture text input value, and send that value to firebase */
     const [email, setEmail] = useState('');
-  
+
 
   /* View for the Recover screen */
   return (
@@ -37,7 +37,7 @@ export default function RecoverScreen( {navigation} ) {
         keyboardShouldPersistTaps="always"
       >
         <Image
-          source={require("../../../assets/donorable-title.png")}
+          source={require("../../../assets/DonorableHeartLogo.png")}
           style={styles.title}
         />
 
@@ -54,7 +54,7 @@ export default function RecoverScreen( {navigation} ) {
             onChangeText={email => setEmail(email)}
           />
         </View>
-                
+
 
         <View style={styles.buttonContainer}>
 

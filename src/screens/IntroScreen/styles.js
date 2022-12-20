@@ -1,60 +1,46 @@
 /* CSS styles for Intro Screen */
 import { StyleSheet } from "react-native";
+import theme from '../../../styles/theme.style.js';
+
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
+    flexDirection:"column",
     alignItems: "center",
+    height:"100%",
+    justifyContent:"space-evenly",
+    paddingLeft: theme.VIEW_PADDING,
+    paddingRight: theme.VIEW_PADDING
   },
   title: {
-    marginTop: 30,
-    marginBottom: 40,
-    marginLeft: 50,
-    maxWidth: 310,
-    maxHeight: 140,
+    width: "100%",
   },
   slogan: {
-    fontFamily: "Montserrat_400Regular",
-    color: "#5e5e5e",
-    fontSize: 26,
+    fontFamily: theme.FONT_FAMILY,
+    color: theme.TEXT_COLOR,
+    fontSize: theme.TEXT_FONT_P3,
     textAlign: "center",
-    padding: 15,
   },
-  input: {
-    fontFamily: "Montserrat_400Regular",
-    height: 48,
-    borderRadius: 5,
-    overflow: "hidden",
-    backgroundColor: "white",
-    margin: 20,
-    marginLeft: 30,
-    marginRight: 30,
-    paddingLeft: 16,
-  },
+
   loginButton: {
-    backgroundColor: "#6200ee",
-    marginLeft: 80,
-    marginRight: 80,
-    marginTop: 50,
-    marginBottom: 90,
-    height: 85,
-    borderRadius: 15,
+    backgroundColor: theme.PRIMARY_COLOR,
+    width: "100%",
+    height: theme.BUTTON_HEIGHT_LARGE,
+    borderRadius: theme.BUTTON_RADIUS_LARGE,
     alignItems: "center",
     justifyContent: "center",
   },
   regButton: {
-    backgroundColor: "#03dac5",
-    marginLeft: 80,
-    marginRight: 80,
-    marginTop: 10,
-    height: 85,
-    borderRadius: 15,
+    backgroundColor: theme.SECONDARY_COLOR,
+    height: theme.BUTTON_HEIGHT_LARGE,
+    width: "100%",
+    borderRadius: theme.BUTTON_RADIUS_LARGE,
     alignItems: "center",
     justifyContent: "center",
   },
   buttonTitle: {
-    fontFamily: "Montserrat_400Regular",
-    color: "white",
-    fontSize: 26,
+    fontFamily: theme.FONT_FAMILY,
+    color: theme.BUTTON_TITLE_COLOR,
+    fontSize: theme.BUTTON_FONT_LARGE,
   },
 });

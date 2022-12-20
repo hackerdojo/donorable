@@ -16,30 +16,28 @@ export default function IntroScreen({ navigation }) {
 
   /* View for the IntroScreen */
   return (
-    <View style={styles.container}>
-      <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
-        keyboardShouldPersistTaps="always"
+    <View style={styles.container} >
+      <Image
+        source={require("../../../assets/DonorableHeartLogo.png")}
+        style={styles.title}
+        resizeMode={"contain"}
+      />
+
+
+      <Text style={styles.slogan}>Fund your Purpose</Text>
+
+      <TouchableOpacity
+        style={styles.loginButton}
+        onPress={() => onLoginPress()}
       >
-        <Image
-          source={require("../../../assets/donorable-title.png")}
-          style={styles.title}
-        />
+        <Text style={styles.buttonTitle}>Login</Text>
+      </TouchableOpacity>
 
-        <Text style={styles.slogan}>an easier way</Text>
-        <Text style={styles.slogan}>to donate</Text>
-
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => onLoginPress()}
-        >
-          <Text style={styles.buttonTitle}>Login</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.regButton} onPress={() => onRegPress()}>
-          <Text style={styles.buttonTitle}>Register</Text>
-        </TouchableOpacity>
-      </KeyboardAwareScrollView>
+      <TouchableOpacity style={styles.regButton} onPress={() => onRegPress()}>
+        <Text style={styles.buttonTitle}>Register</Text>
+      </TouchableOpacity>
+      <Text> </Text>
+      <Text> </Text>
     </View>
   );
 }

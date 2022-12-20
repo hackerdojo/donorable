@@ -1,12 +1,12 @@
 
-//Oganization Data
+//Organization Data
 export default [
     {
       id: '40454230',
       price: 'Community Tech Hub',
       name: 'Hacker Dojo',
       image:
-      'https://hackerdojo.com/wp-content/uploads/2019/09/ToriOnlyFill-300x300.png'
+      'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/62db37e93371ceb0d4629f8d_hackerdojo-logo.jpeg'
     },
     {
       id: '70078463',
