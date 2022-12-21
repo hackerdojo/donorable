@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View} from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
 import { firebase } from "../../firebase/config";
@@ -51,18 +51,19 @@ export default function LoginScreen({ navigation }) {
 
   /* View for the Login screen */
   return (
-    <View style={styles.container}>
-      <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
-        keyboardShouldPersistTaps="always"
-      >
-        <Image
-          source={require("../../../assets/DonorableHeartLogo.png")}
-          style={styles.title}
-        />
+    <View >
+        <View style={{...styles.container, alignItems:"left"}}>
+          <KeyboardAvoidingView
+            style={{ flex:1, width: "100%" }}
+            keyboardShouldPersistTaps="always"
+          >
+            <Image
+              source={require("../../../assets/DonorableHeartLogo.png")}
+              style={styles.title}
+              resizeMode="contain"
+            />
 
-
-        <Text style={styles.inputLabel}>Email</Text>
+            <Text style={styles.inputLabel}>Email</Text>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
@@ -105,7 +106,9 @@ export default function LoginScreen({ navigation }) {
             <Text style={styles.buttonTitle}>Login</Text>
           </TouchableOpacity>
         </View>
-      </KeyboardAwareScrollView>
+          </KeyboardAvoidingView>
+        </View>
     </View>
+
   );
 }

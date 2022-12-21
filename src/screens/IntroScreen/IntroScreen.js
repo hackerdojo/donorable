@@ -23,17 +23,16 @@ export default function IntroScreen({ navigation }) {
         resizeMode={"contain"}
       />
 
-
-      <Text style={styles.slogan}>Fund your Purpose</Text>
+      <Text style={styles.textCentered}>Fund your Purpose</Text>
 
       <TouchableOpacity
-        style={styles.loginButton}
+        style={styles.buttonPrimary}
         onPress={() => onLoginPress()}
       >
         <Text style={styles.buttonTitle}>Login</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.regButton} onPress={() => onRegPress()}>
+      <TouchableOpacity style={styles.buttonSecondary} onPress={() => onRegPress()}>
         <Text style={styles.buttonTitle}>Register</Text>
       </TouchableOpacity>
       <Text> </Text>
