@@ -97,7 +97,7 @@ export default function LoginScreen({ navigation }) {
         <View style={styles.buttonContainer}>
 
           <TouchableOpacity
-            style={{...styles.buttonSecondary, width:"40%"}}
+            style={{...styles.buttonTertiary, width:"40%"}}
             onPress={() => onBackPress()}
           >
             <Text style={styles.buttonTitle}>Back</Text>

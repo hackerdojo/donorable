@@ -56,6 +56,15 @@ export default {
     justifyContent: "center",
   },
 
+  buttonTertiary: {
+    backgroundColor: theme.TERTIARY_COLOR,
+    width: "100%",
+    height: theme.BUTTON_HEIGHT_LARGE,
+    borderRadius: theme.BUTTON_RADIUS_LARGE,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
   buttonTitle: {
     fontFamily: theme.FONT_FAMILY,
     color: theme.BUTTON_TITLE_COLOR,
