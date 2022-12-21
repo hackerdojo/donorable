@@ -2,7 +2,8 @@ import theme from "./theme.style";
 
 
 export default {
-  container: {
+
+  screen: {
     flexDirection: "column",
     alignItems: "center",
     height: "100%",
@@ -12,7 +13,8 @@ export default {
     color: theme.TEXT_COLOR,
     width:"100%"
   },
-  containerFormMod: {
+
+  screenFormMod: {
     alignItems:"left",
     justifyContent:"flex-start",
     height:"100%"

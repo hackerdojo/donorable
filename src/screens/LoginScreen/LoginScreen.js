@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View} from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
 import { firebase } from "../../firebase/config";
 
@@ -51,7 +50,7 @@ export default function LoginScreen({ navigation }) {
 
   /* View for the Login screen */
   return (
-    <View style={{...styles.container, ...styles.containerFormMod}}>
+    <View style={{...styles.screen, ...styles.screenFormMod}}>
       <KeyboardAvoidingView
         style={styles.containerKeyboardAvoidingView}
         keyboardShouldPersistTaps="always"
@@ -69,7 +68,7 @@ export default function LoginScreen({ navigation }) {
           <TextInput
             style={styles.input}
             label="E-mail"
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={setEmail}
             value={email}
             underlineColorAndroid="transparent"
             autoCapitalize="none"
@@ -83,7 +82,7 @@ export default function LoginScreen({ navigation }) {
             style={styles.input}
             secureTextEntry
             label="Password"
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={setPassword}
             value={password}
             underlineColorAndroid="transparent"
             autoCapitalize="none"

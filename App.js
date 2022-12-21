@@ -134,16 +134,19 @@ export default function App() {
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Settings" component={SettingsScreen} />
             <Stack.Screen name="Message" component={MessageScreen} />
-            <Stack.Screen name="QuickDonate" component={QuickDonateScreen} />
+            <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={{title:"Quick Donate"}}/>
             <Stack.Screen name="Liked" component={LikedScreen} />
           </>
         ) : (
           <>
-            <Stack.Screen name="Intro" component={IntroScreen} options={{title:"Donorable"}}/>
             <Stack.Screen name="Login" component={LoginScreen}  />
-            <Stack.Screen name="Recover" component={RecoverScreen} />
-            <Stack.Screen name="Reg1" component={RegScreen1} />
-            <Stack.Screen name="Reg2" component={RegScreen2} />
+            <Stack.Screen name="Recover" component={RecoverScreen}  options={{title:"Recover Password"}}/>
+
+            <Stack.Screen name="Intro" component={IntroScreen} options={{title:"Donorable"}}/>
+
+
+            <Stack.Screen name="Reg1" component={RegScreen1}  options={{title:"Register"}}/>
+            <Stack.Screen name="Reg2" component={RegScreen2}  options={{title:"Register (2)"}}/>
           </>
         )}
       </Stack.Navigator>

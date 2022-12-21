@@ -2,6 +2,4 @@
 import { StyleSheet } from "react-native";
 import styleguide from '../../../styles/styleguide.js';
 
-export default StyleSheet.create(
-  { ...styleguide}
-);
+export default StyleSheet.create({...styleguide});
