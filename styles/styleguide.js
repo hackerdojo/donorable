@@ -12,6 +12,19 @@ export default {
     color: theme.TEXT_COLOR,
     width:"100%"
   },
+  containerFormMod: {
+    alignItems:"left",
+    justifyContent:"flex-start",
+    height:"100%"
+  },
+
+  containerKeyboardAvoidingView: {
+    flexDirection:"column",
+    justifyContent:"space-around" ,
+    height:"75%",
+    width:"100%"
+  },
+
   title: {
     width: "100%",
   },
@@ -78,5 +91,18 @@ export default {
     height: "100%",
     justifyContent: "space-around",
     color: theme.TEXT_COLOR
-  }
+  },
+  horizontalButtonContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    height: "100%",
+    width: "50%",
+    justifyContent: "space-around",
+    color: theme.TEXT_COLOR
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
 }
