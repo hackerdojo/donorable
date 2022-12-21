@@ -16,7 +16,7 @@ export default function IntroScreen({ navigation }) {
 
   /* View for the IntroScreen */
   return (
-    <View style={styles.container} >
+    <View style={styles.screen} >
       <Image
         source={require("../../../assets/DonorableHeartLogo.png")}
         style={styles.title}

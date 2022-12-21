@@ -139,11 +139,11 @@ export default function App() {
           </>
         ) : (
           <>
-            <Stack.Screen name="Login" component={LoginScreen}  />
-            <Stack.Screen name="Recover" component={RecoverScreen}  options={{title:"Recover Password"}}/>
-
             <Stack.Screen name="Intro" component={IntroScreen} options={{title:"Donorable"}}/>
+            <Stack.Screen name="Login" component={LoginScreen}  />
 
+
+            <Stack.Screen name="Recover" component={RecoverScreen}  options={{title:"Recover Password"}}/>
 
             <Stack.Screen name="Reg1" component={RegScreen1}  options={{title:"Register"}}/>
             <Stack.Screen name="Reg2" component={RegScreen2}  options={{title:"Register (2)"}}/>

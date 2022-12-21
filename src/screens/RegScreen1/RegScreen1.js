@@ -16,29 +16,27 @@ export default function RegScreen1({ navigation }) {
 
   /* View for the RegScreen */
   return (
-    <View style={styles.container}>
-      <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
-        keyboardShouldPersistTaps="always"
-      >
-        <Image
-          source={require("../../../assets/donorable-title.png")}
-          style={styles.title}
-        />
+    <View style={styles.screen} >
+      <Image
+        source={require("../../../assets/DonorableHeartLogo.png")}
+        style={styles.title}
+        resizeMode={"contain"}
+      />
 
-        <Text style={styles.slogan}>create an account</Text>
+      <Text style={styles.textCentered}>Create an Account</Text>
 
         <TouchableOpacity
-          style={styles.loginButton}
+          style={styles.buttonPrimary}
           onPress={() => onLoginPress()}
         >
           <Text style={styles.buttonTitle}>Donor</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.regButton} onPress={() => onRegPress()}>
+        <TouchableOpacity style={styles.buttonSecondary} onPress={() => onRegPress()}>
           <Text style={styles.buttonTitle}>Nonprofit</Text>
         </TouchableOpacity>
-      </KeyboardAwareScrollView>
+      <Text> </Text>
+      <Text> </Text>
     </View>
   );
 }
