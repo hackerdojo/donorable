@@ -88,13 +88,11 @@ export default function LoginScreen({ navigation }) {
           <FormButton
             styles={styles}
             buttonStyle={{...styles.buttonTertiary, width:"40%"}}
-            width={"40%"}
             onPress={onBackPress}
             label={"Back"} />
           <FormButton
             styles={styles}
             buttonStyle={{...styles.buttonPrimary,width:"40%"}}
-            width={"40%"}
             onPress={onLoginPress}
             label={"Login"} />
         </View>

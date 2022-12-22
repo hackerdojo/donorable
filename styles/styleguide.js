@@ -95,13 +95,12 @@ export default {
   inputContainer: {
     borderWidth: 1,
     borderColor: "#5e5e5e",
-    backgroundColor: "white",
+    backgroundColor: "white"
   },
   input: {
     fontFamily: theme.FONT_FAMILY,
     fontSize: 26,
     height: 40,
-    marginLeft: 7,
     overflow: "hidden",
     backgroundColor: "white",
   },

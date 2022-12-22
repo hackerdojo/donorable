@@ -1,79 +1,92 @@
-import React from "react";
-import { Text, TouchableOpacity, View, TextInput} from "react-native";
+import React, {useState} from "react";
+import {Text, TouchableOpacity, View, TextInput, Image} from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
+import FormTextInput from "../../components/FormTextInput";
+import FormButton from "../../components/FormButton";
+import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 
 
-export default function QuickDonateScreen(props) {
+export default function QuickDonateScreen({navigation, route}) {
 
-    
+  const {params} = route.params;
+  navigation.setOptions({title:params.name})
+
+  const [amount, setAmount] = useState(0);
+
   /* Return to previous screen */
-  const onReturnPress = () => {  
-        props.navigation.goBack();
+  const onReturnPress = () => {
+        navigation.goBack();
     }
 
 
   /* View for the QuickDonateScreen */
   return (
-    <View style={styles.container}>
-      <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
+    <View style={{...styles.screen}}>
+      <KeyboardAvoidingView
+        style={styles.containerKeyboardAvoidingView}
         keyboardShouldPersistTaps="always"
       >
-
-        <View style={styles.headView}>
-            <Text style={styles.header}>Quick Donate</Text>
+        <View style={styles.horizontalContainer}>
+          <Image
+            source={{ uri:params.image }}
+            resizeMode={"contain"}
+            style={styles.image100}
+          />
+          <View>
+            <Text style={styles.textCenteredP2}>How much would</Text>
+            <Text style={styles.textCenteredP2}>like to donate?</Text>
+            <Text style={styles.textCenteredP2}>{ params.name }</Text>
+          </View>
         </View>
 
-        <View style={styles.titleView}>
-            <Text style={styles.title}>Send a message to</Text>
-            <Text style={styles.title}>Hacker Dojo</Text>
-        </View>
+        <FormTextInput
+          styles={styles}
+          text={amount}
+          onChangeText={setAmount}
+          label={"Amount $USD"}
+          />
 
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            label="ShortMessage"
-            underlineColorAndroid="transparent"
-            autoCapitalize="none"
+        <View style={styles.horizontalButtonContainer}>
+
+          <FormButton
+            styles={styles}
+            label={"$5"}
+            buttonStyle={{...styles.buttonSecondary, width:"25%"}}
+            onPress={()=>setAmount("5")}
+          />
+          <FormButton
+            styles={styles}
+            label={"$10"}
+            buttonStyle={{...styles.buttonSecondary, width:"25%"}}
+            width={"25%"}
+            onPress={()=>setAmount("10")}
           />
         </View>
-
-
-        <View style={styles.buttonContainer}>
-            <View style={styles.buttonRow}>
-
-                <TouchableOpacity style={styles.donButton}>
-                    <Text style={styles.donTitle}>$5</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.donButton}>
-                    <Text style={styles.donTitle}>$10</Text>
-                </TouchableOpacity>
-
-            </View>
-
-            <View style={styles.buttonRow}>
-                <TouchableOpacity style={styles.donButton}>
-                    <Text style={styles.donTitle}>$15</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.donButton}>
-                    <Text style={styles.donTitle}>$20</Text>
-                </TouchableOpacity>
-            </View>
+        <View style={styles.horizontalButtonContainer}>
+          <FormButton
+            styles={styles}
+            label={"$15"}
+            buttonStyle={{...styles.buttonSecondary, width:"25%"}}
+            onPress={()=>setAmount("15")}
+          />
+          <FormButton
+            styles={styles}
+            label={"$20"}
+            buttonStyle={{...styles.buttonSecondary, width:"25%"}}
+            onPress={()=>setAmount("20")}
+          />
 
         </View>
+        <FormButton
+          styles={styles}
+          buttonStyle={styles.buttonPrimary}
+          onPress={onReturnPress}
+          label={"Donate"}
+          ></FormButton>
+        <Text> </Text>
 
-
-        <TouchableOpacity
-            style={styles.returnButton}
-            onPress={() => onReturnPress()}
-          >
-            <Text style={styles.buttonTitle}>Return</Text>
-          </TouchableOpacity>
-
-      </KeyboardAwareScrollView>
+      </KeyboardAvoidingView>
     </View>
   );
 }

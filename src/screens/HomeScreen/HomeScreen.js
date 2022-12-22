@@ -103,6 +103,7 @@ export default function HomeScreen({ navigation }) {
 
       <StatusBar hidden={true} />
 
+
       {/* Div Bar
       <Image style={styles.divTop} source={require("../../../assets/div-bar.png")}/>
  */}

@@ -11,6 +11,8 @@ export default function LikedScreen({navigation, route}) {
     /* Get nonprofit name from HomeScreen */
     const { params } = route.params;
 
+    navigation.setOptions({title:params.name})
+
     /* Save nonprofit to heart list */
     const onHeartPress = () => {
         console.log('heart');
@@ -32,8 +34,8 @@ export default function LikedScreen({navigation, route}) {
     };
 
     /* Go to QuickDonateScreen */
-    const onDonatePress = () => {
-        navigation.navigate('QuickDonate');
+    const onDonatePress = (params) => {
+        navigation.navigate('QuickDonate',{params:params});
     };
 
     /* Return to HomeScreen to keep swiping */
@@ -60,30 +62,31 @@ export default function LikedScreen({navigation, route}) {
       <View >
         <Text style={styles.textCenteredP2}>Now do you want to...</Text>
       </View>
-        <FormButton
-          styles={styles}
-          buttonStyle={styles.buttonPrimary}
-          width={"40%"}
-          onPress={onHeartPress}
-          label={"Save to favorites 🤍"} />
 
-        <FormButton
-          styles={styles}
-          buttonStyle={styles.buttonSecondary}
-          onPress={onLearnPress}
-          label={"Learn more"} />
+      <FormButton
+        styles={styles}
+        buttonStyle={styles.buttonPrimary}
+        width={"40%"}
+        onPress={onHeartPress}
+        label={"Save to favorites 🤍"} />
 
-        <FormButton
-          styles={styles}
-          buttonStyle={styles.buttonPrimary}
-          onPress={onChatPress}
-          label={"Schedule a live chat"} />
+      <FormButton
+        styles={styles}
+        buttonStyle={styles.buttonSecondary}
+        onPress={onLearnPress}
+        label={"Learn more"} />
 
-        <FormButton
-          styles={styles}
-          buttonStyle={styles.buttonSecondary}
-          onPress={onDonatePress}
-          label={"Donate now"} />
+      <FormButton
+        styles={styles}
+        buttonStyle={styles.buttonPrimary}
+        onPress={onChatPress}
+        label={"Schedule a live chat"} />
+
+      <FormButton
+        styles={styles}
+        buttonStyle={styles.buttonSecondary}
+        onPress={()=>onDonatePress(params)}
+        label={"Donate now"} />
 
       <FormButton
         styles={styles}
