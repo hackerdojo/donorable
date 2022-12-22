@@ -1,6 +1,7 @@
 import React from "react";
 import { Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
 import styleguide from "../../../styles/styleguide";
+import FormButton from "../../components/FormButton";
 
 export default function IntroScreen({ navigation }) {
 
@@ -18,7 +19,7 @@ export default function IntroScreen({ navigation }) {
 
   /* View for the IntroScreen */
   return (
-    <View style={styles.screen} >
+    <View style={[styles.screen]} >
       <Image
         source={require("../../../assets/DonorableHeartLogo.png")}
         style={styles.fullWidth}
@@ -27,16 +28,18 @@ export default function IntroScreen({ navigation }) {
 
       <Text style={styles.textCentered}>Fund your Purpose</Text>
 
-      <TouchableOpacity
-        style={styles.buttonPrimary}
-        onPress={() => onLoginPress()}
-      >
-        <Text style={styles.buttonTitle}>Login</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.buttonSecondary} onPress={() => onRegPress()}>
-        <Text style={styles.buttonTitle}>Register</Text>
-      </TouchableOpacity>
+      <FormButton
+        label={"Login"}
+        styles={styles}
+        buttonStyle={styles.buttonPrimary}
+        onPress={onLoginPress}
+      />
+      <FormButton
+        label={"Register"}
+        styles={styles}
+        buttonStyle={styles.buttonSecondary}
+        onPress={onRegPress}
+      />
       <Text> </Text>
       <Text> </Text>
     </View>

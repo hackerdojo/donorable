@@ -21,7 +21,7 @@ export default function QuickDonateScreen({navigation, route}) {
 
   /* View for the QuickDonateScreen */
   return (
-    <View style={{...styles.screen}}>
+    <View style={styles.screen}>
       <KeyboardAvoidingView
         style={styles.containerKeyboardAvoidingView}
         keyboardShouldPersistTaps="always"

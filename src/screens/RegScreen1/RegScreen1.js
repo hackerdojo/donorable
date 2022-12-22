@@ -1,23 +1,24 @@
 import React from "react";
 import { Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import styleguide from "../../../styles/styleguide";
+import FormButton from "../../components/FormButton";
 
 export default function RegScreen1({ navigation }) {
 
   const styles = StyleSheet.create(styleguide);
   /* Needs event handler */
-  const onRegPress = () => {
+  const onNonProfitPress = () => {
     navigation.navigate("Reg2");
   };
 
   /* Needs event handler */
-  const onLoginPress = () => {
+  const onDonorPress = () => {
     navigation.navigate("Reg2");
   };
 
   /* View for the RegScreen */
   return (
-    <View style={styles.screen} >
+    <View style={[styles.screen]} >
       <Image
         source={require("../../../assets/DonorableHeartLogo.png")}
         style={styles.fullWidth}
@@ -26,18 +27,21 @@ export default function RegScreen1({ navigation }) {
 
       <Text style={styles.textCentered}>Create an Account</Text>
 
-        <TouchableOpacity
-          style={styles.buttonPrimary}
-          onPress={() => onLoginPress()}
-        >
-          <Text style={styles.buttonTitle}>Donor</Text>
-        </TouchableOpacity>
+      <FormButton
+        label={"Donor"}
+        styles={styles}
+        buttonStyle={styles.buttonPrimary}
+        onPress={onDonorPress}
+      />
+      <FormButton
+        label={"Non-Profit"}
+        styles={styles}
+        buttonStyle={styles.buttonSecondary}
+        onPress={onNonProfitPress}
+      />
+      <Text/>
+      <Text/>
 
-        <TouchableOpacity style={styles.buttonSecondary} onPress={() => onRegPress()}>
-          <Text style={styles.buttonTitle}>Nonprofit</Text>
-        </TouchableOpacity>
-      <Text> </Text>
-      <Text> </Text>
     </View>
   );
 }

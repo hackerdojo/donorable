@@ -125,7 +125,7 @@ export default function App() {
   return (
     <NavigationContainer onReady={onLayoutRootView}>
       <Stack.Navigator>
-        {user || true ? (
+        {user || false ? (
           <>
             <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}/>
             <Stack.Screen name="Home" options={{title:"Donorable"}}>

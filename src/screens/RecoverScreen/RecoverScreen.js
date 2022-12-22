@@ -32,7 +32,7 @@ export default function RecoverScreen( {navigation} ) {
 
   /* View for the Recover screen */
   return (
-    <View style={{...styles.screen, ...styles.screenFormMod}}>
+    <View style={[styles.screen, styles.screenFormMod]}>
       <KeyboardAvoidingView style={styles.containerKeyboardAvoidingView}
                             keyboardShouldPersistTaps="always"
       >

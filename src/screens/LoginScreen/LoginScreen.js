@@ -54,7 +54,7 @@ export default function LoginScreen({ navigation }) {
 
   /* View for the Login screen */
   return (
-    <View style={{...styles.screen, ...styles.screenFormMod}}>
+    <View style={[styles.screen, styles.screenFormMod]}>
       <KeyboardAvoidingView
         style={styles.containerKeyboardAvoidingView}
         keyboardShouldPersistTaps="always"

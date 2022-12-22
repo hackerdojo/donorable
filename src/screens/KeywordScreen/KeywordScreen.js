@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {Image, Text, TouchableOpacity, View} from "react-native";
 import styles from "./styles";
 import TagButton from "../../components/TagButton";
+import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
+import FormButton from "../../components/FormButton";
 
 
 export default function KeywordScreen({ navigation, route}) {
@@ -18,172 +19,62 @@ export default function KeywordScreen({ navigation, route}) {
     }
   };
 
-
+  const availableTags = ["Local","Global","Health","STEM","Arts","Faith"]
   const [filterSet, setFilterSet] = useState( new Set());
 
-  /* Hooks for conditional button style rendering */
-  const [local, setLocal] = useState(0);
-  const [global, setGlobal] = useState(0);
-  const [health, setHealth] = useState(0);
-  const [stem, setStem] = useState(0);
-  const [arts, setArts] = useState(0);
-  const [faith, setFaith] = useState(0);
-
-  /* Click handler for button rendering, more efficient
-  solution likely needed  */
   const handlePress = (tag) => {
     if (filterSet.has(tag)) {
       let myFilterSet = new Set(filterSet);
       myFilterSet.delete(tag);
-      setFilterSet(new Set(myFilterSet));
+      setFilterSet(myFilterSet);
     }
     else {
       let myFilterSet = new Set(filterSet);
       myFilterSet.add(tag);
-      setFilterSet(new Set(myFilterSet));
+      setFilterSet(myFilterSet);
     }
   }
 
-
   /* View for the KeywordScreen */
   return (
-    <View style={styles.container}>
-
-      <KeyboardAwareScrollView
-        style={{flex: 1, width: "100%"}}
+    <View style={[styles.screen,styles.screenFormMod]}>
+      <KeyboardAvoidingView
+        style={styles.containerKeyboardAvoidingView}
         keyboardShouldPersistTaps="always"
       >
-        <Text>{filterSet.entries()}</Text>
-        <View style={styles.headView}>
-          <Text style={styles.header}>What do you</Text>
-          <Text style={styles.header}>care about?</Text>
+
+        <View>
+          <Image
+            source={require("../../../assets/DonorableHeartLogo.png")}
+            style={styles.fullWidth}
+            resizeMode="contain"
+          />
+        </View>
+        <View>
+          <Text style={styles.textCenteredP2}>What do you care about?</Text>
         </View>
 
-        <View style={styles.buttonRow}
+        <View style={styles.tagContainer}
         >
-
-          <View style={styles.buttonContainer}>
-
+          {availableTags.map((tag) =>
             <TagButton
-              label={"Faith2"}
+              key={tag}
+              label={tag}
               styles={styles}
-              tagState={false}
+              tagState={filterSet.has(tag)}
+              onPress={()=>handlePress(tag)}
             />
-            <TagButton
-              label={"Faith3"}
-              styles={styles}
-              tagState={filterSet.has("Faith3")}
-              tagState={true}
-              onPress={()=>handlePress("Faith3")}
-            />
-
-            {local ? <TouchableOpacity
-                style={[styles.keyButton, styles.localButton]}
-                onPress={() => handlePress('local')}
-              >
-                <Text style={[styles.keyTitle]}>Local</Text>
-              </TouchableOpacity>
-              : <TouchableOpacity
-                style={[styles.keyButton, styles.localButton, styles.unButton]}
-                onPress={() => handlePress('local')}
-              >
-                <Text style={[styles.keyTitle, styles.unText]}>Local</Text>
-              </TouchableOpacity>
-            }
-
-            {global ? <TouchableOpacity
-                style={[styles.keyButton, styles.globalButton]}
-                onPress={() => handlePress('global')}
-              >
-                <Text style={[styles.keyTitle]}>Global</Text>
-              </TouchableOpacity>
-              : <TouchableOpacity
-                style={[styles.keyButton, styles.globalButton, styles.unButton]}
-                onPress={() => handlePress('global')}
-              >
-                <Text style={[styles.keyTitle, styles.unText]}>Global</Text>
-              </TouchableOpacity>
-            }
-
-          </View>
-
-
-          <View style={styles.buttonContainer}>
-
-            {health ? <TouchableOpacity
-                style={[styles.keyButton, styles.healthButton]}
-                onPress={() => handlePress('health')}
-              >
-                <Text style={[styles.keyTitle]}>Health</Text>
-              </TouchableOpacity>
-              : <TouchableOpacity
-                style={[styles.keyButton, styles.healthButton, styles.unButton]}
-                onPress={() => handlePress('health')}
-              >
-                <Text style={[styles.keyTitle, styles.unText]}>Health</Text>
-              </TouchableOpacity>
-            }
-
-            {stem ? <TouchableOpacity
-                style={[styles.keyButton, styles.stemButton]}
-                onPress={() => handlePress('stem')}
-              >
-                <Text style={[styles.keyTitle]}>STEM</Text>
-              </TouchableOpacity>
-              : <TouchableOpacity
-                style={[styles.keyButton, styles.stemButton, styles.unButton]}
-                onPress={() => handlePress('stem')}
-              >
-                <Text style={[styles.keyTitle, styles.unText]}>STEM</Text>
-              </TouchableOpacity>
-            }
-          </View>
-
-
-          <View style={styles.buttonContainer}>
-
-            {arts ? <TouchableOpacity
-                style={[styles.keyButton, styles.artsButton]}
-                onPress={() => handlePress('arts')}
-              >
-                <Text style={[styles.keyTitle, styles.artsTitle]}>Arts</Text>
-              </TouchableOpacity>
-              : <TouchableOpacity
-                style={[styles.keyButton, styles.artsButton, styles.unButton]}
-                onPress={() => handlePress('arts')}
-              >
-                <Text style={[styles.keyTitle, styles.artsTitle, styles.unText]}>Arts</Text>
-              </TouchableOpacity>
-            }
-
-            {faith ? <TouchableOpacity
-                style={[styles.keyButton, styles.faithButton]}
-                onPress={() => handlePress('faith')}
-              >
-                <Text style={[styles.keyTitle, styles.faithTitle]}>Faith</Text>
-              </TouchableOpacity>
-              : <TouchableOpacity
-                style={[styles.keyButton, styles.faithButton, styles.unButton]}
-                onPress={() => handlePress('faith')}
-              >
-                <Text style={[styles.keyTitle, styles.faithTitle, styles.unText]}>Faith</Text>
-              </TouchableOpacity>
-            }
-
-          </View>
-
-
+          )
+          }
         </View>
 
-
-        <TouchableOpacity
-          style={styles.doneButton}
-          onPress={() => onDonePress()}
-        >
-          <Text style={styles.buttonTitle}>Done</Text>
-        </TouchableOpacity>
-
-      </KeyboardAwareScrollView>
+        <FormButton
+          styles={styles}
+          buttonStyle={styles.buttonSecondary}
+          label={"Search"}
+          onPress={onDonePress}
+          />
+      </KeyboardAvoidingView>
     </View>
   );
 }

@@ -17,7 +17,7 @@ export default {
   screenFormMod: {
     alignItems:"left",
     justifyContent:"flex-start",
-    height:"100%"
+    height:"100%",
   },
 
   containerKeyboardAvoidingView: {
@@ -120,19 +120,29 @@ export default {
     alignItems: "center",
     justifyContent: "space-between",
   },
+  tagContainer: {
+    flexDirection:"row",
+    flexWrap:"wrap",
+    gap:20,
+    alignItems:"center",
+    justifyContent:"space-between"
+  },
+
   tagSelected: {
     backgroundColor: theme.PRIMARY_COLOR,
-    width: "100%",
+    width: "40%",
     height: theme.BUTTON_HEIGHT_LARGE,
     borderRadius: theme.BUTTON_RADIUS_LARGE,
     borderWidth: 2,
     borderColor:theme.PRIMARY_COLOR,
     alignItems: "center",
     justifyContent: "center",
+    marginTop:20
   },
   tagUnselected: {
+    marginTop:20,
     backgroundColor: theme.TERTIARY_COLOR,
-    width: "100%",
+    width: "40%",
     height: theme.BUTTON_HEIGHT_LARGE,
     borderRadius: theme.BUTTON_RADIUS_LARGE,
     borderColor:theme.PRIMARY_COLOR,
