@@ -4,6 +4,8 @@ import {Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View} fr
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
 import { firebase } from "../../firebase/config";
+import FormButton from "../../components/FormButton";
+import FormTextInput from "../../components/FormTextInput";
 
 export default function RecoverScreen( {navigation} ) {
 
@@ -43,36 +45,27 @@ export default function RecoverScreen( {navigation} ) {
 
         <Text style={styles.textCentered}>Enter email to recover password</Text>
 
-        <View>
-        <Text style={styles.inputLabel}>Email</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            label="E-mail"
-            underlineColorAndroid="transparent"
-            autoCapitalize="none"
-            onChangeText={setEmail}
-          />
-        </View>
-        </View>
+        <FormTextInput
+          styles={styles}
+          label={"Email"}
+          text={email}
+          onChangeText={setEmail}/>
 
         <View style={styles.buttonContainer}>
-
-          <TouchableOpacity
-            style={{...styles.buttonTertiary, width:"40%"}}
+          <FormButton
+            styles={styles}
+            buttonStyle={{...styles.buttonTertiary, width:"40%"}}
+            width={"40%"}
             onPress={onBackPress}
-          >
-            <Text style={styles.buttonTitle}>Back</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={{...styles.buttonPrimary, width:"40%"}}
-            onPress={() => onEnterPress(email)}
-          >
-            <Text style={styles.buttonTitle}>Enter</Text>
-          </TouchableOpacity>
-
+            label={"Back"} />
+          <FormButton
+            styles={styles}
+            buttonStyle={{...styles.buttonPrimary,width:"40%"}}
+            width={"40%"}
+            onPress={onEnterPress}
+            label={"Enter"} />
         </View>
+
 
       </KeyboardAvoidingView>
     </View>

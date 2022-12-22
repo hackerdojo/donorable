@@ -3,6 +3,9 @@ import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
 import { firebase } from "../../firebase/config";
+import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
+import FormTextInput from "../../components/FormTextInput";
+import FormButton from "../../components/FormButton";
 
 export default function RegScreen2({ navigation }) {
   const [email, setEmail] = useState("");
@@ -47,76 +50,52 @@ export default function RegScreen2({ navigation }) {
 
   /* View for the registration screen */
   return (
-    <View style={styles.container}>
-      <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
+    <View style={{...styles.screen, ...styles.screenFormMod}}>
+      <KeyboardAvoidingView
+        style={styles.containerKeyboardAvoidingView}
         keyboardShouldPersistTaps="always"
       >
         <Image
-          source={require("../../../assets/donorable-title.png")}
+          source={require("../../../assets/DonorableHeartLogo.png")}
           style={styles.title}
+          resizeMode={"contain"}
         />
-
-        <Text style={styles.label}>create an account</Text>
-
-        <Text style={styles.inputLabel}>Email</Text>
-
-        <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          label="E-mail"
-          onChangeText={(text) => setEmail(text)}
-          value={email}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
+        <Text style={styles.textCentered}>Create an account</Text>
+        <FormTextInput
+          styles={styles}
+          label={"Email"}
+          text={email}
+          onChangeText={setEmail}/>
+        <FormTextInput
+          styles={styles}
+          label={"Password"}
+          text={password}
+          onChangeText={setPassword}
+          secureTextEntry={true}
         />
-        </View>
-
-
-        <Text style={styles.inputLabel}>Password</Text>
-        <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          secureTextEntry
-          label="Password"
-          onChangeText={(text) => setPassword(text)}
-          value={password}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
+        <FormTextInput
+          styles={styles}
+          label={"Confirm Password"}
+          text={confirmPassword}
+          onChangeText={setConfirmPassword}
+          secureTextEntry={true}
         />
-        </View>
-
-
-        <Text style={styles.inputLabel}>Confirm password</Text>
-        <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          secureTextEntry
-          label="Confirm Password"
-          onChangeText={(text) => setConfirmPassword(text)}
-          value={confirmPassword}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        </View>
-
         <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.enterButton}
-          onPress={() => onBackPress()}
-        >
-          <Text style={styles.buttonTitle}>Back</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => onRegisterPress()}
-        >
-          <Text style={styles.buttonTitle}>Enter</Text>
-        </TouchableOpacity>
+          <FormButton
+            styles={styles}
+            buttonStyle={{...styles.buttonTertiary, width:"40%"}}
+            width={"40%"}
+            onPress={onBackPress}
+            label={"Back"} />
+          <FormButton
+            styles={styles}
+            buttonStyle={{...styles.buttonPrimary,width:"40%"}}
+            width={"40%"}
+            onPress={onRegisterPress}
+            label={"Register"} />
         </View>
 
-      </KeyboardAwareScrollView>
+      </KeyboardAvoidingView>
     </View>
   );
 }

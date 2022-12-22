@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import {Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View} from "react-native";
+import {Image, KeyboardAvoidingView, Text, TouchableOpacity, View} from "react-native";
 import styles from "./styles";
 import { firebase } from "../../firebase/config";
+import FormTextInput from "../../components/FormTextInput";
+import FormButton from "../../components/FormButton";
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState(""); // variable for email and password
@@ -62,52 +64,39 @@ export default function LoginScreen({ navigation }) {
           resizeMode="contain"
         />
         </View>
-        <View>
-        <Text style={styles.inputLabel}>Email</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            label="E-mail"
-            onChangeText={setEmail}
-            value={email}
-            underlineColorAndroid="transparent"
-            autoCapitalize="none"
-          />
-        </View>
-        </View>
-        <View>
-        <Text style={styles.inputLabel}>Password</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            secureTextEntry
-            label="Password"
+          <FormTextInput
+            styles={styles}
+            label={"Email"}
+            text={email}
+            onChangeText={setEmail}/>
+          <FormTextInput
+            styles={styles}
+            label={"Password"}
+            text={password}
             onChangeText={setPassword}
-            value={password}
-            underlineColorAndroid="transparent"
-            autoCapitalize="none"
+            secureTextEntry={true}
           />
-        </View>
-        </View>
-        <TouchableOpacity onPress={() => onRecoverPress()}>
-          <Text style={styles.textCentered}>Forgot password?</Text>
-        </TouchableOpacity>
+
+
+        <Text
+          style={styles.textCentered}
+          onPress={onRecoverPress}>
+          {"Forgot Password"}</Text>
+
 
         <View style={styles.buttonContainer}>
-
-          <TouchableOpacity
-            style={{...styles.buttonTertiary, width:"40%"}}
-            onPress={() => onBackPress()}
-          >
-            <Text style={styles.buttonTitle}>Back</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{...styles.buttonPrimary, width:"40%"}}
-            onPress={() => onLoginPress()}
-          >
-            <Text style={styles.buttonTitle}>Login</Text>
-          </TouchableOpacity>
-
+          <FormButton
+            styles={styles}
+            buttonStyle={{...styles.buttonTertiary, width:"40%"}}
+            width={"40%"}
+            onPress={onBackPress}
+            label={"Back"} />
+          <FormButton
+            styles={styles}
+            buttonStyle={{...styles.buttonPrimary,width:"40%"}}
+            width={"40%"}
+            onPress={onLoginPress}
+            label={"Login"} />
         </View>
       </KeyboardAvoidingView>
      </View>

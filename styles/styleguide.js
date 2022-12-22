@@ -101,19 +101,15 @@ export default {
     alignItems: "center",
     height: "100%",
     justifyContent: "space-around",
-    color: theme.TEXT_COLOR
   },
   horizontalButtonContainer: {
     flexDirection: "row",
     alignItems: "center",
-    height: "100%",
-    width: "50%",
     justifyContent: "space-around",
-    color: theme.TEXT_COLOR
   },
   buttonContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
   },
 }
