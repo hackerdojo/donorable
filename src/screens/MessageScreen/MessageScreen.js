@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {Image, FlatList, Text, TouchableOpacity, View} from "react-native";
 import styles from "./styles";
 //import { firebase } from "../../firebase/config";
+
+import messagesdata from "./messasgesdata";
 
 export default function MessageScreen(props) {
 
@@ -15,8 +16,8 @@ export default function MessageScreen(props) {
 
   /* Quick Donate option */
   /* to be implemented in "like screen" in future */
-  const onCardPress = () => {
-    props.navigation.navigate("QuickDonate");
+  const onCardPress = (to) => {
+    navigate("QuickDonate",{param:to} );
   };
 
 
@@ -24,27 +25,43 @@ export default function MessageScreen(props) {
   /* View for the Message screen */
   return (
     <View style={styles.container}>
-      <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
-        keyboardShouldPersistTaps="always"
+        <FlatList
+          data = {messagesdata}
+          keyExtractor={message => message.id}
+          renderItem ={({item}) => (
+            <View key={item.id}>
+              <Image
+                source={{uri: item.avatar}}
+                style={styles.smallCard}
+                resizeMode={"contain"}
+              />
+              <TouchableOpacity
+                onPress={(message) => onCardPress(item.from)}
+              >
+                <Text style={styles.msgPreview}>{item.text}</Text>
+              </TouchableOpacity>
+              <Image style={styles.divBar} source={require("../../../assets/div-bar.png")}/>
+            </View>
+          )
+          }
+        />
+    </View>
+  );
+}
+/*
+
+
+
+
+      <Image
+        source={require("../../../assets/card_hackerdojo.png")}
+        style={styles.smallCard}
+      />
+      <TouchableOpacity
+        onPress={() => onCardPress()}
       >
-
-
-
-        <Text style={styles.label}>Messages</Text>
-
-        <Image style={styles.divBar} source={require("../../../assets/div-bar.png")}/>
-
-
-        <Image
-              source={require("../../../assets/card_hackerdojo.png")}
-              style={styles.smallCard}
-            />
-        <TouchableOpacity
-            onPress={() => onCardPress()}
-          >
-            <Text style={styles.msgPreview}>Hi</Text>
-          </TouchableOpacity>
+        <Text style={styles.msgPreview}>Hi</Text>
+      </TouchableOpacity>
 
 
         <Image style={styles.divBar} source={require("../../../assets/div-bar.png")}/>
@@ -92,8 +109,4 @@ export default function MessageScreen(props) {
           </TouchableOpacity>
         </View>
 
-
-      </KeyboardAwareScrollView>
-    </View>
-  );
-}
+ */

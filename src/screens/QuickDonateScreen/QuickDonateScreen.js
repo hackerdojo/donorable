@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Text, View, Image} from "react-native";
+import {Text, View, Image, StyleSheet} from "react-native";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";

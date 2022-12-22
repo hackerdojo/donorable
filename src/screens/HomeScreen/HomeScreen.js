@@ -62,7 +62,7 @@ const CardDetails = ({ index }) => (
     <Text style={[styles.text, styles.heading]} numberOfLines={2}>
       {data[index].name}
     </Text>
-    <Text style={[styles.text, styles.price]}>{data[index].price}</Text>
+    <Text style={[styles.text, styles.description]}>{data[index].description}</Text>
   </View>
 );
 /** ************************************* */
@@ -92,7 +92,7 @@ export default function HomeScreen({ navigation }) {
 
     /* Navigate to message screen*/
     const onMessagePress = () => {
-      navigation.navigate("Message");
+      navigation.navigate("Messages");
     };
 
  /**************************** */

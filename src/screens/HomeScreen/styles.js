@@ -63,7 +63,7 @@ export default StyleSheet.create({
         color: "gray",
         top: 65,
       },
-      price: {
+      description: {
         fontFamily: "Montserrat_400Regular",
         fontSize: 15,
         fontWeight: '500',

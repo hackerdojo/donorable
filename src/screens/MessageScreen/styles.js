@@ -1,7 +1,9 @@
 /* CSS styles for Login Screen */
 import { StyleSheet } from "react-native";
+import styleguide from "../../../styles/styleguide";
 
-export default StyleSheet.create({
+export default StyleSheet.create({...styleguide,
+
   container: {
     flex: 1,
     alignItems: "center",
@@ -10,7 +12,7 @@ export default StyleSheet.create({
     fontFamily: "Montserrat_400Regular",
     color: "#6200ee",
     textAlign: "center",
-    fontSize: 26, 
+    fontSize: 26,
     marginTop: 30,
     marginBottom: 10,
     padding: 12,

@@ -127,14 +127,14 @@ export default function App() {
       <Stack.Navigator>
         {user || true ? (
           <>
-            <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}/>
+            <Stack.Screen name="Messages" component={MessageScreen} />
             <Stack.Screen name="Home" options={{title:"Donorable"}}>
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>
-
+            <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}/>
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Settings" component={SettingsScreen} />
-            <Stack.Screen name="Message" component={MessageScreen} />
+
             <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={{title:"Quick Donate"}}/>
             <Stack.Screen name="Liked" component={LikedScreen} />
           </>
