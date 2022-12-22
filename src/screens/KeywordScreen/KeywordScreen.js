@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import {Image, Text, TouchableOpacity, View} from "react-native";
-import styles from "./styles";
+import {Image, Text, StyleSheet, View} from "react-native";
 import TagButton from "../../components/TagButton";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 import FormButton from "../../components/FormButton";
+import styleguide from "../../../styles/styleguide";
 
 
 export default function KeywordScreen({ navigation, route}) {
 
-
+  const styles = StyleSheet.create(styleguide);
   /* Go to Welcome Screen, or return to Settings */
   const {params} = route.params || "";
   const onDonePress = () => {
