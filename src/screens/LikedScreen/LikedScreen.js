@@ -1,8 +1,9 @@
 import React from "react";
-import { Text, TouchableOpacity, View, Image } from "react-native";
+import {Text, TouchableOpacity, View, Image, KeyboardAvoidingView} from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styles from "./styles";
 import heart from "../../../assets/heart.png";
+import FormButton from "../../components/FormButton";
 
 
 export default function LikedScreen({navigation, route}) {
@@ -43,81 +44,53 @@ export default function LikedScreen({navigation, route}) {
 
   /* View for the KeywordScreen */
   return (
-    <View style={styles.container}>
-      <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
-        keyboardShouldPersistTaps="always"
-      >
+    <View style={styles.screen}>
 
-        <View style={styles.headView}>
-            <Text style={styles.header}>You liked</Text>
-            <Text style={styles.header}>{ params }</Text>
-            <Text></Text>
-            <Text style={styles.header}>Now do you want to...</Text>
+      <View style={styles.horizontalContainer}>
+        <Image
+          source={{ uri:params.image }}
+          resizeMode={"contain"}
+          style={styles.image100}
+        />
+        <View>
+          <Text style={styles.textCenteredP2}>You liked</Text>
+          <Text style={styles.textCenteredP2}>{ params.name }</Text>
         </View>
+      </View>
+      <View >
+        <Text style={styles.textCenteredP2}>Now do you want to...</Text>
+      </View>
+        <FormButton
+          styles={styles}
+          buttonStyle={styles.buttonPrimary}
+          width={"40%"}
+          onPress={onHeartPress}
+          label={"Save to favorites 🤍"} />
 
+        <FormButton
+          styles={styles}
+          buttonStyle={styles.buttonSecondary}
+          onPress={onLearnPress}
+          label={"Learn more"} />
 
+        <FormButton
+          styles={styles}
+          buttonStyle={styles.buttonPrimary}
+          onPress={onChatPress}
+          label={"Schedule a live chat"} />
 
-        <Image source={heart} style={styles.greenHeart}></Image>
+        <FormButton
+          styles={styles}
+          buttonStyle={styles.buttonSecondary}
+          onPress={onDonatePress}
+          label={"Donate now"} />
 
+      <FormButton
+        styles={styles}
+        buttonStyle={styles.buttonPrimary}
+        onPress={onSwipePress}
+        label={"Keep swiping"} />
 
-            <View style={styles.buttonView}>
-                <TouchableOpacity
-                    onPress={() => onHeartPress()}
-                    style={styles.purpleButton}
-                >
-                    <Text style={styles.purpleTitle}>Save to        list</Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.buttonView}>
-                <TouchableOpacity
-                    onPress={() => onLearnPress()}
-                    style={styles.tealButton}
-                >
-                    <Text style={styles.tealTitle}>Learn more</Text>
-                </TouchableOpacity>
-            </View>
-
-
-            <View style={styles.buttonView}>
-                <TouchableOpacity
-                    onPress={() => onMessagePress()}
-                    style={styles.purpleButton}
-                >
-                    <Text style={styles.purpleTitle}>Send a message</Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.buttonView}>
-                <TouchableOpacity
-                    onPress={() => onChatPress()}
-                    style={styles.tealButton}
-                >
-                    <Text style={styles.tealTitle}>Schedule a live chat</Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.buttonView}>
-                <TouchableOpacity
-                    onPress={() => onDonatePress()}
-                    style={styles.purpleButton}
-                >
-                    <Text style={styles.purpleTitle}>Donate now</Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style={styles.buttonView}>
-                <TouchableOpacity
-                    onPress={() => onSwipePress()}
-                    style={styles.tealButton}
-                >
-                    <Text style={styles.tealTitle}>Keep swiping</Text>
-                </TouchableOpacity>
-            </View>
-
-
-      </KeyboardAwareScrollView>
     </View>
   );
 }

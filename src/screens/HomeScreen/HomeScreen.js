@@ -80,7 +80,7 @@ export default function HomeScreen({ navigation }) {
   const handleSwipedRight = () => {
     transitionRef.current.animateNextTransition();
     setIndex((index + 1) % data.length);
-    navigation.navigate('Liked', { params: data[index].name });
+    navigation.navigate('Liked', { params:  data[index]});
   };
 
   const handleSwipedLeft = () => {
@@ -220,7 +220,8 @@ export default function HomeScreen({ navigation }) {
           {/* Donorable App Logo */}
         <Image
           style={styles.donorableTitle}
-          source={require("../../../assets/donorable-title.png")}
+          source={require("../../../assets/DonorableHeartLogo.png")}
+          resizeMode={"contain"}
         />
       </View>
 

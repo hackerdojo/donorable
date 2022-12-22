@@ -57,7 +57,7 @@ export default function RegScreen2({ navigation }) {
       >
         <Image
           source={require("../../../assets/DonorableHeartLogo.png")}
-          style={styles.title}
+          style={styles.fullWidth}
           resizeMode={"contain"}
         />
         <Text style={styles.textCentered}>Create an account</Text>

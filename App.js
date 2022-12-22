@@ -125,28 +125,25 @@ export default function App() {
   return (
     <NavigationContainer onReady={onLayoutRootView}>
       <Stack.Navigator>
-        {user ? (
+        {user || true ? (
           <>
-            <Stack.Screen name="Home" options={{title:"Donorable"}}>
+            <Stack.Screen name="Home" options={{fullWidth:"Donorable"}}>
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>
-            <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}/>
+            <Stack.Screen name="Keyword" component={KeywordScreen}  options={{fullWidth:"Search"}}/>
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Settings" component={SettingsScreen} />
             <Stack.Screen name="Message" component={MessageScreen} />
-            <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={{title:"Quick Donate"}}/>
+            <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={{fullWidth:"Quick Donate"}}/>
             <Stack.Screen name="Liked" component={LikedScreen} />
           </>
         ) : (
           <>
-            <Stack.Screen name="Intro" component={IntroScreen} options={{title:"Donorable"}}/>
+            <Stack.Screen name="Intro" component={IntroScreen} options={{fullWidth:"Donorable"}}/>
             <Stack.Screen name="Login" component={LoginScreen}  />
-
-
-            <Stack.Screen name="Recover" component={RecoverScreen}  options={{title:"Recover Password"}}/>
-
-            <Stack.Screen name="Reg1" component={RegScreen1}  options={{title:"Register"}}/>
-            <Stack.Screen name="Reg2" component={RegScreen2}  options={{title:"Register (2)"}}/>
+            <Stack.Screen name="Recover" component={RecoverScreen}  options={{fullWidth:"Recover Password"}}/>
+            <Stack.Screen name="Reg1" component={RegScreen1}  options={{fullWidth:"Register"}}/>
+            <Stack.Screen name="Reg2" component={RegScreen2}  options={{fullWidth:"Register (2)"}}/>
           </>
         )}
       </Stack.Navigator>

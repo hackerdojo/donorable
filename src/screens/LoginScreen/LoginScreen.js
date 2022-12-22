@@ -60,7 +60,7 @@ export default function LoginScreen({ navigation }) {
         <View>
         <Image
           source={require("../../../assets/DonorableHeartLogo.png")}
-          style={styles.title}
+          style={styles.fullWidth}
           resizeMode="contain"
         />
         </View>

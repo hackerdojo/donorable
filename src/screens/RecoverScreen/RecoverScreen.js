@@ -39,7 +39,7 @@ export default function RecoverScreen( {navigation} ) {
       >
         <Image
           source={require("../../../assets/DonorableHeartLogo.png")}
-          style={styles.title}
+          style={styles.fullWidth}
           resizeMode={"contain"}
         />
 

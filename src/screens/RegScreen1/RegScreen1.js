@@ -19,7 +19,7 @@ export default function RegScreen1({ navigation }) {
     <View style={styles.screen} >
       <Image
         source={require("../../../assets/DonorableHeartLogo.png")}
-        style={styles.title}
+        style={styles.fullWidth}
         resizeMode={"contain"}
       />
 

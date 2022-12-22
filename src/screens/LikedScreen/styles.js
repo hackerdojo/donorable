@@ -1,11 +1,9 @@
 /* CSS styles for Liked Screen */
 import { StyleSheet } from "react-native";
+import styleguide from "../../../styles/styleguide";
 
-export default StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-  },
+export default StyleSheet.create(styleguide);
+/*
   header: {
     fontFamily: "Montserrat_400Regular",
     color: "#363c3d",
@@ -13,9 +11,7 @@ export default StyleSheet.create({
     textAlign: "center",
     padding: 3,
   },
-  headView: {
-    marginTop: 40,
-  },
+
   tealButton: {
     padding: 10,
     height: 70,
@@ -61,3 +57,5 @@ export default StyleSheet.create({
     maxHeight: "50%",
   },
 });
+
+ */

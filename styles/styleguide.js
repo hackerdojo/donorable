@@ -27,7 +27,11 @@ export default {
     width:"100%"
   },
 
-  title: {
+  image100 : {
+    width:100,
+    height:100
+  },
+  fullWidth: {
     width: "100%",
   },
 
@@ -78,6 +82,11 @@ export default {
     textAlign: "center",
     color: theme.TEXT_COLOR
   },
+  textCenteredP2: {
+    fontSize: theme.TEXT_FONT_P2,
+    textAlign: "center",
+    color: theme.TEXT_COLOR
+  },
   inputLabel: {
     fontFamily: theme.FONT_FAMILY,
     color: theme.TEXT_COLOR,
@@ -99,8 +108,8 @@ export default {
   horizontalContainer: {
     flexDirection: "row",
     alignItems: "center",
-    height: "100%",
-    justifyContent: "space-around",
+    width: "100%",
+    justifyContent: "space-between",
   },
   horizontalButtonContainer: {
     flexDirection: "row",
