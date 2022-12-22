@@ -1,14 +1,13 @@
 import React, {useState} from "react";
-import {Text, TouchableOpacity, View, TextInput, Image} from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import styles from "./styles";
+import {Text, View, Image} from "react-native";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
+import styleguide from "../../../styles/styleguide";
 
 
 export default function QuickDonateScreen({navigation, route}) {
-
+  const styles = StyleSheet.create(styleguide);
   const {params} = route.params;
   navigation.setOptions({title:params.name})
 

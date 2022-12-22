@@ -127,10 +127,11 @@ export default function App() {
       <Stack.Navigator>
         {user || true ? (
           <>
+            <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}/>
             <Stack.Screen name="Home" options={{title:"Donorable"}}>
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>
-            <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}/>
+
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Settings" component={SettingsScreen} />
             <Stack.Screen name="Message" component={MessageScreen} />
@@ -143,7 +144,7 @@ export default function App() {
             <Stack.Screen name="Login" component={LoginScreen}  />
             <Stack.Screen name="Recover" component={RecoverScreen}  options={{title:"Recover Password"}}/>
             <Stack.Screen name="Reg1" component={RegScreen1}  options={{title:"Register"}}/>
-            <Stack.Screen name="Reg2" component={RegScreen2}  options={{title:"Register (2)"}}/>
+            <Stack.Screen name="Reg2" component={RegScreen2}  options={{title:"New Account"}}/>
           </>
         )}
       </Stack.Navigator>

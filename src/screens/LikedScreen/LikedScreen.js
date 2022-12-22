@@ -1,47 +1,47 @@
 import React from "react";
-import {Text, TouchableOpacity, View, Image, KeyboardAvoidingView} from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import styles from "./styles";
+import {Text, View, Image, StyleSheet} from "react-native";
 import heart from "../../../assets/heart.png";
 import FormButton from "../../components/FormButton";
-
+import styleguide from "../../../styles/styleguide";
 
 export default function LikedScreen({navigation, route}) {
 
-    /* Get nonprofit name from HomeScreen */
-    const { params } = route.params;
+  const styles = StyleSheet.create(styleguide);
 
-    navigation.setOptions({title:params.name})
+  /* Get nonprofit name from HomeScreen */
+  const {params} = route.params;
 
-    /* Save nonprofit to heart list */
-    const onHeartPress = () => {
-        console.log('heart');
-    };
+  navigation.setOptions({title: params.name})
 
-    /* View LearnMoreScreen of nonprofit **NEEDS TO BE IMPLEMENTED** */
-    const onLearnPress = () => {
-        console.log('learn');
-    };
+  /* Save nonprofit to heart list */
+  const onHeartPress = () => {
+    console.log('heart');
+  };
 
-    /* Go to MessageScreen */
-    const onMessagePress = () => {
-        navigation.navigate("Message");
-    };
+  /* View LearnMoreScreen of nonprofit **NEEDS TO BE IMPLEMENTED** */
+  const onLearnPress = () => {
+    console.log('learn');
+  };
 
-    /* Schedule a live chat via calendar **NEEDS TO BE IMPLEMENTED** */
-    const onChatPress = () => {
-        console.log('chat');
-    };
+  /* Go to MessageScreen */
+  const onMessagePress = () => {
+    navigation.navigate("Message");
+  };
 
-    /* Go to QuickDonateScreen */
-    const onDonatePress = (params) => {
-        navigation.navigate('QuickDonate',{params:params});
-    };
+  /* Schedule a live chat via calendar **NEEDS TO BE IMPLEMENTED** */
+  const onChatPress = () => {
+    console.log('chat');
+  };
 
-    /* Return to HomeScreen to keep swiping */
-    const onSwipePress = () => {
-            navigation.goBack();
-    };
+  /* Go to QuickDonateScreen */
+  const onDonatePress = (params) => {
+    navigation.navigate('QuickDonate', {params: params});
+  };
+
+  /* Return to HomeScreen to keep swiping */
+  const onSwipePress = () => {
+    navigation.goBack();
+  };
 
 
   /* View for the KeywordScreen */
@@ -50,16 +50,16 @@ export default function LikedScreen({navigation, route}) {
 
       <View style={styles.horizontalContainer}>
         <Image
-          source={{ uri:params.image }}
+          source={{uri: params.image}}
           resizeMode={"contain"}
           style={styles.image100}
         />
         <View>
           <Text style={styles.textCenteredP2}>You liked</Text>
-          <Text style={styles.textCenteredP2}>{ params.name }</Text>
+          <Text style={styles.textCenteredP2}>{params.name}</Text>
         </View>
       </View>
-      <View >
+      <View>
         <Text style={styles.textCenteredP2}>Now do you want to...</Text>
       </View>
 
@@ -68,31 +68,31 @@ export default function LikedScreen({navigation, route}) {
         buttonStyle={styles.buttonPrimary}
         width={"40%"}
         onPress={onHeartPress}
-        label={"Save to favorites 🤍"} />
+        label={"Save to favorites 🤍"}/>
 
       <FormButton
         styles={styles}
         buttonStyle={styles.buttonSecondary}
         onPress={onLearnPress}
-        label={"Learn more"} />
+        label={"Learn more"}/>
 
       <FormButton
         styles={styles}
         buttonStyle={styles.buttonPrimary}
         onPress={onChatPress}
-        label={"Schedule a live chat"} />
+        label={"Schedule a live chat"}/>
 
       <FormButton
         styles={styles}
         buttonStyle={styles.buttonSecondary}
-        onPress={()=>onDonatePress(params)}
-        label={"Donate now"} />
+        onPress={() => onDonatePress(params)}
+        label={"Donate now"}/>
 
       <FormButton
         styles={styles}
         buttonStyle={styles.buttonPrimary}
         onPress={onSwipePress}
-        label={"Keep swiping"} />
+        label={"Keep swiping"}/>
 
     </View>
   );

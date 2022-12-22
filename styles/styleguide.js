@@ -120,4 +120,24 @@ export default {
     alignItems: "center",
     justifyContent: "space-between",
   },
+  tagSelected: {
+    backgroundColor: theme.PRIMARY_COLOR,
+    width: "100%",
+    height: theme.BUTTON_HEIGHT_LARGE,
+    borderRadius: theme.BUTTON_RADIUS_LARGE,
+    borderWidth: 2,
+    borderColor:theme.PRIMARY_COLOR,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  tagUnselected: {
+    backgroundColor: theme.TERTIARY_COLOR,
+    width: "100%",
+    height: theme.BUTTON_HEIGHT_LARGE,
+    borderRadius: theme.BUTTON_RADIUS_LARGE,
+    borderColor:theme.PRIMARY_COLOR,
+    borderWidth: 2,
+    alignItems: "center",
+    justifyContent: "center",
+}
 }

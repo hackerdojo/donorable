@@ -1,7 +1,8 @@
 /* CSS styles for Keyword Screen */
 import { StyleSheet } from "react-native";
+import styleguide from "../../../styles/styleguide";
 
-export default StyleSheet.create({
+export default StyleSheet.create({...styleguide,
   container: {
     flex: 1,
     alignItems: "center",
@@ -40,7 +41,7 @@ export default StyleSheet.create({
   buttonRow: {
     marginTop: 20,
   },
-  
+
   buttonContainer: {
       flex: 1,
       flexDirection: "row",
@@ -84,7 +85,7 @@ export default StyleSheet.create({
      paddingRight: 20,
      left: -15,
    },
-  
+
 
 
 

@@ -1,41 +1,40 @@
 
 import React, { useState } from "react";
-import {Image, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View} from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import styles from "./styles";
+import {Image, KeyboardAvoidingView, Text, StyleSheet, View} from "react-native";
 import { firebase } from "../../firebase/config";
 import FormButton from "../../components/FormButton";
 import FormTextInput from "../../components/FormTextInput";
+import styleguide from "../../../styles/styleguide";
 
 export default function RecoverScreen( {navigation} ) {
+  const styles = StyleSheet.create(styleguide)
+  /* Return to Login  */
+  const onBackPress = () => {
+    navigation.goBack();
+  };
 
-    /* Return to Login  */
-    const onBackPress = () => {
-        navigation.goBack();
-      };
+  /* Send password recovery email */
+  const onEnterPress = (email) => {
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        alert('An email has been send with further instructions.')
+      })
+      .catch((error) => {
+        alert(error);
+      })
+  }
 
-    /* Send password recovery email */
-    const onEnterPress = (email) => {
-         firebase
-         .auth()
-         .sendPasswordResetEmail(email)
-         .then(() => {
-            alert('An email has been send with further instructions.')
-         })
-         .catch((error) => {
-             alert(error);
-         })
-    }
-
-    /* Variables to capture text input value, and send that value to firebase */
-    const [email, setEmail] = useState('');
+  /* Variables to capture text input value, and send that value to firebase */
+  const [email, setEmail] = useState('');
 
 
   /* View for the Recover screen */
   return (
-    <View style={{...styles.screen,...styles.screenFormMod}}>
+    <View style={{...styles.screen, ...styles.screenFormMod}}>
       <KeyboardAvoidingView style={styles.containerKeyboardAvoidingView}
-        keyboardShouldPersistTaps="always"
+                            keyboardShouldPersistTaps="always"
       >
         <Image
           source={require("../../../assets/DonorableHeartLogo.png")}
@@ -54,16 +53,16 @@ export default function RecoverScreen( {navigation} ) {
         <View style={styles.buttonContainer}>
           <FormButton
             styles={styles}
-            buttonStyle={{...styles.buttonTertiary, width:"40%"}}
+            buttonStyle={{...styles.buttonTertiary, width: "40%"}}
             width={"40%"}
             onPress={onBackPress}
-            label={"Back"} />
+            label={"Back"}/>
           <FormButton
             styles={styles}
-            buttonStyle={{...styles.buttonPrimary,width:"40%"}}
+            buttonStyle={{...styles.buttonPrimary, width: "40%"}}
             width={"40%"}
             onPress={onEnterPress}
-            label={"Enter"} />
+            label={"Enter"}/>
         </View>
 
 

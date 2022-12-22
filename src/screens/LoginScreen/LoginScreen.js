@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import {Image, KeyboardAvoidingView, Text, TouchableOpacity, View} from "react-native";
-import styles from "./styles";
+import {Image, KeyboardAvoidingView, Text, StyleSheet, View} from "react-native";
 import { firebase } from "../../firebase/config";
+import styleguide from "../../../styles/styleguide";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
 
 export default function LoginScreen({ navigation }) {
+
+  const styles = StyleSheet.create(styleguide);
   const [email, setEmail] = useState(""); // variable for email and password
   const [password, setPassword] = useState("");
 

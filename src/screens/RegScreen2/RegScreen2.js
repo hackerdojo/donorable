@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import styles from "./styles";
+import { Image, Text, StyleSheet, View } from "react-native";
+import styleguide from "../../../styles/styleguide";
 import { firebase } from "../../firebase/config";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
 
 export default function RegScreen2({ navigation }) {
+
+  const styles = StyleSheet.create(styleguide);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");

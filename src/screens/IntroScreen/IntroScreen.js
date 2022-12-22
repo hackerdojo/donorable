@@ -1,9 +1,11 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import styles from "./styles";
+import { Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
+import styleguide from "../../../styles/styleguide";
 
 export default function IntroScreen({ navigation }) {
+
+  const styles = StyleSheet.create(styleguide);
+
   /* Go to RegistrationScreen */
   const onRegPress = () => {
     navigation.navigate("Reg1");

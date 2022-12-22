@@ -9,7 +9,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+import styleguide from "../../../styles/styleguide";
 import styles from "./styles";
+
 //import { firebase } from "../../firebase/config";
 
 import data from './data';
@@ -86,7 +88,6 @@ export default function HomeScreen({ navigation }) {
   const handleSwipedLeft = () => {
     transitionRef.current.animateNextTransition();
     setIndex((index + 1) % data.length);
-//    navigation.navigate('Liked', { params: data[index].name });
   }
 
     /* Navigate to message screen*/
