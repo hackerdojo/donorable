@@ -17,6 +17,7 @@ import styles from "./styles";
 import data from './data';
 import Swiper from 'react-native-deck-swiper';
 import { Transitioning, Transition } from 'react-native-reanimated';
+import Logo from "../../components/Logo";
 
 
 /* new **************************/
@@ -97,14 +98,17 @@ export default function HomeScreen({ navigation }) {
 
  /**************************** */
 
-
   /* View for the Home Screen */
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.screen}>
 
       <StatusBar hidden={true} />
-
-
+      <View style={styles.screen}>
+      <Logo
+        source={require("../../../assets/DonorableHeartLogo.png")}
+        styles={styles}
+      />
+    </View>
       {/* Div Bar
       <Image style={styles.divTop} source={require("../../../assets/div-bar.png")}/>
  */}
@@ -220,11 +224,7 @@ export default function HomeScreen({ navigation }) {
           <Image source={require("../../../assets/message.png")} />
         </TouchableOpacity>
           {/* Donorable App Logo */}
-        <Image
-          style={styles.donorableTitle}
-          source={require("../../../assets/DonorableHeartLogo.png")}
-          resizeMode={"contain"}
-        />
+
       </View>
 
 
@@ -232,3 +232,4 @@ export default function HomeScreen({ navigation }) {
   </SafeAreaView>
 );
 }
+

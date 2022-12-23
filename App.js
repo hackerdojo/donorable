@@ -126,8 +126,9 @@ export default function App() {
       <Stack.Navigator>
         {user || true ? (
           <>
-            <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="Settings" component={SettingsScreen} />
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
+
             <Stack.Screen name="Home" options={{title:theme.APP_TITLE}}>
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>

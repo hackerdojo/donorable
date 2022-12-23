@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { Text, TouchableOpacity, View, Alert, Modal, TouchableHighlightBase } from "react-native";
+import { StyleSheet,Text, TouchableOpacity, View, Alert, Modal, TouchableHighlightBase } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { firebase } from "../../firebase/config";
-import styles from "./styles";
+import styleguide from "../../../styles/styleguide";
 
 import { FocusTrap } from "focus-trap-react";
+import Logo from "../../components/Logo";
+import HR from "../../components/HR";
+import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 
 export default function SettingsScreen({ navigation }) {
+
+  const styles = StyleSheet.create(styleguide);
 
   /* Click to finish changing settings and return home */
   const onDonePress = () => {
@@ -109,7 +114,7 @@ export default function SettingsScreen({ navigation }) {
     let credential = firebase.auth.EmailAuthProvider.credential(
       user.email,
       'key123'
-    ); 
+    );
     user.reauthenticateWithCredential(credential).then(() => {
       Alert.alert('authenticated')})
     .catch((error) => {
@@ -120,7 +125,7 @@ export default function SettingsScreen({ navigation }) {
     .then(() => {
       Alert.alert('success')
       .catch((error) => {
-        alert(error);   
+        alert(error);
       })
     });
   }
@@ -141,7 +146,7 @@ export default function SettingsScreen({ navigation }) {
 //        triggerText={this.props.triggerText}
 //       />
 //       {this.state.isShown ? (
-//        <Modal 
+//        <Modal
 //          onSubmit={this.props.onSubmit}
 //           modalRef={(n) => (this.modal = n)}
 //           buttonRef={(n) => (this.closeButton = n)}
@@ -194,7 +199,7 @@ export default function SettingsScreen({ navigation }) {
 // }
 
 
-  
+
 
 
 
@@ -208,7 +213,7 @@ export default function SettingsScreen({ navigation }) {
 //     let credential = firebase.auth.EmailAuthProvider.credential(
 //       user.email,
 //       'fake213'
-//     ); 
+//     );
 //     user.reauthenticateWithCredential(credential).then(function(){
 //       Alert.alert('authenticated')})
 //     .catch(function(error) {
@@ -225,16 +230,17 @@ export default function SettingsScreen({ navigation }) {
     /********************************************************************************* */
 
   return (
-    <View style={styles.container}>
-
-      <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
+    <View style={styles.screen}>
+      <Logo
+        source={require("../../../assets/DonorableHeartLogo.png")}
+        styles={styles}
+      />
+      <KeyboardAvoidingView
+        style={{  width: "100%" }}
         keyboardShouldPersistTaps="always"
       >
 
-        <Text style={styles.header}> Settings </Text>
-
-        <Text style={styles.bar}>_____________________________</Text>
+        <HR/>
 
         <View style={styles.textWrapper}>
           <Text style={styles.text}>Profile picture</Text>
@@ -247,7 +253,7 @@ export default function SettingsScreen({ navigation }) {
         <TouchableOpacity onPress={() => onPwPress()}>
           <Text style={styles.text}>Password</Text>
         </TouchableOpacity>
-          
+
           <Text style={styles.text}>Location</Text>
 
         <TouchableOpacity onPress={() => onKeyPresss()}>
@@ -265,7 +271,7 @@ export default function SettingsScreen({ navigation }) {
           <TouchableOpacity onPress={() => onDelPress()}>
             <Text style={styles.text}>Delete account</Text>
           </TouchableOpacity>
-          
+
 
           <TouchableOpacity onPress={() => onLogoutPress()}>
             <Text style={styles.text}>Logout</Text>
@@ -277,7 +283,7 @@ export default function SettingsScreen({ navigation }) {
           <Text style={styles.buttonTitle}>Done</Text>
         </TouchableOpacity>
 
-      </KeyboardAwareScrollView>
+      </KeyboardAvoidingView>
     </View>
   );
 }

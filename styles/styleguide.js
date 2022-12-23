@@ -186,4 +186,7 @@ export default {
     width: 50,
     height: 50
   },
+  divBar :{
+    width: "100%"
+  }
 }
