@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import {Image, FlatList, Text, TouchableOpacity, View, StyleSheet} from "react-native";
+import { Stack, HStack, VStack } from 'react-native-flex-layout';
 import styleguide from "../../../styles/styleguide";
+import theme from "../../../styles/theme.style";
 import {Circle} from "../../components/Circle";
 //import { firebase } from "../../firebase/config";
 
 import messagesdata from "./messasgesdata";
+import ImageMask from "../../components/ImageMask";
 
 
 export default function MessageScreen(props) {
@@ -35,18 +38,20 @@ export default function MessageScreen(props) {
               <TouchableOpacity
                 onPress={(message) => onCardPress(item.from)}
               >
-                <View style={styles.messageCard}>
+                <HStack style={styles.messageCard} spacing={25}>
                   <Circle
                     color={"blue"}
-                    radius={10}
+                    radius={7}
                     style={[styles.messageLight, styles.messageGap]}/>
-                  <Image
+                  <ImageMask
                     source={{uri: item.avatar}}
-                    style={[styles.messageImage, styles.messageGap]}
-                    resizeMode={"contain"}
+                    size={50}
+                    backgroundColor={"transparent"}
+                    borderColor={theme.PRIMARY_COLOR}
+                    radius = {5}
                   />
                 <Text style={[styles.messagePreview, styles.messageGap]}>{item.text}</Text>
-                </View>
+                </HStack>
               </TouchableOpacity>
               <Image style={styles.divBar} source={require("../../../assets/div-bar.png")}/>
             </View>

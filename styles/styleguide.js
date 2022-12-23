@@ -179,5 +179,11 @@ export default {
   },
   messagePreview: {
     flex:10,
-  }
+  },
+
+
+  avatarImage: {
+    width: 50,
+    height: 50
+  },
 }
