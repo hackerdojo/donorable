@@ -16,5 +16,6 @@ export default {
   BUTTON_FONT_LARGE: 26,
   BUTTON_RADIUS_LARGE: 15,
   FONT_FAMILY: "Montserrat_400Regular",
-  VIEW_PADDING: 40
+  VIEW_PADDING: 40,
+  APP_TITLE: "Donorable"
 };

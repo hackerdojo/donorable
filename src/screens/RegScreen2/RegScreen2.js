@@ -5,6 +5,7 @@ import { firebase } from "../../firebase/config";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
+import Logo from "../../components/Logo";
 
 export default function RegScreen2({ navigation }) {
 
@@ -56,10 +57,9 @@ export default function RegScreen2({ navigation }) {
         style={styles.containerKeyboardAvoidingView}
         keyboardShouldPersistTaps="always"
       >
-        <Image
+        <Logo
           source={require("../../../assets/DonorableHeartLogo.png")}
-          style={styles.fullWidth}
-          resizeMode={"contain"}
+          styles={styles}
         />
         <Text style={styles.textCentered}>Create an account</Text>
         <FormTextInput

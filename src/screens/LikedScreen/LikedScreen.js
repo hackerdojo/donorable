@@ -49,11 +49,7 @@ export default function LikedScreen({navigation, route}) {
     <View style={styles.screen}>
 
       <View style={styles.horizontalContainer}>
-        <Image
-          source={{uri: params.image}}
-          resizeMode={"contain"}
-          style={styles.square100}
-        />
+
         <View>
           <Text style={styles.textCenteredP2}>You liked</Text>
           <Text style={styles.textCenteredP2}>{params.name}</Text>

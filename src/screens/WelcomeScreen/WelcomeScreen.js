@@ -1,9 +1,13 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import styles from "./styles";
+import styleguide from "../../../styles/styleguide";
+import FormButton from "../../components/FormButton";
+import Logo from "../../components/Logo";
+
 
 export default function WelcomeScreen({ navigation }) {
+  const styles = StyleSheet.create(styleguide);
   /* Start walkthrough  */
   /*(needs to be implemented) */
   const onWalkPress = () => {
@@ -17,40 +21,39 @@ export default function WelcomeScreen({ navigation }) {
 
   /* View for the WelcomeScreen */
   return (
-    <View style={styles.container}>
+    <View style={styles.screen}>
       <KeyboardAwareScrollView
         style={{ flex: 1, width: "100%" }}
         keyboardShouldPersistTaps="always"
       >
+        <Logo
+          source={require("../../../assets/DonorableHeartLogo.png")}
+          styles={styles}
+        />
 
-        <View style={styles.hViewTop}>
-            <Text style={styles.header}>Welcome to</Text>
-            <Text style={styles.header}>Donorable!</Text>
+        <View>
+            <Text style={styles.textCenteredP2}>Welcome!</Text>
         </View>
 
-        <View style={styles.hViewBottom}>
-            <Text style={styles.header}>Meet people.</Text>
-            <Text style={styles.header}>Make a difference.</Text>
+        <View>
+            <Text style={styles.textCenteredP2}>Meet people.</Text>
+            <Text style={styles.textCenteredP2}>Make a difference.</Text>
         </View>
-
 
         <Image
           source={require("../../../assets/coffee.png")}
         />
 
-        <TouchableOpacity
-        style={styles.walkButton}
-        onPress={() => onWalkPress()}
-        >
-          <Text style={styles.buttonTitle}>Walkthrough</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-        style={styles.startButton} 
-        onPress={() => onStartPress()}
-        >
-          <Text style={styles.buttonTitle}>Start Swiping</Text>
-        </TouchableOpacity>
+        <FormButton onPress={onWalkPress}
+                    styles={styles}
+                    buttonStyle={styles.buttonPrimary}
+                    label={"Walkthrough"}
+        />
+        <FormButton onPress={onStartPress}
+                    styles={styles}
+                    buttonStyle={styles.buttonSecondary}
+                    label={"Start Browsing"}
+        />
       </KeyboardAwareScrollView>
     </View>
   );

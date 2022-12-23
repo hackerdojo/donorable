@@ -3,6 +3,8 @@ import React, { useEffect, useState , useCallback} from "react"; // react librar
 //import { firebase } from "./src/firebase/config"; // firebase configuration
 import { NavigationContainer } from "@react-navigation/native"; // react libraries for the navigation
 import { createStackNavigator } from "@react-navigation/stack";
+import theme from "./styles/theme.style"
+import {StyleSheet, Text, View} from 'react-native';
 
 import {
   IntroScreen,
@@ -21,8 +23,7 @@ import {
 
 
 import { decode, encode } from "base-64"; // for the decode and encode of the text
-import {StyleSheet, Text, View} from 'react-native';
-import theme from './styles/theme.style.js';
+
 
 /* Async loading Google Font */
 import  * as SplashScreen from "expo-splash-screen";
@@ -115,11 +116,9 @@ export default function App() {
   // allows app to transition between screens and manage navigation history
   const Stack = createStackNavigator();
 
-
   if (false && loading) {
     return ( <View style={styles.container} onLayout={onLayoutRootView}><Text style={styles.text} >Hello</Text></View>);
   }
-
 
   // Routes & Navigation of different screens
   return (
@@ -127,14 +126,15 @@ export default function App() {
       <Stack.Navigator>
         {user || true ? (
           <>
-            <Stack.Screen name="Messages" component={MessageScreen} />
-            <Stack.Screen name="Home" options={{title:"Donorable"}}>
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
+            <Stack.Screen name="Settings" component={SettingsScreen} />
+            <Stack.Screen name="Home" options={{title:theme.APP_TITLE}}>
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>
             <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}/>
-            <Stack.Screen name="Welcome" component={WelcomeScreen} />
-            <Stack.Screen name="Settings" component={SettingsScreen} />
 
+
+            <Stack.Screen name="Messages" component={MessageScreen} />
             <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={{title:"Quick Donate"}}/>
             <Stack.Screen name="Liked" component={LikedScreen} />
           </>

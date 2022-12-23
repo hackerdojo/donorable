@@ -5,6 +5,7 @@ import { firebase } from "../../firebase/config";
 import FormButton from "../../components/FormButton";
 import FormTextInput from "../../components/FormTextInput";
 import styleguide from "../../../styles/styleguide";
+import Logo from "../../components/Logo";
 
 export default function RecoverScreen( {navigation} ) {
   const styles = StyleSheet.create(styleguide)
@@ -36,12 +37,10 @@ export default function RecoverScreen( {navigation} ) {
       <KeyboardAvoidingView style={styles.containerKeyboardAvoidingView}
                             keyboardShouldPersistTaps="always"
       >
-        <Image
+        <Logo
           source={require("../../../assets/DonorableHeartLogo.png")}
-          style={styles.fullWidth}
-          resizeMode={"contain"}
+          styles={styles}
         />
-
         <Text style={styles.textCentered}>Enter email to recover password</Text>
 
         <FormTextInput

@@ -4,6 +4,7 @@ import { firebase } from "../../firebase/config";
 import styleguide from "../../../styles/styleguide";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
+import Logo from "../../components/Logo";
 
 export default function LoginScreen({ navigation }) {
 
@@ -59,26 +60,23 @@ export default function LoginScreen({ navigation }) {
         style={styles.containerKeyboardAvoidingView}
         keyboardShouldPersistTaps="always"
       >
-        <View>
-        <Image
-          source={require("../../../assets/DonorableHeartLogo.png")}
-          style={styles.fullWidth}
-          resizeMode="contain"
-        />
-        </View>
-          <FormTextInput
+        <Logo
+            source={require("../../../assets/DonorableHeartLogo.png")}
             styles={styles}
-            label={"Email"}
-            text={email}
-            onChangeText={setEmail}/>
-          <FormTextInput
-            styles={styles}
-            label={"Password"}
-            text={password}
-            onChangeText={setPassword}
-            secureTextEntry={true}
           />
 
+        <FormTextInput
+          styles={styles}
+          label={"Email"}
+          text={email}
+          onChangeText={setEmail}/>
+        <FormTextInput
+          styles={styles}
+          label={"Password"}
+          text={password}
+          onChangeText={setPassword}
+          secureTextEntry={true}
+        />
 
         <Text
           style={styles.textCentered}
