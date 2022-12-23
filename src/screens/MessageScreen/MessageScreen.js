@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import {Image, FlatList, Text, TouchableOpacity, View} from "react-native";
-import styles from "./styles";
+import {Image, FlatList, Text, TouchableOpacity, View, StyleSheet} from "react-native";
+import styleguide from "../../../styles/styleguide";
+import {Circle} from "../../components/Circle";
 //import { firebase } from "../../firebase/config";
 
 import messagesdata from "./messasgesdata";
 
+
 export default function MessageScreen(props) {
 
-
+  const styles = StyleSheet.create(styleguide);
   /* Return to swiping */
   const onBackPress = () => {
     props.navigation.goBack();
@@ -24,21 +26,27 @@ export default function MessageScreen(props) {
 
   /* View for the Message screen */
   return (
-    <View style={styles.container}>
+    <View style={[styles.screen, styles.messageScreen]}>
         <FlatList
           data = {messagesdata}
           keyExtractor={message => message.id}
           renderItem ={({item}) => (
-            <View key={item.id}>
-              <Image
-                source={{uri: item.avatar}}
-                style={styles.smallCard}
-                resizeMode={"contain"}
-              />
+            <View key={item.id} style={{width:"90%"}}>
               <TouchableOpacity
                 onPress={(message) => onCardPress(item.from)}
               >
-                <Text style={styles.msgPreview}>{item.text}</Text>
+                <View style={styles.messageCard}>
+                  <Circle
+                    color={"blue"}
+                    radius={10}
+                    style={[styles.messageLight, styles.messageGap]}/>
+                  <Image
+                    source={{uri: item.avatar}}
+                    style={[styles.messageImage, styles.messageGap]}
+                    resizeMode={"contain"}
+                  />
+                <Text style={[styles.messagePreview, styles.messageGap]}>{item.text}</Text>
+                </View>
               </TouchableOpacity>
               <Image style={styles.divBar} source={require("../../../assets/div-bar.png")}/>
             </View>

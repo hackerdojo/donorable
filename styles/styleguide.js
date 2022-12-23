@@ -2,7 +2,6 @@ import theme from "./theme.style";
 
 
 export default {
-
   screen: {
     flexDirection: "column",
     alignItems: "center",
@@ -27,10 +26,16 @@ export default {
     width:"100%"
   },
 
-  image100 : {
+  square100 : {
     width:100,
     height:100
   },
+
+  square75: {
+    width:75,
+    height:75
+  },
+
   fullWidth: {
     width: "100%",
   },
@@ -109,6 +114,7 @@ export default {
     alignItems: "center",
     width: "100%",
     justifyContent: "space-between",
+    gap: 20
   },
   horizontalButtonContainer: {
     flexDirection: "row",
@@ -149,5 +155,29 @@ export default {
     borderWidth: 2,
     alignItems: "center",
     justifyContent: "center",
-}
+},
+  messageScreen: {
+    paddingLeft: theme.VIEW_PADDING/2,
+    paddingRight:theme.VIEW_PADDING/2
+  },
+  messageCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    justifyContent: "flex-start",
+  },
+  messageGap: {
+    marginLeft:10
+  },
+  messageLight: {
+    flex:2
+  },
+  messageImage:{
+    flex:2,
+    width:75,
+    height:75
+  },
+  messagePreview: {
+    flex:10,
+  }
 }

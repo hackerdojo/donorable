@@ -30,7 +30,7 @@ export default function QuickDonateScreen({navigation, route}) {
           <Image
             source={{ uri:params.image }}
             resizeMode={"contain"}
-            style={styles.image100}
+            style={styles.square100}
           />
           <View>
             <Text style={styles.textCenteredP2}>How much would</Text>
