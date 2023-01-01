@@ -127,11 +127,11 @@ export default function App() {
         {user || true ? (
           <>
 
-            <Stack.Screen name="Welcome" component={WelcomeScreen} />
-
             <Stack.Screen name="Home" options={{title:theme.APP_TITLE}}>
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>
+
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={{title:"Quick Donate"}}/>
             <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}/>
             <Stack.Screen name="Settings" component={SettingsScreen} />

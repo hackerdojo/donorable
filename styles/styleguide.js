@@ -36,8 +36,21 @@ export default {
     height:75
   },
 
+  square25: {
+    width:25,
+    height:25
+  },
+
+  defaultBackgroundColor: {
+    backgroundColor: theme.PRIMARY_COLOR
+  },
+
   fullWidth: {
     width: "100%",
+  },
+
+  spaceBetween: {
+    justifyContent:"space-between"
   },
 
   button : {
@@ -82,6 +95,18 @@ export default {
 
   buttonTitleSizeMedium: {
     fontSize: theme.BUTTON_FONT_MEDIUM,
+  },
+
+  text : {
+    fontFamily: theme.FONT_FAMILY,
+    textAlign:"center",
+    color: theme.BUTTON_TITLE_COLOR,
+    fontSize: 50,
+  },
+  description: {
+    fontFamily: theme.FONT_FAMILY,
+    fontSize: 15,
+    fontWeight: '500',
   },
 
   textCentered: {

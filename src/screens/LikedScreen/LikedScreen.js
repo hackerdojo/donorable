@@ -65,7 +65,7 @@ export default function LikedScreen({navigation, route}) {
         </View>
       </View>
       <View>
-        <Text style={styles.textCenteredP2}>Now do you want to...</Text>
+        <Text style={styles.textCenteredP2}>Now, would you like to...</Text>
       </View>
 
       <FormButton

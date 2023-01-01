@@ -1,11 +1,13 @@
 const React = require("react");
 const {Image} = require("react-native");
 
-export default function Logo({source,styles}) {
+export default function Logo({source, width = "100%"}) {
+
+
   return (
       <Image
         source={source}
-        style={styles.fullWidth}
+        style={{width: width}}
         resizeMode={"contain"}
       />
   )

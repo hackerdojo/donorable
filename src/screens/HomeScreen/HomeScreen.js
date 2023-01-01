@@ -7,9 +7,11 @@ import {
   SafeAreaView,
   Dimensions,
   TouchableOpacity,
+  StyleSheet
 } from "react-native";
 
-import styleguide from "../../../styles/styleguide";
+//import styleguide from "../../../styles/styleguide";
+//const styles = StyleSheet.create(styleguide);
 import styles from "./styles";
 
 //import { firebase } from "../../firebase/config";
@@ -18,6 +20,7 @@ import data from './data';
 import Swiper from 'react-native-deck-swiper';
 import { Transitioning, Transition } from 'react-native-reanimated';
 import Logo from "../../components/Logo";
+import HR from "../../components/HR";
 
 
 /* new **************************/
@@ -58,6 +61,7 @@ const Card = ({ card }) => {
     </View>
   );
 };
+
 const CardDetails = ({ index }) => (
   <View key={data[index].id} style={{ alignItems: 'center' }}>
     <Text style={[styles.text, styles.heading]} numberOfLines={2}>
@@ -71,7 +75,6 @@ const CardDetails = ({ index }) => (
 
 
 export default function HomeScreen({ navigation }) {
-
 
   /* Navigate to settings screen */
   const onSettingsPress = () => {
@@ -100,18 +103,39 @@ export default function HomeScreen({ navigation }) {
 
   /* View for the Home Screen */
   return (
-    <SafeAreaView style={styles.screen}>
+    <SafeAreaView style={[styles.screen,styles.defaultBackgroundColor]}>
 
-      <StatusBar hidden={true} />
-      <View style={styles.screen}>
-      <Logo
-        source={require("../../../assets/DonorableHeartLogo.png")}
-        styles={styles}
-      />
-    </View>
-      {/* Div Bar
-      <Image style={styles.divTop} source={require("../../../assets/div-bar.png")}/>
- */}
+      <StatusBar hidden={false} />
+      <View style={[
+        styles.screen,
+        styles.mainAreaForm,
+        {flex:0.5, backgroundColor:"white"}]}>
+        <View style={[
+          styles.horizontalButtonContainer,
+          styles.fullWidth,
+          styles.spaceBetween,
+          { flex: 1}
+          ]}>
+          <TouchableOpacity
+            style={styles.settingsIcon} onPress={onSettingsPress}>
+            <Image
+              source={require("../../../assets/settings-icon.png")}
+              style={styles.square25}
+            />
+          </TouchableOpacity>
+          {/* Message Icon on Press */}
+          <Logo
+            source={require("../../../assets/DonorableHeartLogo.png")}
+            width={"60%"}
+            />
+          <TouchableOpacity
+            style={styles.messageIcon} onPress={onMessagePress}>
+            <Image source={require("../../../assets/message.png")}
+                   style={styles.square25}/>
+          </TouchableOpacity>
+        </View>
+      </View>
+
       <View style={styles.swiperContainer}>
         {/* Profile Card Swiper */}
         <Swiper
@@ -139,7 +163,7 @@ export default function HomeScreen({ navigation }) {
               label: {
                 backgroundColor: "red",
                 borderColor: "red",
-                color: "red",
+                color: "white",
                 borderWidth: 1,
                 fontSize: 24
               },
@@ -158,7 +182,7 @@ export default function HomeScreen({ navigation }) {
               label: {
                 backgroundColor: "blue",
                 borderColor: "blue",
-                color: "blue",
+                color: "white",
                 borderWidth: 1,
                 fontSize: 24
               },
@@ -176,18 +200,18 @@ export default function HomeScreen({ navigation }) {
     </View>
 
     {/* Bottom Container Main */}
-    <View style={styles.bottomContainer}>
+    <View style={styles.descriptionContainer}>
       {/* Card Details or Description */}
       <Transitioning.View
         ref={transitionRef}
         transition={transition}
         style={styles.bottomContainerMeta}
       >
-      <CardDetails index={index} />
+        <CardDetails index={index} />
       </Transitioning.View>
 
-      {/* Div Bar */}
-      <Image style={styles.divBar} source={require("../../../assets/div-bar.png")}/>
+    </View>
+
 
       {/* Bottom Container Buttons */}
       <View style={styles.bottomContainerButtons}>
@@ -211,24 +235,8 @@ export default function HomeScreen({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      {/* Header Icon & Image */}
-      <View style={styles.header}>
-        {/* Setting Icon Press */}
-        <TouchableOpacity
-          style={styles.settingsIcon} onPress={onSettingsPress}>
-          <Image source={require("../../../assets/settings-icon.png")} />
-        </TouchableOpacity>
-          {/* Message Icon on Press */}
-        <TouchableOpacity
-          style={styles.messageIcon} onPress={onMessagePress}>
-          <Image source={require("../../../assets/message.png")} />
-        </TouchableOpacity>
-          {/* Donorable App Logo */}
-
-      </View>
 
 
-    </View>
   </SafeAreaView>
 );
 }
