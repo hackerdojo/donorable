@@ -89,14 +89,12 @@ export default function RegScreen2({ navigation }) {
             styles={styles}
             buttonStyle={"tertiary"}
             width={"45%"}
-            size={"medium"}
             onPress={onBackPress}
             label={"Back"} />
           <FormButton
             styles={styles}
             buttonStyle={"primary"}
             width={"45%"}
-            size={"medium"}
             onPress={onRegisterPress}
             label={"Register"} />
         </View>

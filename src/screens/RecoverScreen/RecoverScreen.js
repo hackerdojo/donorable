@@ -55,14 +55,12 @@ export default function RecoverScreen( {navigation} ) {
             styles={styles}
             buttonStyle={"tertiary"}
             width={"40%"}
-            size={"medium"}
             onPress={onBackPress}
             label={"Back"}/>
           <FormButton
             styles={styles}
             buttonStyle={"primary"}
             width={"40%"}
-            size={"medium"}
             onPress={onEnterPress}
             label={"Enter"}/>
         </View>

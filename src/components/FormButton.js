@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View} from "react-native";
 
 
 export default function FormButton (
-  { onPress, label, styles, buttonStyle, width = "100%", size="large"}
+  { onPress, label, styles, buttonStyle = "primary", width = "100%", size="medium"}
 ) {
 
   let styleName = buttonStyle.toLowerCase();

@@ -82,7 +82,6 @@ export default function LoginScreen({ navigation }) {
           styles={styles}
           buttonStyle={"ghost"}
           onPress={onRecoverPress}
-          size={"medium"}
           label={"Forgot Password"}
         />
 
@@ -93,12 +92,10 @@ export default function LoginScreen({ navigation }) {
             width="40%"
             buttonStyle={"tertiary"}
             onPress={onBackPress}
-            size={"medium"}
             label={"Back"} />
           <FormButton
             styles={styles}
             width="40%"
-            size={"medium"}
             buttonStyle={"primary"}
             onPress={onLoginPress}
             label={"Login"} />

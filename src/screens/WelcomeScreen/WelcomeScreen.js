@@ -46,12 +46,12 @@ export default function WelcomeScreen({ navigation }) {
 
         <FormButton onPress={onWalkPress}
                     styles={styles}
-                    buttonStyle={styles.buttonPrimary}
+                    buttonStyle={"Primary"}
                     label={"Walkthrough"}
         />
         <FormButton onPress={onStartPress}
                     styles={styles}
-                    buttonStyle={styles.buttonSecondary}
+                    buttonStyle={"Secondary"}
                     label={"Start Browsing"}
         />
       </KeyboardAwareScrollView>
