@@ -3,6 +3,8 @@ import {Text, View, Image, StyleSheet} from "react-native";
 import heart from "../../../assets/heart.png";
 import FormButton from "../../components/FormButton";
 import styleguide from "../../../styles/styleguide";
+import theme from "../../../styles/theme.style";
+import ImageMask from "../../components/ImageMask";
 
 export default function LikedScreen({navigation, route}) {
 
@@ -46,10 +48,17 @@ export default function LikedScreen({navigation, route}) {
 
   /* View for the KeywordScreen */
   return (
-    <View style={styles.screen}>
+    <View style={[styles.screen,styles.screenFormMod]}>
 
       <View style={styles.horizontalContainer}>
-
+        <ImageMask
+          source={{uri:params.image}}
+          borderColor={theme.PRIMARY_COLOR}
+          size={100}
+          radius={5}
+          borderWidth={3}
+          backgroundColor={"transparent"}
+        />
         <View>
           <Text style={styles.textCenteredP2}>You liked</Text>
           <Text style={styles.textCenteredP2}>{params.name}</Text>
@@ -61,32 +70,31 @@ export default function LikedScreen({navigation, route}) {
 
       <FormButton
         styles={styles}
-        buttonStyle={styles.buttonPrimary}
-        width={"40%"}
+        buttonStyle={"Primary"}
         onPress={onHeartPress}
         label={"Save to favorites 🤍"}/>
 
       <FormButton
         styles={styles}
-        buttonStyle={styles.buttonSecondary}
+        buttonStyle={"Secondary"}
         onPress={onLearnPress}
         label={"Learn more"}/>
 
       <FormButton
         styles={styles}
-        buttonStyle={styles.buttonPrimary}
+        buttonStyle={"Primary"}
         onPress={onChatPress}
         label={"Schedule a live chat"}/>
 
       <FormButton
         styles={styles}
-        buttonStyle={styles.buttonSecondary}
+        buttonStyle={"Secondary"}
         onPress={() => onDonatePress(params)}
         label={"Donate now"}/>
 
       <FormButton
         styles={styles}
-        buttonStyle={styles.buttonPrimary}
+        buttonStyle={"Primary"}
         onPress={onSwipePress}
         label={"Keep swiping"}/>
 

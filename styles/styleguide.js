@@ -45,7 +45,7 @@ export default {
     borderRadius: theme.BUTTON_RADIUS_LARGE,
     alignItems: "center",
     justifyContent: "center",
-    marginTop:20
+    marginTop:15
   },
 
   buttonPrimary : {

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import {Image, FlatList, Text, TouchableOpacity, View, StyleSheet} from "react-native";
-import { Stack, HStack, VStack } from 'react-native-flex-layout';
+import {FlatList, Text, TouchableOpacity, View, StyleSheet} from "react-native";
+import {HStack} from 'react-native-flex-layout';
 import styleguide from "../../../styles/styleguide";
 import theme from "../../../styles/theme.style";
 import {Circle} from "../../components/Circle";
 //import { firebase } from "../../firebase/config";
-
-import messagesdata from "./messasgesdata";
 import ImageMask from "../../components/ImageMask";
 import HR from "../../components/HR";
+
+import messagesdata from "./messasgesdata";
 
 
 export default function MessageScreen(props) {
