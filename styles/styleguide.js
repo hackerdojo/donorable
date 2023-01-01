@@ -162,7 +162,7 @@ export default {
     justifyContent: "center",
 },
   messageScreen: {
-    paddingLeft: theme.VIEW_PADDING/2,
+    paddingLeft: theme.VIEW_PADDING/2 ,
     paddingRight:theme.VIEW_PADDING/2
   },
   messageCard: {
@@ -184,13 +184,12 @@ export default {
   },
   messagePreview: {
     flex:10,
+    width:"100%"
   },
 
   avatarImage: {
     width: 50,
     height: 50
   },
-  divBar :{
-    width: "100%"
-  }
+
 }

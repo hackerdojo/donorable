@@ -8,6 +8,7 @@ import {Circle} from "../../components/Circle";
 
 import messagesdata from "./messasgesdata";
 import ImageMask from "../../components/ImageMask";
+import HR from "../../components/HR";
 
 
 export default function MessageScreen(props) {
@@ -31,10 +32,11 @@ export default function MessageScreen(props) {
   return (
     <View style={[styles.screen, styles.messageScreen]}>
         <FlatList
+          style={styles.fullWidth}
           data = {messagesdata}
           keyExtractor={message => message.id}
           renderItem ={({item}) => (
-            <View key={item.id} style={{width:"90%"}}>
+            <View key={item.id} style={styles.fullWidth}>
               <TouchableOpacity
                 onPress={(message) => onCardPress(item.from)}
               >
@@ -53,7 +55,8 @@ export default function MessageScreen(props) {
                   <Text style={[styles.messagePreview, styles.messageGap]}>{item.text}</Text>
                 </HStack>
               </TouchableOpacity>
-              <Image style={styles.divBar} source={require("../../../assets/div-bar.png")}/>
+              <HR/>
+
             </View>
           )
           }
