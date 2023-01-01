@@ -37,6 +37,7 @@ export default StyleSheet.create({...styleguide,
         flex: 1,
         resizeMode: 'contain'
       },
+
       card: {
         flex: 0.45,
         borderRadius: 8,
@@ -55,33 +56,8 @@ export default StyleSheet.create({...styleguide,
         color: 'white',
         backgroundColor: 'transparent'
       },
-      heading: {
+
+      name: {
         fontSize: 24,
-        color: "white",
-      },
-
-
-      xundoButton: {
-        top: 15,
-        left: 55,
-      },
-      xmapButton: {
-        left: 117,
-      },
-
-      xdislikeButton: {
-        top: 88,
-        right: 115,
-      },
-
-      xlikeButton: {
-        top: 90,
-        right: 70,
-      },
-      xdivTop: {
-        top: 100,
-        left: 10,
-        marginTop: 10,
-        marginBottom: 15,
-      },
+      }
 });

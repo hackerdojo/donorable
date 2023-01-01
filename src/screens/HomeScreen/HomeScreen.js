@@ -64,7 +64,7 @@ const Card = ({ card }) => {
 
 const CardDetails = ({ index }) => (
   <View key={data[index].id} style={{ alignItems: 'center' }}>
-    <Text style={[styles.text, styles.heading]} numberOfLines={2}>
+    <Text style={[styles.text, styles.name]} numberOfLines={2}>
       {data[index].name}
     </Text>
     <Text style={[styles.text, styles.description]}>{data[index].description}</Text>

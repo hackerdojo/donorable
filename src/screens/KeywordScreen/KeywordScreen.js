@@ -39,7 +39,7 @@ export default function KeywordScreen({ navigation, route}) {
   return (
     <View style={[styles.screen,styles.screenFormMod]}>
       <KeyboardAvoidingView
-        style={styles.containerKeyboardAvoidingView}
+        style={styles.mainAreaForm}
         keyboardShouldPersistTaps="always"
       >
 
@@ -70,7 +70,7 @@ export default function KeywordScreen({ navigation, route}) {
 
         <FormButton
           styles={styles}
-          buttonStyle={styles.buttonSecondary}
+          buttonStyle={"Secondary"}
           label={"Search"}
           onPress={onDonePress}
           />
