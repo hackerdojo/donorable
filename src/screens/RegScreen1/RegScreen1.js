@@ -30,13 +30,13 @@ export default function RegScreen1({ navigation }) {
       <FormButton
         label={"Donor"}
         styles={styles}
-        buttonStyle={styles.buttonPrimary}
+        buttonStyle={"primary"}
         onPress={onDonorPress}
       />
       <FormButton
         label={"Non-Profit"}
         styles={styles}
-        buttonStyle={styles.buttonSecondary}
+        buttonStyle={"secondary"}
         onPress={onNonProfitPress}
       />
       <Text/>

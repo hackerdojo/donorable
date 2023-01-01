@@ -4,6 +4,7 @@ import theme from "./theme.style";
 export default {
   screen: {
     flexDirection: "column",
+    flex: 1,
     alignItems: "center",
     height: "100%",
     justifyContent: "space-evenly",
@@ -15,14 +16,13 @@ export default {
 
   screenFormMod: {
     alignItems:"left",
-    justifyContent:"flex-start",
     height:"100%",
   },
 
-  containerKeyboardAvoidingView: {
+  mainAreaForm: {
+    flex: 1,
     flexDirection:"column",
-    justifyContent:"space-around" ,
-    height:"75%",
+    justifyContent:"flex-start",
     width:"100%"
   },
 
@@ -40,18 +40,9 @@ export default {
     width: "100%",
   },
 
-  button :{
-    backgroundColor: theme.PRIMARY_COLOR,
-    width: "100%",
-    height: theme.BUTTON_HEIGHT_LARGE,
-    borderRadius: theme.BUTTON_RADIUS_LARGE,
-    alignItems: "center",
-    justifyContent: "center",
-  },
 
   buttonPrimary : {
     backgroundColor: theme.PRIMARY_COLOR,
-    width: "100%",
     height: theme.BUTTON_HEIGHT_LARGE,
     borderRadius: theme.BUTTON_RADIUS_LARGE,
     alignItems: "center",
@@ -60,7 +51,6 @@ export default {
 
   buttonSecondary: {
     backgroundColor: theme.SECONDARY_COLOR,
-    width: "100%",
     height: theme.BUTTON_HEIGHT_LARGE,
     borderRadius: theme.BUTTON_RADIUS_LARGE,
     alignItems: "center",
@@ -69,7 +59,14 @@ export default {
 
   buttonTertiary: {
     backgroundColor: theme.TERTIARY_COLOR,
-    width: "100%",
+    height: theme.BUTTON_HEIGHT_LARGE,
+    borderRadius: theme.BUTTON_RADIUS_LARGE,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  buttonGhost: {
+    backgroundColor: "transparent",
     height: theme.BUTTON_HEIGHT_LARGE,
     borderRadius: theme.BUTTON_RADIUS_LARGE,
     alignItems: "center",
@@ -80,6 +77,20 @@ export default {
     fontFamily: theme.FONT_FAMILY,
     color: theme.BUTTON_TITLE_COLOR,
     fontSize: theme.BUTTON_FONT_LARGE,
+  },
+
+  buttonTitleGhost: {
+    fontFamily: theme.FONT_FAMILY,
+    color: theme.PRIMARY_COLOR,
+    fontSize: theme.BUTTON_FONT_LARGE,
+  },
+
+  buttonSizeMedium: {
+    height: theme.BUTTON_HEIGHT_MEDIUM,
+  },
+
+  buttonTitleSizeMedium: {
+    fontSize: theme.BUTTON_FONT_MEDIUM,
   },
 
   textCentered: {
@@ -95,7 +106,9 @@ export default {
   inputLabel: {
     fontFamily: theme.FONT_FAMILY,
     color: theme.TEXT_COLOR,
-    fontSize: 26,
+    fontSize: 20,
+    paddingTop:20
+
   },
   inputContainer: {
     borderWidth: 1,
@@ -104,10 +117,12 @@ export default {
   },
   input: {
     fontFamily: theme.FONT_FAMILY,
-    fontSize: 26,
-    height: 40,
+    fontSize: 20,
+    height: 30,
+    paddingLeft:5,
     overflow: "hidden",
     backgroundColor: "white",
+    width: "100%",
   },
   horizontalContainer: {
     flexDirection: "row",
@@ -180,7 +195,6 @@ export default {
   messagePreview: {
     flex:10,
   },
-
 
   avatarImage: {
     width: 50,

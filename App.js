@@ -124,7 +124,7 @@ export default function App() {
   return (
     <NavigationContainer onReady={onLayoutRootView}>
       <Stack.Navigator>
-        {user || true ? (
+        {user || false ? (
           <>
             <Stack.Screen name="Settings" component={SettingsScreen} />
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
@@ -141,6 +141,7 @@ export default function App() {
           </>
         ) : (
           <>
+
             <Stack.Screen name="Intro" component={IntroScreen} options={{title:"Donorable"}}/>
             <Stack.Screen name="Login" component={LoginScreen}  />
             <Stack.Screen name="Recover" component={RecoverScreen}  options={{title:"Recover Password"}}/>

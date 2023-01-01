@@ -31,13 +31,13 @@ export default function IntroScreen({ navigation }) {
       <FormButton
         label={"Login"}
         styles={styles}
-        buttonStyle={styles.buttonPrimary}
+        buttonStyle={"primary"}
         onPress={onLoginPress}
       />
       <FormButton
         label={"Register"}
         styles={styles}
-        buttonStyle={styles.buttonSecondary}
+        buttonStyle={"secondary"}
         onPress={onRegPress}
       />
       <Text> </Text>

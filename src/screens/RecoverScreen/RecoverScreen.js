@@ -34,13 +34,14 @@ export default function RecoverScreen( {navigation} ) {
   /* View for the Recover screen */
   return (
     <View style={[styles.screen, styles.screenFormMod]}>
-      <KeyboardAvoidingView style={styles.containerKeyboardAvoidingView}
+      <Logo
+        source={require("../../../assets/DonorableHeartLogo.png")}
+        styles={styles}
+      />
+
+      <KeyboardAvoidingView style={styles.mainAreaForm}
                             keyboardShouldPersistTaps="always"
       >
-        <Logo
-          source={require("../../../assets/DonorableHeartLogo.png")}
-          styles={styles}
-        />
         <Text style={styles.textCentered}>Enter email to recover password</Text>
 
         <FormTextInput
@@ -48,18 +49,20 @@ export default function RecoverScreen( {navigation} ) {
           label={"Email"}
           text={email}
           onChangeText={setEmail}/>
-
+        <Text/>
         <View style={styles.buttonContainer}>
           <FormButton
             styles={styles}
-            buttonStyle={{...styles.buttonTertiary, width: "40%"}}
+            buttonStyle={"tertiary"}
             width={"40%"}
+            size={"medium"}
             onPress={onBackPress}
             label={"Back"}/>
           <FormButton
             styles={styles}
-            buttonStyle={{...styles.buttonPrimary, width: "40%"}}
+            buttonStyle={"primary"}
             width={"40%"}
+            size={"medium"}
             onPress={onEnterPress}
             label={"Enter"}/>
         </View>

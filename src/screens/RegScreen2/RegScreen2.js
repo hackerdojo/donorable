@@ -6,6 +6,7 @@ import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/Key
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
 import Logo from "../../components/Logo";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 export default function RegScreen2({ navigation }) {
 
@@ -52,15 +53,16 @@ export default function RegScreen2({ navigation }) {
 
   /* View for the registration screen */
   return (
-    <View style={{...styles.screen, ...styles.screenFormMod}}>
-      <KeyboardAvoidingView
-        style={styles.containerKeyboardAvoidingView}
+    <View style={styles.screen}>
+      <Logo
+        source={require("../../../assets/DonorableHeartLogo.png")}
+        styles={styles}
+      />
+      <KeyboardAwareScrollView
+        style={{width:"100%"}}
         keyboardShouldPersistTaps="always"
       >
-        <Logo
-          source={require("../../../assets/DonorableHeartLogo.png")}
-          styles={styles}
-        />
+
         <Text style={styles.textCentered}>Create an account</Text>
         <FormTextInput
           styles={styles}
@@ -81,22 +83,25 @@ export default function RegScreen2({ navigation }) {
           onChangeText={setConfirmPassword}
           secureTextEntry={true}
         />
+        <Text/>
         <View style={styles.buttonContainer}>
           <FormButton
             styles={styles}
-            buttonStyle={{...styles.buttonTertiary, width:"40%"}}
-            width={"40%"}
+            buttonStyle={"tertiary"}
+            width={"45%"}
+            size={"medium"}
             onPress={onBackPress}
             label={"Back"} />
           <FormButton
             styles={styles}
-            buttonStyle={{...styles.buttonPrimary,width:"40%"}}
-            width={"40%"}
+            buttonStyle={"primary"}
+            width={"45%"}
+            size={"medium"}
             onPress={onRegisterPress}
             label={"Register"} />
         </View>
 
-      </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
     </View>
   );
 }

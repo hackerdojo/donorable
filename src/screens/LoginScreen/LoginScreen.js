@@ -56,15 +56,15 @@ export default function LoginScreen({ navigation }) {
   /* View for the Login screen */
   return (
     <View style={[styles.screen, styles.screenFormMod]}>
+      <Logo
+        source={require("../../../assets/DonorableHeartLogo.png")}
+        styles={styles}
+      />
+
       <KeyboardAvoidingView
-        style={styles.containerKeyboardAvoidingView}
+        style={styles.mainAreaForm}
         keyboardShouldPersistTaps="always"
       >
-        <Logo
-            source={require("../../../assets/DonorableHeartLogo.png")}
-            styles={styles}
-          />
-
         <FormTextInput
           styles={styles}
           label={"Email"}
@@ -78,21 +78,28 @@ export default function LoginScreen({ navigation }) {
           secureTextEntry={true}
         />
 
-        <Text
-          style={styles.textCentered}
-          onPress={onRecoverPress}>
-          {"Forgot Password"}</Text>
+        <FormButton
+          styles={styles}
+          buttonStyle={"ghost"}
+          onPress={onRecoverPress}
+          size={"medium"}
+          label={"Forgot Password"}
+        />
 
 
         <View style={styles.buttonContainer}>
           <FormButton
             styles={styles}
-            buttonStyle={{...styles.buttonTertiary, width:"40%"}}
+            width="40%"
+            buttonStyle={"tertiary"}
             onPress={onBackPress}
+            size={"medium"}
             label={"Back"} />
           <FormButton
             styles={styles}
-            buttonStyle={{...styles.buttonPrimary,width:"40%"}}
+            width="40%"
+            size={"medium"}
+            buttonStyle={"primary"}
             onPress={onLoginPress}
             label={"Login"} />
         </View>

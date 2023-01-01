@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet,Text, TouchableOpacity, View, Alert, Modal, TouchableHighlightBase } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {StyleSheet, Text, KeyboardAvoidingView, View, Alert, ScrollView} from "react-native";
 import { firebase } from "../../firebase/config";
 import styleguide from "../../../styles/styleguide";
 
-import { FocusTrap } from "focus-trap-react";
 import Logo from "../../components/Logo";
-import HR from "../../components/HR";
-import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
+import FormTextInput from "../../components/FormTextInput";
+import FormButton from "../../components/FormButton";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 export default function SettingsScreen({ navigation }) {
 
@@ -235,55 +234,52 @@ export default function SettingsScreen({ navigation }) {
         source={require("../../../assets/DonorableHeartLogo.png")}
         styles={styles}
       />
-      <KeyboardAvoidingView
-        style={{  width: "100%" }}
-        keyboardShouldPersistTaps="always"
-      >
 
-        <HR/>
+      <KeyboardAwareScrollView
+       style={{width: "100%"}}>
 
-        <View style={styles.textWrapper}>
-          <Text style={styles.text}>Profile picture</Text>
-          <Text style={styles.text}>Phone number</Text>
+        <FormTextInput
+          label={"Email"}
+          styles={styles}
+        />
 
-        <TouchableOpacity onPress={() => onEmPress()}>
-          <Text style={styles.text}>Email</Text>
-        </TouchableOpacity>
+        <FormTextInput
+          label={"Phone Number"}
+          styles={styles}
+        />
 
-        <TouchableOpacity onPress={() => onPwPress()}>
-          <Text style={styles.text}>Password</Text>
-        </TouchableOpacity>
+        <FormTextInput
+          secureTextEntry={true}
+          label={"Password"}
+          styles={styles}
+        />
+        <FormTextInput
+          label={"Location"}
+          styles={styles}
+        />
+        <FormTextInput
+          label={"Keywords"}
+          styles={styles}
+        />
 
-          <Text style={styles.text}>Location</Text>
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          label={"Go Anonymous"}/>
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          label={"Notifications"}/>
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          label={"Delete Account"}/>
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          label={"Logout"}/>
 
-        <TouchableOpacity onPress={() => onKeyPresss()}>
-          <Text style={styles.text}>Keywords</Text>
-        </TouchableOpacity>
-
-        </View>
-
-        <Text style={styles.bar}>_____________________________</Text>
-
-        <View style={styles.textWrapper}>
-          <Text style={styles.text}>Go anonymous</Text>
-          <Text style={styles.text}>Notifications</Text>
-
-          <TouchableOpacity onPress={() => onDelPress()}>
-            <Text style={styles.text}>Delete account</Text>
-          </TouchableOpacity>
-
-
-          <TouchableOpacity onPress={() => onLogoutPress()}>
-            <Text style={styles.text}>Logout</Text>
-          </TouchableOpacity>
-
-        </View>
-
-        <TouchableOpacity style={styles.button} onPress={() => onDonePress()}>
-          <Text style={styles.buttonTitle}>Done</Text>
-        </TouchableOpacity>
-
-      </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
     </View>
   );
 }
