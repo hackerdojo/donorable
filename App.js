@@ -134,7 +134,6 @@ export default function App() {
             </Stack.Screen>
             <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}/>
 
-
             <Stack.Screen name="Messages" component={MessageScreen} />
             <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={{title:"Quick Donate"}}/>
             <Stack.Screen name="Liked" component={LikedScreen} />

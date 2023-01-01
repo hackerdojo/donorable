@@ -40,37 +40,28 @@ export default {
     width: "100%",
   },
 
-
-  buttonPrimary : {
-    backgroundColor: theme.PRIMARY_COLOR,
+  button : {
     height: theme.BUTTON_HEIGHT_LARGE,
     borderRadius: theme.BUTTON_RADIUS_LARGE,
     alignItems: "center",
     justifyContent: "center",
+    marginTop:20
+  },
+
+  buttonPrimary : {
+    backgroundColor: theme.PRIMARY_COLOR,
   },
 
   buttonSecondary: {
     backgroundColor: theme.SECONDARY_COLOR,
-    height: theme.BUTTON_HEIGHT_LARGE,
-    borderRadius: theme.BUTTON_RADIUS_LARGE,
-    alignItems: "center",
-    justifyContent: "center",
   },
 
   buttonTertiary: {
     backgroundColor: theme.TERTIARY_COLOR,
-    height: theme.BUTTON_HEIGHT_LARGE,
-    borderRadius: theme.BUTTON_RADIUS_LARGE,
-    alignItems: "center",
-    justifyContent: "center",
   },
 
   buttonGhost: {
     backgroundColor: "transparent",
-    height: theme.BUTTON_HEIGHT_LARGE,
-    borderRadius: theme.BUTTON_RADIUS_LARGE,
-    alignItems: "center",
-    justifyContent: "center",
   },
 
   buttonTitle: {
@@ -108,7 +99,6 @@ export default {
     color: theme.TEXT_COLOR,
     fontSize: 20,
     paddingTop:20
-
   },
   inputContainer: {
     borderWidth: 1,

@@ -41,6 +41,7 @@ export default function RegScreen1({ navigation }) {
       />
       <Text/>
       <Text/>
+      <Text/>
 
     </View>
   );

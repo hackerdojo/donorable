@@ -15,6 +15,7 @@ export default function FormButton (
   return (
       <TouchableOpacity
         style={[
+          styles.button,
           styles["button" + styleName],
           {width:width},
           styles["buttonSize" + sizeName]

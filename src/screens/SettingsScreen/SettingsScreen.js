@@ -265,20 +265,26 @@ export default function SettingsScreen({ navigation }) {
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
+          size={"medium"}
           label={"Go Anonymous"}/>
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
+          size={"medium"}
           label={"Notifications"}/>
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
+          size={"medium"}
           label={"Delete Account"}/>
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
+          size={"medium"}
           label={"Logout"}/>
 
+        <Text/>
+        <Text/>
       </KeyboardAwareScrollView>
     </View>
   );

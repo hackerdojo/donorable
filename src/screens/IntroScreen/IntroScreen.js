@@ -40,8 +40,9 @@ export default function IntroScreen({ navigation }) {
         buttonStyle={"secondary"}
         onPress={onRegPress}
       />
-      <Text> </Text>
-      <Text> </Text>
+      <Text/>
+      <Text/>
+      <Text/>
     </View>
   );
 }
