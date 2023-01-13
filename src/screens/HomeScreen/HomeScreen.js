@@ -10,8 +10,7 @@ import {
   StyleSheet
 } from "react-native";
 
-//import styleguide from "../../../styles/styleguide";
-//const styles = StyleSheet.create(styleguide);
+
 import styles from "./styles";
 
 //import { firebase } from "../../firebase/config";
@@ -20,7 +19,6 @@ import data from './data';
 import Swiper from 'react-native-deck-swiper';
 import { Transitioning, Transition } from 'react-native-reanimated';
 import Logo from "../../components/Logo";
-import HR from "../../components/HR";
 
 
 /* new **************************/
