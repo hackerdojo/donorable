@@ -9,13 +9,14 @@ import Logo from "../../components/Logo";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import errorMessages from "../../firebase/errorMessages";
 
-export default function RegScreen2({ navigation }) {
+export default function RegScreen2({ route, navigation }) {
 
   const styles = StyleSheet.create(styleguide);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const type = route.params.type;
   const onBackPress = () => {
     // Link to intro page if user already registered
     navigation.navigate("Intro");
@@ -45,19 +46,13 @@ export default function RegScreen2({ navigation }) {
         navigation.navigate("Keyword", {user: data});
       })
       .catch(  (error) => {  // something broke, rollback.
-//        await firebase.deleteDoc(firebase.doc(firebase.db, "users", uid));
-//        firebase.deleteUser(newUser)
-//          .then( ()=> {})
-//          .catch((error) => alert(error)
-//          );
-          alert(typeof errorMessages[error.code] !== "undefined" ? errorMessages[error.code] : error);
-        });
-
+        alert(typeof errorMessages[error.code] !== "undefined" ? errorMessages[error.code] : error);
+      });
   };
 
   /* View for the registration screen */
   return (
-    <View style={styles.screen}>
+    <View style={styles.screen} >
       <Logo
         source={require("../../../assets/DonorableHeartLogo.png")}
         styles={styles}
@@ -67,7 +62,7 @@ export default function RegScreen2({ navigation }) {
         keyboardShouldPersistTaps="always"
       >
 
-        <Text style={styles.textCentered}>Create an account</Text>
+        <Text style={styles.textCentered}>Create a {type} account</Text>
         <FormTextInput
           styles={styles}
           label={"Email"}
