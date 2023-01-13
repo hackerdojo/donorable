@@ -2,8 +2,25 @@
 // using Web Version 9 of firebase SDK
 
 import {initializeApp} from "firebase/app";
-import {getAuth, onAuthStateChanged, signInWithEmailAndPassword, sendPasswordResetEmail, connectAuthEmulator} from 'firebase/auth';
-import {getFirestore, collection, doc, getDocs, getDoc, connectFirestoreEmulator} from 'firebase/firestore';
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  createUserWithEmailAndPassword,
+  connectAuthEmulator
+} from 'firebase/auth';
+
+import {
+  getFirestore,
+  collection,
+  doc,
+  getDocs,
+  getDoc,
+  setDoc,
+  deleteDoc,
+  connectFirestoreEmulator
+} from 'firebase/firestore';
 
 
 const firebaseConfig = {
@@ -38,7 +55,21 @@ const auth = getAuth(app);
 //connectFirestoreEmulator(db, 'localhost', 8080);
 
 
-export default { app, db, collection, getDocs, getDoc, doc, auth, signInWithEmailAndPassword, sendPasswordResetEmail,  onAuthStateChanged};
+export default {
+  app,
+  db,
+  collection,
+  getDocs,
+  getDoc,
+  setDoc,
+  deleteDoc,
+  doc,
+  auth,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged
+};
 
 
 

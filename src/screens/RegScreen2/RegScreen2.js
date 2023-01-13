@@ -7,6 +7,7 @@ import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
 import Logo from "../../components/Logo";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import errorMessages from "../../firebase/errorMessages";
 
 export default function RegScreen2({ navigation }) {
 
@@ -22,33 +23,36 @@ export default function RegScreen2({ navigation }) {
 
   /* firebase logic for creating new account with email & password */
   const onRegisterPress = () => {
+    let newUser = null;
     if (password !== confirmPassword) {
-      alert("Passwords don't match.");
+      alert("Please make sure the passwords match.");
       return;
     }
     firebase
-      .auth
       .createUserWithEmailAndPassword(firebase.auth, email, password)
-      .then((response) => {
-        const uid = response.user.uid;
+      .then(async (userCredential) => {
+        newUser = userCredential.user;
+        const uid = userCredential.user.uid;
         const data = {
           id: uid,
-          email,
+          email
         };
-        const usersRef = firebase.collection(firebase.firestore, "users");
-        usersRef
-          .doc(uid)
-          .set(data)
-          .then(() => {
-            navigation.navigate("Keyword", { user: data });
-          })
-          .catch((error) => {
-            alert(error);
-          });
+
+        const usersRef = firebase.collection(firebase.db, "users");
+        await firebase.setDoc(firebase.doc(firebase.db, "users", uid), { // ignore squiggle
+          email: email
+        })
+        navigation.navigate("Keyword", {user: data});
       })
-      .catch((error) => {
-        alert(error);
-      });
+      .catch(  (error) => {  // something broke, rollback.
+//        await firebase.deleteDoc(firebase.doc(firebase.db, "users", uid));
+//        firebase.deleteUser(newUser)
+//          .then( ()=> {})
+//          .catch((error) => alert(error)
+//          );
+          alert(typeof errorMessages[error.code] !== "undefined" ? errorMessages[error.code] : error);
+        });
+
   };
 
   /* View for the registration screen */

@@ -13,7 +13,8 @@ const errorMessages = {
     "failed login attempts. You can\n" +
     "immediately restore it by resetting your\n" +
     "password or you can try again later.",
-  "auth/missing-email" : "Please enter an email address."
+  "auth/missing-email" : "Please enter an email address.",
+  "auth/email-already-in-use" : "Email already in use, please choose a different email."
 }
 
 

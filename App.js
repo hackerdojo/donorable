@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
 export default function  App() {
 
   const [loading, setLoading] = useState(false); // variable handling for user's data
-  const [user, setUser] = useState({firstname:"LouisHardCoded"});
+  const [user, setUser] = useState(null);
   const [userUid, setUserUid] = useState(null);
 
   // Import custom Google font
@@ -90,14 +90,11 @@ export default function  App() {
             if (authUser.uid !== userUid) {
               setUserUid(authUser.uid);
               //User is signed in
-              alert(authUser.uid);
-              alert(JSON.stringify(authUser));
               const userRef = firebase.doc(firebase.db, "users", authUser.uid);
               const userSnap = await firebase.getDoc(userRef); // ignore the squiggle
 
               if (userSnap.exists()) {
                 const userData = userSnap.data();
-                alert(JSON.stringify({userData}));
                 localLoading = false;
                 localUserData = userData;
               } else {
