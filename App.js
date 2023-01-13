@@ -1,6 +1,6 @@
 //import "react-native-gesture-handler"; // gesture library of react-native
 import React, { useEffect, useState , useCallback} from "react"; // react library
-//import { firebase } from "./src/firebase/config"; // firebase configuration
+import firebase from "./src/firebase/config"; // firebase configuration
 import { NavigationContainer } from "@react-navigation/native"; // react libraries for the navigation
 import { createStackNavigator } from "@react-navigation/stack";
 import theme from "./styles/theme.style"
@@ -54,12 +54,11 @@ const styles = StyleSheet.create({
 });
 
 
-export default function App() {
+export default function  App() {
 
-
-  const [loading, setLoading] = useState(true); // variable handling for user's data
-  const [user, setUser] = useState(null);
-
+  const [loading, setLoading] = useState(false); // variable handling for user's data
+  const [user, setUser] = useState({firstname:"LouisHardCoded"});
+  const [userUid, setUserUid] = useState(null);
 
   // Import custom Google font
 
@@ -80,43 +79,53 @@ export default function App() {
   }
 
 
-  // Firebase login
 
-/*
-  useEffect(() => {
-    const usersRef = firebase.firestore().collection("users");
+  // Firebase login handle authentication change returned from google generated from login page.
+
     firebase
-      .auth()
-      .onAuthStateChanged((user) => {
-        if (user) {
-          //User is signed in
-          usersRef
-            .doc(user.uid)
-            .get()
-            .then((document) => {
-              const userData = document.data();
-              setLoading(false);
-              setUser(userData);
-            })
-            .catch((error) => {
-              setLoading(false);
-            });
-        } else {
-          //User is not signed in
-          //Return to Intro on logout
-          setLoading(false);
-          setUser(null);
-        }
-      });
-  }, []);
+      .onAuthStateChanged(firebase.auth, async (authUser) => {
+          let localLoading = false;
+          let localUserData = null;
+          if (authUser) {
+            if (authUser.uid !== userUid) {
+              setUserUid(authUser.uid);
+              //User is signed in
+              alert(authUser.uid);
+              alert(JSON.stringify(authUser));
+              const userRef = firebase.doc(firebase.db, "users", authUser.uid);
+              const userSnap = await firebase.getDoc(userRef); // ignore the squiggle
 
-*/
-  console.log(loading);
+              if (userSnap.exists()) {
+                const userData = userSnap.data();
+                alert(JSON.stringify({userData}));
+                localLoading = false;
+                localUserData = userData;
+              } else {
+                localLoading = false;
+                localUserData = user;
+              }
+            } else {
+              localLoading = false;
+              localUserData = user;
+            }
+          } else {
+            //User is not signed in
+            //Return to Intro on logout
+            localLoading = false;
+            localUserData = null;
+          }
+          // maintain hook order with locals and then setState in one place.
+          setLoading(localLoading);
+          setUser(localUserData);
+        }
+      );
+
+
   // Initialize React Navigation stack navigator
   // allows app to transition between screens and manage navigation history
   const Stack = createStackNavigator();
 
-  if (false && loading) {
+  if (loading) {
     return ( <View style={styles.container} onLayout={onLayoutRootView}><Text style={styles.text} >Hello</Text></View>);
   }
 
@@ -124,12 +133,14 @@ export default function App() {
   return (
     <NavigationContainer onReady={onLayoutRootView}>
       <Stack.Navigator>
-        {user  ? (
+        {user ? (
           <>
 
-            <Stack.Screen name="Welcome" component={WelcomeScreen} />
+            <Stack.Screen name="Welcome" >
+              {(props) => <WelcomeScreen {...props} user={user} />}
+            </Stack.Screen>
             <Stack.Screen name="Home" options={{title:theme.APP_TITLE}}>
-              {(props) => <HomeScreen {...props} extraData={user} />}
+              {(props) => <HomeScreen {...props} user={user} />}
             </Stack.Screen>
 
             <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}/>

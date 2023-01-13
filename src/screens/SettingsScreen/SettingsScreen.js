@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {StyleSheet, Text, KeyboardAvoidingView, View, Alert, ScrollView} from "react-native";
-import { firebase } from "../../firebase/config";
+import firebase  from "../../firebase/config";
 import styleguide from "../../../styles/styleguide";
 
 import Logo from "../../components/Logo";
@@ -33,7 +33,7 @@ export default function SettingsScreen({ navigation }) {
       },
       {
         text: 'Logout', onPress: () => firebase
-          .auth()
+          .auth
           .signOut()
           .catch((error) => {
             alert(error);
@@ -277,6 +277,7 @@ export default function SettingsScreen({ navigation }) {
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
+          onPress={onLogoutPress}
           label={"Logout"}/>
 
         <Text/>

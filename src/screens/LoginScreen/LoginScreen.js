@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import {Image, KeyboardAvoidingView, Text, StyleSheet, View} from "react-native";
-import { firebase } from "../../firebase/config";
+import firebase  from "../../firebase/config";
 import styleguide from "../../../styles/styleguide";
+import errorMessages from "../../firebase/errorMessages";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
 import Logo from "../../components/Logo";
@@ -11,6 +12,8 @@ export default function LoginScreen({ navigation }) {
   const styles = StyleSheet.create(styleguide);
   const [email, setEmail] = useState(""); // variable for email and password
   const [password, setPassword] = useState("");
+  const [disableLogin, setDisableLogin] = useState(false);
+
 
   /* Return to previous page */
   const onBackPress = () => {
@@ -28,28 +31,36 @@ export default function LoginScreen({ navigation }) {
 
   /* firebase logic for user to login, if the user has already registered */
   const onLoginPress = () => {
+    setDisableLogin(true);
     firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(firebase.auth, email, password)
+    // what about the response?  it's handled in App.js with the firebase, onAuthStateChanged
+    // handler.  Pretty slick once I figured it out.
+
       .then((response) => {
         const uid = response.user.uid;
-        const usersRef = firebase.firestore().collection("users");
+        const usersRef = firebase.collection(firebase.db,"users");
         usersRef
           .doc(uid)
           .get()
           .then((firestoreDocument) => {
             if (!firestoreDocument.exists) {
               alert("User not found.");
+              setDisableLogin(false);
               return;
             }
             const user = firestoreDocument.data();
           })
           .catch((error) => {
-            alert(error);
+
+            alert("woof:" +error);
+            setDisableLogin(false);
           });
       })
       .catch((error) => {
-        alert(error);
+        alert(typeof errorMessages[error.code] !== "undefined" ? errorMessages[error.code]: error );
+        // if i don't know the error, put up the ugly one.
+        setDisableLogin(false);
       });
   };
 
@@ -97,6 +108,7 @@ export default function LoginScreen({ navigation }) {
             styles={styles}
             width="40%"
             buttonStyle={"primary"}
+            disabled={disableLogin}
             onPress={onLoginPress}
             label={"Login"} />
         </View>

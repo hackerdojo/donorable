@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Image, Text, StyleSheet, View } from "react-native";
 import styleguide from "../../../styles/styleguide";
-import { firebase } from "../../firebase/config";
+import firebase from "../../firebase/config";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
@@ -27,15 +27,15 @@ export default function RegScreen2({ navigation }) {
       return;
     }
     firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
+      .auth
+      .createUserWithEmailAndPassword(firebase.auth, email, password)
       .then((response) => {
         const uid = response.user.uid;
         const data = {
           id: uid,
           email,
         };
-        const usersRef = firebase.firestore().collection("users");
+        const usersRef = firebase.collection(firebase.firestore, "users");
         usersRef
           .doc(uid)
           .set(data)

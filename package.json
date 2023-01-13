@@ -21,7 +21,7 @@
     "expo-font": "^11.0.1",
     "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "^1.4.2",
-    "firebase": "7.9.0",
+    "firebase": "^9.15.0",
     "focus-trap-react": "^8.1.1",
     "node-fetch": "^2.6.1",
     "react": "18.1.0",

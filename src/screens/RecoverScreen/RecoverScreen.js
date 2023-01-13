@@ -1,10 +1,11 @@
 
 import React, { useState } from "react";
 import {Image, KeyboardAvoidingView, Text, StyleSheet, View} from "react-native";
-import { firebase } from "../../firebase/config";
+import  firebase  from "../../firebase/config";
 import FormButton from "../../components/FormButton";
 import FormTextInput from "../../components/FormTextInput";
 import styleguide from "../../../styles/styleguide";
+import errorMessages from "../../firebase/errorMessages";
 import Logo from "../../components/Logo";
 
 export default function RecoverScreen( {navigation} ) {
@@ -14,18 +15,33 @@ export default function RecoverScreen( {navigation} ) {
     navigation.goBack();
   };
 
+  const actionCodeSettings = {
+//    url: 'https://www.example.com/?email=user@example.com',
+    iOS: {
+      bundleId: 'com.example.ios'
+    },
+    android: {
+      packageName: 'com.example.android',
+      installApp: true,
+      minimumVersion: '12'
+    },
+    handleCodeInApp: true
+  };
+
   /* Send password recovery email */
-  const onEnterPress = (email) => {
-    firebase
-      .auth()
-      .sendPasswordResetEmail(email)
+  const onEnterPress = async () => {
+    console.log(email)
+    await firebase
+      .sendPasswordResetEmail(firebase.auth, email)
       .then(() => {
-        alert('An email has been send with further instructions.')
-      })
-      .catch((error) => {
-        alert(error);
-      })
+        console.log("lwwww")
+        alert('An email has been send with further instructions.');
+      }).catch((error) => {
+        alert(typeof errorMessages[error.code] !== "undefined" ? errorMessages[error.code] : error);
+        // if i don't know the error, put up the ugly one.
+      });
   }
+
 
   /* Variables to capture text input value, and send that value to firebase */
   const [email, setEmail] = useState('');
@@ -61,7 +77,7 @@ export default function RecoverScreen( {navigation} ) {
             styles={styles}
             buttonStyle={"primary"}
             width={"40%"}
-            onPress={onEnterPress}
+            onPress={() =>onEnterPress(email)}
             label={"Enter"}/>
         </View>
 
