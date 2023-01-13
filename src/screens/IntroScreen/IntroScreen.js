@@ -1,9 +1,13 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import styles from "./styles";
+import { Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
+import styleguide from "../../../styles/styleguide";
+import FormButton from "../../components/FormButton";
+import Logo from "../../components/Logo";
 
 export default function IntroScreen({ navigation }) {
+
+  const styles = StyleSheet.create(styleguide);
+
   /* Go to RegistrationScreen */
   const onRegPress = () => {
     navigation.navigate("Reg1");
@@ -16,30 +20,31 @@ export default function IntroScreen({ navigation }) {
 
   /* View for the IntroScreen */
   return (
-    <View style={styles.container}>
-      <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
-        keyboardShouldPersistTaps="always"
-      >
-        <Image
-          source={require("../../../assets/donorable-title.png")}
-          style={styles.title}
-        />
+    <View style={[styles.screen]} >
+     <Logo
+       source={require("../../../assets/DonorableHeartLogo.png")}
+       styles={styles}
+     />
 
-        <Text style={styles.slogan}>an easier way</Text>
-        <Text style={styles.slogan}>to donate</Text>
+      <Text style={styles.textCentered}>Fund your Purpose</Text>
 
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => onLoginPress()}
-        >
-          <Text style={styles.buttonTitle}>Login</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.regButton} onPress={() => onRegPress()}>
-          <Text style={styles.buttonTitle}>Register</Text>
-        </TouchableOpacity>
-      </KeyboardAwareScrollView>
+      <FormButton
+        label={"Login"}
+        styles={styles}
+        buttonStyle={"primary"}
+        size={"large"}
+        onPress={onLoginPress}
+      />
+      <FormButton
+        label={"Register"}
+        styles={styles}
+        size={"large"}
+        buttonStyle={"secondary"}
+        onPress={onRegPress}
+      />
+      <Text/>
+      <Text/>
+      <Text/>
     </View>
   );
 }

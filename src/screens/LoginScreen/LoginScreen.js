@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import styles from "./styles";
+import {Image, KeyboardAvoidingView, Text, StyleSheet, View} from "react-native";
 import { firebase } from "../../firebase/config";
+import styleguide from "../../../styles/styleguide";
+import FormTextInput from "../../components/FormTextInput";
+import FormButton from "../../components/FormButton";
+import Logo from "../../components/Logo";
 
 export default function LoginScreen({ navigation }) {
+
+  const styles = StyleSheet.create(styleguide);
   const [email, setEmail] = useState(""); // variable for email and password
   const [password, setPassword] = useState("");
 
@@ -17,6 +21,10 @@ export default function LoginScreen({ navigation }) {
   const onRecoverPress = () => {
     navigation.navigate("Recover");
   };
+
+  const onTestPress = () => {
+    navigation.navigate("Recover")
+  }
 
   /* firebase logic for user to login, if the user has already registered */
   const onLoginPress = () => {
@@ -47,62 +55,52 @@ export default function LoginScreen({ navigation }) {
 
   /* View for the Login screen */
   return (
-    <View style={styles.container}>
-      <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
+    <View style={[styles.screen, styles.screenFormMod]}>
+      <Logo
+        source={require("../../../assets/DonorableHeartLogo.png")}
+        styles={styles}
+      />
+
+      <KeyboardAvoidingView
+        style={styles.mainAreaForm}
         keyboardShouldPersistTaps="always"
       >
-        <Image
-          source={require("../../../assets/donorable-title.png")}
-          style={styles.title}
+        <FormTextInput
+          styles={styles}
+          label={"Email"}
+          text={email}
+          onChangeText={setEmail}/>
+        <FormTextInput
+          styles={styles}
+          label={"Password"}
+          text={password}
+          onChangeText={setPassword}
+          secureTextEntry={true}
         />
 
-        <Text style={styles.label}>login</Text>
+        <FormButton
+          styles={styles}
+          buttonStyle={"ghost"}
+          onPress={onRecoverPress}
+          label={"Forgot Password"}
+        />
 
-        <Text style={styles.inputLabel}>Email</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            label="E-mail"
-            onChangeText={(text) => setEmail(text)}
-            value={email}
-            underlineColorAndroid="transparent"
-            autoCapitalize="none"
-          />
-        </View>
 
-        <Text style={styles.inputLabel}>Password</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            secureTextEntry
-            label="Password"
-            onChangeText={(text) => setPassword(text)}
-            value={password}
-            underlineColorAndroid="transparent"
-            autoCapitalize="none"
-          />
-        </View>
-
-        <TouchableOpacity onPress={() => onRecoverPress()}>
-          <Text style={styles.forgotPW}>Forgot password?</Text>
-        </TouchableOpacity>
-        
         <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => onBackPress()}
-          >
-            <Text style={styles.buttonTitle}>Back</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.loginButton}
-            onPress={() => onLoginPress()}
-          >
-            <Text style={styles.buttonTitle}>Login</Text>
-          </TouchableOpacity>
+          <FormButton
+            styles={styles}
+            width="40%"
+            buttonStyle={"tertiary"}
+            onPress={onBackPress}
+            label={"Back"} />
+          <FormButton
+            styles={styles}
+            width="40%"
+            buttonStyle={"primary"}
+            onPress={onLoginPress}
+            label={"Login"} />
         </View>
-      </KeyboardAwareScrollView>
-    </View>
+      </KeyboardAvoidingView>
+     </View>
   );
 }

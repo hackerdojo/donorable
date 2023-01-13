@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { Text, TouchableOpacity, View, Alert, Modal, TouchableHighlightBase } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {StyleSheet, Text, KeyboardAvoidingView, View, Alert, ScrollView} from "react-native";
 import { firebase } from "../../firebase/config";
-import styles from "./styles";
+import styleguide from "../../../styles/styleguide";
 
-import { FocusTrap } from "focus-trap-react";
+import Logo from "../../components/Logo";
+import FormTextInput from "../../components/FormTextInput";
+import FormButton from "../../components/FormButton";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 export default function SettingsScreen({ navigation }) {
+
+  const styles = StyleSheet.create(styleguide);
 
   /* Click to finish changing settings and return home */
   const onDonePress = () => {
@@ -109,7 +113,7 @@ export default function SettingsScreen({ navigation }) {
     let credential = firebase.auth.EmailAuthProvider.credential(
       user.email,
       'key123'
-    ); 
+    );
     user.reauthenticateWithCredential(credential).then(() => {
       Alert.alert('authenticated')})
     .catch((error) => {
@@ -120,7 +124,7 @@ export default function SettingsScreen({ navigation }) {
     .then(() => {
       Alert.alert('success')
       .catch((error) => {
-        alert(error);   
+        alert(error);
       })
     });
   }
@@ -141,7 +145,7 @@ export default function SettingsScreen({ navigation }) {
 //        triggerText={this.props.triggerText}
 //       />
 //       {this.state.isShown ? (
-//        <Modal 
+//        <Modal
 //          onSubmit={this.props.onSubmit}
 //           modalRef={(n) => (this.modal = n)}
 //           buttonRef={(n) => (this.closeButton = n)}
@@ -194,7 +198,7 @@ export default function SettingsScreen({ navigation }) {
 // }
 
 
-  
+
 
 
 
@@ -208,7 +212,7 @@ export default function SettingsScreen({ navigation }) {
 //     let credential = firebase.auth.EmailAuthProvider.credential(
 //       user.email,
 //       'fake213'
-//     ); 
+//     );
 //     user.reauthenticateWithCredential(credential).then(function(){
 //       Alert.alert('authenticated')})
 //     .catch(function(error) {
@@ -225,58 +229,58 @@ export default function SettingsScreen({ navigation }) {
     /********************************************************************************* */
 
   return (
-    <View style={styles.container}>
+    <View style={styles.screen}>
+      <Logo
+        source={require("../../../assets/DonorableHeartLogo.png")}
+        styles={styles}
+      />
 
       <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
-        keyboardShouldPersistTaps="always"
-      >
+       style={{width: "100%"}}>
 
-        <Text style={styles.header}> Settings </Text>
+        <FormTextInput
+          label={"Email"}
+          styles={styles}
+        />
 
-        <Text style={styles.bar}>_____________________________</Text>
+        <FormTextInput
+          label={"Phone Number"}
+          styles={styles}
+        />
 
-        <View style={styles.textWrapper}>
-          <Text style={styles.text}>Profile picture</Text>
-          <Text style={styles.text}>Phone number</Text>
+        <FormTextInput
+          secureTextEntry={true}
+          label={"Password"}
+          styles={styles}
+        />
+        <FormTextInput
+          label={"Location"}
+          styles={styles}
+        />
+        <FormTextInput
+          label={"Keywords"}
+          styles={styles}
+        />
 
-        <TouchableOpacity onPress={() => onEmPress()}>
-          <Text style={styles.text}>Email</Text>
-        </TouchableOpacity>
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          label={"Go Anonymous"}/>
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          label={"Notifications"}/>
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          label={"Delete Account"}/>
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          label={"Logout"}/>
 
-        <TouchableOpacity onPress={() => onPwPress()}>
-          <Text style={styles.text}>Password</Text>
-        </TouchableOpacity>
-          
-          <Text style={styles.text}>Location</Text>
-
-        <TouchableOpacity onPress={() => onKeyPresss()}>
-          <Text style={styles.text}>Keywords</Text>
-        </TouchableOpacity>
-
-        </View>
-
-        <Text style={styles.bar}>_____________________________</Text>
-
-        <View style={styles.textWrapper}>
-          <Text style={styles.text}>Go anonymous</Text>
-          <Text style={styles.text}>Notifications</Text>
-
-          <TouchableOpacity onPress={() => onDelPress()}>
-            <Text style={styles.text}>Delete account</Text>
-          </TouchableOpacity>
-          
-
-          <TouchableOpacity onPress={() => onLogoutPress()}>
-            <Text style={styles.text}>Logout</Text>
-          </TouchableOpacity>
-
-        </View>
-
-        <TouchableOpacity style={styles.button} onPress={() => onDonePress()}>
-          <Text style={styles.buttonTitle}>Done</Text>
-        </TouchableOpacity>
-
+        <Text/>
+        <Text/>
       </KeyboardAwareScrollView>
     </View>
   );

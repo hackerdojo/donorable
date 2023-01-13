@@ -1,80 +1,72 @@
 
 import React, { useState } from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import styles from "./styles";
+import {Image, KeyboardAvoidingView, Text, StyleSheet, View} from "react-native";
 import { firebase } from "../../firebase/config";
+import FormButton from "../../components/FormButton";
+import FormTextInput from "../../components/FormTextInput";
+import styleguide from "../../../styles/styleguide";
+import Logo from "../../components/Logo";
 
 export default function RecoverScreen( {navigation} ) {
+  const styles = StyleSheet.create(styleguide)
+  /* Return to Login  */
+  const onBackPress = () => {
+    navigation.goBack();
+  };
 
-    /* Return to Login  */
-    const onBackPress = () => {
-        navigation.goBack();
-      };
+  /* Send password recovery email */
+  const onEnterPress = (email) => {
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        alert('An email has been send with further instructions.')
+      })
+      .catch((error) => {
+        alert(error);
+      })
+  }
 
-    /* Send password recovery email */
-    const onEnterPress = (email) => {
-         firebase
-         .auth()
-         .sendPasswordResetEmail(email)
-         .then(() => {
-            alert('An email has been send with further instructions.')
-         }) 
-         .catch((error) => {
-             alert(error);
-         })
-    }
+  /* Variables to capture text input value, and send that value to firebase */
+  const [email, setEmail] = useState('');
 
-    /* Variables to capture text input value, and send that value to firebase */
-    const [email, setEmail] = useState('');
-  
 
   /* View for the Recover screen */
   return (
-    <View style={styles.container}>
-      <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
-        keyboardShouldPersistTaps="always"
+    <View style={[styles.screen, styles.screenFormMod]}>
+      <Logo
+        source={require("../../../assets/DonorableHeartLogo.png")}
+        styles={styles}
+      />
+
+      <KeyboardAvoidingView style={styles.mainAreaForm}
+                            keyboardShouldPersistTaps="always"
       >
-        <Image
-          source={require("../../../assets/donorable-title.png")}
-          style={styles.title}
-        />
+        <Text style={styles.textCentered}>Enter email to recover password</Text>
 
-        <Text style={styles.label}>recover password</Text>
-
-
-        <Text style={styles.inputLabel}>Email</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            label="E-mail"
-            underlineColorAndroid="transparent"
-            autoCapitalize="none"
-            onChangeText={email => setEmail(email)}
-          />
-        </View>
-                
-
+        <FormTextInput
+          styles={styles}
+          label={"Email"}
+          text={email}
+          onChangeText={setEmail}/>
+        <Text/>
         <View style={styles.buttonContainer}>
-
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => onBackPress()}
-          >
-            <Text style={styles.buttonTitle}>Back</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.enterButton}
-            onPress={() => onEnterPress(email)}
-          >
-            <Text style={styles.buttonTitle}>Enter</Text>
-          </TouchableOpacity>
-
+          <FormButton
+            styles={styles}
+            buttonStyle={"tertiary"}
+            width={"40%"}
+            onPress={onBackPress}
+            label={"Back"}/>
+          <FormButton
+            styles={styles}
+            buttonStyle={"primary"}
+            width={"40%"}
+            onPress={onEnterPress}
+            label={"Enter"}/>
         </View>
 
-      </KeyboardAwareScrollView>
+
+      </KeyboardAvoidingView>
     </View>
   );
 }

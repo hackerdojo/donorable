@@ -1,44 +1,48 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import styles from "./styles";
+import { Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
+import styleguide from "../../../styles/styleguide";
+import FormButton from "../../components/FormButton";
+import Logo from "../../components/Logo";
 
 export default function RegScreen1({ navigation }) {
+
+  const styles = StyleSheet.create(styleguide);
   /* Needs event handler */
-  const onRegPress = () => {
+  const onNonProfitPress = () => {
     navigation.navigate("Reg2");
   };
 
   /* Needs event handler */
-  const onLoginPress = () => {
+  const onDonorPress = () => {
     navigation.navigate("Reg2");
   };
 
   /* View for the RegScreen */
   return (
-    <View style={styles.container}>
-      <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
-        keyboardShouldPersistTaps="always"
-      >
-        <Image
-          source={require("../../../assets/donorable-title.png")}
-          style={styles.title}
-        />
+    <View style={[styles.screen]} >
+      <Logo
+        source={require("../../../assets/DonorableHeartLogo.png")}
+        styles={styles}
+      />
 
-        <Text style={styles.slogan}>create an account</Text>
+      <Text style={styles.textCentered}>Create an Account</Text>
 
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => onLoginPress()}
-        >
-          <Text style={styles.buttonTitle}>Donor</Text>
-        </TouchableOpacity>
+      <FormButton
+        label={"Donor"}
+        styles={styles}
+        buttonStyle={"primary"}
+        onPress={onDonorPress}
+      />
+      <FormButton
+        label={"Non-Profit"}
+        styles={styles}
+        buttonStyle={"secondary"}
+        onPress={onNonProfitPress}
+      />
+      <Text/>
+      <Text/>
+      <Text/>
 
-        <TouchableOpacity style={styles.regButton} onPress={() => onRegPress()}>
-          <Text style={styles.buttonTitle}>Nonprofit</Text>
-        </TouchableOpacity>
-      </KeyboardAwareScrollView>
     </View>
   );
 }

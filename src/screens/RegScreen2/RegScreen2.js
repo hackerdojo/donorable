@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import styles from "./styles";
+import { Image, Text, StyleSheet, View } from "react-native";
+import styleguide from "../../../styles/styleguide";
 import { firebase } from "../../firebase/config";
+import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
+import FormTextInput from "../../components/FormTextInput";
+import FormButton from "../../components/FormButton";
+import Logo from "../../components/Logo";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 export default function RegScreen2({ navigation }) {
+
+  const styles = StyleSheet.create(styleguide);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -47,73 +53,50 @@ export default function RegScreen2({ navigation }) {
 
   /* View for the registration screen */
   return (
-    <View style={styles.container}>
+    <View style={styles.screen}>
+      <Logo
+        source={require("../../../assets/DonorableHeartLogo.png")}
+        styles={styles}
+      />
       <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
+        style={{width:"100%"}}
         keyboardShouldPersistTaps="always"
       >
-        <Image
-          source={require("../../../assets/donorable-title.png")}
-          style={styles.title}
+
+        <Text style={styles.textCentered}>Create an account</Text>
+        <FormTextInput
+          styles={styles}
+          label={"Email"}
+          text={email}
+          onChangeText={setEmail}/>
+        <FormTextInput
+          styles={styles}
+          label={"Password"}
+          text={password}
+          onChangeText={setPassword}
+          secureTextEntry={true}
         />
-
-        <Text style={styles.label}>create an account</Text>
-
-        <Text style={styles.inputLabel}>Email</Text>
-
-        <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          label="E-mail"
-          onChangeText={(text) => setEmail(text)}
-          value={email}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
+        <FormTextInput
+          styles={styles}
+          label={"Confirm Password"}
+          text={confirmPassword}
+          onChangeText={setConfirmPassword}
+          secureTextEntry={true}
         />
-        </View>
-
-
-        <Text style={styles.inputLabel}>Password</Text>
-        <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          secureTextEntry
-          label="Password"
-          onChangeText={(text) => setPassword(text)}
-          value={password}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        </View>
-
-
-        <Text style={styles.inputLabel}>Confirm password</Text>
-        <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          secureTextEntry
-          label="Confirm Password"
-          onChangeText={(text) => setConfirmPassword(text)}
-          value={confirmPassword}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        </View>
-
+        <Text/>
         <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.enterButton}
-          onPress={() => onBackPress()}
-        >
-          <Text style={styles.buttonTitle}>Back</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => onRegisterPress()}
-        >
-          <Text style={styles.buttonTitle}>Enter</Text>
-        </TouchableOpacity>
+          <FormButton
+            styles={styles}
+            buttonStyle={"tertiary"}
+            width={"45%"}
+            onPress={onBackPress}
+            label={"Back"} />
+          <FormButton
+            styles={styles}
+            buttonStyle={"primary"}
+            width={"45%"}
+            onPress={onRegisterPress}
+            label={"Register"} />
         </View>
 
       </KeyboardAwareScrollView>
