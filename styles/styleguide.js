@@ -130,14 +130,21 @@ export default {
     borderColor: "#5e5e5e",
     backgroundColor: "white"
   },
+  inputContainerDisabled: {
+    borderWidth: 1,
+    borderColor: "#5e5e5e",
+    backgroundColor: "transparent"
+  },
   input: {
     fontFamily: theme.FONT_FAMILY,
     fontSize: 20,
     height: 30,
     paddingLeft:5,
     overflow: "hidden",
-    backgroundColor: "white",
     width: "100%",
+  },
+  disabled : {
+    disabled: true
   },
   horizontalContainer: {
     flexDirection: "row",

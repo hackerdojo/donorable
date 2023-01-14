@@ -4,23 +4,30 @@ import TagButton from "../../components/TagButton";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 import FormButton from "../../components/FormButton";
 import styleguide from "../../../styles/styleguide";
+import firebase from "../../firebase/config";
 
 
 export default function KeywordScreen({ navigation, route}) {
-
+  const {from, user} = route.params;
   const styles = StyleSheet.create(styleguide);
   /* Go to Welcome Screen, or return to Settings */
-  const {params} = route.params || "";
-  const onDonePress = () => {
-    if (params === 'set') {
+  const availableTags = ["Local","Global","Health","STEM","Arts","Faith"]
+  const [filterSet, setFilterSet] = useState( new Set(user.searchFilter));
+
+  let searchDisable = false;
+
+  const onDonePress = async () => {
+    user["searchFilter"] = Array.from(filterSet);
+    searchDisable = true;
+    const userRef = firebase.doc(firebase.db, "users", user.id);
+    await firebase.updateDoc(userRef, user);
+    searchDisable = false;
+    if (from === 'Settings') {
       navigation.goBack();
     } else {
-      navigation.navigate("Welcome");
+      navigation.navigate("Welcome",{user});
     }
   };
-
-  const availableTags = ["Local","Global","Health","STEM","Arts","Faith"]
-  const [filterSet, setFilterSet] = useState( new Set());
 
   const handlePress = (tag) => {
     if (filterSet.has(tag)) {
@@ -42,7 +49,6 @@ export default function KeywordScreen({ navigation, route}) {
         style={styles.mainAreaForm}
         keyboardShouldPersistTaps="always"
       >
-
         <View>
           <Image
             source={require("../../../assets/DonorableHeartLogo.png")}
@@ -54,8 +60,7 @@ export default function KeywordScreen({ navigation, route}) {
           <Text style={styles.textCenteredP2}>What do you care about?</Text>
         </View>
 
-        <View style={styles.tagContainer}
-        >
+        <View style={styles.tagContainer}>
           {availableTags.map((tag) =>
             <TagButton
               key={tag}
@@ -73,7 +78,7 @@ export default function KeywordScreen({ navigation, route}) {
           buttonStyle={"Secondary"}
           label={"Search"}
           onPress={onDonePress}
-          />
+        />
       </KeyboardAvoidingView>
     </View>
   );

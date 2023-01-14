@@ -1,16 +1,27 @@
 import React, { useState } from "react";
-import {StyleSheet, Text, KeyboardAvoidingView, View, Alert, ScrollView} from "react-native";
+import {StyleSheet, Text, KeyboardAvoidingView,View, Alert, ScrollView} from "react-native";
 import firebase  from "../../firebase/config";
 import styleguide from "../../../styles/styleguide";
 
 import Logo from "../../components/Logo";
+import HR from "../../components/HR";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
-export default function SettingsScreen({ navigation }) {
-
+export default function SettingsScreen({ navigation, route }) {
   const styles = StyleSheet.create(styleguide);
+  const {user:initialUser} = route.params;
+
+  const [user, setUser] = useState(initialUser);
+  let updateDisable = false;
+
+  const saveChanges = async () => {
+    updateDisable = true;
+    const userRef = firebase.doc(firebase.db, "users", user.id);
+    await firebase.updateDoc(userRef, user);
+    updateDisable = false;
+  }
 
   /* Click to finish changing settings and return home */
   const onDonePress = () => {
@@ -240,32 +251,65 @@ export default function SettingsScreen({ navigation }) {
 
         <FormTextInput
           label={"Email"}
+          text={user.email}
           styles={styles}
+          disabled={true}
+          // let's not let people change this for now because it is their login.
+          // so many security issues...
         />
+
+        <FormTextInput
+          label={"First Name"}
+          text={user.firstname}
+          styles={styles}
+          onChangeText={(value) => setUser({...user,firstname:value})}
+        />
+
+        <FormTextInput
+          label={"Last Name"}
+          text={user.lastname}
+          styles={styles}
+          onChangeText={(value) => setUser({...user,lastname:value})}
+        />
+
 
         <FormTextInput
           label={"Phone Number"}
           styles={styles}
+          keyboardType='numeric'
+          text={user.phone}
+          onChangeText={(value) => setUser({...user,phone:value})}
         />
 
-        <FormTextInput
-          secureTextEntry={true}
-          label={"Password"}
-          styles={styles}
-        />
         <FormTextInput
           label={"Location"}
           styles={styles}
-        />
-        <FormTextInput
-          label={"Keywords"}
-          styles={styles}
+          text={user.enteredLocation}
+          onChangeText={(value) => setUser({...user,enteredLocation:value})}
         />
 
         <FormButton
+          buttonStyle={"primary"}
+          styles={styles}
+          onPress={saveChanges}
+          disabled={updateDisable}
+          label={updateDisable ? "Updating":"Update"}/>
+
+        <Text/>
+        <HR/>
+        <FormButton
           buttonStyle={"secondary"}
           styles={styles}
-          label={"Go Anonymous"}/>
+          onPress={()=> navigation.navigate("Keyword",{user,from:"Settings"})}
+          label={"Keywords"}/>
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          label={"Go anonymous"}/>
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          label={"Change password"}/>
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
@@ -273,7 +317,7 @@ export default function SettingsScreen({ navigation }) {
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
-          label={"Delete Account"}
+          label={"Delete account"}
         />
         <FormButton
           buttonStyle={"secondary"}

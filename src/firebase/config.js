@@ -19,6 +19,7 @@ import {
   getDoc,
   setDoc,
   deleteDoc,
+  updateDoc,
   connectFirestoreEmulator
 } from 'firebase/firestore';
 
@@ -63,6 +64,7 @@ export default {
   getDoc,
   setDoc,
   deleteDoc,
+  updateDoc,
   doc,
   auth,
   signInWithEmailAndPassword,
