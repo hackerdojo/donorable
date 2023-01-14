@@ -16,6 +16,8 @@ export default function RegScreen2({ route, navigation }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  let registerDisabled = false;
+
   const type = route.params.type;
   const onBackPress = () => {
     // Link to intro page if user already registered
@@ -24,30 +26,37 @@ export default function RegScreen2({ route, navigation }) {
 
   /* firebase logic for creating new account with email & password */
   const onRegisterPress = () => {
+
     let newUser = null;
     if (password !== confirmPassword) {
       alert("Please make sure the passwords match.");
       return;
     }
-    firebase
-      .createUserWithEmailAndPassword(firebase.auth, email, password)
-      .then(async (userCredential) => {
-        newUser = userCredential.user;
-        const uid = userCredential.user.uid;
-        const data = {
-          id: uid,
-          email
-        };
+    if (!registerDisabled) {
+      registerDisabled = true;
+      firebase
+        .createUserWithEmailAndPassword(firebase.auth, email, password)
+        .then(async (userCredential) => {
+          newUser = userCredential.user;
+          const uid = userCredential.user.uid;
+          const data = {
+            id: uid,
+            email,
+            registered: new Date().toISOString(), // make dates serializable for react native.
+            registeredAs: type
+          };
 
-        const usersRef = firebase.collection(firebase.db, "users");
-        await firebase.setDoc(firebase.doc(firebase.db, "users", uid), { // ignore squiggle
-          email: email
+          const usersRef = firebase.collection(firebase.db, "users");
+          // squiggle ok
+          await firebase.setDoc(firebase.doc(firebase.db, "users", uid), data);
+          navigation.navigate("Keyword", {user: data});
+          registerDisabled= false;
         })
-        navigation.navigate("Keyword", {user: data});
-      })
-      .catch(  (error) => {  // something broke, rollback.
-        alert(typeof errorMessages[error.code] !== "undefined" ? errorMessages[error.code] : error);
-      });
+        .catch((error) => {  // something broke, rollback.
+          alert(typeof errorMessages[error.code] !== "undefined" ? errorMessages[error.code] : error);
+          registerDisabled= false;
+        });
+    }
   };
 
   /* View for the registration screen */
@@ -95,6 +104,7 @@ export default function RegScreen2({ route, navigation }) {
             buttonStyle={"primary"}
             width={"45%"}
             onPress={onRegisterPress}
+            disabled={registerDisabled}
             label={"Register"} />
         </View>
 
