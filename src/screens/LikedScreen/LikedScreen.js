@@ -13,7 +13,6 @@ export default function LikedScreen({navigation, route}) {
   /* Get nonprofit name from HomeScreen */
   const {params} = route.params;
 
-  navigation.setOptions({title: params.name})
 
   /* Save nonprofit to heart list */
   const onHeartPress = () => {
@@ -36,8 +35,8 @@ export default function LikedScreen({navigation, route}) {
   };
 
   /* Go to QuickDonateScreen */
-  const onDonatePress = (params) => {
-    navigation.navigate('QuickDonate', {params: params});
+  const onDonatePress = () => {
+    navigation.navigate('QuickDonate', {params: params, title:"Donate"});
   };
 
   /* Return to HomeScreen to keep swiping */
@@ -89,7 +88,7 @@ export default function LikedScreen({navigation, route}) {
       <FormButton
         styles={styles}
         buttonStyle={"Secondary"}
-        onPress={() => onDonatePress(params)}
+        onPress={onDonatePress}
         label={"Donate now"}/>
 
       <FormButton

@@ -84,7 +84,7 @@ export default function HomeScreen({ navigation }) {
   const handleSwipedRight = () => {
     transitionRef.current.animateNextTransition();
     setIndex((index + 1) % data.length);
-    navigation.navigate('Liked', { params:  data[index]});
+    navigation.navigate('Liked', { params:  data[index], title:data[index].name});
   };
 
   const handleSwipedLeft = () => {

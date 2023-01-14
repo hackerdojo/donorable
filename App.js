@@ -132,17 +132,17 @@ export default function  App() {
       <Stack.Navigator>
         {user ? (
           <>
-            <Stack.Screen name="Settings" component={SettingsScreen}  initialParams={{user}}/>
+
             <Stack.Screen name="Welcome" component={WelcomeScreen} initialParams={{user}}/>
             <Stack.Screen name="Home" options={{title:theme.APP_TITLE}} component={HomeScreen} initialParams={{user}}/>
 
             <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}  initialParams={{user}}/>
-            <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={{title:"Quick Donate"}}  initialParams={{user}}/>
+            <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={({ route} ) => ({ title: route.params.title})} initialParams={{user}}/>
 
-
+            <Stack.Screen name="Settings" component={SettingsScreen}  initialParams={{user}}/>
             <Stack.Screen name="Messages" component={MessageScreen}  initialParams={{user}}/>
 
-            <Stack.Screen name="Liked" component={LikedScreen}  initialParams={{user}} />
+            <Stack.Screen name="Liked" component={LikedScreen}  initialParams={{user}}  options={({ route} ) => ({ title: route.params.title})}/>
           </>
         ) : (
           <>

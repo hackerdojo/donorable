@@ -12,7 +12,7 @@ import ImageMask from "../../components/ImageMask";
 export default function QuickDonateScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
   const {params} = route.params;
-  navigation.setOptions({title:params.name})
+//  navigation.setOptions({title:params.name})
 
   const [amount, setAmount] = useState(0);
 
