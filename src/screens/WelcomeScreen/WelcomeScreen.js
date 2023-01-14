@@ -6,7 +6,8 @@ import FormButton from "../../components/FormButton";
 import Logo from "../../components/Logo";
 
 
-export default function WelcomeScreen({ navigation, user }) {
+export default function WelcomeScreen({ navigation, route }) {
+  const {user} = route.params;
   const styles = StyleSheet.create(styleguide);
   /* Start walkthrough  */
   /*(needs to be implemented) */
@@ -32,7 +33,7 @@ export default function WelcomeScreen({ navigation, user }) {
         />
 
         <View>
-            <Text style={styles.textCenteredP2}>{"Welcome, " + user.firstname}</Text>
+            <Text style={styles.textCenteredP2}>{user.firstname ? "Welcome, " + user.firstname : "Welcome!"}</Text>
         </View>
 
         <View>

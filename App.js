@@ -133,12 +133,8 @@ export default function  App() {
         {user ? (
           <>
 
-            <Stack.Screen name="Welcome" >
-              {(props) => <WelcomeScreen {...props} user={user} />}
-            </Stack.Screen>
-            <Stack.Screen name="Home" options={{title:theme.APP_TITLE}}>
-              {(props) => <HomeScreen {...props} user={user} />}
-            </Stack.Screen>
+            <Stack.Screen name="Welcome" component={WelcomeScreen} initialParams={{user}}/>
+            <Stack.Screen name="Home" options={{title:theme.APP_TITLE}} component={HomeScreen} initialParams={{user}}/>
 
             <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}/>
             <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={{title:"Quick Donate"}}/>

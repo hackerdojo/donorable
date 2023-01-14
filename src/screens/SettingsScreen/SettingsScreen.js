@@ -273,7 +273,8 @@ export default function SettingsScreen({ navigation }) {
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
-          label={"Delete Account"}/>
+          label={"Delete Account"}
+        />
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
