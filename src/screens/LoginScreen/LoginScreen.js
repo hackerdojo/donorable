@@ -39,26 +39,27 @@ export default function LoginScreen({ navigation }) {
 
       .then((response) => {
         const uid = response.user.uid;
-        const usersRef = firebase.collection(firebase.db,"users");
-        usersRef
-          .doc(uid)
-          .get()
-          .then((firestoreDocument) => {
-            if (!firestoreDocument.exists) {
-              alert("User not found.");
+        const userRef = firebase.collection(firebase.db,"users");
+        if(typeof userRef.doc === "undefined") return;
+        userRef
+            .doc(uid)
+            .get()
+            .then((firestoreDocument) => {
+              if (!firestoreDocument.exists) {
+                alert("User not found.");
+                setDisableLogin(false);
+                return;
+              }
+           //   const user = firestoreDocument.data();
+            })
+            .catch((error) => {
+              alert("woof:" + error);
               setDisableLogin(false);
-              return;
-            }
-            const user = firestoreDocument.data();
-          })
-          .catch((error) => {
-
-            alert("woof:" +error);
-            setDisableLogin(false);
-          });
+            });
       })
       .catch((error) => {
-        alert(typeof errorMessages[error.code] !== "undefined" ? errorMessages[error.code]: error );
+        alert(typeof errorMessages[error.code] !== "undefined" ? errorMessages[error.code] : error);
+
         // if i don't know the error, put up the ugly one.
         setDisableLogin(false);
       });
