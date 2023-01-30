@@ -157,7 +157,7 @@ export default function  App() {
             <Stack.Screen name="Reg2" component={RegScreen2}  options={{title:"New Account"}}/>
           </>
         )}
-        <Stack.Screen name="LearnMore" component={LearnMoreScreen}  />
+        <Stack.Screen name="LearnMore" component={LearnMoreScreen}   options={{title:"About"}} />
       </Stack.Navigator>
     </NavigationContainer>
     </PrincipalContext.Provider>
