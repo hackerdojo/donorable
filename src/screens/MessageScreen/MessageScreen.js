@@ -9,6 +9,7 @@ import ImageMask from "../../components/ImageMask";
 import HR from "../../components/HR";
 
 import messagesdata from "./messasgesdata";
+import {PrincipalContext} from "../../contexts/PrincipalContext";
 
 
 export default function MessageScreen(props) {
