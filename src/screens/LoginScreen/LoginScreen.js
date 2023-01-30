@@ -116,4 +116,5 @@ export default function LoginScreen({ navigation }) {
       </KeyboardAvoidingView>
      </View>
   );
+
 }

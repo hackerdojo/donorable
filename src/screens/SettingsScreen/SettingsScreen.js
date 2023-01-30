@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import {StyleSheet, Text, KeyboardAvoidingView,View, Alert, ScrollView} from "react-native";
-import firebase  from "../../firebase/config";
+import React, {useState} from "react";
+import {StyleSheet, Text, KeyboardAvoidingView, View, Alert, ScrollView} from "react-native";
+import firebase from "../../firebase/config";
 import styleguide from "../../../styles/styleguide";
 
 import Logo from "../../components/Logo";
@@ -8,12 +8,11 @@ import HR from "../../components/HR";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import {PrincipalContext} from "../../contexts/PrincipalContext";
 
-export default function SettingsScreen({ navigation, route }) {
+export default function SettingsScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
-  const {user:initialUser} = route.params;
 
-  const [user, setUser] = useState(initialUser);
   let updateDisable = false;
 
   const saveChanges = async () => {
@@ -29,30 +28,30 @@ export default function SettingsScreen({ navigation, route }) {
   };
 
   const onKeyPresss = () => {
-    navigation.navigate('Keyword', { params: 'set' });
+    navigation.navigate('Keyword', {params: 'set'});
   }
 
 
   /* Additional logout dialogue */
   const log2Alert = () => {
-  Alert.alert(
-    'WARNING',
-    'Are you sure?',
-    [
-      {
-        text:'Return'
-      },
-      {
-        text: 'Logout', onPress: () => firebase
-          .auth
-          .signOut()
-          .catch((error) => {
-            alert(error);
-          })
-      },
-        { cancelable: false }
-    ]
-  )
+    Alert.alert(
+      'WARNING',
+      'Are you sure?',
+      [
+        {
+          text: 'Return'
+        },
+        {
+          text: 'Logout', onPress: () => firebase
+            .auth
+            .signOut()
+            .catch((error) => {
+              alert(error);
+            })
+        },
+        {cancelable: false}
+      ]
+    )
   };
 
   /* Click to logout and return to IntroScreen */
@@ -68,7 +67,7 @@ export default function SettingsScreen({ navigation, route }) {
           text: 'Yes', onPress: () => log2Alert()
         }
       ],
-          {cancelable: false }
+      {cancelable: false}
     )
   };
 
@@ -81,7 +80,7 @@ export default function SettingsScreen({ navigation, route }) {
       'This action cannot be reversed. All data will be permanently deleted.',
       [
         {
-          text:'Return'
+          text: 'Return'
         },
         {
           text: 'Delete', onPress: () => user
@@ -90,10 +89,10 @@ export default function SettingsScreen({ navigation, route }) {
               alert(error);
             })
         },
-          { cancelable: false }
+        {cancelable: false}
       ]
     )
-    };
+  };
 
 
   /* Delete account and return to IntroScreen */
@@ -107,8 +106,8 @@ export default function SettingsScreen({ navigation, route }) {
         },
         {
           text: 'Yes', onPress: () => del2Alert()
-      },
-        {cancelable: false }
+        },
+        {cancelable: false}
       ]
     )
   };
@@ -126,20 +125,20 @@ export default function SettingsScreen({ navigation, route }) {
       'key123'
     );
     user.reauthenticateWithCredential(credential).then(() => {
-      Alert.alert('authenticated')})
-    .catch((error) => {
-      alert(error);
-    });
-
-    user.updateEmail("lime@key.com")
-    .then(() => {
-      Alert.alert('success')
+      Alert.alert('authenticated')
+    })
       .catch((error) => {
         alert(error);
-      })
-    });
-  }
+      });
 
+    user.updateEmail("lime@key.com")
+      .then(() => {
+        Alert.alert('success')
+          .catch((error) => {
+            alert(error);
+          })
+      });
+  }
 
 
   /*****************************TO DO********************************************************** */
@@ -209,10 +208,6 @@ export default function SettingsScreen({ navigation, route }) {
 // }
 
 
-
-
-
-
 // /******TEST MODAL********************************************************/
 
 //   /* Change password of current user */
@@ -237,97 +232,102 @@ export default function SettingsScreen({ navigation, route }) {
 //     })
 //   }
 
-    /********************************************************************************* */
+  /********************************************************************************* */
 
   return (
     <View style={styles.screen}>
-      <Logo
-        source={require("../../../assets/DonorableHeartLogo.png")}
-        styles={styles}
-      />
+      <PrincipalContext.Consumer>
+        {({user, updateUser}) => (
+          <>
+            <Logo
+              source={require("../../../assets/DonorableHeartLogo.png")}
+              styles={styles}
+            />
 
-      <KeyboardAwareScrollView
-       style={{width: "100%"}}>
+            <KeyboardAwareScrollView
+              style={{width: "100%"}}>
 
-        <FormTextInput
-          label={"Email"}
-          text={user.email}
-          styles={styles}
-          disabled={true}
-          // let's not let people change this for now because it is their login.
-          // so many security issues...
-        />
+              <FormTextInput
+                label={"Email"}
+                text={user.email}
+                styles={styles}
+                disabled={true}
+                // let's not let people change this for now because it is their login.
+                // so many security issues...
+              />
 
-        <FormTextInput
-          label={"First Name"}
-          text={user.firstname}
-          styles={styles}
-          onChangeText={(value) => setUser({...user,firstname:value})}
-        />
+              <FormTextInput
+                label={"First Name"}
+                text={user.firstname}
+                styles={styles}
+                onChangeText={(value) => updateUser({...user, firstname: value})}
+              />
 
-        <FormTextInput
-          label={"Last Name"}
-          text={user.lastname}
-          styles={styles}
-          onChangeText={(value) => setUser({...user,lastname:value})}
-        />
+              <FormTextInput
+                label={"Last Name"}
+                text={user.lastname}
+                styles={styles}
+                onChangeText={(value) => updateUser({...user, lastname: value})}
+              />
 
 
-        <FormTextInput
-          label={"Phone Number"}
-          styles={styles}
-          keyboardType='numeric'
-          text={user.phone}
-          onChangeText={(value) => setUser({...user,phone:value})}
-        />
+              <FormTextInput
+                label={"Phone Number"}
+                styles={styles}
+                keyboardType='numeric'
+                text={user.phone}
+                onChangeText={(value) => updateUser({...user, phone: value})}
+              />
 
-        <FormTextInput
-          label={"Location"}
-          styles={styles}
-          text={user.enteredLocation}
-          onChangeText={(value) => setUser({...user,enteredLocation:value})}
-        />
+              <FormTextInput
+                label={"Location"}
+                styles={styles}
+                text={user.enteredLocation}
+                onChangeText={(value) => updateUser({...user, enteredLocation: value})}
+              />
 
-        <FormButton
-          buttonStyle={"primary"}
-          styles={styles}
-          onPress={saveChanges}
-          disabled={updateDisable}
-          label={updateDisable ? "Updating":"Update"}/>
+              <FormButton
+                buttonStyle={"primary"}
+                styles={styles}
+                onPress={saveChanges}
+                disabled={updateDisable}
+                label={updateDisable ? "Updating" : "Update"}/>
 
-        <Text/>
-        <HR/>
-        <FormButton
-          buttonStyle={"secondary"}
-          styles={styles}
-          onPress={()=> navigation.navigate("Keyword",{user,from:"Settings"})}
-          label={"Keywords"}/>
-        <FormButton
-          buttonStyle={"secondary"}
-          styles={styles}
-          label={"Go anonymous"}/>
-        <FormButton
-          buttonStyle={"secondary"}
-          styles={styles}
-          label={"Change password"}/>
-        <FormButton
-          buttonStyle={"secondary"}
-          styles={styles}
-          label={"Notifications"}/>
-        <FormButton
-          buttonStyle={"secondary"}
-          styles={styles}
-          label={"Delete account"}
-        />
-        <FormButton
-          buttonStyle={"secondary"}
-          styles={styles}
-          onPress={onLogoutPress}
-          label={"Logout"}/>
-
-        <Text/>
-        <Text/>
-      </KeyboardAwareScrollView>
+              <Text/>
+              <HR/>
+              <FormButton
+                buttonStyle={"secondary"}
+                styles={styles}
+                onPress={() => navigation.navigate("Keyword", {user, from: "Settings"})}
+                label={"Keywords"}/>
+              <FormButton
+                buttonStyle={"secondary"}
+                styles={styles}
+                label={"Go anonymous"}/>
+              <FormButton
+                buttonStyle={"secondary"}
+                styles={styles}
+                label={"Change password"}/>
+              <FormButton
+                buttonStyle={"secondary"}
+                styles={styles}
+                label={"Notifications"}/>
+              <FormButton
+                buttonStyle={"secondary"}
+                styles={styles}
+                label={"Delete account"}
+              />
+              <FormButton
+                buttonStyle={"secondary"}
+                styles={styles}
+                onPress={onLogoutPress}
+                label={"Logout"}/>
+              <Text/>
+              <Text/>
+            </KeyboardAwareScrollView>
+          </>
+        )}
+      </PrincipalContext.Consumer>
     </View>
   );
 }

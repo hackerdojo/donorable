@@ -4,10 +4,11 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import styleguide from "../../../styles/styleguide";
 import FormButton from "../../components/FormButton";
 import Logo from "../../components/Logo";
+import {PrincipalContext} from "../../contexts/PrincipalContext";
 
 
 export default function WelcomeScreen({ navigation, route }) {
-  const {user} = route.params;
+
   const styles = StyleSheet.create(styleguide);
   /* Start walkthrough  */
   /*(needs to be implemented) */
@@ -31,11 +32,13 @@ export default function WelcomeScreen({ navigation, route }) {
           source={require("../../../assets/DonorableHeartLogo.png")}
           styles={styles}
         />
-
-        <View>
-            <Text style={styles.textCenteredP2}>{user.firstname ? "Welcome, " + user.firstname : "Welcome!"}</Text>
-        </View>
-
+        <PrincipalContext.Consumer>
+          {({user}) =>(
+          <View>
+            <Text style={styles.textCenteredP2}>{(user && user.firstname) ? "Welcome, " +  user.firstname +".": "Welcome!"}</Text>
+          </View>
+          )}
+        </PrincipalContext.Consumer>
         <View>
             <Text style={styles.textCenteredP2}>Meet people.</Text>
             <Text style={styles.textCenteredP2}>Make a difference.</Text>

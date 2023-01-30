@@ -1,6 +1,7 @@
 //import "react-native-gesture-handler"; // gesture library of react-native
 import React, { useEffect, useState , useCallback} from "react"; // react library
 import firebase from "./src/firebase/config"; // firebase configuration
+import { PrincipalContext} from './src/contexts/PrincipalContext';
 import { NavigationContainer } from "@react-navigation/native"; // react libraries for the navigation
 import { createStackNavigator } from "@react-navigation/stack";
 import theme from "./styles/theme.style"
@@ -29,6 +30,7 @@ import { decode, encode } from "base-64"; // for the decode and encode of the te
 import  * as SplashScreen from "expo-splash-screen";
 import { useFonts,  loadAsync } from "expo-font";
 
+
 if (!global.btoa) {
   global.btoa = encode;
 } // encodes to Base64
@@ -56,8 +58,8 @@ const styles = StyleSheet.create({
 
 export default function  App() {
 
-  const [loading, setLoading] = useState(false); // variable handling for user's data
-  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true); // variable handling for user's data
+  const [user, setUser] = useState("checking");
   const [authUser, setAuthUser] = useState(null);
   const [userUid, setUserUid] = useState(null);
 
@@ -74,63 +76,77 @@ export default function  App() {
     }
   }, [fontsLoaded]);
 
+  const handleUpdateUser = async (user) => {
+    const userRef = firebase.doc(firebase.db, "users", user.id);
+    await firebase.updateDoc(userRef, user);
+    setUser(user);
+
+  }
+
   useEffect( ()  => {
-      let userData = null;
-      if (authUser === null ) {
-        setUser(null);
-        return;
+    console.log(authUser);
+    let userData = null;
+    if (authUser === null ) {
+      setUser(null);
+      setLoading(false);
+      return;
+    }
+    const userRef = firebase.doc(firebase.db, "users", authUser.uid);
+    const userSnap = firebase.getDoc(userRef).then( (userSnap) => {
+      if (userSnap.exists()) {
+        userData = userSnap.data();
+        setUser(userData);
+        setLoading(false);
       }
-      const userRef = firebase.doc(firebase.db, "users", authUser.uid);
-      const userSnap = firebase.getDoc(userRef).then( (userSnap) => {
-        if (userSnap.exists()) {
-          userData = userSnap.data();
-          setUser(userData);
-        }
-      })
+    })
     },[authUser]
   );
 
-
-
   // Firebase login handle authentication change returned from google generated from login page.
 
-    firebase
-      .onAuthStateChanged(firebase.auth, async (authUser) => {
-        setAuthUser(authUser);
-      }
-    );
+  firebase
+    .onAuthStateChanged(firebase.auth, async (authUser) => {
+      setAuthUser(authUser);
+    }
+  );
 
 
   // Initialize React Navigation stack navigator
   // allows app to transition between screens and manage navigation history
   const Stack = createStackNavigator();
   console.log("app")
+  console.log("loading" + user)
 
-  if (loading) {
-    return ( <View style={styles.container} onLayout={onLayoutRootView}><Text style={styles.text} >Hello</Text></View>);
-  }
   if (!fontsLoaded) {
     return null;
   }
 
   // Routes & Navigation of different screens
   return (
+    <PrincipalContext.Provider value={{user:user, updateUser: handleUpdateUser}} >
     <NavigationContainer onReady={onLayoutRootView}>
       <Stack.Navigator>
-        {user ? (
+        { user === "checking" &&
+         <Stack.Screen name={"Checking"}>{() => (
+           <View style={styles.container} onLayout={onLayoutRootView}><Text style={styles.text} >Hello</Text></View>
+           )}
+         </Stack.Screen>
+        }
+        {(user && user !== "checking") && (
           <>
-            <Stack.Screen name="Welcome" component={WelcomeScreen} initialParams={{user}}/>
-            <Stack.Screen name="Home" options={{title:theme.APP_TITLE}} component={HomeScreen} initialParams={{user}}/>
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
+            <Stack.Screen name="Home" options={{title:theme.APP_TITLE}} component={HomeScreen} />
 
-            <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}}  initialParams={{user}}/>
-            <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={({ route} ) => ({ title: route.params.title})} initialParams={{user}}/>
+            <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}} />
+            <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={({ route} ) => ({ title: route.params.title})} />
 
-            <Stack.Screen name="Settings" component={SettingsScreen}  initialParams={{user}}/>
-            <Stack.Screen name="Messages" component={MessageScreen}  initialParams={{user}}/>
+            <Stack.Screen name="Settings" component={SettingsScreen} />
+            <Stack.Screen name="Messages" component={MessageScreen} />
 
             <Stack.Screen name="Liked" component={LikedScreen}  initialParams={{user}}  options={({ route} ) => ({ title: route.params.title})}/>
           </>
-        ) : (
+        )}
+        { !user && (
           <>
             <Stack.Screen name="Intro" component={IntroScreen} options={{title:"Donorable"}}/>
             <Stack.Screen name="Login" component={LoginScreen}  />
@@ -141,6 +157,7 @@ export default function  App() {
         )}
       </Stack.Navigator>
     </NavigationContainer>
+    </PrincipalContext.Provider>
   );
 
 }

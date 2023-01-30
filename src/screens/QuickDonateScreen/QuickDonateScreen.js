@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import {Text, View, Image, StyleSheet} from "react-native";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
@@ -7,13 +7,14 @@ import styleguide from "../../../styles/styleguide";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import theme from "../../../styles/theme.style";
 import ImageMask from "../../components/ImageMask";
+import {PrincipalContext} from "../../contexts/PrincipalContext";
 
 
 export default function QuickDonateScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
   const {params} = route.params;
 //  navigation.setOptions({title:params.name})
-
+  const {user, updateUser} = useContext(PrincipalContext);
   const [amount, setAmount] = useState(0);
 
   /* Return to previous screen */
