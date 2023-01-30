@@ -29,7 +29,7 @@ export default function LikedScreen({navigation, route}) {
 
   /* View LearnMoreScreen of nonprofit **NEEDS TO BE IMPLEMENTED** */
   const onLearnPress = () => {
-    console.log('learn');
+    navigation.navigate("LearnMore");
   };
 
   /* Go to MessageScreen */
