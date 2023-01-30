@@ -1,14 +1,16 @@
-import React from "react";
+import React , {useContext} from "react";
 import {Text, View, Image, StyleSheet} from "react-native";
-import heart from "../../../assets/heart.png";
 import FormButton from "../../components/FormButton";
 import styleguide from "../../../styles/styleguide";
 import theme from "../../../styles/theme.style";
 import ImageMask from "../../components/ImageMask";
+import {PrincipalContext} from "../../contexts/PrincipalContext";
 
 export default function LikedScreen({navigation, route}) {
 
   const styles = StyleSheet.create(styleguide);
+
+  const {user, updateUser} = useContext(PrincipalContext);
 
   /* Get nonprofit name from HomeScreen */
   const {params} = route.params;
@@ -16,7 +18,13 @@ export default function LikedScreen({navigation, route}) {
 
   /* Save nonprofit to heart list */
   const onHeartPress = () => {
-    console.log('heart');
+    // updateUsers favorites array.
+    if (!user.favorites) user.favorites = [];
+    if (user.favorites.includes(params.id)) return;
+    updateUser({
+      ...user,
+      favorites: [...user.favorites, params.id]
+    })
   };
 
   /* View LearnMoreScreen of nonprofit **NEEDS TO BE IMPLEMENTED** */
@@ -66,6 +74,12 @@ export default function LikedScreen({navigation, route}) {
       <View>
         <Text style={styles.textCenteredP2}>Now, would you like to...</Text>
       </View>
+
+      <FormButton
+        styles={styles}
+        buttonStyle={"Secondary"}
+        onPress={onMessagePress}
+        label={"Send a message"}/>
 
       <FormButton
         styles={styles}
