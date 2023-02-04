@@ -3,11 +3,15 @@ import React, { useEffect, useState , useCallback} from "react"; // react librar
 import firebase from "./src/firebase/config"; // firebase configuration
 import { PrincipalContext} from './src/contexts/PrincipalContext';
 import { NavigationContainer } from "@react-navigation/native"; // react libraries for the navigation
+import {createBottomTabNavigator} from  "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import theme from "./styles/theme.style"
 import {StyleSheet, Text, View} from 'react-native';
 
 import {
+  FavoritesScreen,
   IntroScreen,
   LoginScreen,
   HomeScreen,
@@ -22,6 +26,8 @@ import {
   LikedScreen,
   LearnMoreScreen
 } from "./src/screens"; // different screens of the app
+
+import HomeTab from "./src/tabs/HomeTab";
 
 
 import { decode, encode } from "base-64"; // for the decode and encode of the text
@@ -122,6 +128,59 @@ export default function  App() {
     return null;
   }
 
+  const Tab = createBottomTabNavigator();
+
+  function MyTabs() {
+    return (
+      <Tab.Navigator screenOptions={{
+        tabBarActiveTintColor: 'white',
+        tabBarInactiveTintColor: '#ccc',
+        tabBarStyle: { backgroundColor: 'green' },
+      }}
+
+      >
+        <Tab.Screen
+          name="Home"
+          component={HomeTab}
+          options = {{
+            tabBarIcon: ({color, size}) => (
+              <MaterialCommunityIcons name="home" color={color} size={size}/>
+            ),
+            headerShown: false
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options = {{
+            tabBarIcon: ({color, size}) => (
+              <MaterialCommunityIcons name="cog" color={color} size={size}/>
+            )
+          }}
+        />
+        <Tab.Screen
+          name="Messages"
+          component={MessageScreen}
+          options = {{
+            tabBarIcon: ({color, size}) => (
+              <MaterialCommunityIcons name="message-bulleted" color={color} size={size}/>
+            )
+          }}
+        />
+        <Tab.Screen
+          name="Favorites"
+          component={FavoritesScreen}
+          options = {{
+            tabBarIcon: ({color, size}) => (
+              <MaterialCommunityIcons name="heart" color={color} size={size}/>
+            )
+          }}
+        />
+      </Tab.Navigator>
+    );
+  }
+
+
   // Routes & Navigation of different screens
   return (
     <PrincipalContext.Provider value={{user:user, updateUser: handleUpdateUser}} >
@@ -135,8 +194,10 @@ export default function  App() {
         }
         {(user && user !== "checking") && (
           <>
+            <Stack.Screen name="HomeTabs" component={MyTabs} options={{ headerShown: false }} />
+
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
-            <Stack.Screen name="Home" options={{title:theme.APP_TITLE}} component={HomeScreen} />
+            <Stack.Screen name="HomeOff" options={{title:theme.APP_TITLE}} component={HomeScreen} />
 
             <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}} />
             <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={({ route} ) => ({ title: route.params.title})} />
@@ -144,7 +205,7 @@ export default function  App() {
             <Stack.Screen name="Settings" component={SettingsScreen} />
             <Stack.Screen name="Messages" component={MessageScreen} />
 
-            <Stack.Screen name="Liked" component={LikedScreen}  initialParams={{user}}  options={({ route} ) => ({ title: route.params.title})}/>
+            <Stack.Screen name="Liked" component={LikedScreen}   options={({ route} ) => ({ title: route.params.title})}/>
           </>
         )}
         { !user && (
@@ -160,6 +221,7 @@ export default function  App() {
         <Stack.Screen name="LearnMore" component={LearnMoreScreen}   options={{title:"About"}} />
       </Stack.Navigator>
     </NavigationContainer>
+
     </PrincipalContext.Provider>
   );
 

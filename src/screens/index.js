@@ -26,3 +26,5 @@ export { default as QuickDonateScreen } from "./QuickDonateScreen/QuickDonateScr
 export { default as LikedScreen } from "./LikedScreen/LikedScreen";
 
 export { default as LearnMoreScreen } from "./LearnMoreScreen/LearnMoreScreen";
+
+export { default as FavoritesScreen } from "./FavoritesScreen/FavoritesScreen";
