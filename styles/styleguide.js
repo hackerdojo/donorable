@@ -2,6 +2,13 @@ import theme from "./theme.style";
 
 
 export default {
+  textForegroundColor: {
+    color: theme.FOREGROUND_COLOR,
+  },
+  listScreen: {
+    flexDirection: "column",
+  },
+
   screen: {
     flexDirection: "column",
     flex: 1,
@@ -114,6 +121,20 @@ export default {
     textAlign: "center",
     color: theme.TEXT_COLOR
   },
+  textLeft: {
+    textAlign: "left",
+    color: theme.TEXT_COLOR
+  },
+  textP2: {
+    fontSize: theme.TEXT_FONT_P2,
+  },
+  textP1: {
+    fontSize: theme.TEXT_FONT_P1,
+  },
+  textP3: {
+    fontSize: theme.TEXT_FONT_P3,
+  },
+
   textCenteredP2: {
     fontSize: theme.TEXT_FONT_P2,
     textAlign: "center",
@@ -152,6 +173,10 @@ export default {
     width: "100%",
     justifyContent: "space-between",
     gap: 20
+  },
+  leftJustified: {
+    alignItems:"left",
+    justifyContent:"start"
   },
   horizontalButtonContainer: {
     flexDirection: "row",

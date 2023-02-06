@@ -331,7 +331,15 @@ export default function SettingsScreen({navigation, route}) {
           styles={styles}
           onPress={onLogoutPress}
           label={"Logout"}/>
+        { user.isAdmin &&
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          onPress={() => navigation.navigate("Test", {user, from: "Settings"})}
+          label={"Test"}/>
+        }
         <Text/>
+
         <Text/>
       </KeyboardAwareScrollView>
     </View>

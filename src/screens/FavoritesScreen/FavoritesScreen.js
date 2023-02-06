@@ -4,6 +4,7 @@ import TagButton from "../../components/TagButton";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import FormButton from "../../components/FormButton";
 import styleguide from "../../../styles/styleguide";
+import HR from "../../components/HR";
 import firebase from "../../firebase/config";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 import {NativeText} from "react-native/Libraries/Text/TextNativeComponent";
@@ -22,31 +23,32 @@ export default function FavoritesScreen({navigation, route}) {
 
   return (
 
-
-    <View style={[styles.screen,styles.screenFormMod]}>
+    <View style={[styles.screen, styles.defaultBackgroundColor]}>
       <KeyboardAwareScrollView
         style={styles.fullWidth}
         keyboardShouldPersistTaps="always"
       >
-
-        <Text numberOfLines={10}>
-          Favorites
-        </Text>
-
         { user.favorites.map( (fav) =>
-          <View style={styles.horizontalContainer}>
+          <>
+          <View
+            style={[styles.horizontalContainer, styles.leftJustified]}
+            key={data.filter( thing => thing.id === fav)[0].name}
+          >
             <ImageMask
               source={{uri:data.filter( thing => thing.id === fav)[0].image}}
               borderColor={theme.PRIMARY_COLOR}
-              size={100}
+              size={50}
               radius={5}
               borderWidth={3}
               backgroundColor={"transparent"}
             />
             <View>
-              <Text style={styles.textCenteredP2}>{data.filter( thing => thing.id === fav)[0].name}</Text>
+              <Text style={[styles.textP1, styles.textLeft, styles.textForegroundColor]}>{data.filter( thing => thing.id === fav)[0].name}</Text>
             </View>
+
           </View>
+          <HR/>
+          </>
         )
         }
 

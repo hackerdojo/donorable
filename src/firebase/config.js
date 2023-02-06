@@ -20,6 +20,7 @@ import {
   setDoc,
   deleteDoc,
   updateDoc,
+  writeBatch,
   connectFirestoreEmulator
 } from 'firebase/firestore';
 
@@ -70,7 +71,8 @@ export default {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
   createUserWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
+  writeBatch,
 };
 
 

@@ -24,7 +24,8 @@ import {
   KeywordScreen,
   QuickDonateScreen,
   LikedScreen,
-  LearnMoreScreen
+  LearnMoreScreen,
+  TestScreen
 } from "./src/screens"; // different screens of the app
 
 import HomeTab from "./src/tabs/HomeTab";
@@ -204,6 +205,7 @@ export default function  App() {
 
             <Stack.Screen name="Settings" component={SettingsScreen} />
             <Stack.Screen name="Messages" component={MessageScreen} />
+            <Stack.Screen name="Test" component={TestScreen} />
 
             <Stack.Screen name="Liked" component={LikedScreen}   options={({ route} ) => ({ title: route.params.title})}/>
           </>
