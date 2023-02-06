@@ -9,9 +9,14 @@ npm-debug.*
 *.orig.*
 web-build/
 *.log
-.idea/
 .firebaserc
-*.js~
+.idea
+
+# emacs 
+*.*~
 
 # macOS
 .DS_Store
+
+#expo
+*.log

@@ -12,6 +12,7 @@
     "@expo-google-fonts/montserrat": "^0.2.2",
     "@expo/webpack-config": "^0.17.2",
     "@react-native-community/masked-view": "0.1.10",
+    "@react-navigation/bottom-tabs": "^6.5.4",
     "@react-navigation/native": "^5.7.4",
     "@react-navigation/stack": "^5.9.1",
     "@use-expo/font": "^2.0.0",
@@ -21,7 +22,7 @@
     "expo-font": "^11.0.1",
     "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "^1.4.2",
-    "firebase": "7.9.0",
+    "firebase": "^9.15.0",
     "focus-trap-react": "^8.1.1",
     "node-fetch": "^2.6.1",
     "react": "18.1.0",
@@ -40,7 +41,8 @@
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "metro": "^0.73.6",
-    "metro-core": "^0.73.6"
+    "metro-core": "^0.73.6",
+    "react-native-vector-icons": "^9.2.0"
   },
   "private": true
 }

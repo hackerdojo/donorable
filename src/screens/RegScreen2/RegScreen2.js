@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { Image, Text, StyleSheet, View } from "react-native";
 import styleguide from "../../../styles/styleguide";
-import { firebase } from "../../firebase/config";
+import firebase from "../../firebase/config";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
 import Logo from "../../components/Logo";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import errorMessages from "../../firebase/errorMessages";
 
-export default function RegScreen2({ navigation }) {
+export default function RegScreen2({ route, navigation }) {
 
   const styles = StyleSheet.create(styleguide);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  let registerDisabled = false;
+
+  const type = route.params.type;
   const onBackPress = () => {
     // Link to intro page if user already registered
     navigation.navigate("Intro");
@@ -22,38 +26,42 @@ export default function RegScreen2({ navigation }) {
 
   /* firebase logic for creating new account with email & password */
   const onRegisterPress = () => {
+
+    let newUser = null;
     if (password !== confirmPassword) {
-      alert("Passwords don't match.");
+      alert("Please make sure the passwords match.");
       return;
     }
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((response) => {
-        const uid = response.user.uid;
-        const data = {
-          id: uid,
-          email,
-        };
-        const usersRef = firebase.firestore().collection("users");
-        usersRef
-          .doc(uid)
-          .set(data)
-          .then(() => {
-            navigation.navigate("Keyword", { user: data });
-          })
-          .catch((error) => {
-            alert(error);
-          });
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    if (!registerDisabled) {
+      registerDisabled = true;
+      firebase
+        .createUserWithEmailAndPassword(firebase.auth, email, password)
+        .then(async (userCredential) => {
+          newUser = userCredential.user;
+          const uid = userCredential.user.uid;
+          const data = {
+            id: uid,
+            email,
+            registered: new Date().toISOString(), // make dates serializable for react native.
+            registeredAs: type
+          };
+
+          const usersRef = firebase.collection(firebase.db, "users");
+          // squiggle ok
+          await firebase.setDoc(firebase.doc(firebase.db, "users", uid), data);
+          navigation.navigate("Keyword", {user: data});
+          registerDisabled= false;
+        })
+        .catch((error) => {  // something broke, rollback.
+          alert(typeof errorMessages[error.code] !== "undefined" ? errorMessages[error.code] : error);
+          registerDisabled= false;
+        });
+    }
   };
 
   /* View for the registration screen */
   return (
-    <View style={styles.screen}>
+    <View style={styles.screen} >
       <Logo
         source={require("../../../assets/DonorableHeartLogo.png")}
         styles={styles}
@@ -63,7 +71,7 @@ export default function RegScreen2({ navigation }) {
         keyboardShouldPersistTaps="always"
       >
 
-        <Text style={styles.textCentered}>Create an account</Text>
+        <Text style={styles.textCentered}>Create a {type} account</Text>
         <FormTextInput
           styles={styles}
           label={"Email"}
@@ -96,6 +104,7 @@ export default function RegScreen2({ navigation }) {
             buttonStyle={"primary"}
             width={"45%"}
             onPress={onRegisterPress}
+            disabled={registerDisabled}
             label={"Register"} />
         </View>
 

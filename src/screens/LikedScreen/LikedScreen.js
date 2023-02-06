@@ -1,28 +1,35 @@
-import React from "react";
+import React , {useContext} from "react";
 import {Text, View, Image, StyleSheet} from "react-native";
-import heart from "../../../assets/heart.png";
 import FormButton from "../../components/FormButton";
 import styleguide from "../../../styles/styleguide";
 import theme from "../../../styles/theme.style";
 import ImageMask from "../../components/ImageMask";
+import {PrincipalContext} from "../../contexts/PrincipalContext";
 
 export default function LikedScreen({navigation, route}) {
 
   const styles = StyleSheet.create(styleguide);
 
+  const {user, updateUser} = useContext(PrincipalContext);
+
   /* Get nonprofit name from HomeScreen */
   const {params} = route.params;
 
-  navigation.setOptions({title: params.name})
 
   /* Save nonprofit to heart list */
   const onHeartPress = () => {
-    console.log('heart');
+    // updateUsers favorites array.
+    if (!user.favorites) user.favorites = [];
+    if (user.favorites.includes(params.id)) return;
+    updateUser({
+      ...user,
+      favorites: [...user.favorites, params.id]
+    })
   };
 
   /* View LearnMoreScreen of nonprofit **NEEDS TO BE IMPLEMENTED** */
   const onLearnPress = () => {
-    console.log('learn');
+    navigation.navigate("LearnMore" , {params:params, title:"About"});
   };
 
   /* Go to MessageScreen */
@@ -36,8 +43,8 @@ export default function LikedScreen({navigation, route}) {
   };
 
   /* Go to QuickDonateScreen */
-  const onDonatePress = (params) => {
-    navigation.navigate('QuickDonate', {params: params});
+  const onDonatePress = () => {
+    navigation.navigate('QuickDonate', {params: params, title:"Donate"});
   };
 
   /* Return to HomeScreen to keep swiping */
@@ -70,6 +77,12 @@ export default function LikedScreen({navigation, route}) {
 
       <FormButton
         styles={styles}
+        buttonStyle={"Secondary"}
+        onPress={onMessagePress}
+        label={"Send a message"}/>
+
+      <FormButton
+        styles={styles}
         buttonStyle={"Primary"}
         onPress={onHeartPress}
         label={"Save to favorites 🤍"}/>
@@ -89,7 +102,7 @@ export default function LikedScreen({navigation, route}) {
       <FormButton
         styles={styles}
         buttonStyle={"Secondary"}
-        onPress={() => onDonatePress(params)}
+        onPress={onDonatePress}
         label={"Donate now"}/>
 
       <FormButton

@@ -1,16 +1,38 @@
-import React, { useState } from "react";
+import React, {useState, useContext} from "react";
 import {StyleSheet, Text, KeyboardAvoidingView, View, Alert, ScrollView} from "react-native";
-import { firebase } from "../../firebase/config";
+import firebase from "../../firebase/config";
 import styleguide from "../../../styles/styleguide";
 
 import Logo from "../../components/Logo";
+import HR from "../../components/HR";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import {PrincipalContext} from "../../contexts/PrincipalContext";
 
-export default function SettingsScreen({ navigation }) {
-
+export default function SettingsScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
+
+  const {user, updateUser} = useContext(PrincipalContext);
+
+  const [firstName, setFirstName] = useState(user.firstname);
+  const [lastName, setLastName] = useState(user.lastname);
+  const [phone, setPhone] = useState(user.phone);
+  const [enteredLocation, setEnteredLocation] = useState(user.enteredLocation);
+
+  let updateDisable = false;
+
+  const saveChanges = async () => {
+    updateDisable = true;
+    updateUser( {
+      ...user,
+      firstname: firstName,
+      lastname: lastName,
+      phone:phone,
+      enteredLocation : enteredLocation
+    })
+    updateDisable = false;
+  }
 
   /* Click to finish changing settings and return home */
   const onDonePress = () => {
@@ -18,30 +40,30 @@ export default function SettingsScreen({ navigation }) {
   };
 
   const onKeyPresss = () => {
-    navigation.navigate('Keyword', { params: 'set' });
+    navigation.navigate('Keyword', {params: 'set'});
   }
 
 
   /* Additional logout dialogue */
   const log2Alert = () => {
-  Alert.alert(
-    'WARNING',
-    'Are you sure?',
-    [
-      {
-        text:'Return'
-      },
-      {
-        text: 'Logout', onPress: () => firebase
-          .auth()
-          .signOut()
-          .catch((error) => {
-            alert(error);
-          })
-      },
-        { cancelable: false }
-    ]
-  )
+    Alert.alert(
+      'WARNING',
+      'Are you sure?',
+      [
+        {
+          text: 'Return'
+        },
+        {
+          text: 'Logout', onPress: () => firebase
+            .auth
+            .signOut()
+            .catch((error) => {
+              alert(error);
+            })
+        },
+        {cancelable: false}
+      ]
+    )
   };
 
   /* Click to logout and return to IntroScreen */
@@ -57,7 +79,7 @@ export default function SettingsScreen({ navigation }) {
           text: 'Yes', onPress: () => log2Alert()
         }
       ],
-          {cancelable: false }
+      {cancelable: false}
     )
   };
 
@@ -70,7 +92,7 @@ export default function SettingsScreen({ navigation }) {
       'This action cannot be reversed. All data will be permanently deleted.',
       [
         {
-          text:'Return'
+          text: 'Return'
         },
         {
           text: 'Delete', onPress: () => user
@@ -79,10 +101,10 @@ export default function SettingsScreen({ navigation }) {
               alert(error);
             })
         },
-          { cancelable: false }
+        {cancelable: false}
       ]
     )
-    };
+  };
 
 
   /* Delete account and return to IntroScreen */
@@ -96,8 +118,8 @@ export default function SettingsScreen({ navigation }) {
         },
         {
           text: 'Yes', onPress: () => del2Alert()
-      },
-        {cancelable: false }
+        },
+        {cancelable: false}
       ]
     )
   };
@@ -115,20 +137,20 @@ export default function SettingsScreen({ navigation }) {
       'key123'
     );
     user.reauthenticateWithCredential(credential).then(() => {
-      Alert.alert('authenticated')})
-    .catch((error) => {
-      alert(error);
-    });
-
-    user.updateEmail("lime@key.com")
-    .then(() => {
-      Alert.alert('success')
+      Alert.alert('authenticated')
+    })
       .catch((error) => {
         alert(error);
-      })
-    });
-  }
+      });
 
+    user.updateEmail("lime@key.com")
+      .then(() => {
+        Alert.alert('success')
+          .catch((error) => {
+            alert(error);
+          })
+      });
+  }
 
 
   /*****************************TO DO********************************************************** */
@@ -198,10 +220,6 @@ export default function SettingsScreen({ navigation }) {
 // }
 
 
-
-
-
-
 // /******TEST MODAL********************************************************/
 
 //   /* Change password of current user */
@@ -226,7 +244,7 @@ export default function SettingsScreen({ navigation }) {
 //     })
 //   }
 
-    /********************************************************************************* */
+  /********************************************************************************* */
 
   return (
     <View style={styles.screen}>
@@ -236,36 +254,69 @@ export default function SettingsScreen({ navigation }) {
       />
 
       <KeyboardAwareScrollView
-       style={{width: "100%"}}>
+        style={{width: "100%"}}>
 
         <FormTextInput
           label={"Email"}
+          text={user.email}
           styles={styles}
+          disabled={true}
+          // let's not let people change this for now because it is their login.
+          // so many security issues...
         />
+
+        <FormTextInput
+          label={"First Name"}
+          text={firstName}
+          styles={styles}
+          onChangeText={setFirstName}
+        />
+
+        <FormTextInput
+          label={"Last Name"}
+          text={lastName}
+          styles={styles}
+          onChangeText={setLastName}
+        />
+
 
         <FormTextInput
           label={"Phone Number"}
           styles={styles}
+          keyboardType='numeric'
+          text={phone}
+          onChangeText={setPhone}
         />
 
-        <FormTextInput
-          secureTextEntry={true}
-          label={"Password"}
-          styles={styles}
-        />
         <FormTextInput
           label={"Location"}
           styles={styles}
-        />
-        <FormTextInput
-          label={"Keywords"}
-          styles={styles}
-        />
+          text={enteredLocation}
+          onChangeText={setEnteredLocation}
+          />
 
+        <FormButton
+          buttonStyle={"primary"}
+          styles={styles}
+          onPress={saveChanges}
+          disabled={updateDisable}
+          label={updateDisable ? "Updating" : "Update"}/>
+
+        <Text/>
+        <HR/>
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
-          label={"Go Anonymous"}/>
+          onPress={() => navigation.navigate("Keyword", {user, from: "Settings"})}
+          label={"Keywords"}/>
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          label={"Go anonymous"}/>
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          label={"Change password"}/>
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
@@ -273,13 +324,22 @@ export default function SettingsScreen({ navigation }) {
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
-          label={"Delete Account"}/>
+          label={"Delete account"}
+        />
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
+          onPress={onLogoutPress}
           label={"Logout"}/>
-
+        { user.isAdmin &&
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          onPress={() => navigation.navigate("Test", {user, from: "Settings"})}
+          label={"Test"}/>
+        }
         <Text/>
+
         <Text/>
       </KeyboardAwareScrollView>
     </View>
