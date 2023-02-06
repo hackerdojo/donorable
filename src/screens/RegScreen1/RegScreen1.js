@@ -9,12 +9,12 @@ export default function RegScreen1({ navigation }) {
   const styles = StyleSheet.create(styleguide);
   /* Needs event handler */
   const onNonProfitPress = () => {
-    navigation.navigate("Reg2");
+    navigation.navigate("Reg2",{type:"donee"});
   };
 
   /* Needs event handler */
   const onDonorPress = () => {
-    navigation.navigate("Reg2");
+    navigation.navigate("Reg2",{type:"donor"});
   };
 
   /* View for the RegScreen */

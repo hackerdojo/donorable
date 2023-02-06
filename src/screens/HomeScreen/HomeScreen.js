@@ -79,12 +79,13 @@ export default function HomeScreen({ navigation }) {
     navigation.navigate("Settings");
   };
 
+
   /** new **********************/
   const [index, setIndex] = React.useState(0);
   const handleSwipedRight = () => {
     transitionRef.current.animateNextTransition();
     setIndex((index + 1) % data.length);
-    navigation.navigate('Liked', { params:  data[index]});
+    navigation.navigate('Liked', { params:  data[index], title:data[index].name});
   };
 
   const handleSwipedLeft = () => {
@@ -104,35 +105,7 @@ export default function HomeScreen({ navigation }) {
     <SafeAreaView style={[styles.screen,styles.defaultBackgroundColor]}>
 
       <StatusBar hidden={false} />
-      <View style={[
-        styles.screen,
-        styles.mainAreaForm,
-        {flex:0.5, backgroundColor:"white"}]}>
-        <View style={[
-          styles.horizontalButtonContainer,
-          styles.fullWidth,
-          styles.spaceBetween,
-          { flex: 1}
-          ]}>
-          <TouchableOpacity
-            style={styles.settingsIcon} onPress={onSettingsPress}>
-            <Image
-              source={require("../../../assets/settings-icon.png")}
-              style={styles.square25}
-            />
-          </TouchableOpacity>
-          {/* Message Icon on Press */}
-          <Logo
-            source={require("../../../assets/DonorableHeartLogo.png")}
-            width={"60%"}
-            />
-          <TouchableOpacity
-            style={styles.messageIcon} onPress={onMessagePress}>
-            <Image source={require("../../../assets/message.png")}
-                   style={styles.square25}/>
-          </TouchableOpacity>
-        </View>
-      </View>
+
 
       <View style={styles.swiperContainer}>
         {/* Profile Card Swiper */}

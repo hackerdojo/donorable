@@ -1,25 +1,35 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styleguide from "../../../styles/styleguide";
 import FormButton from "../../components/FormButton";
 import Logo from "../../components/Logo";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
+import firebase from "../../firebase/config";
+import data from "../HomeScreen/data";
 
 
-export default function WelcomeScreen({ navigation, route }) {
+export default function TestScreen({ navigation, route }) {
 
   const styles = StyleSheet.create(styleguide);
+
+  const {user, updateUser} = useContext(PrincipalContext);
+
   /* Start walkthrough  */
   /*(needs to be implemented) */
-  const onWalkPress = () => {
-    navigation.navigate("Home");
-  };
 
-  /* Go strait to HomeScreen */
-  const onStartPress = () => {
-    navigation.navigate("Home");
-  };
+  const onPopulatePress = async () => {
+    const batch = firebase.writeBatch(firebase.db);
+
+    const results = data.map( org => {
+      const docRef = firebase.doc(firebase.db, "organizations",org.id);
+      batch.set(docRef, org);
+    })
+    await batch.commit();
+    console.log(results);
+  }
+
+
 
   /* View for the WelcomeScreen */
   return (
@@ -39,25 +49,15 @@ export default function WelcomeScreen({ navigation, route }) {
           </View>
           )}
         </PrincipalContext.Consumer>
-        <View>
-            <Text style={styles.textCenteredP2}>Meet people.</Text>
-            <Text style={styles.textCenteredP2}>Make a difference.</Text>
-        </View>
 
-        <Image
-          source={require("../../../assets/coffee.png")}
-        />
-
-        <FormButton onPress={onWalkPress}
+        <Text>Do not touch the blinkin' lights unless you know what you are doing.</Text>
+        {user.isAdmin &&
+        <FormButton onPress={onPopulatePress}
                     styles={styles}
                     buttonStyle={"Primary"}
-                    label={"Walkthrough"}
+                    label={"Push Org Data"}
         />
-        <FormButton onPress={onStartPress}
-                    styles={styles}
-                    buttonStyle={"Secondary"}
-                    label={"Start Browsing"}
-        />
+        }
       </KeyboardAwareScrollView>
     </View>
   );

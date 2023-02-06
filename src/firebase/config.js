@@ -1,34 +1,29 @@
 
-/*
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// using Web Version 9 of firebase SDK
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import {initializeApp} from "firebase/app";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  createUserWithEmailAndPassword,
+  connectAuthEmulator
+} from 'firebase/auth';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBcyIGQ5Bs9tVpLBqzoldYLw4oV_G_zFAQ",
-  authDomain: "donorable-372023.firebaseapp.com",
-  projectId: "donorable-372023",
-  storageBucket: "donorable-372023.appspot.com",
-  messagingSenderId: "227877002530",
-  appId: "1:227877002530:web:5a0bdebf529c47a89c997b",
-  measurementId: "G-8BWPR5ED9X"
-};
+import {
+  getFirestore,
+  collection,
+  doc,
+  getDocs,
+  getDoc,
+  setDoc,
+  deleteDoc,
+  updateDoc,
+  writeBatch,
+  connectFirestoreEmulator
+} from 'firebase/firestore';
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-*/
-
-
-import * as firebase from 'firebase';
-
-import '@firebase/auth';
-import '@firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBcyIGQ5Bs9tVpLBqzoldYLw4oV_G_zFAQ",
@@ -53,11 +48,32 @@ const firebaseConfig = {
 
 };
 
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-}
 
-export { firebase };
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+//connectAuthEmulator(auth, "http://localhost:9099");
+//connectFirestoreEmulator(db, 'localhost', 8080);
+
+
+export default {
+  app,
+  db,
+  collection,
+  getDocs,
+  getDoc,
+  setDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
+  auth,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  writeBatch,
+};
 
 
 

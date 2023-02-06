@@ -24,3 +24,9 @@ export { default as KeywordScreen } from "./KeywordScreen/KeywordScreen";
 export { default as QuickDonateScreen } from "./QuickDonateScreen/QuickDonateScreen";
 
 export { default as LikedScreen } from "./LikedScreen/LikedScreen";
+
+export { default as LearnMoreScreen } from "./LearnMoreScreen/LearnMoreScreen";
+
+export { default as FavoritesScreen } from "./FavoritesScreen/FavoritesScreen";
+
+export { default as TestScreen} from "./TestScreen/TestScreen";

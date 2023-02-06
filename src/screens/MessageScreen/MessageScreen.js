@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {FlatList, Text, TouchableOpacity, View, StyleSheet} from "react-native";
 import {HStack} from 'react-native-flex-layout';
 import styleguide from "../../../styles/styleguide";
@@ -9,11 +9,14 @@ import ImageMask from "../../components/ImageMask";
 import HR from "../../components/HR";
 
 import messagesdata from "./messasgesdata";
+import {PrincipalContext} from "../../contexts/PrincipalContext";
 
 
 export default function MessageScreen(props) {
 
   const styles = StyleSheet.create(styleguide);
+
+  const {user, updateUser} = useContext(PrincipalContext);
   /* Return to swiping */
   const onBackPress = () => {
     props.navigation.goBack();
