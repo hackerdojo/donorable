@@ -1,9 +1,10 @@
 import theme from "./theme.style";
+import {StyleSheet} from "react-native";
 
 
 export default {
   textForegroundColor: {
-    color: theme.FOREGROUND_COLOR,
+    color: theme.TEXT_COLOR,
   },
   listScreen: {
     flexDirection: "column",
@@ -49,7 +50,7 @@ export default {
   },
 
   defaultBackgroundColor: {
-    backgroundColor: theme.PRIMARY_COLOR
+    backgroundColor: theme.BACKGROUND_COLOR
   },
 
   fullWidth: {
@@ -104,10 +105,14 @@ export default {
     fontSize: theme.BUTTON_FONT_MEDIUM,
   },
 
+  hr: {
+    borderBottomColor: theme.NEUTRAL_COLOR,
+    borderBottomWidth: StyleSheet.hairlineWidth
+  },
   text : {
     fontFamily: theme.FONT_FAMILY,
     textAlign:"center",
-    color: theme.BUTTON_TITLE_COLOR,
+    color: theme.TEXT_COLOR,
     fontSize: 50,
   },
   description: {
@@ -143,17 +148,17 @@ export default {
   inputLabel: {
     fontFamily: theme.FONT_FAMILY,
     color: theme.TEXT_COLOR,
-    fontSize: 20,
-    paddingTop:20
+    fontSize: theme.FONT_SIZE_MEDIUM,
+    paddingTop: theme.FONT_SIZE_MEDIUM
   },
   inputContainer: {
     borderWidth: 1,
-    borderColor: "#5e5e5e",
+    borderColor: theme.INPUT_BORDER_COLOR,
     backgroundColor: "white"
   },
   inputContainerDisabled: {
     borderWidth: 1,
-    borderColor: "#5e5e5e",
+    borderColor: theme.INPUT_BORDER_COLOR,
     backgroundColor: "transparent"
   },
   input: {
@@ -201,8 +206,8 @@ export default {
     width: "40%",
     height: theme.BUTTON_HEIGHT_LARGE,
     borderRadius: theme.BUTTON_RADIUS_LARGE,
-    borderWidth: 2,
-    borderColor:theme.PRIMARY_COLOR,
+    borderWidth: 1,
+    borderColor:theme.IMAGE_BORDER_COLOR,
     alignItems: "center",
     justifyContent: "center",
     marginTop:20
@@ -213,8 +218,8 @@ export default {
     width: "40%",
     height: theme.BUTTON_HEIGHT_LARGE,
     borderRadius: theme.BUTTON_RADIUS_LARGE,
-    borderColor:theme.PRIMARY_COLOR,
-    borderWidth: 2,
+    borderColor:theme.IMAGE_BORDER_COLOR,
+    borderWidth: 1,
     alignItems: "center",
     justifyContent: "center",
 },
@@ -224,24 +229,21 @@ export default {
   },
   messageCard: {
     flexDirection: "row",
-    alignItems: "center",
+    paddingLeft: 10,
+    paddingRight: 10,
     width: "100%",
-    justifyContent: "flex-start",
+    marginVertical: 5
   },
-  messageGap: {
-    marginLeft:10
-  },
-  messageLight: {
-    flex:2
-  },
-  messageImage:{
-    flex:2,
-    width:75,
-    height:75
-  },
+
   messagePreview: {
-    flex:10,
-    width:"100%"
+    color:theme.TEXT_COLOR,
+    maxWidth: "80%"
+  },
+
+  messageSender: {
+    fontWeight: "bold",
+    width:"100%",
+    color:theme.TEXT_COLOR
   },
 
   avatarImage: {

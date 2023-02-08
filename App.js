@@ -195,6 +195,7 @@ export default function  App() {
         }
         {(user && user !== "checking") && (
           <>
+
             <Stack.Screen name="HomeTabs" component={MyTabs} options={{ headerShown: false }} />
 
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
@@ -206,7 +207,7 @@ export default function  App() {
             <Stack.Screen name="Settings" component={SettingsScreen} />
             <Stack.Screen name="Messages" component={MessageScreen} />
             <Stack.Screen name="Test" component={TestScreen} />
-
+            <Stack.Screen name="Favorites" component={FavoritesScreen}  options={{title:"Favorites"}} />
             <Stack.Screen name="Liked" component={LikedScreen}   options={({ route} ) => ({ title: route.params.title})}/>
           </>
         )}

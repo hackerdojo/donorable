@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 
-export const Circle = ({color, radius, visible = true, style}) => {
+const Circle = ({color, radius, visible = true, style}) => {
   return (
     <View style={
       {
@@ -13,3 +13,4 @@ export const Circle = ({color, radius, visible = true, style}) => {
   )
 }
 
+export default Circle;

@@ -1,17 +1,16 @@
 import React from 'react';
 import { View, Image,StyleSheet } from 'react-native';
-import { Stack, HStack, VStack } from 'react-native-flex-layout';
 
 
 export const ImageMask = (
   {
     source,
     size,
-    borderColor,
-    backgroundColor,
-    radius,  // default is size which does a circle.  Smaller radius will do a rounded rectangle.
-    borderWidth=3, // width of the border
-    backgroundWidth=10,  // width of the background border that surrounds the border.
+    borderColor = "black",
+    backgroundColor = "white",
+    radius =2,  // default is size which does a circle.  Smaller radius will do a rounded rectangle.
+    borderWidth=0, // width of the border
+    backgroundWidth=0,  // width of the background border that surrounds the border.
   }) => {
 
   let myRadius = radius || size;
@@ -22,16 +21,18 @@ export const ImageMask = (
       justifyContent:"center",
       width:size+(borderWidth+backgroundWidth) * 2,
       position:"relative",
+      backgroundColor: backgroundColor,
       height:size+(borderWidth+backgroundWidth) * 2,
     }}>
       <Image
         source={source}
+        resizeMode={"contain"}
         style={
-          { top: borderWidth+backgroundWidth,
-            left: borderWidth+backgroundWidth,
-            width:size,
-            height:size,
-            position:"absolute"
+          { top: borderWidth+backgroundWidth+2.5,
+            left: borderWidth+backgroundWidth+2.5,
+            width:size-5,
+            height:size-5,
+            position:"absolute",
           }
         }
       />
@@ -46,7 +47,7 @@ export const ImageMask = (
         height:size+borderWidth*2,
         borderRadius:myRadius,
         borderWidth:borderWidth,
-        borderColor:borderColor
+        borderColor:borderColor,
       }}/>
       <View style={{
         position:"absolute",

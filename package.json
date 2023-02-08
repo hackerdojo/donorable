@@ -42,6 +42,7 @@
     "@babel/core": "~7.9.0",
     "metro": "^0.73.6",
     "metro-core": "^0.73.6",
+    "react-native-stacks": "^1.0.1",
     "react-native-vector-icons": "^9.2.0"
   },
   "private": true
