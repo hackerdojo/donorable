@@ -8,6 +8,7 @@ import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import theme from "../../../styles/theme.style";
 import ImageMask from "../../components/ImageMask";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
+import {HStack} from "react-native-stacks";
 
 
 export default function QuickDonateScreen({navigation, route}) {
@@ -25,27 +26,32 @@ export default function QuickDonateScreen({navigation, route}) {
 
   /* View for the QuickDonateScreen */
   return (
-    <View style={styles.screen}>
+    <View style={styles.screenDetail}>
       <KeyboardAwareScrollView
         style={styles.fullWidth}
         keyboardShouldPersistTaps="always"
       >
-
-          <Image resizeMode={"contain"}
-                 style={styles.fullWidth}
+        <HStack  spacing={10} alignment={""}>
+          <ImageMask
             source={{uri:params.image}}
-            borderColor={theme.PRIMARY_COLOR}
             size={100}
             radius={5}
-            height={100}
-            borderWidth={3}
-            backgroundColor={"transparent"}
+            backgroundColor={theme.IMAGE_BACKGROUND_COLOR}
+            borderColor={theme.IMAGE_BORDER_COLOR}
+            borderWidth={theme.IMAGE_BORDER_WIDTH}
           />
+          <View style={{flex:3}}>
+            <Text style={styles.textCenteredP2}>{params.name}</Text>
+            <Text numberOfLines={3}
+                  style={[styles.textCenteredP1,{maxWidth:"90%"}]}
+            >{params.description}</Text>
+          </View>
+        </HStack>
         <Text/>
           <View>
-            <Text style={styles.textCenteredP2}>How much would</Text>
-            <Text style={styles.textCenteredP2}>you like to donate to</Text>
-            <Text style={styles.textCenteredP2}>{ params.name }?</Text>
+            <Text style={styles.textCenteredP1}>How much would</Text>
+            <Text style={styles.textCenteredP1}>you like to donate to</Text>
+            <Text style={styles.textCenteredP1}>{ params.name }?</Text>
           </View>
 
         <FormTextInput
@@ -61,7 +67,7 @@ export default function QuickDonateScreen({navigation, route}) {
             styles={styles}
             label={"$5"}
             width={"25%"}
-            size={"large"}
+            size={"large"}r
             buttonStyle={"Secondary"}
             onPress={()=>setAmount("5")}
           />
@@ -73,23 +79,39 @@ export default function QuickDonateScreen({navigation, route}) {
             width={"25%"}
             onPress={()=>setAmount("10")}
           />
-        </View>
-        <View style={styles.horizontalButtonContainer}>
-          <FormButton
-            styles={styles}
-            label={"$15"}
-            size={"large"}
-            width={"25%"}
-            buttonStyle={"Secondary"}
-            onPress={()=>setAmount("15")}
-          />
           <FormButton
             styles={styles}
             label={"$20"}
             size={"large"}
+            buttonStyle={"Secondary"}
+            width={"25%"}
+            onPress={()=>setAmount("20")}
+          />
+        </View>
+        <View style={styles.horizontalButtonContainer}>
+          <FormButton
+            styles={styles}
+            label={"$50"}
+            size={"large"}
             width={"25%"}
             buttonStyle={"Secondary"}
-            onPress={()=>setAmount("20")}
+            onPress={()=>setAmount("50")}
+          />
+          <FormButton
+            styles={styles}
+            label={"$100"}
+            size={"large"}
+            width={"25%"}
+            buttonStyle={"Secondary"}
+            onPress={()=>setAmount("100")}
+          />
+          <FormButton
+            styles={styles}
+            label={"$200"}
+            size={"large"}
+            buttonStyle={"Secondary"}
+            width={"25%"}
+            onPress={()=>setAmount("200")}
           />
 
         </View>
