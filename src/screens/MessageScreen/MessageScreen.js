@@ -32,7 +32,7 @@ export default function MessageScreen(props) {
 
   /* View for the Message screen */
   return (
-    <View >
+    <View style={styles.listScreen}>
         <FlatList
           data = {messagesdata}
           keyExtractor={message => message.id}

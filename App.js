@@ -135,11 +135,17 @@ export default function  App() {
 
   function MyTabs() {
     return (
-      <Tab.Navigator screenOptions={{
-        tabBarActiveTintColor: 'white',
-        tabBarInactiveTintColor: '#ccc',
-        tabBarStyle: { backgroundColor: 'green' },
-      }}
+      <Tab.Navigator
+        screenOptionsOff={{
+          tabBarActiveTintColor: 'white',
+          tabBarInactiveTintColor: '#ccc',
+          tabBarStyle: { backgroundColor: 'green' },
+        }}
+        screenOptions={{
+          tabBarActiveTintColor: 'green',
+          tabBarInactiveTintColor: '#555',
+          tabBarStyle: { backgroundColor: 'white' },
+        }}
 
       >
         <Tab.Screen

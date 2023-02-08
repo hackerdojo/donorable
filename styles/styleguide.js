@@ -7,10 +7,11 @@ export default {
     color: theme.TEXT_COLOR,
   },
   listScreen: {
-    flexDirection: "column",
+    backgroundColor:theme.BACKGROUND_COLOR
   },
 
   screen: {
+    backgroundColor: theme.BACKGROUND_COLOR,
     flexDirection: "column",
     flex: 1,
     alignItems: "center",
@@ -262,10 +263,7 @@ export default {
     alignItems: "center",
     justifyContent: "center",
 },
-  messageScreen: {
-    paddingLeft: theme.VIEW_PADDING/2 ,
-    paddingRight:theme.VIEW_PADDING/2
-  },
+
   messageCard: {
     flexDirection: "row",
     paddingLeft: 10,
@@ -292,7 +290,7 @@ export default {
 
   modalView: {
     margin: 20,
-    backgroundColor: 'white',
+    backgroundColor: theme.BACKGROUND_COLOR,
     borderRadius: 20,
     padding: 35,
     alignItems: 'center',
