@@ -1,12 +1,13 @@
 import React , {useContext,useState} from "react";
 import {Text, View, Modal, StyleSheet, TouchableOpacity, Pressable} from "react-native";
 import {HStack} from 'react-native-stacks';
-import {FormButton,ImageMask} from "../../components";
+import {FormButton,ImageMask, PhotoGallery} from "../../components";
 import styleguide from "../../../styles/styleguide";
 import theme from "../../../styles/theme.style";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {QuickDonateScreen} from "../index";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 export default function LikedScreen({navigation, route}) {
 
@@ -106,13 +107,15 @@ export default function LikedScreen({navigation, route}) {
           onPress={onDonatePress}
           label={"Donate now"}/>
       </HStack>
+      <KeyboardAwareScrollView enableAutomaticScroll={true}>
+      <PhotoGallery photos={params.carousel}/>
       <Text
         numberOfLines={30}
         style={styles.description}
       >
         {params.about}
       </Text>
-
+      </KeyboardAwareScrollView>
       <View
         style={{
           borderRadius: 100,

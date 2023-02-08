@@ -14,3 +14,5 @@ export { default as TagButton } from "./TagButton";
 
 export { default as ImageMask} from "./ImageMask";
 
+export { default as PhotoGallery} from "./PhotoGallery";
+

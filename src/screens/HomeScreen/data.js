@@ -7,7 +7,12 @@ export default [
       name: 'Hacker Dojo',
       about:'The Hacker Dojo is a community of engineers, artists, scientists, activists, entrepreneurs and other creative people centered around a co-working and social facility. Feel free to drop by and see for yourself what the Dojo is all about.',
       image:
-      'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/62db37e93371ceb0d4629f8d_hackerdojo-logo.jpeg'
+      'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/62db37e93371ceb0d4629f8d_hackerdojo-logo.jpeg',
+      carousel : [
+        'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372f0b897b21c454956d_learn-card-image-p-500.webp',
+        'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372fef624f6d8a55fb93_play-card-image-p-500.webp',
+        'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372f30fe818b90865741_build-card-image-p-500.webp'
+      ]
     },
     {
       id: '70078463',
@@ -38,7 +43,12 @@ export default [
      description : 'Buddhist Tradition for Modern Life',
      name: 'Juniper',
      about: 'A meditation school in which the wisdom and experience of a long-standing meditation tradition are presented in a secular form, tailored to modern culture, knowledge and sensibility.',
-     image: 'http://www.juniperpath.org/static/img/juniper_live/story/juniper_plant.jpg'
+     image: 'http://www.juniperpath.org/static/img/juniper_live/story/juniper_plant.jpg',
+     carousel : [
+       'http://www.juniperpath.org/static/img/juniper_live/home/people_bg.jpg',
+       'http://www.juniperpath.org/static/img/juniper_live/home/story_bg.jpg',
+       'http://www.juniperpath.org/static/img/juniper_live/home/why_meditate_bg.jpg'
+     ]
    },
     {
       id: '99305928',

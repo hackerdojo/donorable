@@ -18,6 +18,11 @@ export default function FavoritesScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
   const {user, updateUser} = useContext(PrincipalContext);
 
+  const onCardPress = (item) => {
+// navigate to Liked Screen for this item.  Push, so person can come back to Favorites.
+
+  }
+
   return (
     <View >
       <FlatList
