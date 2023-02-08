@@ -2,7 +2,7 @@ import React from "react";
 import { Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import styleguide from "../../../styles/styleguide";
 import FormButton from "../../components/FormButton";
-import Logo from "../../components/Logo";
+import ImageLogo from "../../components/ImageLogo";
 
 export default function RegScreen1({ navigation }) {
 
@@ -20,7 +20,7 @@ export default function RegScreen1({ navigation }) {
   /* View for the RegScreen */
   return (
     <View style={[styles.screen]} >
-      <Logo
+      <ImageLogo
         source={require("../../../assets/DonorableHeartLogo.png")}
         styles={styles}
       />

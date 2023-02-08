@@ -3,10 +3,7 @@ import {StyleSheet, Text, KeyboardAvoidingView, View, Alert, ScrollView} from "r
 import firebase from "../../firebase/config";
 import styleguide from "../../../styles/styleguide";
 
-import Logo from "../../components/Logo";
-import HR from "../../components/HR";
-import FormTextInput from "../../components/FormTextInput";
-import FormButton from "../../components/FormButton";
+import {Logo,HR,FormTextInput,FormButton} from "../../components";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 
@@ -248,10 +245,6 @@ export default function SettingsScreen({navigation, route}) {
 
   return (
     <View style={styles.screen}>
-      <Logo
-        source={require("../../../assets/DonorableHeartLogo.png")}
-        styles={styles}
-      />
 
       <KeyboardAwareScrollView
         style={{width: "100%"}}>
@@ -308,15 +301,15 @@ export default function SettingsScreen({navigation, route}) {
           buttonStyle={"secondary"}
           styles={styles}
           onPress={() => navigation.navigate("Keyword", {user, from: "Settings"})}
-          label={"Keywords"}/>
+          label={"Search Filters"}/>
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
-          label={"Go anonymous"}/>
+          label={"Go Anonymous"}/>
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
-          label={"Change password"}/>
+          label={"Change Password"}/>
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
@@ -324,13 +317,14 @@ export default function SettingsScreen({navigation, route}) {
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
-          label={"Delete account"}
-        />
-        <FormButton
-          buttonStyle={"secondary"}
-          styles={styles}
           onPress={onLogoutPress}
           label={"Logout"}/>
+        <FormButton
+          buttonStyle={"danger"}
+          styles={styles}
+          label={"Delete Account"}
+        />
+
         { user.isAdmin &&
         <FormButton
           buttonStyle={"secondary"}

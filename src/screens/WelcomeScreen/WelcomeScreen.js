@@ -3,7 +3,7 @@ import { Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styleguide from "../../../styles/styleguide";
 import FormButton from "../../components/FormButton";
-import Logo from "../../components/Logo";
+import ImageLogo from "../../components/ImageLogo";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 
 
@@ -29,8 +29,7 @@ export default function WelcomeScreen({ navigation, route }) {
         keyboardShouldPersistTaps="always"
       >
         <Logo
-          source={require("../../../assets/DonorableHeartLogo.png")}
-          styles={styles}
+
         />
         <PrincipalContext.Consumer>
           {({user}) =>(

@@ -6,7 +6,6 @@ import { NavigationContainer } from "@react-navigation/native"; // react librari
 import {createBottomTabNavigator} from  "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import theme from "./styles/theme.style"
 import {StyleSheet, Text, View} from 'react-native';
 
@@ -75,7 +74,8 @@ export default function  App() {
 
   const [fontsLoaded] = useFonts({
     'Montserrat_400Regular': require ('./assets/fonts/Montserrat_400Regular.ttf'),
-    'Montserrat_900Black': require ('./assets/fonts/Montserrat_900Black.ttf')
+    'Montserrat_900Black': require ('./assets/fonts/Montserrat_900Black.ttf'),
+    'Whitney-Medium':  require('./assets/fonts/Whitney-Medium.ttf')
   });
 
   const onLayoutRootView = useCallback(async () => {

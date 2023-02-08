@@ -5,7 +5,7 @@ import styleguide from "../../../styles/styleguide";
 import errorMessages from "../../firebase/errorMessages";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
-import Logo from "../../components/Logo";
+import ImageLogo from "../../components/ImageLogo";
 
 export default function LoginScreen({ navigation }) {
 
@@ -68,7 +68,7 @@ export default function LoginScreen({ navigation }) {
   /* View for the Login screen */
   return (
     <View style={[styles.screen, styles.screenFormMod]}>
-      <Logo
+      <ImageLogo
         source={require("../../../assets/DonorableHeartLogo.png")}
         styles={styles}
       />

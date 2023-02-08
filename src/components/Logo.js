@@ -1,15 +1,13 @@
+import DonorableLogo from "./DonorableLogo";
+
 const React = require("react");
 const {Image} = require("react-native");
+import {SvgLogo} from "./SvgLogo";
 
-export default function Logo({source, width = "100%"}) {
-
+export default function Logo({source, type = "image",width = "100%", height = "100%"}) {
 
   return (
-      <Image
-        source={source}
-        style={{width: width}}
-        resizeMode={"contain"}
-      />
+    <DonorableLogo width={width} height={height} source={source}/>
   )
 }
 

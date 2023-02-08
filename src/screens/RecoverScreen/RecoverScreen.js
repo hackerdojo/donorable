@@ -6,7 +6,7 @@ import FormButton from "../../components/FormButton";
 import FormTextInput from "../../components/FormTextInput";
 import styleguide from "../../../styles/styleguide";
 import errorMessages from "../../firebase/errorMessages";
-import Logo from "../../components/Logo";
+import ImageLogo from "../../components/ImageLogo";
 
 export default function RecoverScreen( {navigation} ) {
   const styles = StyleSheet.create(styleguide)
@@ -50,7 +50,7 @@ export default function RecoverScreen( {navigation} ) {
   /* View for the Recover screen */
   return (
     <View style={[styles.screen, styles.screenFormMod]}>
-      <Logo
+      <ImageLogo
         source={require("../../../assets/DonorableHeartLogo.png")}
         styles={styles}
       />

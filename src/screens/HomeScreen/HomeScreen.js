@@ -18,7 +18,8 @@ import styles from "./styles";
 import data from './data';
 import Swiper from 'react-native-deck-swiper';
 import { Transitioning, Transition } from 'react-native-reanimated';
-import Logo from "../../components/Logo";
+import ImageLogo from "../../components/ImageLogo";
+import DonorableLogo from "../../components/DonorableLogo";
 
 
 /* new **************************/
@@ -80,6 +81,7 @@ export default function HomeScreen({ navigation }) {
   };
 
 
+
   /** new **********************/
   const [index, setIndex] = React.useState(0);
   const handleSwipedRight = () => {
@@ -106,7 +108,6 @@ export default function HomeScreen({ navigation }) {
 
       <StatusBar hidden={false} />
 
-
       <View style={styles.swiperContainer}>
         {/* Profile Card Swiper */}
         <Swiper
@@ -119,7 +120,7 @@ export default function HomeScreen({ navigation }) {
         onSwipedLeft={handleSwipedLeft}
         onSwipedRight={handleSwipedRight}
         onTapCard={() => swiperRef.current.swipeLeft()}
-        cardVerticalMargin={50}
+        cardVerticalMargin={20}
         stackSize={stackSize}
         stackScale={10}
         stackSeparation={14}

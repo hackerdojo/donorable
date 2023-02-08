@@ -3,7 +3,7 @@ import { Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import styleguide from "../../../styles/styleguide";
 import FormButton from "../../components/FormButton";
-import Logo from "../../components/Logo";
+import ImageLogo from "../../components/ImageLogo";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 import firebase from "../../firebase/config";
 import data from "../HomeScreen/data";
@@ -38,7 +38,7 @@ export default function TestScreen({ navigation, route }) {
         style={{ flex: 1, width: "100%" }}
         keyboardShouldPersistTaps="always"
       >
-        <Logo
+        <ImageLogo
           source={require("../../../assets/DonorableHeartLogo.png")}
           styles={styles}
         />

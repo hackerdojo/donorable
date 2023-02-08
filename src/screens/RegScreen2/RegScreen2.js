@@ -5,7 +5,7 @@ import firebase from "../../firebase/config";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
-import Logo from "../../components/Logo";
+import ImageLogo from "../../components/ImageLogo";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import errorMessages from "../../firebase/errorMessages";
 
@@ -62,7 +62,7 @@ export default function RegScreen2({ route, navigation }) {
   /* View for the registration screen */
   return (
     <View style={styles.screen} >
-      <Logo
+      <ImageLogo
         source={require("../../../assets/DonorableHeartLogo.png")}
         styles={styles}
       />

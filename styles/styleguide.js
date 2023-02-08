@@ -81,6 +81,10 @@ export default {
     backgroundColor: theme.TERTIARY_COLOR,
   },
 
+  buttonDanger: {
+    backgroundColor: theme.DANGER_COLOR,
+  },
+
   buttonGhost: {
     backgroundColor: "transparent",
   },
@@ -163,7 +167,7 @@ export default {
   },
   input: {
     fontFamily: theme.FONT_FAMILY,
-    fontSize: 20,
+    fontSize: 16,
     height: 30,
     paddingLeft:5,
     overflow: "hidden",
