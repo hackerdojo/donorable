@@ -33,13 +33,20 @@ export default [
       image:
         'https://res.cloudinary.com/dktp1ybbx/image/upload/f_auto,fl_lossy,q_auto/v1554482830/organization/prod/78637/9ECisDNEkn.png'
     },
+   {
+     id: '121100782',
+     description : 'Buddhist Tradition for Modern Life',
+     name: 'Juniper',
+     about: 'A meditation school in which the wisdom and experience of a long-standing meditation tradition are presented in a secular form, tailored to modern culture, knowledge and sensibility.',
+     image: 'http://www.juniperpath.org/static/img/juniper_live/story/juniper_plant.jpg'
+   },
     {
       id: '99305928',
       description: 'For Families Free of Violence',
       name: 'STAND!',
       about: '...',
       image:
-        'https://static1.squarespace.com/static/54834847e4b02725c6ada9d1/t/54d3db4ce4b0d3bb68b60f15/1603749668202/?format=1500w'
+        'https://www.standffov.org/wp-content/uploads/2020/07/STANDlogo_allblueberry-01.png'
     },
     {
       id: '99305929',
@@ -48,7 +55,9 @@ export default [
       about: '...',
       image:
         'https://www.bayanihancc.org/uploads/1/0/8/6/108621871/published/1396417967.png?1499277227'
-    },
+    }
+    ]
+/*
   { "id" : "7578046",
     "description" :"Get you the information to do good",
     "name": "Candid",
@@ -156,3 +165,4 @@ export default [
     }
   }
   ];
+*/

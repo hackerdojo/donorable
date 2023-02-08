@@ -37,6 +37,7 @@ import { decode, encode } from "base-64"; // for the decode and encode of the te
 import  * as SplashScreen from "expo-splash-screen";
 import { useFonts,  loadAsync } from "expo-font";
 import DonorableNavLogo from "./src/components/DonorableNavLogo";
+import DonorableLogo from "./src/components/DonorableLogo";
 
 
 if (!global.btoa) {
@@ -168,7 +169,7 @@ export default function  App() {
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons name="message-bulleted" color={color} size={size}/>
             ),
-            headerBackground: () => <DonorableNavLogo/>
+            headerLeft: () => <DonorableNavLogo/>
           }}
         />
         <Tab.Screen
@@ -207,8 +208,8 @@ export default function  App() {
             <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}} />
             <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={({ route} ) => ({ title: route.params.title})} />
 
-            <Stack.Screen name="Settings" component={SettingsScreen} options={{headerBackground: () => <DonorableNavLogo/>}} />
-            <Stack.Screen name="Messages" component={MessageScreen}   options={{headerBackground: () => <DonorableNavLogo/>}} />
+            <Stack.Screen name="Settings" component={SettingsScreen} options={{headerLeft: () => <DonorableLogo width={100}/>}} />
+            <Stack.Screen name="Messages" component={MessageScreen}   options={{headerRight: () => <DonorableNavLogo/>}} />
             <Stack.Screen name="Test" component={TestScreen} />
             <Stack.Screen name="Favorites" component={FavoritesScreen}  options={{title:"Favorites"}} />
             <Stack.Screen name="Liked" component={LikedScreen}   options={({ route} ) => ({ title: route.params.title})}/>

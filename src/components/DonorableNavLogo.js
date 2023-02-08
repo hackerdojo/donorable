@@ -6,7 +6,7 @@ import DonorableLogo from "./DonorableLogo";
 const DonorableNavLogo = () => {
   return (
     <View
-      style={{paddingTop:15, paddingLeft:10, backgroundColor:'white'}}>
+      style={{ paddingLeft:15, paddingBottom:6,backgroundColor:'white'}}>
       <DonorableLogo width={100} />
     </View>
   )

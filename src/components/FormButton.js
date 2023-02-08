@@ -26,6 +26,7 @@ export default function FormButton (
         ]}
         onPress={onPress}
         disabled={disabled}
+
       >
         <Text style={[
           styleName === "Ghost" ?

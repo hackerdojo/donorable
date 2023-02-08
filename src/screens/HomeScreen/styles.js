@@ -48,6 +48,7 @@ export default StyleSheet.create({...styleguide,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: "white",
+        padding:10
       },
 
       done: {

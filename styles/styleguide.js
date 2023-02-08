@@ -21,6 +21,11 @@ export default {
     color: theme.TEXT_COLOR,
     width:"100%"
   },
+  screenDetail: {
+    alignItems: "center",
+    paddingLeft: theme.VIEW_PADDING_DETAIL,
+    paddingRight: theme.VIEW_PADDING_DETAIL,
+  },
 
   screenFormMod: {
     alignItems:"left",
@@ -66,7 +71,8 @@ export default {
     borderRadius: theme.BUTTON_RADIUS_LARGE,
     alignItems: "center",
     justifyContent: "center",
-    marginTop:15
+    marginTop:15,
+    view:1
   },
 
   buttonPrimary : {
@@ -107,6 +113,16 @@ export default {
 
   buttonTitleSizeMedium: {
     fontSize: theme.BUTTON_FONT_MEDIUM,
+  },
+
+  buttonSizeSmall: {
+    height: theme.BUTTON_HEIGHT_SMALL,
+    borderRadius:5,
+    padding:4
+  },
+
+  buttonTitleSizeSmall: {
+    fontSize: theme.BUTTON_FONT_SMALL,
   },
 
   hr: {
