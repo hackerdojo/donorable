@@ -1,17 +1,20 @@
-import React , {useContext} from "react";
-import {Text, View, Image, StyleSheet, TouchableOpacity} from "react-native";
+import React , {useContext,useState} from "react";
+import {Text, View, Modal, StyleSheet, TouchableOpacity, Pressable} from "react-native";
 import {HStack} from 'react-native-stacks';
 import {FormButton,ImageMask} from "../../components";
 import styleguide from "../../../styles/styleguide";
 import theme from "../../../styles/theme.style";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import {QuickDonateScreen} from "../index";
 
 export default function LikedScreen({navigation, route}) {
 
   const styles = StyleSheet.create(styleguide);
 
   const {user, updateUser} = useContext(PrincipalContext);
+  const [showDonatePanel, setShowDonatePanel] = useState(false);
+  const [showChatPanel, setShowChatPanel] = useState(false);
 
   /* Get nonprofit name from HomeScreen */
   const {params} = route.params;
@@ -41,11 +44,13 @@ export default function LikedScreen({navigation, route}) {
   /* Schedule a live chat via calendar **NEEDS TO BE IMPLEMENTED** */
   const onChatPress = () => {
     console.log('chat');
+    setShowChatPanel(true);
   };
 
   /* Go to QuickDonateScreen */
   const onDonatePress = () => {
     navigation.navigate('QuickDonate', {params: params, title:"Donate"});
+//    setShowDonatePanel(true);
   };
 
   /* Return to HomeScreen to keep swiping */
@@ -90,14 +95,14 @@ export default function LikedScreen({navigation, route}) {
           styles={styles}
           width={"33%"}
           size={"small"}
-          buttonStyle={"Primary"}
+          buttonStyle={"Secondary"}
           onPress={onHeartPress}
           label={"Favorite"}/>
         <FormButton
           styles={styles}
           size={"small"}
           width={"33%"}
-          buttonStyle={"Secondary"}
+          buttonStyle={"Primary"}
           onPress={onDonatePress}
           label={"Donate now"}/>
       </HStack>
@@ -128,6 +133,44 @@ export default function LikedScreen({navigation, route}) {
         <MaterialCommunityIcons name={"chat"} size={50} color={"white"}/>
       </TouchableOpacity>
       </View>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={showChatPanel}
+        onRequestClose={() => {
+          setShowChatPanel(!showChatPanel);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Let's Chat!</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setShowChatPanel(!showChatPanel)}>
+              <Text style={styles.textStyle}>Let's Chat Later</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={showDonatePanel}
+        onRequestClose={() => {
+          setShowDonatePanel(!showDonatePanel);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <QuickDonateScreen/>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setShowDonatePanel(!showDonatePanel)}>
+              <Text style={styles.textStyle}>Hide Modal</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
