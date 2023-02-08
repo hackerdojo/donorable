@@ -1,8 +1,7 @@
 import React from "react";
 import { Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
 import styleguide from "../../../styles/styleguide";
-import FormButton from "../../components/FormButton";
-import ImageLogo from "../../components/ImageLogo";
+import {FormButton, Logo} from "../../components";
 
 export default function IntroScreen({ navigation }) {
 
@@ -21,10 +20,7 @@ export default function IntroScreen({ navigation }) {
   /* View for the IntroScreen */
   return (
     <View style={[styles.screen]} >
-     <ImageLogo
-       source={require("../../../assets/DonorableHeartLogo.png")}
-       styles={styles}
-     />
+     <Logo width={200} height={80}/>
 
       <Text style={styles.textCentered}>Fund your Purpose</Text>
 

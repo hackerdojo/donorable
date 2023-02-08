@@ -36,6 +36,7 @@ import { decode, encode } from "base-64"; // for the decode and encode of the te
 /* Async loading Google Font */
 import  * as SplashScreen from "expo-splash-screen";
 import { useFonts,  loadAsync } from "expo-font";
+import DonorableNavLogo from "./src/components/DonorableNavLogo";
 
 
 if (!global.btoa) {
@@ -156,7 +157,8 @@ export default function  App() {
           options = {{
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons name="cog" color={color} size={size}/>
-            )
+            ),
+            headerBackground: () => <DonorableNavLogo/>
           }}
         />
         <Tab.Screen
@@ -165,7 +167,8 @@ export default function  App() {
           options = {{
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons name="message-bulleted" color={color} size={size}/>
-            )
+            ),
+            headerBackground: () => <DonorableNavLogo/>
           }}
         />
         <Tab.Screen
@@ -174,7 +177,8 @@ export default function  App() {
           options = {{
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons name="heart" color={color} size={size}/>
-            )
+            ),
+            headerBackground: () => <DonorableNavLogo/>
           }}
         />
       </Tab.Navigator>
@@ -196,16 +200,15 @@ export default function  App() {
         {(user && user !== "checking") && (
           <>
 
-            <Stack.Screen name="HomeTabs" component={MyTabs} options={{ headerShown: false }} />
+            <Stack.Screen name="Setting" component={MyTabs} options={{ headerShown: false }} />
 
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
-            <Stack.Screen name="HomeOff" options={{title:theme.APP_TITLE}} component={HomeScreen} />
 
             <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}} />
             <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={({ route} ) => ({ title: route.params.title})} />
 
-            <Stack.Screen name="Settings" component={SettingsScreen} />
-            <Stack.Screen name="Messages" component={MessageScreen} />
+            <Stack.Screen name="Settings" component={SettingsScreen} options={{headerBackground: () => <DonorableNavLogo/>}} />
+            <Stack.Screen name="Messages" component={MessageScreen}   options={{headerBackground: () => <DonorableNavLogo/>}} />
             <Stack.Screen name="Test" component={TestScreen} />
             <Stack.Screen name="Favorites" component={FavoritesScreen}  options={{title:"Favorites"}} />
             <Stack.Screen name="Liked" component={LikedScreen}   options={({ route} ) => ({ title: route.params.title})}/>

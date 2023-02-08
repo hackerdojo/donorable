@@ -6,6 +6,7 @@ import FormButton from "../../components/FormButton";
 import styleguide from "../../../styles/styleguide";
 import firebase from "../../firebase/config";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
+import DonorableLogo from "../../components/DonorableLogo";
 
 
 export default function KeywordScreen({ navigation, route}) {
@@ -53,13 +54,7 @@ export default function KeywordScreen({ navigation, route}) {
             style={styles.mainAreaForm}
             keyboardShouldPersistTaps="always"
           >
-            <View>
-            <Image
-            source={require("../../../assets/DonorableHeartLogo.png")}
-            style={styles.fullWidth}
-            resizeMode="contain"
-            />
-            </View>
+
             <View>
             <Text style={styles.textCenteredP2}>What do you care about?</Text>
             </View>

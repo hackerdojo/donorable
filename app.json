@@ -6,7 +6,7 @@
     "orientation": "all",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/StillWhiteSplash.png",
+      "image": "./assets/StillWhiteSplashWhitney.png",
       "backgroundColor": "#ddffdd",
       "resizeMode": "cover"
     },

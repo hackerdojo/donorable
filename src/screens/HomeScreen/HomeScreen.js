@@ -18,10 +18,8 @@ import styles from "./styles";
 import data from './data';
 import Swiper from 'react-native-deck-swiper';
 import { Transitioning, Transition } from 'react-native-reanimated';
-import ImageLogo from "../../components/ImageLogo";
-import DonorableLogo from "../../components/DonorableLogo";
-
-
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import styleguide from "../../../styles/styleguide";
 /* new **************************/
 const { width } = Dimensions.get('window');
 const stackSize = 4;
@@ -189,21 +187,21 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.bottomContainerButtons}>
 
         {/* Undo Button */}
-        <Image style={styles.undoButton} source={require("../../../assets/undo.png")}/>
-
+        <MaterialCommunityIcons name={"undo"} size={48} color={styles.iconButtonColor.color}/>
         {/* Map Button */}
-        <Image style={styles.mapButton} source={require("../../../assets/map.png")}/>
+        <MaterialCommunityIcons name={"map-marker-outline"} size={48} color={styles.iconButtonColor.color}/>
 
         {/* Dislike button */}
         <TouchableOpacity
           onPress={() => swiperRef.current.swipeLeft()}>
-          <Image style={styles.dislikeButton} source={require("../../../assets/dislike.png")}/>
+          <MaterialCommunityIcons name={"thumb-down-outline"} size={48} color={styles.iconButtonColor.color}/>
         </TouchableOpacity>
+
 
         {/* Like button */}
         <TouchableOpacity
           onPress={() => swiperRef.current.swipeRight()}>
-          <Image style={styles.likeButton} source={require("../../../assets/heart.png")}/>
+          <MaterialCommunityIcons name={"thumb-up-outline"} size={48} color={styles.iconButtonColor.color}/>
         </TouchableOpacity>
       </View>
 

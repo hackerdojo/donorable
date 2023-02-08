@@ -149,6 +149,10 @@ export default {
     textAlign: "center",
     color: theme.TEXT_COLOR
   },
+
+  iconButtonColor: {
+    color: theme.ICON_BUTTON_COLOR
+  },
   inputLabel: {
     fontFamily: theme.FONT_FAMILY,
     color: theme.TEXT_COLOR,
