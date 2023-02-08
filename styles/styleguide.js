@@ -24,7 +24,11 @@ export default {
   screenDetail: {
     alignItems: "center",
     paddingLeft: theme.VIEW_PADDING_DETAIL,
+    paddingTop: theme.VIEW_PADDING_DETAIL,
     paddingRight: theme.VIEW_PADDING_DETAIL,
+    backgroundColor: theme.BACKGROUND_COLOR,
+    width:"100%",
+    height:"100%"
   },
 
   screenFormMod: {
@@ -146,6 +150,17 @@ export default {
     textAlign: "center",
     color: theme.TEXT_COLOR
   },
+  textCenteredP3: {
+    fontSize: theme.TEXT_FONT_P3,
+    textAlign: "center",
+    color: theme.TEXT_COLOR
+  },
+  textCenteredP1: {
+    fontSize: theme.TEXT_FONT_P1,
+    textAlign: "center",
+    color: theme.TEXT_COLOR
+  },
+
   textLeft: {
     textAlign: "left",
     color: theme.TEXT_COLOR
@@ -201,11 +216,11 @@ export default {
     alignItems: "center",
     width: "100%",
     justifyContent: "space-between",
-    gap: 20
   },
   leftJustified: {
     alignItems:"left",
-    justifyContent:"start"
+    justifyContent:"start",
+
   },
   horizontalButtonContainer: {
     flexDirection: "row",

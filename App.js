@@ -159,7 +159,7 @@ export default function  App() {
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons name="cog" color={color} size={size}/>
             ),
-            headerBackground: () => <DonorableNavLogo/>
+            headerLeft: () => <DonorableNavLogo/>
           }}
         />
         <Tab.Screen
@@ -179,7 +179,7 @@ export default function  App() {
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons name="heart" color={color} size={size}/>
             ),
-            headerBackground: () => <DonorableNavLogo/>
+            headerLeft: () => <DonorableNavLogo/>
           }}
         />
       </Tab.Navigator>

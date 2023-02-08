@@ -1,10 +1,11 @@
 import React , {useContext} from "react";
-import {Text, View, Image, StyleSheet} from "react-native";
+import {Text, View, Image, StyleSheet, TouchableOpacity} from "react-native";
 import {HStack} from 'react-native-stacks';
 import {FormButton,ImageMask} from "../../components";
 import styleguide from "../../../styles/styleguide";
 import theme from "../../../styles/theme.style";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function LikedScreen({navigation, route}) {
 
@@ -56,7 +57,7 @@ export default function LikedScreen({navigation, route}) {
   /* View for the KeywordScreen */
   return (
     <View  style={styles.screenDetail}>
-      <View style={styles.horizontalContainer}>
+      <HStack  spacing={10} alignment={""}>
         <ImageMask
           source={{uri:params.image}}
           size={100}
@@ -65,11 +66,13 @@ export default function LikedScreen({navigation, route}) {
           borderColor={theme.IMAGE_BORDER_COLOR}
           borderWidth={theme.IMAGE_BORDER_WIDTH}
         />
-        <View>
-          <Text style={styles.textCenteredP2}>You liked</Text>
+        <View style={{flex:3}}>
           <Text style={styles.textCenteredP2}>{params.name}</Text>
+          <Text numberOfLines={3}
+                style={[styles.textCenteredP1,{maxWidth:"90%"}]}
+          >{params.description}</Text>
         </View>
-      </View>
+      </HStack>
       { /*  <View>
         <Text style={styles.textCenteredP2}>Now, would you like to...</Text>
       </View>
@@ -98,19 +101,33 @@ export default function LikedScreen({navigation, route}) {
           onPress={onDonatePress}
           label={"Donate now"}/>
       </HStack>
-      <FormButton
-        styles={styles}
-        buttonStyle={"Secondary"}
-        onPress={onLearnPress}
-        label={"Learn more"}/>
+      <Text
+        numberOfLines={30}
+        style={styles.description}
+      >
+        {params.about}
+      </Text>
 
-      <FormButton
-        styles={styles}
-        buttonStyle={"Primary"}
+      <View
+        style={{
+          borderRadius: 100,
+          alignItems:"center",
+          borderWidth: 0,
+          backgroundColor: 'green',
+          bottom: 20,
+          right: 20,
+          position:"absolute",
+          width:70,
+          height:70,
+          paddingTop:10
+        }}
+      >
+      <TouchableOpacity
         onPress={onChatPress}
-        label={"Schedule a live chat"}/>
-
-
+      >
+        <MaterialCommunityIcons name={"chat"} size={50} color={"white"}/>
+      </TouchableOpacity>
+      </View>
     </View>
   );
 }
