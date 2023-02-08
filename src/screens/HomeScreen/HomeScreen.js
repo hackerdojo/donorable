@@ -187,21 +187,29 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.bottomContainerButtons}>
 
         {/* Undo Button */}
-        <MaterialCommunityIcons name={"undo"} size={48} color={styles.iconButtonColor.color}/>
+        <MaterialCommunityIcons
+          style={styles.iconButton}
+          name={"undo"} size={48} color={styles.iconButtonColor.color}/>
         {/* Map Button */}
-        <MaterialCommunityIcons name={"map-marker-outline"} size={48} color={styles.iconButtonColor.color}/>
+        <MaterialCommunityIcons
+          style={styles.iconButton}
+          name={"map-marker-outline"} size={48} color={styles.iconButtonColor.color}/>
 
         {/* Dislike button */}
         <TouchableOpacity
           onPress={() => swiperRef.current.swipeLeft()}>
-          <MaterialCommunityIcons name={"thumb-down-outline"} size={48} color={styles.iconButtonColor.color}/>
+          <MaterialCommunityIcons
+            style={styles.iconButton}
+            name={"thumb-down-outline"} size={48} color={styles.iconButtonColor.color}/>
         </TouchableOpacity>
 
 
         {/* Like button */}
         <TouchableOpacity
           onPress={() => swiperRef.current.swipeRight()}>
-          <MaterialCommunityIcons name={"thumb-up-outline"} size={48} color={styles.iconButtonColor.color}/>
+          <MaterialCommunityIcons
+            style={styles.iconButton}
+            name={"thumb-up-outline"} size={48} color={styles.iconButtonColor.color}/>
         </TouchableOpacity>
       </View>
 

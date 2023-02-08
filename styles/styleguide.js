@@ -282,6 +282,12 @@ export default {
     width:"100%",
     color:theme.TEXT_COLOR
   },
+  iconButton: {
+    shadowColor:"grey",
+    shadowOpacity:0.5,
+    shadowRadius:2,
+    shadowOffset: {width:2,height:2},
+  },
 
   avatarImage: {
     width: 50,
