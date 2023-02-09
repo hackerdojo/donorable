@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Image,
   StatusBar,
@@ -7,19 +7,18 @@ import {
   SafeAreaView,
   Dimensions,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  Modal
 } from "react-native";
-
-
-import styles from "./styles";
-
-//import { firebase } from "../../firebase/config";
-
-import data from './data';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Swiper from 'react-native-deck-swiper';
 import { Transitioning, Transition } from 'react-native-reanimated';
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import styleguide from "../../../styles/styleguide";
+//import { firebase } from "../../firebase/config";
+
+import {MapModal} from "../../modals";
+import styles from "./styles";
+import data from './data';
+
 /* new **************************/
 const { width } = Dimensions.get('window');
 const stackSize = 4;
@@ -73,15 +72,9 @@ const CardDetails = ({ index }) => (
 
 export default function HomeScreen({ navigation }) {
 
-  /* Navigate to settings screen */
-  const onSettingsPress = () => {
-    navigation.navigate("Settings");
-  };
-
-
-
   /** new **********************/
   const [index, setIndex] = React.useState(0);
+  const [mapModalVisible, setMapModalVisible] = useState(false);
   const handleSwipedRight = () => {
     transitionRef.current.animateNextTransition();
     setIndex((index + 1) % data.length);
@@ -93,16 +86,12 @@ export default function HomeScreen({ navigation }) {
     setIndex((index + 1) % data.length);
   }
 
-    /* Navigate to message screen*/
-    const onMessagePress = () => {
-      navigation.navigate("Messages");
-    };
-
  /**************************** */
 
   /* View for the Home Screen */
   return (
     <SafeAreaView style={[styles.screen,styles.defaultBackgroundColor]}>
+
 
       <StatusBar hidden={false} />
 
@@ -191,9 +180,15 @@ export default function HomeScreen({ navigation }) {
           style={styles.iconButton}
           name={"undo"} size={48} color={styles.iconButtonColor.color}/>
         {/* Map Button */}
+
+
+        <TouchableOpacity
+          onPress={() => setMapModalVisible(true)}>
         <MaterialCommunityIcons
-          style={styles.iconButton}
-          name={"map-marker-outline"} size={48} color={styles.iconButtonColor.color}/>
+
+            style={styles.iconButton}
+            name={"map-marker-outline"} size={48} color={styles.iconButtonColor.color}/>
+        </TouchableOpacity>
 
         {/* Dislike button */}
         <TouchableOpacity
@@ -211,10 +206,13 @@ export default function HomeScreen({ navigation }) {
             style={styles.iconButton}
             name={"thumb-up-outline"} size={48} color={styles.iconButtonColor.color}/>
         </TouchableOpacity>
+
       </View>
 
-
-
+      <MapModal
+        isPresented={mapModalVisible}
+        onRequestToHide={()=>setMapModalVisible(false)}
+      />
   </SafeAreaView>
 );
 }

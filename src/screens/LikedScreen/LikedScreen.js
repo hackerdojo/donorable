@@ -25,17 +25,21 @@ export default function LikedScreen({navigation, route}) {
   const onHeartPress = () => {
     // updateUsers favorites array.
     if (!user.favorites) user.favorites = [];
-    if (user.favorites.includes(params.id)) return;
-    updateUser({
-      ...user,
-      favorites: [...user.favorites, params.id]
-    })
+    let nextUser;
+    if (user.favorites.includes(params.id)) {
+      nextUser = {
+        ...user,
+        favorites: user.favorites.filter(favorite => favorite !== params.id)
+      }
+    } else {
+      nextUser = {
+        ...user,
+        favorites: [...user.favorites, params.id]
+      }
+    }
+    updateUser(nextUser);
   };
 
-  /* View LearnMoreScreen of nonprofit **NEEDS TO BE IMPLEMENTED** */
-  const onLearnPress = () => {
-    navigation.navigate("LearnMore" , {params:params, title:"About"});
-  };
 
   /* Go to MessageScreen */
   const onMessagePress = () => {
@@ -52,11 +56,6 @@ export default function LikedScreen({navigation, route}) {
   const onDonatePress = () => {
     navigation.navigate('QuickDonate', {params: params, title:"Donate"});
 //    setShowDonatePanel(true);
-  };
-
-  /* Return to HomeScreen to keep swiping */
-  const onSwipePress = () => {
-    navigation.goBack();
   };
 
 
@@ -88,17 +87,16 @@ export default function LikedScreen({navigation, route}) {
           styles={styles}
           size={"small"}
           width={"33%"}
-          buttonStyle={"Secondary"}
+          buttonStyle={"Tertiary"}
           onPress={onMessagePress}
           label={"Message"}/>
-
         <FormButton
           styles={styles}
           width={"33%"}
           size={"small"}
-          buttonStyle={"Secondary"}
+          buttonStyle={user.favorites.includes(params.id)?"secondary":"tertiary"}
           onPress={onHeartPress}
-          label={"Favorite"}/>
+          label={user.favorites.includes(params.id)?"Favorited":"Favorite"}/>
         <FormButton
           styles={styles}
           size={"small"}

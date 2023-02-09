@@ -90,7 +90,6 @@ export default function  App() {
     const userRef = firebase.doc(firebase.db, "users", user.id);
     await firebase.updateDoc(userRef, user);
     setUser(user);
-
   }
 
   useEffect( ()  => {

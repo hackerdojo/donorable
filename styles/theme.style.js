@@ -15,7 +15,7 @@ export default {
   BACKGROUND_COLOR: '#ffffff',
   PRIMARY_COLOR: '#2f6e1d',
   SECONDARY_COLOR: 'rgb(30, 147, 242)',
-  TERTIARY_COLOR: 'rgb(80, 200, 142)',
+  TERTIARY_COLOR: '#888888',
   DANGER_COLOR: 'rgb( 128,20,20)',
   TEXT_COLOR: '#1d4412',
   TEXT_FONT_P3: 32,

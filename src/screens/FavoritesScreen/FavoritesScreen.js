@@ -1,30 +1,27 @@
 import React, {useState, useContext} from "react";
 import {TouchableOpacity, FlatList, Text, StyleSheet, View} from "react-native";
 import {HStack, Spacer, VStack} from 'react-native-stacks';
-import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import styleguide from "../../../styles/styleguide";
 import {HR,ImageMask} from "../../components";
-import firebase from "../../firebase/config";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 import theme from "../../../styles/theme.style";
 
 // mock
 import data from '../HomeScreen/data';
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import messagesdata from "../MessageScreen/messasgesdata";
 
 export default function FavoritesScreen({navigation, route}) {
 
   const styles = StyleSheet.create(styleguide);
   const {user, updateUser} = useContext(PrincipalContext);
 
-  const onCardPress = (item) => {
+  const onCardPress = (itemId) => {
+    const item = data.filter( org => (org.id === itemId))[0];
+    navigation.push("Liked", { params:  item, title:item.name, from:"Favorites"})
 // navigate to Liked Screen for this item.  Push, so person can come back to Favorites.
-
   }
 
   return (
-    <View >
+    <View  style={styles.listScreen} >
       <FlatList
         data={user.favorites}
         keyExtractor={(array, index) => index}

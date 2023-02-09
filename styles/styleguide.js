@@ -296,6 +296,7 @@ export default {
 
   modalView: {
     margin: 20,
+    height:"75%",
     backgroundColor: theme.BACKGROUND_COLOR,
     borderRadius: 20,
     padding: 35,

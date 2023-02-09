@@ -12,7 +12,8 @@ export default [
         'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372f0b897b21c454956d_learn-card-image-p-500.webp',
         'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372fef624f6d8a55fb93_play-card-image-p-500.webp',
         'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372f30fe818b90865741_build-card-image-p-500.webp'
-      ]
+      ],
+      latlon : [37.3963152, -122.049020]
     },
     {
       id: '70078463',
