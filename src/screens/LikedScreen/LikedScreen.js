@@ -113,6 +113,7 @@ export default function LikedScreen({navigation, route}) {
       >
         {params.about}
       </Text>
+        <View style={{height:200}}/>
       </KeyboardAwareScrollView>
       <View
         style={{
