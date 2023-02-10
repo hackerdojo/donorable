@@ -1,13 +1,14 @@
 import React , {useContext,useState} from "react";
 import {Text, View, Modal, StyleSheet, TouchableOpacity, Pressable} from "react-native";
 import {HStack} from 'react-native-stacks';
-import {FormButton,ImageMask, PhotoGallery} from "../../components";
+import {ChatScreen, FormButton,ImageMask, PhotoGallery} from "../../components";
 import styleguide from "../../../styles/styleguide";
 import theme from "../../../styles/theme.style";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {QuickDonateScreen} from "../index";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+
 
 export default function LikedScreen({navigation, route}) {
 
@@ -143,15 +144,17 @@ export default function LikedScreen({navigation, route}) {
         onRequestClose={() => {
           setShowChatPanel(!showChatPanel);
         }}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Let's Chat!</Text>
+        <View style={[styles.modalView]}>
+
+            <Text style={{fontSize:24}}>{params.name}</Text>
+            <ChatScreen chatee={params}/>
             <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setShowChatPanel(!showChatPanel)}>
-              <Text style={styles.textStyle}>Let's Chat Later</Text>
+              title="Hide Chat"
+              onPress={() => setShowChatPanel(false)}
+            >
+              <View style={{marginTop:10,marginBottom: 0, backgroundColor:"grey", width:50, height:5, borderRadius:5}}></View>
             </Pressable>
-          </View>
+
         </View>
       </Modal>
 
@@ -162,7 +165,7 @@ export default function LikedScreen({navigation, route}) {
         onRequestClose={() => {
           setShowDonatePanel(!showDonatePanel);
         }}>
-        <View style={styles.centeredView}>
+
           <View style={styles.modalView}>
             <QuickDonateScreen/>
             <Pressable
@@ -171,7 +174,7 @@ export default function LikedScreen({navigation, route}) {
               <Text style={styles.textStyle}>Hide Modal</Text>
             </Pressable>
           </View>
-        </View>
+
       </Modal>
     </View>
   );

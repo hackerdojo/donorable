@@ -295,11 +295,11 @@ export default {
   },
 
   modalView: {
-    margin: 20,
+    margin: 10,
     height:"75%",
-    backgroundColor: theme.BACKGROUND_COLOR,
+    backgroundColor: "#f5f5f5" ,//theme.BACKGROUND_COLOR,
     borderRadius: 20,
-    padding: 35,
+    padding: 25,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {

@@ -17,3 +17,4 @@ export { default as ImageMask} from "./ImageMask";
 export { default as PhotoGallery} from "./PhotoGallery";
 
 export { default as NearbyMap} from "./NearbyMap";
+export { default as ChatScreen} from "./ChatScreen";
