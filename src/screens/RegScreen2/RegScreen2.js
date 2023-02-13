@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Image, Text, StyleSheet, View } from "react-native";
+import React, {useState} from "react";
+import {Image, Text, StyleSheet, View} from "react-native";
 import styleguide from "../../../styles/styleguide";
 import firebase from "../../firebase/config";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
@@ -9,7 +9,7 @@ import ImageLogo from "../../components/ImageLogo";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import errorMessages from "../../firebase/errorMessages";
 
-export default function RegScreen2({ route, navigation }) {
+export default function RegScreen2({route, navigation}) {
 
   const styles = StyleSheet.create(styleguide);
   const [email, setEmail] = useState("");
@@ -50,24 +50,24 @@ export default function RegScreen2({ route, navigation }) {
           // squiggle ok
           await firebase.setDoc(firebase.doc(firebase.db, "users", uid), data);
           navigation.navigate("Keyword", {user: data});
-          registerDisabled= false;
+          registerDisabled = false;
         })
         .catch((error) => {  // something broke, rollback.
           alert(typeof errorMessages[error.code] !== "undefined" ? errorMessages[error.code] : error);
-          registerDisabled= false;
+          registerDisabled = false;
         });
     }
   };
 
   /* View for the registration screen */
   return (
-    <View style={styles.screen} >
+    <View style={styles.screen}>
       <ImageLogo
         source={require("../../../assets/DonorableHeartLogo.png")}
         styles={styles}
       />
       <KeyboardAwareScrollView
-        style={{width:"100%"}}
+        style={{width: "100%"}}
         keyboardShouldPersistTaps="always"
       >
 
@@ -98,14 +98,14 @@ export default function RegScreen2({ route, navigation }) {
             buttonStyle={"tertiary"}
             width={"45%"}
             onPress={onBackPress}
-            label={"Back"} />
+            label={"Back"}/>
           <FormButton
             styles={styles}
             buttonStyle={"primary"}
             width={"45%"}
             onPress={onRegisterPress}
             disabled={registerDisabled}
-            label={"Register"} />
+            label={"Register"}/>
         </View>
 
       </KeyboardAwareScrollView>

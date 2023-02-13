@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 
 
 import {Modal, View, Text, StyleSheet, Pressable} from 'react-native';
@@ -31,14 +31,14 @@ const MapModal = (
       longitudeDelta: longitudeDelta,
     })
 
-  useEffect( () => {
-    setRegion( {
+  useEffect(() => {
+    setRegion({
       latitude: latitude,
       longitude: longitude,
       latitudeDelta: latitudeDelta,
       longitudeDelta: longitudeDelta,
     })
-    },[latitudeDelta,longitudeDelta,longitude,latitude]);
+  }, [latitudeDelta, longitudeDelta, longitude, latitude]);
 
   const styles = StyleSheet.create(styleguide);
 
@@ -51,25 +51,25 @@ const MapModal = (
     >
       <View style={styles.modalView}>
         <NearbyMap
-          style={[styles.fullWidth,{height:400}]}
-          region = {region}
+          style={[styles.fullWidth, {height: 400}]}
+          region={region}
           searchRadius={searchRadius}
         />
         <Text/>
-        <Text>Search within {Math.floor(searchRadius/1000/1.6)} miles</Text>
+        <Text>Search within {Math.floor(searchRadius / 1000 / 1.6)} miles</Text>
         <Slider
           style={styles.fullWidth}
           minimumValue={4000}
           maximumValue={50000}
           value={searchRadius}
-          onValueChange={(value)=>setSearchRadius(value[0])}
+          onValueChange={(value) => setSearchRadius(value[0])}
         />
         <Text/>
         <Pressable
           title="Hide Map"
           onPress={onRequestToHide}
         >
-          <View style={{backgroundColor:"grey", width:50, height:5, borderRadius:3}}></View>
+          <View style={{backgroundColor: "grey", width: 50, height: 5, borderRadius: 3}}></View>
         </Pressable>
 
       </View>

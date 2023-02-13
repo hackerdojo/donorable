@@ -3,7 +3,7 @@ import {StyleSheet, Text, KeyboardAvoidingView, View, Alert, ScrollView} from "r
 import firebase from "../../firebase/config";
 import styleguide from "../../../styles/styleguide";
 
-import {Logo,HR,FormTextInput,FormButton} from "../../components";
+import {Logo, HR, FormTextInput, FormButton} from "../../components";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 
@@ -21,12 +21,12 @@ export default function SettingsScreen({navigation, route}) {
 
   const saveChanges = async () => {
     updateDisable = true;
-    updateUser( {
+    updateUser({
       ...user,
       firstname: firstName,
       lastname: lastName,
-      phone:phone,
-      enteredLocation : enteredLocation
+      phone: phone,
+      enteredLocation: enteredLocation
     })
     updateDisable = false;
   }
@@ -286,7 +286,7 @@ export default function SettingsScreen({navigation, route}) {
           styles={styles}
           text={enteredLocation}
           onChangeText={setEnteredLocation}
-          />
+        />
 
         <FormButton
           buttonStyle={"primary"}
@@ -300,7 +300,7 @@ export default function SettingsScreen({navigation, route}) {
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
-          onPress={() => navigation.navigate("Keyword", {user, from: "Settings"})}
+          onPress={() => navigation.navigate("Keyword", {from: "Settings"})}
           label={"Search Filters"}/>
         <FormButton
           buttonStyle={"secondary"}
@@ -325,7 +325,7 @@ export default function SettingsScreen({navigation, route}) {
           label={"Delete Account"}
         />
 
-        { user.isAdmin &&
+        {user.isAdmin &&
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}

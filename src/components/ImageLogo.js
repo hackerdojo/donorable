@@ -5,11 +5,11 @@ export default function ImageLogo({source, width = "100%"}) {
 
 
   return (
-      <Image
-        source={source}
-        style={{width: width}}
-        resizeMode={"contain"}
-      />
+    <Image
+      source={source}
+      style={{width: width}}
+      resizeMode={"contain"}
+    />
   )
 }
 

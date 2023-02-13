@@ -1,4 +1,3 @@
-
 const React = require("react");
 import {SvgUri} from 'react-native-svg';
 

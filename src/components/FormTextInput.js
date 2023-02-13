@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Text, TextInput, View} from "react-native";
+import React, {useState} from "react";
+import {Text, TextInput, View} from "react-native";
 
 
-export default function FormTextInput (
-  { text, onChangeText, label, styles, secureTextEntry, disabled, keyboardType='string'}
+export default function FormTextInput(
+  {text, onChangeText, label, styles, secureTextEntry, disabled, keyboardType = 'string'}
 ) {
   return (
     <View>

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {Image, KeyboardAvoidingView, Text, StyleSheet, View} from "react-native";
-import firebase  from "../../firebase/config";
+import firebase from "../../firebase/config";
 import styleguide from "../../../styles/styleguide";
 import errorMessages from "../../firebase/errorMessages";
 import FormTextInput from "../../components/FormTextInput";
 import FormButton from "../../components/FormButton";
 import ImageLogo from "../../components/ImageLogo";
 
-export default function LoginScreen({ navigation }) {
+export default function LoginScreen({navigation}) {
 
   const styles = StyleSheet.create(styleguide);
   const [email, setEmail] = useState(""); // variable for email and password
@@ -34,28 +34,28 @@ export default function LoginScreen({ navigation }) {
     setDisableLogin(true);
     firebase
       .signInWithEmailAndPassword(firebase.auth, email, password)
-    // what about the response?  it's handled in App.js with the firebase, onAuthStateChanged
-    // handler.  Pretty slick once I figured it out.
+      // what about the response?  it's handled in App.js with the firebase, onAuthStateChanged
+      // handler.  Pretty slick once I figured it out.
 
       .then((response) => {
         const uid = response.user.uid;
-        const userRef = firebase.collection(firebase.db,"users");
-        if(typeof userRef.doc === "undefined") return;
+        const userRef = firebase.collection(firebase.db, "users");
+        if (typeof userRef.doc === "undefined") return;
         userRef
-            .doc(uid)
-            .get()
-            .then((firestoreDocument) => {
-              if (!firestoreDocument.exists) {
-                alert("User not found.");
-                setDisableLogin(false);
-                return;
-              }
-           //   const user = firestoreDocument.data();
-            })
-            .catch((error) => {
-              alert("woof:" + error);
+          .doc(uid)
+          .get()
+          .then((firestoreDocument) => {
+            if (!firestoreDocument.exists) {
+              alert("User not found.");
               setDisableLogin(false);
-            });
+              return;
+            }
+            //   const user = firestoreDocument.data();
+          })
+          .catch((error) => {
+            alert("woof:" + error);
+            setDisableLogin(false);
+          });
       })
       .catch((error) => {
         alert(typeof errorMessages[error.code] !== "undefined" ? errorMessages[error.code] : error);
@@ -104,17 +104,17 @@ export default function LoginScreen({ navigation }) {
             width="40%"
             buttonStyle={"tertiary"}
             onPress={onBackPress}
-            label={"Back"} />
+            label={"Back"}/>
           <FormButton
             styles={styles}
             width="40%"
             buttonStyle={"primary"}
             disabled={disableLogin}
             onPress={onLoginPress}
-            label={"Login"} />
+            label={"Login"}/>
         </View>
       </KeyboardAvoidingView>
-     </View>
+    </View>
   );
 
 }

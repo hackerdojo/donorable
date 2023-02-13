@@ -1,7 +1,6 @@
 import theme from "./theme.style";
 import {StyleSheet} from "react-native";
 
-
 export default {
   textForegroundColor: {
     color: theme.TEXT_COLOR,

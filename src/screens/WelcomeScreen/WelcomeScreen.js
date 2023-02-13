@@ -1,13 +1,13 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import styleguide from "../../../styles/styleguide";
 import FormButton from "../../components/FormButton";
 import ImageLogo from "../../components/ImageLogo";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 
 
-export default function WelcomeScreen({ navigation, route }) {
+export default function WelcomeScreen({navigation, route}) {
 
   const styles = StyleSheet.create(styleguide);
   /* Start walkthrough  */
@@ -25,22 +25,23 @@ export default function WelcomeScreen({ navigation, route }) {
   return (
     <View style={styles.screen}>
       <KeyboardAwareScrollView
-        style={{ flex: 1, width: "100%" }}
+        style={{flex: 1, width: "100%"}}
         keyboardShouldPersistTaps="always"
       >
         <Logo
 
         />
         <PrincipalContext.Consumer>
-          {({user}) =>(
-          <View>
-            <Text style={styles.textCenteredP2}>{(user && user.firstname) ? "Welcome, " +  user.firstname +".": "Welcome!"}</Text>
-          </View>
+          {({user}) => (
+            <View>
+              <Text
+                style={styles.textCenteredP2}>{(user && user.firstname) ? "Welcome, " + user.firstname + "." : "Welcome!"}</Text>
+            </View>
           )}
         </PrincipalContext.Consumer>
         <View>
-            <Text style={styles.textCenteredP2}>Meet people.</Text>
-            <Text style={styles.textCenteredP2}>Make a difference.</Text>
+          <Text style={styles.textCenteredP2}>Meet people.</Text>
+          <Text style={styles.textCenteredP2}>Make a difference.</Text>
         </View>
 
         <Image

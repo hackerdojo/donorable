@@ -1,16 +1,16 @@
-import React, { useState,useEffect } from "react";
-import { Text, TouchableOpacity, View} from "react-native";
+import React, {useState, useEffect} from "react";
+import {Text, TouchableOpacity, View} from "react-native";
 
 
-export default function TagButton (
-  { onPress, label, styles, tagState}
+export default function TagButton(
+  {onPress, label, styles, tagState}
 ) {
 
-  const [selected, setSelected]= useState(false);
+  const [selected, setSelected] = useState(false);
 
-  useEffect( () => {
+  useEffect(() => {
     setSelected(tagState)
-  },[tagState]);
+  }, [tagState]);
 
   const handlePress = () => {
     setSelected(!selected);

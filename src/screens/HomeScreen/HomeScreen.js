@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Swiper from 'react-native-deck-swiper';
-import { Transitioning, Transition } from 'react-native-reanimated';
+import {Transitioning, Transition} from 'react-native-reanimated';
 //import { firebase } from "../../firebase/config";
 
 import {MapModal} from "../../modals";
@@ -20,7 +20,7 @@ import styles from "./styles";
 import data from './data';
 
 /* new **************************/
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 const stackSize = 4;
 const ANIMATION_DURATION = 200;
 
@@ -50,16 +50,16 @@ const transition = (
 const swiperRef = React.createRef();
 const transitionRef = React.createRef();
 
-const Card = ({ card }) => {
+const Card = ({card}) => {
   return (
     <View style={styles.card}>
-      <Image source={{ uri: card.image }} style={styles.cardImage} />
+      <Image source={{uri: card.image}} style={styles.cardImage}/>
     </View>
   );
 };
 
-const CardDetails = ({ index }) => (
-  <View key={data[index].id} style={{ alignItems: 'center' }}>
+const CardDetails = ({index}) => (
+  <View key={data[index].id} style={{alignItems: 'center'}}>
     <Text style={[styles.text, styles.name]} numberOfLines={2}>
       {data[index].name}
     </Text>
@@ -70,7 +70,7 @@ const CardDetails = ({ index }) => (
 
 
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreen({navigation}) {
 
   /** new **********************/
   const [index, setIndex] = React.useState(0);
@@ -78,7 +78,7 @@ export default function HomeScreen({ navigation }) {
   const handleSwipedRight = () => {
     transitionRef.current.animateNextTransition();
     setIndex((index + 1) % data.length);
-    navigation.navigate('Liked', { params:  data[index], title:data[index].name});
+    navigation.navigate('Liked', {params: data[index], title: data[index].name});
   };
 
   const handleSwipedLeft = () => {
@@ -86,90 +86,90 @@ export default function HomeScreen({ navigation }) {
     setIndex((index + 1) % data.length);
   }
 
- /**************************** */
+  /**************************** */
 
   /* View for the Home Screen */
   return (
-    <SafeAreaView style={[styles.screen,styles.defaultBackgroundColor]}>
+    <SafeAreaView style={[styles.screen, styles.defaultBackgroundColor]}>
 
 
-      <StatusBar hidden={false} />
+      <StatusBar hidden={false}/>
 
       <View style={styles.swiperContainer}>
         {/* Profile Card Swiper */}
         <Swiper
-        ref={swiperRef}
-        cards={data}
-        cardIndex={index}
-        renderCard={card => <Card card={card} />}
-        infinite
-        backgroundColor={'transparent'}
-        onSwipedLeft={handleSwipedLeft}
-        onSwipedRight={handleSwipedRight}
-        onTapCard={() => swiperRef.current.swipeLeft()}
-        cardVerticalMargin={20}
-        stackSize={stackSize}
-        stackScale={10}
-        stackSeparation={14}
-        animateOverlayLabelsOpacity
-        animateCardOpacity
-        disableTopSwipe
-        disableBottomSwipe
-        overlayLabels={{
-          left: {
-            title: 'NOPE',
-            style: {
-              label: {
-                backgroundColor: "red",
-                borderColor: "red",
-                color: "white",
-                borderWidth: 1,
-                fontSize: 24
-              },
-              wrapper: {
-                flexDirection: 'column',
-                alignItems: 'flex-end',
-                justifyContent: 'flex-start',
-                marginTop: 20,
-                marginLeft: -20
+          ref={swiperRef}
+          cards={data}
+          cardIndex={index}
+          renderCard={card => <Card card={card}/>}
+          infinite
+          backgroundColor={'transparent'}
+          onSwipedLeft={handleSwipedLeft}
+          onSwipedRight={handleSwipedRight}
+          onTapCard={() => swiperRef.current.swipeLeft()}
+          cardVerticalMargin={20}
+          stackSize={stackSize}
+          stackScale={10}
+          stackSeparation={14}
+          animateOverlayLabelsOpacity
+          animateCardOpacity
+          disableTopSwipe
+          disableBottomSwipe
+          overlayLabels={{
+            left: {
+              title: 'NOPE',
+              style: {
+                label: {
+                  backgroundColor: "red",
+                  borderColor: "red",
+                  color: "white",
+                  borderWidth: 1,
+                  fontSize: 24
+                },
+                wrapper: {
+                  flexDirection: 'column',
+                  alignItems: 'flex-end',
+                  justifyContent: 'flex-start',
+                  marginTop: 20,
+                  marginLeft: -20
+                }
+              }
+            },
+            right: {
+              title: 'LIKE',
+              style: {
+                label: {
+                  backgroundColor: "blue",
+                  borderColor: "blue",
+                  color: "white",
+                  borderWidth: 1,
+                  fontSize: 24
+                },
+                wrapper: {
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  justifyContent: 'flex-start',
+                  marginTop: 20,
+                  marginLeft: 20
+                }
               }
             }
-          },
-          right: {
-            title: 'LIKE',
-            style: {
-              label: {
-                backgroundColor: "blue",
-                borderColor: "blue",
-                color: "white",
-                borderWidth: 1,
-                fontSize: 24
-              },
-              wrapper: {
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                justifyContent: 'flex-start',
-                marginTop: 20,
-                marginLeft: 20
-              }
-            }
-          }
-        }}
-      />
-    </View>
+          }}
+        />
+      </View>
 
-    {/* Bottom Container Main */}
-    <View style={styles.descriptionContainer}>
-      {/* Card Details or Description */}
-      <Transitioning.View
-        ref={transitionRef}
-        transition={transition}
-        style={styles.bottomContainerMeta}
-      >
-        <CardDetails index={index} />
-      </Transitioning.View>
+      {/* Bottom Container Main */}
+      <View style={styles.descriptionContainer}>
+        {/* Card Details or Description */}
+        <Transitioning.View
+          ref={transitionRef}
+          transition={transition}
+          style={styles.bottomContainerMeta}
+        >
+          <CardDetails index={index}/>
+        </Transitioning.View>
 
-    </View>
+      </View>
 
 
       {/* Bottom Container Buttons */}
@@ -184,7 +184,7 @@ export default function HomeScreen({ navigation }) {
 
         <TouchableOpacity
           onPress={() => setMapModalVisible(true)}>
-        <MaterialCommunityIcons
+          <MaterialCommunityIcons
 
             style={styles.iconButton}
             name={"map-marker-outline"} size={48} color={styles.iconButtonColor.color}/>
@@ -211,9 +211,9 @@ export default function HomeScreen({ navigation }) {
 
       <MapModal
         isPresented={mapModalVisible}
-        onRequestToHide={()=>setMapModalVisible(false)}
+        onRequestToHide={() => setMapModalVisible(false)}
       />
-  </SafeAreaView>
-);
+    </SafeAreaView>
+  );
 }
 

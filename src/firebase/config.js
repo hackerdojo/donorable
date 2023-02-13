@@ -1,4 +1,3 @@
-
 // using Web Version 9 of firebase SDK
 
 import {initializeApp} from "firebase/app";

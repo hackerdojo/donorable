@@ -1,73 +1,72 @@
-
 //Organization Data
 export default [
-    {
-      id: '40454230',
-      description: 'Community Tech Hub',
-      name: 'Hacker Dojo',
-      about:'The Hacker Dojo is a community of engineers, artists, scientists, activists, entrepreneurs and other creative people centered around a co-working and social facility. Feel free to drop by and see for yourself what the Dojo is all about.',
-      image:
+  {
+    id: '40454230',
+    description: 'Community Tech Hub',
+    name: 'Hacker Dojo',
+    about: 'The Hacker Dojo is a community of engineers, artists, scientists, activists, entrepreneurs and other creative people centered around a co-working and social facility. Feel free to drop by and see for yourself what the Dojo is all about.',
+    image:
       'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/62db37e93371ceb0d4629f8d_hackerdojo-logo.jpeg',
-      carousel : [
-        'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372f0b897b21c454956d_learn-card-image-p-500.webp',
-        'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372fef624f6d8a55fb93_play-card-image-p-500.webp',
-        'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372f30fe818b90865741_build-card-image-p-500.webp'
-      ],
-      latlon : [37.3963152, -122.049020]
-    },
-    {
-      id: '70078463',
-      description: 'Support Your Community by Volunteering',
-      name: 'HandsOn',
-      about: '...',
-      image:
-        'https://www.handsonconnect.org/wp-content/uploads/2018/05/client_id_43683_logo_1451932800-1.jpg'
-    },
-    {
-      id: '99305926',
-      description: 'Domestic Violence Support and Prevention',
-      name: 'La Casa de las Madres',
-      about: '...',
-      image:
-        'https://cdn.greatnonprofits.org/images/logos/Redlogo.jpg'
-    },
-    {
-      id: '99305927',
-      description: 'Bay Area Tutoring',
-      name: 'Aspire',
-      about: '...',
-      image:
-        'https://res.cloudinary.com/dktp1ybbx/image/upload/f_auto,fl_lossy,q_auto/v1554482830/organization/prod/78637/9ECisDNEkn.png'
-    },
-   {
-     id: '121100782',
-     description : 'Buddhist Tradition for Modern Life',
-     name: 'Juniper',
-     about: 'A meditation school in which the wisdom and experience of a long-standing meditation tradition are presented in a secular form, tailored to modern culture, knowledge and sensibility.',
-     image: 'http://www.juniperpath.org/static/img/juniper_live/story/juniper_plant.jpg',
-     carousel : [
-       'http://www.juniperpath.org/static/img/juniper_live/home/people_bg.jpg',
-       'http://www.juniperpath.org/static/img/juniper_live/home/story_bg.jpg',
-       'http://www.juniperpath.org/static/img/juniper_live/home/why_meditate_bg.jpg'
-     ]
-   },
-    {
-      id: '99305928',
-      description: 'For Families Free of Violence',
-      name: 'STAND!',
-      about: '...',
-      image:
-        'https://www.standffov.org/wp-content/uploads/2020/07/STANDlogo_allblueberry-01.png'
-    },
-    {
-      id: '99305929',
-      description: 'Filipino Community Center',
-      name: 'Bayanihan',
-      about: '...',
-      image:
-        'https://www.bayanihancc.org/uploads/1/0/8/6/108621871/published/1396417967.png?1499277227'
-    }
+    carousel: [
+      'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372f0b897b21c454956d_learn-card-image-p-500.webp',
+      'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372fef624f6d8a55fb93_play-card-image-p-500.webp',
+      'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372f30fe818b90865741_build-card-image-p-500.webp'
+    ],
+    latlon: [37.3963152, -122.049020]
+  },
+  {
+    id: '70078463',
+    description: 'Support Your Community by Volunteering',
+    name: 'HandsOn',
+    about: '...',
+    image:
+      'https://www.handsonconnect.org/wp-content/uploads/2018/05/client_id_43683_logo_1451932800-1.jpg'
+  },
+  {
+    id: '99305926',
+    description: 'Domestic Violence Support and Prevention',
+    name: 'La Casa de las Madres',
+    about: '...',
+    image:
+      'https://cdn.greatnonprofits.org/images/logos/Redlogo.jpg'
+  },
+  {
+    id: '99305927',
+    description: 'Bay Area Tutoring',
+    name: 'Aspire',
+    about: '...',
+    image:
+      'https://res.cloudinary.com/dktp1ybbx/image/upload/f_auto,fl_lossy,q_auto/v1554482830/organization/prod/78637/9ECisDNEkn.png'
+  },
+  {
+    id: '121100782',
+    description: 'Buddhist Tradition for Modern Life',
+    name: 'Juniper',
+    about: 'A meditation school in which the wisdom and experience of a long-standing meditation tradition are presented in a secular form, tailored to modern culture, knowledge and sensibility.',
+    image: 'http://www.juniperpath.org/static/img/juniper_live/story/juniper_plant.jpg',
+    carousel: [
+      'http://www.juniperpath.org/static/img/juniper_live/home/people_bg.jpg',
+      'http://www.juniperpath.org/static/img/juniper_live/home/story_bg.jpg',
+      'http://www.juniperpath.org/static/img/juniper_live/home/why_meditate_bg.jpg'
     ]
+  },
+  {
+    id: '99305928',
+    description: 'For Families Free of Violence',
+    name: 'STAND!',
+    about: '...',
+    image:
+      'https://www.standffov.org/wp-content/uploads/2020/07/STANDlogo_allblueberry-01.png'
+  },
+  {
+    id: '99305929',
+    description: 'Filipino Community Center',
+    name: 'Bayanihan',
+    about: '...',
+    image:
+      'https://www.bayanihancc.org/uploads/1/0/8/6/108621871/published/1396417967.png?1499277227'
+  }
+]
 /*
   { "id" : "7578046",
     "description" :"Get you the information to do good",

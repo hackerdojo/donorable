@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, {useState, useRef} from 'react';
 import {View, Text, StyleSheet, FlatList, Image, TouchableWithoutFeedback, Dimensions} from 'react-native';
 import theme from '../../styles/theme.style';
 /*
@@ -17,7 +17,7 @@ const photos = [
 
 const windowWidth = Dimensions.get('window').width;
 
-const PhotoGallery = ({ photos }) => {
+const PhotoGallery = ({photos}) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   let flatListRef = null;
@@ -28,59 +28,54 @@ const PhotoGallery = ({ photos }) => {
   };
 
 
-
   const renderDot = (index) => {
     return (
       <TouchableWithoutFeedback key={index} onPress={() => handlePageChange(index)}>
-        <View style={[styles.dot, { backgroundColor: index === selectedIndex ? 'gray' : 'lightgray' }]} />
+        <View style={[styles.dot, {backgroundColor: index === selectedIndex ? 'gray' : 'lightgray'}]}/>
       </TouchableWithoutFeedback>
     );
   };
 
   return (
     <View style={styles.container}>
-      { photos &&
-        <>
-      <FlatList
-        ref={ thisref => flatListRef = thisref}
-        style={styles.flatList}
-        data={photos}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        progressViewOffset={selectedIndex}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <View style={styles.page}>
-            <Image source={{ uri: item }} style={styles.image} />
-          </View>
-        )}
-        onMomentumScrollEnd={(e) => handlePageChange(e.nativeEvent.contentOffset.x / e.nativeEvent.layoutMeasurement.width)}
-      />
-      <View style={styles.dotsContainer}>
-        {photos.map((_, index) => renderDot(index))}
-      </View>
-        </>
+      {photos &&
+      <>
+        <FlatList
+          ref={thisref => flatListRef = thisref}
+          style={styles.flatList}
+          data={photos}
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          progressViewOffset={selectedIndex}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({item}) => (
+            <View style={styles.page}>
+              <Image source={{uri: item}} style={styles.image}/>
+            </View>
+          )}
+          onMomentumScrollEnd={(e) => handlePageChange(e.nativeEvent.contentOffset.x / e.nativeEvent.layoutMeasurement.width)}
+        />
+        <View style={styles.dotsContainer}>
+          {photos.map((_, index) => renderDot(index))}
+        </View>
+      </>
       }
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-
-  },
-  flatList: {
-
-  },
+  container: {},
+  flatList: {},
   page: {
     alignItems: 'center',
     justifyContent: 'center',
-    border:"1px solid red",
+    border: "1px solid red",
   },
   image: {
-    width: windowWidth-theme.VIEW_PADDING_DETAIL*2,
-    height: windowWidth-theme.VIEW_PADDING_DETAIL*2,
+    width: windowWidth - theme.VIEW_PADDING_DETAIL * 2,
+    height: windowWidth - theme.VIEW_PADDING_DETAIL * 2,
   },
   dotsContainer: {
     height: 50,

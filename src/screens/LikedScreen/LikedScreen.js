@@ -1,7 +1,7 @@
-import React , {useContext,useState} from "react";
+import React, {useContext, useState} from "react";
 import {Text, View, Modal, StyleSheet, TouchableOpacity, Pressable} from "react-native";
 import {HStack} from 'react-native-stacks';
-import {ChatScreen, FormButton,ImageMask, PhotoGallery} from "../../components";
+import {ChatScreen, FormButton, ImageMask, PhotoGallery} from "../../components";
 import styleguide from "../../../styles/styleguide";
 import theme from "../../../styles/theme.style";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
@@ -55,27 +55,27 @@ export default function LikedScreen({navigation, route}) {
 
   /* Go to QuickDonateScreen */
   const onDonatePress = () => {
-    navigation.navigate('QuickDonate', {params: params, title:"Donate"});
+    navigation.navigate('QuickDonate', {params: params, title: "Donate"});
 //    setShowDonatePanel(true);
   };
 
 
   /* View for the KeywordScreen */
   return (
-    <View  style={styles.screenDetail}>
-      <HStack  spacing={10} alignment={""}>
+    <View style={styles.screenDetail}>
+      <HStack spacing={10} alignment={""}>
         <ImageMask
-          source={{uri:params.image}}
+          source={{uri: params.image}}
           size={100}
           radius={5}
           backgroundColor={theme.IMAGE_BACKGROUND_COLOR}
           borderColor={theme.IMAGE_BORDER_COLOR}
           borderWidth={theme.IMAGE_BORDER_WIDTH}
         />
-        <View style={{flex:3}}>
+        <View style={{flex: 3}}>
           <Text style={styles.textCenteredP2}>{params.name}</Text>
           <Text numberOfLines={3}
-                style={[styles.textCenteredP1,{maxWidth:"90%"}]}
+                style={[styles.textCenteredP1, {maxWidth: "90%"}]}
           >{params.description}</Text>
         </View>
       </HStack>
@@ -83,7 +83,7 @@ export default function LikedScreen({navigation, route}) {
         <Text style={styles.textCenteredP2}>Now, would you like to...</Text>
       </View>
 */}
-      <HStack spacing={5} style={{padding:10}} alignment="center">
+      <HStack spacing={5} style={{padding: 10}} alignment="center">
         <FormButton
           styles={styles}
           size={"small"}
@@ -95,9 +95,9 @@ export default function LikedScreen({navigation, route}) {
           styles={styles}
           width={"33%"}
           size={"small"}
-          buttonStyle={user.favorites.includes(params.id)?"secondary":"tertiary"}
+          buttonStyle={user.favorites.includes(params.id) ? "secondary" : "tertiary"}
           onPress={onHeartPress}
-          label={user.favorites.includes(params.id)?"Favorited":"Favorite"}/>
+          label={user.favorites.includes(params.id) ? "Favorited" : "Favorite"}/>
         <FormButton
           styles={styles}
           size={"small"}
@@ -107,34 +107,34 @@ export default function LikedScreen({navigation, route}) {
           label={"Donate now"}/>
       </HStack>
       <KeyboardAwareScrollView enableAutomaticScroll={true}>
-      <PhotoGallery photos={params.carousel}/>
-      <Text
-        numberOfLines={30}
-        style={styles.description}
-      >
-        {params.about}
-      </Text>
-        <View style={{height:200}}/>
+        <PhotoGallery photos={params.carousel}/>
+        <Text
+          numberOfLines={30}
+          style={styles.description}
+        >
+          {params.about}
+        </Text>
+        <View style={{height: 200}}/>
       </KeyboardAwareScrollView>
       <View
         style={{
           borderRadius: 100,
-          alignItems:"center",
+          alignItems: "center",
           borderWidth: 0,
           backgroundColor: 'green',
           bottom: 20,
           right: 20,
-          position:"absolute",
-          width:70,
-          height:70,
-          paddingTop:10
+          position: "absolute",
+          width: 70,
+          height: 70,
+          paddingTop: 10
         }}
       >
-      <TouchableOpacity
-        onPress={onChatPress}
-      >
-        <MaterialCommunityIcons name={"chat"} size={50} color={"white"}/>
-      </TouchableOpacity>
+        <TouchableOpacity
+          onPress={onChatPress}
+        >
+          <MaterialCommunityIcons name={"chat"} size={50} color={"white"}/>
+        </TouchableOpacity>
       </View>
 
       <Modal
@@ -146,14 +146,21 @@ export default function LikedScreen({navigation, route}) {
         }}>
         <View style={[styles.modalView]}>
 
-            <Text style={{fontSize:24}}>{params.name}</Text>
-            <ChatScreen chatee={params}/>
-            <Pressable
-              title="Hide Chat"
-              onPress={() => setShowChatPanel(false)}
-            >
-              <View style={{marginTop:10,marginBottom: 0, backgroundColor:"grey", width:50, height:5, borderRadius:5}}></View>
-            </Pressable>
+          <Text style={{fontSize: 24}}>{params.name}</Text>
+          <ChatScreen chatee={params}/>
+          <Pressable
+            title="Hide Chat"
+            onPress={() => setShowChatPanel(false)}
+          >
+            <View style={{
+              marginTop: 10,
+              marginBottom: 0,
+              backgroundColor: "grey",
+              width: 50,
+              height: 5,
+              borderRadius: 5
+            }}></View>
+          </Pressable>
 
         </View>
       </Modal>
@@ -166,14 +173,14 @@ export default function LikedScreen({navigation, route}) {
           setShowDonatePanel(!showDonatePanel);
         }}>
 
-          <View style={styles.modalView}>
-            <QuickDonateScreen/>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setShowDonatePanel(!showDonatePanel)}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
-          </View>
+        <View style={styles.modalView}>
+          <QuickDonateScreen/>
+          <Pressable
+            style={[styles.button, styles.buttonClose]}
+            onPress={() => setShowDonatePanel(!showDonatePanel)}>
+            <Text style={styles.textStyle}>Hide Modal</Text>
+          </Pressable>
+        </View>
 
       </Modal>
     </View>

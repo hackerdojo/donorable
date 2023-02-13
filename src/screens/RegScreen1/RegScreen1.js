@@ -1,25 +1,25 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
+import {Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
 import styleguide from "../../../styles/styleguide";
 import FormButton from "../../components/FormButton";
 import ImageLogo from "../../components/ImageLogo";
 
-export default function RegScreen1({ navigation }) {
+export default function RegScreen1({navigation}) {
 
   const styles = StyleSheet.create(styleguide);
   /* Needs event handler */
   const onNonProfitPress = () => {
-    navigation.navigate("Reg2",{type:"donee"});
+    navigation.navigate("Reg2", {type: "donee"});
   };
 
   /* Needs event handler */
   const onDonorPress = () => {
-    navigation.navigate("Reg2",{type:"donor"});
+    navigation.navigate("Reg2", {type: "donor"});
   };
 
   /* View for the RegScreen */
   return (
-    <View style={[styles.screen]} >
+    <View style={[styles.screen]}>
       <ImageLogo
         source={require("../../../assets/DonorableHeartLogo.png")}
         styles={styles}
