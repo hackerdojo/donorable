@@ -29,7 +29,7 @@ export default function LearnMoreScreen({navigation, route}) {
   return (
 
 
-    <View style={[styles.screen,styles.screenFormMod]}>
+    <View style={[styles.screen, styles.screenFormMod]}>
       <KeyboardAwareScrollView
         style={styles.fullWidth}
         keyboardShouldPersistTaps="always"

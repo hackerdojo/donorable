@@ -2,7 +2,7 @@ import React, {useState, useContext} from "react";
 import {TouchableOpacity, FlatList, Text, StyleSheet, View} from "react-native";
 import {HStack, Spacer, VStack} from 'react-native-stacks';
 import styleguide from "../../../styles/styleguide";
-import {HR,ImageMask} from "../../components";
+import {HR, ImageMask} from "../../components";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 import theme from "../../../styles/theme.style";
 
@@ -15,13 +15,13 @@ export default function FavoritesScreen({navigation, route}) {
   const {user, updateUser} = useContext(PrincipalContext);
 
   const onCardPress = (itemId) => {
-    const item = data.filter( org => (org.id === itemId))[0];
-    navigation.push("Liked", { params:  item, title:item.name, from:"Favorites"})
+    const item = data.filter(org => (org.id === itemId))[0];
+    navigation.push("FavoriteDetails", {params: item, title: item.name, from: "Favorites"})
 // navigate to Liked Screen for this item.  Push, so person can come back to Favorites.
   }
 
   return (
-    <View  style={styles.listScreen} >
+    <View style={styles.listScreen}>
       <FlatList
         data={user.favorites}
         keyExtractor={(array, index) => index}
@@ -36,16 +36,16 @@ export default function FavoritesScreen({navigation, route}) {
                   size={70}
                   radius={10}
                   borderWidth={theme.IMAGE_BORDER_WIDTH}
-                  borderColor ={theme.IMAGE_BORDER_COLOR}
+                  borderColor={theme.IMAGE_BORDER_COLOR}
                   backgroundColor={theme.IMAGE_BACKGROUND_COLOR}
                 />
-                <VStack  alignment={"left"}  >
-                  <View style={{flex:1}}>
+                <VStack alignment={"left"}>
+                  <View style={{flex: 1}}>
                     <Text style={styles.messageSender}>
                       {data.filter(thing => thing.id === item)[0].name}
                     </Text>
                   </View>
-                  <View style={{flex:22}}>
+                  <View style={{flex: 22}}>
                     <Text style={styles.messagePreview}
                           numberOfLines={3}
                     >{data.filter(thing => thing.id === item)[0].about}</Text>

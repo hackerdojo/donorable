@@ -10,24 +10,21 @@ import theme from "./styles/theme.style"
 import {StyleSheet, Text, View} from 'react-native';
 
 import {
-  FavoritesScreen,
   IntroScreen,
   LoginScreen,
-  HomeScreen,
   RegScreen1,
   RegScreen2,
-  SettingsScreen,
   WelcomeScreen,
   RecoverScreen,
-  MessageScreen,
-  KeywordScreen,
-  QuickDonateScreen,
-  LikedScreen,
   LearnMoreScreen,
-  TestScreen
 } from "./src/screens"; // different screens of the app
 
-import HomeTab from "./src/tabs/HomeTab";
+import {
+  HomeTab,
+  FavoritesTab,
+  SettingsTab,
+  MessagesTab
+} from "./src/tabs";
 
 
 import { decode, encode } from "base-64"; // for the decode and encode of the text
@@ -36,9 +33,6 @@ import { decode, encode } from "base-64"; // for the decode and encode of the te
 /* Async loading Google Font */
 import  * as SplashScreen from "expo-splash-screen";
 import { useFonts,  loadAsync } from "expo-font";
-import DonorableNavLogo from "./src/components/DonorableNavLogo";
-import DonorableLogo from "./src/components/DonorableLogo";
-
 
 if (!global.btoa) {
   global.btoa = encode;
@@ -70,7 +64,6 @@ export default function  App() {
   const [loading, setLoading] = useState(true); // variable handling for user's data
   const [user, setUser] = useState("checking");
   const [authUser, setAuthUser] = useState(null);
-  const [userUid, setUserUid] = useState(null);
 
   // Import custom Google font
 
@@ -132,7 +125,7 @@ export default function  App() {
 
   const Tab = createBottomTabNavigator();
 
-  function MyTabs() {
+  function MainTabs() {
     return (
       <Tab.Navigator
         screenOptionsOff={{
@@ -159,32 +152,32 @@ export default function  App() {
         />
         <Tab.Screen
           name="Settings"
-          component={SettingsScreen}
+          component={SettingsTab}
           options = {{
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons name="cog" color={color} size={size}/>
             ),
-            headerLeft: () => <DonorableNavLogo/>
+            headerShown: false
           }}
         />
         <Tab.Screen
           name="Messages"
-          component={MessageScreen}
+          component={MessagesTab}
           options = {{
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons name="message-bulleted" color={color} size={size}/>
             ),
-            headerLeft: () => <DonorableNavLogo/>
+            headerShown: false
           }}
         />
         <Tab.Screen
           name="Favorites"
-          component={FavoritesScreen}
+          component={FavoritesTab}
           options = {{
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons name="heart" color={color} size={size}/>
             ),
-            headerLeft: () => <DonorableNavLogo/>
+            headerShown: false
           }}
         />
       </Tab.Navigator>
@@ -205,26 +198,14 @@ export default function  App() {
         }
         {(user && user !== "checking") && (
           <>
-
-            <Stack.Screen name="Setting" component={MyTabs} options={{ headerShown: false }} />
-
+            <Stack.Screen name="Donorable" component={MainTabs} options={{ headerShown: false }} />
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
-
-            <Stack.Screen name="Keyword" component={KeywordScreen}  options={{title:"Search"}} />
-            <Stack.Screen name="QuickDonate" component={QuickDonateScreen}  options={({ route} ) => ({ title: route.params.title})} />
-
-            <Stack.Screen name="Settings" component={SettingsScreen} options={{headerLeft: () => <DonorableLogo width={100}/>}} />
-            <Stack.Screen name="Messages" component={MessageScreen}   options={{headerRight: () => <DonorableNavLogo/>}} />
-            <Stack.Screen name="Test" component={TestScreen} />
-            <Stack.Screen name="Favorites" component={FavoritesScreen}  options={{title:"Favorites"}} />
-            <Stack.Screen name="Liked" component={LikedScreen}   options={({ route} ) => ({ title: route.params.title})}/>
           </>
         )}
         { !user && (
           <>
             <Stack.Screen name="Intro" component={IntroScreen} options={{title:"Donorable"}}/>
             <Stack.Screen name="Login" component={LoginScreen}  />
-
             <Stack.Screen name="Recover" component={RecoverScreen}  options={{title:"Recover Password"}}/>
             <Stack.Screen name="Reg1" component={RegScreen1}  options={{title:"Register"}}/>
             <Stack.Screen name="Reg2" component={RegScreen2}  options={{title:"New Account"}}/>

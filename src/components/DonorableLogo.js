@@ -3,7 +3,7 @@ import {View} from "react-native";
 import {SvgXml} from "react-native-svg";
 
 
-export default function DonorableLogo({source, width = "100%", height="100%"}) {
+export default function DonorableLogo({source, width = "100%", height = "100%"}) {
 
 
   const donorableSvg = `

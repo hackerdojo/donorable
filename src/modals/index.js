@@ -1,4 +1,4 @@
-export { default as MapModal } from "./MapModal";
+export {default as MapModal} from "./MapModal";
 
 
 

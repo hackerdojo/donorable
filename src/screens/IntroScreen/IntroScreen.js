@@ -1,9 +1,9 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
+import {Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
 import styleguide from "../../../styles/styleguide";
 import {FormButton, Logo} from "../../components";
 
-export default function IntroScreen({ navigation }) {
+export default function IntroScreen({navigation}) {
 
   const styles = StyleSheet.create(styleguide);
 
@@ -19,8 +19,8 @@ export default function IntroScreen({ navigation }) {
 
   /* View for the IntroScreen */
   return (
-    <View style={[styles.screen]} >
-     <Logo width={200} height={80}/>
+    <View style={[styles.screen]}>
+      <Logo width={200} height={80}/>
 
       <Text style={styles.textCentered}>Fund your Purpose</Text>
 
