@@ -6,6 +6,10 @@ export default {
     color: theme.TEXT_COLOR,
   },
 
+  textBold: {
+    fontWeight: "bold"
+  },
+
   listScreen: {
     backgroundColor:theme.BACKGROUND_COLOR
   },
@@ -204,13 +208,15 @@ export default {
   inputContainer: {
     borderWidth: 1,
     borderColor: theme.INPUT_BORDER_COLOR,
-    backgroundColor: "white"
+    backgroundColor: "white",
+    borderRadius:5
   },
 
   inputContainerDisabled: {
     borderWidth: 1,
     borderColor: theme.INPUT_BORDER_COLOR,
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
+    borderRadius:5
   },
 
   input: {
@@ -220,6 +226,10 @@ export default {
     paddingLeft:5,
     overflow: "hidden",
     width: "100%",
+  },
+
+  inputNumeric: {
+    alignItems:"flex-end"
   },
 
   disabled : {
@@ -241,7 +251,7 @@ export default {
   horizontalButtonContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
   },
 
   buttonContainer: {
@@ -329,4 +339,68 @@ export default {
     shadowRadius: 4,
     elevation: 5,
   },
+/* TODO: Home Screen styles, need to blend in refactor*/
+  container: {
+    backgroundColor: "white",
+  },
+
+  swiperContainer: {
+    flex: 4,
+    width: "100%",
+    backgroundColor: theme.BACKGROUND_COLOR,
+  },
+
+  descriptionContainer: {
+    flex: 1.5,
+    justifyContent: 'space-evenly',
+    width: "100%"
+  },
+
+  bottomContainerMeta: {
+    alignContent: 'flex-start',
+    alignItems: 'center',
+    color: "white"
+  },
+
+  bottomContainerButtons: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignContent: 'center',
+    backgroundColor: 'transparent',
+    width: "100%"
+  },
+
+  cardImage: {
+    width: "70%",
+    flex: 1,
+    resizeMode: 'contain'
+  },
+
+  card: {
+    flex: 0.45,
+    borderRadius: 8,
+    shadowRadius: 25,
+    shadowColor: "black",
+    shadowOpacity: 0.08,
+    shadowOffset: {width: 0, height: 0},
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: "white",
+    padding: 10
+  },
+
+  done: {
+    textAlign: 'center',
+    fontSize: 30,
+    color: 'white',
+    backgroundColor: 'transparent'
+  },
+
+  name: {
+    fontFamily: theme.FONT_FAMILY,
+    fontSize: 24,
+    color: theme.TEXT_COLOR,
+    fontWeight: "bold"
+  }
 }

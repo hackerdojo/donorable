@@ -70,11 +70,13 @@ const styles = StyleSheet.create({
   page: {
     alignItems: 'center',
     justifyContent: 'center',
-    border: "1px solid red",
+    borderRadius: 5
   },
   image: {
     width: windowWidth - theme.VIEW_PADDING_DETAIL * 2,
     height: windowWidth - theme.VIEW_PADDING_DETAIL * 2,
+    borderRadius: 5,
+    overflow:"hidden"
   },
   dotsContainer: {
     height: 50,
@@ -86,6 +88,7 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 5,
+    overflow:"hidden",
     marginHorizontal: 5,
   },
 });

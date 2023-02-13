@@ -9,7 +9,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import {QuickDonateScreen} from "../QuickDonateScreen/QuickDonateScreen";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
-export default function LikedScreen({navigation, route}) {
+export default function DetailScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
   const {user, updateUser} = useContext(PrincipalContext);
   const [showDonatePanel, setShowDonatePanel] = useState(false);
@@ -58,7 +58,7 @@ export default function LikedScreen({navigation, route}) {
   /* View for the KeywordScreen */
   return (
     <View style={styles.screenDetail}>
-      <HStack spacing={10} alignment={""}>
+      <HStack spacing={10} alignment="center">
         <ImageMask
           source={{uri: params.image}}
           size={100}
@@ -67,8 +67,8 @@ export default function LikedScreen({navigation, route}) {
           borderColor={theme.IMAGE_BORDER_COLOR}
           borderWidth={theme.IMAGE_BORDER_WIDTH}
         />
-        <View style={{flex: 3}}>
-          <Text style={styles.textCenteredP2}>{params.name}</Text>
+        <View style={{flex: 3, alignItems:"center"}}>
+          <Text style={[styles.textCenteredP2, styles.textBold]}>{params.name}</Text>
           <Text numberOfLines={3}
                 style={[styles.textCenteredP1, {maxWidth: "90%"}]}
           >{params.description}</Text>
@@ -78,7 +78,7 @@ export default function LikedScreen({navigation, route}) {
         <Text style={styles.textCenteredP2}>Now, would you like to...</Text>
       </View>
 */}
-      <HStack spacing={5} style={{padding: 10}} alignment="center">
+      <HStack spacing={5} style={{padding: 8}} alignment="center">
         <FormButton
           styles={styles}
           size={"small"}

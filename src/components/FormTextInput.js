@@ -3,7 +3,7 @@ import {Text, TextInput, View} from "react-native";
 
 
 export default function FormTextInput(
-  {text, onChangeText, label, styles, secureTextEntry, disabled, keyboardType = 'string'}
+  {text, onChangeText, label, styles, numberic, secureTextEntry, disabled, keyboardType = 'string'}
 ) {
 
   return (

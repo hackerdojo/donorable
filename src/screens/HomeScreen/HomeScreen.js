@@ -15,13 +15,16 @@ import Swiper from 'react-native-deck-swiper';
 import {Transitioning, Transition} from 'react-native-reanimated';
 //import { firebase } from "../../firebase/config";
 import {MapModal} from "../../modals";
-import styles from "./styles";
+import styleguide from "../../../styles/styleguide";
+import theme from "../../../styles/theme.style";
 import data from './data';
 
 /* new **************************/
 const {width} = Dimensions.get('window');
 const stackSize = 4;
 const ANIMATION_DURATION = 200;
+
+const styles = StyleSheet.create(styleguide);
 
 const transition = (
   <Transition.Sequence>
@@ -59,10 +62,8 @@ const Card = ({card}) => {
 
 const CardDetails = ({index}) => (
   <View key={data[index].id} style={{alignItems: 'center'}}>
-    <Text style={[styles.text, styles.name]} numberOfLines={2}>
-      {data[index].name}
-    </Text>
-    <Text style={[styles.text, styles.description]}>{data[index].description}</Text>
+    <Text style={[styles.name,styles.textBold]} numberOfLines={2}>{data[index].name}</Text>
+    <Text style={[styles.text, styles.description]} numberOfLines={3}>{data[index].description}</Text>
   </View>
 );
 /** ************************************* */
