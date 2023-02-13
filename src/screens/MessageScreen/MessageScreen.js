@@ -4,30 +4,24 @@ import {HStack, Spacer, VStack} from 'react-native-stacks';
 import styleguide from "../../../styles/styleguide";
 import theme from "../../../styles/theme.style";
 import {Circle, ImageMask, HR} from "../../components";
-//import { firebase } from "../../firebase/config";
-
 
 import messagesdata from "./messasgesdata";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 
-
 export default function MessageScreen(props) {
 
   const styles = StyleSheet.create(styleguide);
-
   const {user, updateUser} = useContext(PrincipalContext);
   /* Return to swiping */
   const onBackPress = () => {
     props.navigation.goBack();
   };
 
-
   /* Quick Donate option */
   /* to be implemented in "like screen" in future */
   const onCardPress = (to) => {
     navigate("QuickDonate", {param: to});
   };
-
 
   /* View for the Message screen */
   return (
@@ -65,8 +59,7 @@ export default function MessageScreen(props) {
             </TouchableOpacity>
             <HR/>
           </View>
-        )
-        }
+        )}
       />
     </View>
   );

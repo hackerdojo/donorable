@@ -1,9 +1,7 @@
-import React, {useContext} from 'react';
-import {View, Text} from 'react-native';
+import React from 'react';
 
 export const PrincipalContext = React.createContext({
   user: null,
-  updateUser: () => {
-  }
+  updateUser: () => {}
 });
 

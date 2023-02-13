@@ -2,9 +2,7 @@ import React from 'react';
 import {View} from "react-native";
 import {SvgXml} from "react-native-svg";
 
-
 export default function DonorableLogo({source, width = "100%", height = "100%"}) {
-
 
   const donorableSvg = `
     <svg  xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 146.46 28.01" width="146" height="28">

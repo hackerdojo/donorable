@@ -5,6 +5,7 @@ export default {
   textForegroundColor: {
     color: theme.TEXT_COLOR,
   },
+
   listScreen: {
     backgroundColor:theme.BACKGROUND_COLOR
   },
@@ -21,6 +22,7 @@ export default {
     color: theme.TEXT_COLOR,
     width:"100%"
   },
+
   screenDetail: {
     alignItems: "center",
     paddingLeft: theme.VIEW_PADDING_DETAIL,
@@ -133,12 +135,14 @@ export default {
     borderBottomColor: theme.NEUTRAL_COLOR,
     borderBottomWidth: StyleSheet.hairlineWidth
   },
+
   text : {
     fontFamily: theme.FONT_FAMILY,
     textAlign:"center",
     color: theme.TEXT_COLOR,
     fontSize: 50,
   },
+
   description: {
     fontFamily: theme.FONT_FAMILY,
     fontSize: 15,
@@ -150,11 +154,13 @@ export default {
     textAlign: "center",
     color: theme.TEXT_COLOR
   },
+
   textCenteredP3: {
     fontSize: theme.TEXT_FONT_P3,
     textAlign: "center",
     color: theme.TEXT_COLOR
   },
+
   textCenteredP1: {
     fontSize: theme.TEXT_FONT_P1,
     textAlign: "center",
@@ -165,12 +171,15 @@ export default {
     textAlign: "left",
     color: theme.TEXT_COLOR
   },
+
   textP2: {
     fontSize: theme.TEXT_FONT_P2,
   },
+
   textP1: {
     fontSize: theme.TEXT_FONT_P1,
   },
+
   textP3: {
     fontSize: theme.TEXT_FONT_P3,
   },
@@ -184,22 +193,26 @@ export default {
   iconButtonColor: {
     color: theme.ICON_BUTTON_COLOR
   },
+
   inputLabel: {
     fontFamily: theme.FONT_FAMILY,
     color: theme.TEXT_COLOR,
     fontSize: theme.FONT_SIZE_MEDIUM,
     paddingTop: theme.FONT_SIZE_MEDIUM
   },
+
   inputContainer: {
     borderWidth: 1,
     borderColor: theme.INPUT_BORDER_COLOR,
     backgroundColor: "white"
   },
+
   inputContainerDisabled: {
     borderWidth: 1,
     borderColor: theme.INPUT_BORDER_COLOR,
     backgroundColor: "transparent"
   },
+
   input: {
     fontFamily: theme.FONT_FAMILY,
     fontSize: 16,
@@ -208,30 +221,35 @@ export default {
     overflow: "hidden",
     width: "100%",
   },
+
   disabled : {
     disabled: true
   },
+
   horizontalContainer: {
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
     justifyContent: "space-between",
   },
+
   leftJustified: {
     alignItems:"left",
     justifyContent:"start",
-
   },
+
   horizontalButtonContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
   },
+
   buttonContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
+
   tagContainer: {
     flexDirection:"row",
     flexWrap:"wrap",
@@ -251,6 +269,7 @@ export default {
     justifyContent: "center",
     marginTop:20
   },
+
   tagUnselected: {
     marginTop:20,
     backgroundColor: theme.TERTIARY_COLOR,
@@ -261,7 +280,7 @@ export default {
     borderWidth: 1,
     alignItems: "center",
     justifyContent: "center",
-},
+  },
 
   messageCard: {
     flexDirection: "row",
@@ -281,6 +300,7 @@ export default {
     width:"100%",
     color:theme.TEXT_COLOR
   },
+
   iconButton: {
     shadowColor:"grey",
     shadowOpacity:0.5,
@@ -309,5 +329,4 @@ export default {
     shadowRadius: 4,
     elevation: 5,
   },
-
 }

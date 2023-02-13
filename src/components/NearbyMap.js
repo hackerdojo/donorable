@@ -7,11 +7,13 @@ const NearbyMap = (
     region,
     searchRadius = 4000
   }) => {
+
   const userLocation = {
     latitude: 37.3963152,
     longitude: -122.049020
   }
   const [userRegion, setUserRegion] = useState({});
+
   return (
     <View style={{flex: 1, width: "100%", height: "100%"}}>
       <MapView

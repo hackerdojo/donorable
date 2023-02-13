@@ -1,14 +1,16 @@
 //import "react-native-gesture-handler"; // gesture library of react-native
 import React, { useEffect, useState , useCallback} from "react"; // react library
-import firebase from "./src/firebase/config"; // firebase configuration
-import { PrincipalContext} from './src/contexts/PrincipalContext';
+import {StyleSheet, Text, View} from 'react-native';
 import { NavigationContainer } from "@react-navigation/native"; // react libraries for the navigation
 import {createBottomTabNavigator} from  "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import theme from "./styles/theme.style"
-import {StyleSheet, Text, View} from 'react-native';
+import  * as SplashScreen from "expo-splash-screen";
+import { useFonts,  loadAsync } from "expo-font";
+import firebase from "./src/firebase/config"; // firebase configuration
 
+import theme from "./styles/theme.style"
+import { PrincipalContext} from './src/contexts/PrincipalContext';
 import {
   IntroScreen,
   LoginScreen,
@@ -16,23 +18,14 @@ import {
   RegScreen2,
   WelcomeScreen,
   RecoverScreen,
-  LearnMoreScreen,
 } from "./src/screens"; // different screens of the app
-
 import {
   HomeTab,
   FavoritesTab,
   SettingsTab,
   MessagesTab
 } from "./src/tabs";
-
-
 import { decode, encode } from "base-64"; // for the decode and encode of the text
-
-
-/* Async loading Google Font */
-import  * as SplashScreen from "expo-splash-screen";
-import { useFonts,  loadAsync } from "expo-font";
 
 if (!global.btoa) {
   global.btoa = encode;
@@ -60,13 +53,11 @@ const styles = StyleSheet.create({
 
 
 export default function  App() {
-
   const [loading, setLoading] = useState(true); // variable handling for user's data
   const [user, setUser] = useState("checking");
   const [authUser, setAuthUser] = useState(null);
 
-  // Import custom Google font
-
+  // Import custom fonts
   const [fontsLoaded] = useFonts({
     'Montserrat_400Regular': require ('./assets/fonts/Montserrat_400Regular.ttf'),
     'Montserrat_900Black': require ('./assets/fonts/Montserrat_900Black.ttf'),
@@ -105,19 +96,15 @@ export default function  App() {
   );
 
   // Firebase login handle authentication change returned from google generated from login page.
-
   firebase
     .onAuthStateChanged(firebase.auth, async (authUser) => {
       setAuthUser(authUser);
     }
   );
 
-
   // Initialize React Navigation stack navigator
   // allows app to transition between screens and manage navigation history
   const Stack = createStackNavigator();
-  console.log("app")
-  console.log("loading" + user)
 
   if (!fontsLoaded) {
     return null;
@@ -184,38 +171,34 @@ export default function  App() {
     );
   }
 
-
   // Routes & Navigation of different screens
   return (
-    <PrincipalContext.Provider value={{user:user, updateUser: handleUpdateUser}} >
-    <NavigationContainer onReady={onLayoutRootView}>
-      <Stack.Navigator>
-        { user === "checking" &&
-         <Stack.Screen name={"Checking"}>{() => (
-           <View style={styles.container} onLayout={onLayoutRootView}><Text style={styles.text} >Hello</Text></View>
-           )}
-         </Stack.Screen>
-        }
-        {(user && user !== "checking") && (
-          <>
-            <Stack.Screen name="Donorable" component={MainTabs} options={{ headerShown: false }} />
-            <Stack.Screen name="Welcome" component={WelcomeScreen} />
-          </>
-        )}
-        { !user && (
-          <>
-            <Stack.Screen name="Intro" component={IntroScreen} options={{title:"Donorable"}}/>
-            <Stack.Screen name="Login" component={LoginScreen}  />
-            <Stack.Screen name="Recover" component={RecoverScreen}  options={{title:"Recover Password"}}/>
-            <Stack.Screen name="Reg1" component={RegScreen1}  options={{title:"Register"}}/>
-            <Stack.Screen name="Reg2" component={RegScreen2}  options={{title:"New Account"}}/>
-          </>
-        )}
-        <Stack.Screen name="LearnMore" component={LearnMoreScreen}   options={{title:"About"}} />
-      </Stack.Navigator>
-    </NavigationContainer>
-
+    <PrincipalContext.Provider value={{user:user, updateUser: handleUpdateUser}}>
+      <NavigationContainer onReady={onLayoutRootView}>
+        <Stack.Navigator>
+          { user === "checking" &&
+          <Stack.Screen name={"Checking"}>{() => (
+            <View style={styles.container} onLayout={onLayoutRootView}><Text style={styles.text} >Hello</Text></View>
+          )}
+          </Stack.Screen>
+          }
+          {(user && user !== "checking") && (
+            <>
+              <Stack.Screen name="Donorable" component={MainTabs} options={{ headerShown: false }} />
+              <Stack.Screen name="Welcome" component={WelcomeScreen} />
+            </>
+          )}
+          { !user && (
+            <>
+              <Stack.Screen name="Intro" component={IntroScreen} options={{title:"Donorable"}}/>
+              <Stack.Screen name="Login" component={LoginScreen}  />
+              <Stack.Screen name="Recover" component={RecoverScreen}  options={{title:"Recover Password"}}/>
+              <Stack.Screen name="Reg1" component={RegScreen1}  options={{title:"Register"}}/>
+              <Stack.Screen name="Reg2" component={RegScreen2}  options={{title:"New Account"}}/>
+            </>
+          )}
+        </Stack.Navigator>
+      </NavigationContainer>
     </PrincipalContext.Provider>
   );
-
 }

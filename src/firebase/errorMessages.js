@@ -1,3 +1,4 @@
+
 const errorMessages = {
   "auth/user-not-found": "User not found.",
   "auth/wrong-password": "This username and password combination not found.",

@@ -1,17 +1,14 @@
 import React, {useState, useContext} from "react";
-import {StyleSheet, Text, KeyboardAvoidingView, View, Alert, ScrollView} from "react-native";
+import {StyleSheet, Text, View, Alert} from "react-native";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import firebase from "../../firebase/config";
 import styleguide from "../../../styles/styleguide";
-
-import {Logo, HR, FormTextInput, FormButton} from "../../components";
-import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import {HR, FormTextInput, FormButton} from "../../components";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 
 export default function SettingsScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
-
   const {user, updateUser} = useContext(PrincipalContext);
-
   const [firstName, setFirstName] = useState(user.firstname);
   const [lastName, setLastName] = useState(user.lastname);
   const [phone, setPhone] = useState(user.phone);
@@ -39,7 +36,6 @@ export default function SettingsScreen({navigation, route}) {
   const onKeyPresss = () => {
     navigation.navigate('Keyword', {params: 'set'});
   }
-
 
   /* Additional logout dialogue */
   const log2Alert = () => {
@@ -80,7 +76,6 @@ export default function SettingsScreen({navigation, route}) {
     )
   };
 
-
   /* Additional account deletion dialogue */
   const del2Alert = () => {
     let user = firebase.auth().currentUser;
@@ -103,7 +98,6 @@ export default function SettingsScreen({navigation, route}) {
     )
   };
 
-
   /* Delete account and return to IntroScreen */
   const onDelPress = () => {
     Alert.alert(
@@ -121,8 +115,7 @@ export default function SettingsScreen({navigation, route}) {
     )
   };
 
-
-  /******************* * TO DO***************************** */
+  /* TODO:  Settings screen functions */
   /* Change email of current user */
   const onEmPress = () => {
 
@@ -149,8 +142,7 @@ export default function SettingsScreen({navigation, route}) {
       });
   }
 
-
-  /*****************************TO DO********************************************************** */
+  /* TODO:  Settings screen functions */
   /* Test modal */
 
   //const [shown, setShown ] = useState(0);
@@ -245,10 +237,8 @@ export default function SettingsScreen({navigation, route}) {
 
   return (
     <View style={styles.screen}>
-
       <KeyboardAwareScrollView
         style={{width: "100%"}}>
-
         <FormTextInput
           label={"Email"}
           text={user.email}
@@ -257,22 +247,18 @@ export default function SettingsScreen({navigation, route}) {
           // let's not let people change this for now because it is their login.
           // so many security issues...
         />
-
         <FormTextInput
           label={"First Name"}
           text={firstName}
           styles={styles}
           onChangeText={setFirstName}
         />
-
         <FormTextInput
           label={"Last Name"}
           text={lastName}
           styles={styles}
           onChangeText={setLastName}
         />
-
-
         <FormTextInput
           label={"Phone Number"}
           styles={styles}
@@ -280,21 +266,18 @@ export default function SettingsScreen({navigation, route}) {
           text={phone}
           onChangeText={setPhone}
         />
-
         <FormTextInput
           label={"Location"}
           styles={styles}
           text={enteredLocation}
           onChangeText={setEnteredLocation}
         />
-
         <FormButton
           buttonStyle={"primary"}
           styles={styles}
           onPress={saveChanges}
           disabled={updateDisable}
           label={updateDisable ? "Updating" : "Update"}/>
-
         <Text/>
         <HR/>
         <FormButton
@@ -324,16 +307,14 @@ export default function SettingsScreen({navigation, route}) {
           styles={styles}
           label={"Delete Account"}
         />
-
-        {user.isAdmin &&
-        <FormButton
-          buttonStyle={"secondary"}
-          styles={styles}
-          onPress={() => navigation.navigate("Test", {user, from: "Settings"})}
-          label={"Test"}/>
+        { user.isAdmin &&
+          <FormButton
+            buttonStyle={"secondary"}
+            styles={styles}
+            onPress={() => navigation.navigate("Test", {user, from: "Settings"})}
+            label={"Test"}/>
         }
         <Text/>
-
         <Text/>
       </KeyboardAwareScrollView>
     </View>

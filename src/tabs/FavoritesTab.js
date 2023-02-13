@@ -15,9 +15,13 @@ export default function FavoritesTab() {
         options={{
           headerLeft: () => <DonorableNavLogo/>,
           headerRight: () => <MaterialCommunityIcons style={{paddingRight: 10}} name={"cart"} size={30}/>
-        }}/>
-      <Stack.Screen name="FavoriteDetails" component={LikedScreen}
-                    options={({route}) => ({title: route.params.title})}/>
+        }}
+      />
+      <Stack.Screen
+        name="FavoriteDetails"
+        component={LikedScreen}
+        options={({route}) => ({title: route.params.title})}
+      />
     </Stack.Navigator>
   )
 }

@@ -7,21 +7,25 @@ export default StyleSheet.create({
   container: {
     backgroundColor: "white",
   },
+
   swiperContainer: {
     flex: 4,
     width: "100%",
     backgroundColor: styleguide.defaultBackgroundColor.backgroundColor,
   },
+
   descriptionContainer: {
     flex: 1.5,
     justifyContent: 'space-evenly',
     width: "100%"
   },
+
   bottomContainerMeta: {
     alignContent: 'flex-start',
     alignItems: 'center',
     color: "white"
   },
+
   bottomContainerButtons: {
     flex: 1,
     flexDirection: 'row',

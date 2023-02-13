@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 
 const Circle = ({color, radius, visible = true, style}) => {
+
   return (
     <View style={
       {
@@ -10,7 +11,8 @@ const Circle = ({color, radius, visible = true, style}) => {
         backgroundColor: visible ? color : "transparent",
         borderRadius: radius,
         ...style
-      }}/>
+      }}
+    />
   )
 }
 

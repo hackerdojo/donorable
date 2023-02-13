@@ -14,7 +14,6 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Swiper from 'react-native-deck-swiper';
 import {Transitioning, Transition} from 'react-native-reanimated';
 //import { firebase } from "../../firebase/config";
-
 import {MapModal} from "../../modals";
 import styles from "./styles";
 import data from './data';
@@ -69,10 +68,7 @@ const CardDetails = ({index}) => (
 /** ************************************* */
 
 
-
 export default function HomeScreen({navigation}) {
-
-  /** new **********************/
   const [index, setIndex] = React.useState(0);
   const [mapModalVisible, setMapModalVisible] = useState(false);
   const handleSwipedRight = () => {
@@ -86,15 +82,10 @@ export default function HomeScreen({navigation}) {
     setIndex((index + 1) % data.length);
   }
 
-  /**************************** */
-
   /* View for the Home Screen */
   return (
     <SafeAreaView style={[styles.screen, styles.defaultBackgroundColor]}>
-
-
       <StatusBar hidden={false}/>
-
       <View style={styles.swiperContainer}>
         {/* Profile Card Swiper */}
         <Swiper
@@ -157,7 +148,6 @@ export default function HomeScreen({navigation}) {
           }}
         />
       </View>
-
       {/* Bottom Container Main */}
       <View style={styles.descriptionContainer}>
         {/* Card Details or Description */}
@@ -168,10 +158,7 @@ export default function HomeScreen({navigation}) {
         >
           <CardDetails index={index}/>
         </Transitioning.View>
-
       </View>
-
-
       {/* Bottom Container Buttons */}
       <View style={styles.bottomContainerButtons}>
 
@@ -180,8 +167,6 @@ export default function HomeScreen({navigation}) {
           style={styles.iconButton}
           name={"undo"} size={48} color={styles.iconButtonColor.color}/>
         {/* Map Button */}
-
-
         <TouchableOpacity
           onPress={() => setMapModalVisible(true)}>
           <MaterialCommunityIcons
@@ -197,8 +182,6 @@ export default function HomeScreen({navigation}) {
             style={styles.iconButton}
             name={"thumb-down-outline"} size={48} color={styles.iconButtonColor.color}/>
         </TouchableOpacity>
-
-
         {/* Like button */}
         <TouchableOpacity
           onPress={() => swiperRef.current.swipeRight()}>
@@ -206,9 +189,7 @@ export default function HomeScreen({navigation}) {
             style={styles.iconButton}
             name={"thumb-up-outline"} size={48} color={styles.iconButtonColor.color}/>
         </TouchableOpacity>
-
       </View>
-
       <MapModal
         isPresented={mapModalVisible}
         onRequestToHide={() => setMapModalVisible(false)}

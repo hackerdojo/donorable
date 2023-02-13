@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
-import {FormButton} from "./index";
 import styleguide from "../../styles/styleguide";
 
 const ChatScreen = ({chatee}) => {
   const styles = StyleSheet.create(styleguide);
-
   const [messages, setMessages] = useState([
+    /* Sample mock chat
+    *  TODO: hook up to pub sub backend.
+    *   */
     {type: 'response', text: 'Hi, how can I help you today?', date: '2022-01-01'},
     {type: 'question', text: 'I need help with my order.', date: '2022-01-02'},
     {

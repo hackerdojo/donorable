@@ -15,11 +15,18 @@ export default function HomeTab() {
         options={{
           headerLeft: () => <DonorableNavLogo/>,
           headerRight: () => <MaterialCommunityIcons style={{paddingRight: 10}} name={"cart"} size={30}/>
-        }}/>
-      <Stack.Screen name="QuickDonate" component={QuickDonateScreen}
-                    options={({route}) => ({title: route.params.title})}/>
-      <Stack.Screen name="Liked" component={LikedScreen} options={({route}) => ({title: route.params.title})}/>
-      <Stack.Screen name="LearnMore" component={LearnMoreScreen} options={{title: "About"}}/>
+        }}
+      />
+      <Stack.Screen
+        name="QuickDonate"
+        component={QuickDonateScreen}
+        options={({route}) => ({title: route.params.title})}
+      />
+      <Stack.Screen
+        name="Liked"
+        component={LikedScreen}
+        options={({route}) => ({title: route.params.title})}
+      />
     </Stack.Navigator>
   )
 }

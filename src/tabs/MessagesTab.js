@@ -15,7 +15,8 @@ export default function MessagesTab() {
         options={{
           headerLeft: () => <DonorableNavLogo/>,
           headerRight: () => <MaterialCommunityIcons style={{paddingRight: 10}} name={"cart"} size={30}/>
-        }}/>
+        }}
+      />
       {/*}      <Stack.Screen name="Message Screen" component={ConversationScreen}  options={({ route} ) => ({ title: route.params.title})} />
       */}
     </Stack.Navigator>

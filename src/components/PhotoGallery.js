@@ -1,6 +1,7 @@
 import React, {useState, useRef} from 'react';
 import {View, Text, StyleSheet, FlatList, Image, TouchableWithoutFeedback, Dimensions} from 'react-native';
 import theme from '../../styles/theme.style';
+
 /*
 
 const photos = [
@@ -9,11 +10,10 @@ const photos = [
   require('./images/image3.jpg'),
 ];
 
-...
-
 <PhotoGallery photos={photos} />
 
- */
+*/
+
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -26,7 +26,6 @@ const PhotoGallery = ({photos}) => {
     setSelectedIndex(index);
     flatListRef.scrollToIndex({index});
   };
-
 
   const renderDot = (index) => {
     return (

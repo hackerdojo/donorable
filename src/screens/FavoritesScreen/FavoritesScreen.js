@@ -1,6 +1,6 @@
-import React, {useState, useContext} from "react";
+import React, { useContext} from "react";
 import {TouchableOpacity, FlatList, Text, StyleSheet, View} from "react-native";
-import {HStack, Spacer, VStack} from 'react-native-stacks';
+import {HStack, VStack} from 'react-native-stacks';
 import styleguide from "../../../styles/styleguide";
 import {HR, ImageMask} from "../../components";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
@@ -10,7 +10,6 @@ import theme from "../../../styles/theme.style";
 import data from '../HomeScreen/data';
 
 export default function FavoritesScreen({navigation, route}) {
-
   const styles = StyleSheet.create(styleguide);
   const {user, updateUser} = useContext(PrincipalContext);
 
@@ -48,7 +47,9 @@ export default function FavoritesScreen({navigation, route}) {
                   <View style={{flex: 22}}>
                     <Text style={styles.messagePreview}
                           numberOfLines={3}
-                    >{data.filter(thing => thing.id === item)[0].about}</Text>
+                    >
+                      {data.filter(thing => thing.id === item)[0].about}
+                    </Text>
                   </View>
                 </VStack>
               </HStack>

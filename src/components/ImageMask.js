@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Image, StyleSheet} from 'react-native';
 
-
 export const ImageMask = (
   {
     source,
@@ -28,48 +27,49 @@ export const ImageMask = (
       backgroundColor: backgroundColor,
       borderRadius: radius,
       height: size + (borderWidth + backgroundWidth) * 2,
-    }}>
+    }}
+    >
       <Image
         source={source}
         resizeMode={"contain"}
-        style={
-          {
-            top: borderWidth + backgroundWidth + 2.5,
-            left: borderWidth + backgroundWidth + 2.5,
-            width: size - 5,
-            height: size - 5,
-            position: "absolute",
-          }
-        }
+        style={{
+          top: borderWidth + backgroundWidth + 2.5,
+          left: borderWidth + backgroundWidth + 2.5,
+          width: size - 5,
+          height: size - 5,
+          position: "absolute",
+        }}
       />
-
-      <View style={{
-        position: "absolute",
-        elevation: 3,
-        zIndex: 3,
-        top: backgroundWidth,
-        left: backgroundWidth,
-        width: size + borderWidth * 2,
-        height: size + borderWidth * 2,
-        borderRadius: myRadius,
-        borderWidth: borderWidth,
-        borderColor: borderColor,
-      }}/>
-      <View style={{
-        position: "absolute",
-        elevation: 4,
-        zIndex: 4,
-        top: borderWidth,
-        left: borderWidth,
-        width: size + borderWidth * 2 + backgroundWidth,
-        height: size + borderWidth * 2 + backgroundWidth,
-        borderRadius: myRadius,
-        borderWidth: backgroundWidth,
-        borderColor: backgroundColor,
-      }}/>
+      <View
+        style={{
+          position: "absolute",
+          elevation: 3,
+          zIndex: 3,
+          top: backgroundWidth,
+          left: backgroundWidth,
+          width: size + borderWidth * 2,
+          height: size + borderWidth * 2,
+          borderRadius: myRadius,
+          borderWidth: borderWidth,
+          borderColor: borderColor,
+        }}
+      />
+      <View
+        style={{
+          position: "absolute",
+          elevation: 4,
+          zIndex: 4,
+          top: borderWidth,
+          left: borderWidth,
+          width: size + borderWidth * 2 + backgroundWidth,
+          height: size + borderWidth * 2 + backgroundWidth,
+          borderRadius: myRadius,
+          borderWidth: backgroundWidth,
+          borderColor: backgroundColor,
+        }}
+      />
     </View>
   );
 };
-
 
 export default ImageMask;

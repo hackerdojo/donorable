@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Text, TouchableOpacity, View} from "react-native";
-
+import {Text, TouchableOpacity} from "react-native";
 
 export default function TagButton(
   {onPress, label, styles, tagState}

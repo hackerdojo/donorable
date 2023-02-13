@@ -2,8 +2,8 @@ import React from 'react';
 import {View, Text, Pressable, Image} from 'react-native';
 
 export const BottomNavigation = ({buttons, styles}) => {
-  return (
 
+  return (
     <View>
       {
         buttons.map(({image, text, action}) =>

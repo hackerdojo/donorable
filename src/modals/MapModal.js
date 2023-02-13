@@ -1,12 +1,8 @@
 import React, {useState, useEffect} from 'react';
-
-
 import {Modal, View, Text, StyleSheet, Pressable} from 'react-native';
 import Slider from 'react-native-sliders';
-import {HR, NearbyMap} from '../components';
+import {NearbyMap} from '../components';
 import styleguide from "../../styles/styleguide";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
 
 const MapModal = (
   {
@@ -18,9 +14,10 @@ const MapModal = (
     longitudeDelta = 0.8,
 //    range,
     onTranslate,
-
     onRangeChange
   }) => {
+
+  const styles = StyleSheet.create(styleguide);
   // 40 miles
   const [searchRadius, setSearchRadius] = useState(4000)
   const [region, setRegion] = useState(
@@ -40,12 +37,11 @@ const MapModal = (
     })
   }, [latitudeDelta, longitudeDelta, longitude, latitude]);
 
-  const styles = StyleSheet.create(styleguide);
-
   return (
     <Modal
       transparent={true}
-      animationType="slide"
+      presentationStyle={"pageSheet"}
+      animationType="fade"
       visible={isPresented}
       onRequestClose={onRequestToHide}
     >
@@ -71,9 +67,7 @@ const MapModal = (
         >
           <View style={{backgroundColor: "grey", width: 50, height: 5, borderRadius: 3}}></View>
         </Pressable>
-
       </View>
-
     </Modal>
   )
 }

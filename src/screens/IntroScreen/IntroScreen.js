@@ -4,7 +4,6 @@ import styleguide from "../../../styles/styleguide";
 import {FormButton, Logo} from "../../components";
 
 export default function IntroScreen({navigation}) {
-
   const styles = StyleSheet.create(styleguide);
 
   /* Go to RegistrationScreen */
@@ -21,9 +20,7 @@ export default function IntroScreen({navigation}) {
   return (
     <View style={[styles.screen]}>
       <Logo width={200} height={80}/>
-
       <Text style={styles.textCentered}>Fund your Purpose</Text>
-
       <FormButton
         label={"Login"}
         styles={styles}

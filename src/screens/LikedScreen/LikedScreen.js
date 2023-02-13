@@ -6,21 +6,17 @@ import styleguide from "../../../styles/styleguide";
 import theme from "../../../styles/theme.style";
 import {PrincipalContext} from "../../contexts/PrincipalContext";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import {QuickDonateScreen} from "../index";
+import {QuickDonateScreen} from "../QuickDonateScreen/QuickDonateScreen";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
-
 export default function LikedScreen({navigation, route}) {
-
   const styles = StyleSheet.create(styleguide);
-
   const {user, updateUser} = useContext(PrincipalContext);
   const [showDonatePanel, setShowDonatePanel] = useState(false);
   const [showChatPanel, setShowChatPanel] = useState(false);
 
   /* Get nonprofit name from HomeScreen */
   const {params} = route.params;
-
 
   /* Save nonprofit to heart list */
   const onHeartPress = () => {
@@ -40,7 +36,6 @@ export default function LikedScreen({navigation, route}) {
     }
     updateUser(nextUser);
   };
-
 
   /* Go to MessageScreen */
   const onMessagePress = () => {

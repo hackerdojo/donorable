@@ -15,7 +15,8 @@ export default function SettingsTab() {
         options={{
           headerLeft: () => <DonorableNavLogo/>,
           headerRight: () => <MaterialCommunityIcons style={{paddingRight: 10}} name={"cart"} size={30}/>
-        }}/>
+        }}
+      />
       <Stack.Screen name="Test" component={TestScreen}/>
       <Stack.Screen name="Keyword" component={KeywordScreen} options={({route}) => ({title: route.params.title})}/>
     </Stack.Navigator>

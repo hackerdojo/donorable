@@ -23,7 +23,6 @@ import {
   connectFirestoreEmulator
 } from 'firebase/firestore';
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyBcyIGQ5Bs9tVpLBqzoldYLw4oV_G_zFAQ",
   authDomain: "donorable-372023.firebaseapp.com",
@@ -54,7 +53,6 @@ const auth = getAuth(app);
 
 //connectAuthEmulator(auth, "http://localhost:9099");
 //connectFirestoreEmulator(db, 'localhost', 8080);
-
 
 export default {
   app,
