@@ -1,10 +1,10 @@
 import React from "react";
 import {Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
-import styleguide from "../../../styles/styleguide";
-import FormButton from "../../components/FormButton";
-import ImageLogo from "../../components/ImageLogo";
-import {PrincipalContext} from "../../contexts/PrincipalContext";
+import styleguide from "../../styles/styleguide";
+import FormButton from "../components/FormButton";
+import ImageLogo from "../components/ImageLogo";
+import {PrincipalContext} from "../contexts/PrincipalContext";
 
 
 export default function WelcomeScreen({navigation, route}) {
@@ -45,7 +45,7 @@ export default function WelcomeScreen({navigation, route}) {
         </View>
 
         <Image
-          source={require("../../../assets/coffee.png")}
+          source={require("../../assets/coffee.png")}
         />
 
         <FormButton onPress={onWalkPress}

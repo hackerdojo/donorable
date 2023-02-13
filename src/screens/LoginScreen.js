@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import {Image, KeyboardAvoidingView, Text, StyleSheet, View} from "react-native";
-import firebase from "../../firebase/config";
-import styleguide from "../../../styles/styleguide";
-import errorMessages from "../../firebase/errorMessages";
-import FormTextInput from "../../components/FormTextInput";
-import FormButton from "../../components/FormButton";
-import ImageLogo from "../../components/ImageLogo";
+import firebase from "../firebase/config";
+import styleguide from "../../styles/styleguide";
+import errorMessages from "../firebase/errorMessages";
+import FormTextInput from "../components/FormTextInput";
+import FormButton from "../components/FormButton";
+import ImageLogo from "../components/ImageLogo";
 
 export default function LoginScreen({navigation}) {
 
@@ -69,7 +69,7 @@ export default function LoginScreen({navigation}) {
   return (
     <View style={[styles.screen, styles.screenFormMod]}>
       <ImageLogo
-        source={require("../../../assets/DonorableHeartLogo.png")}
+        source={require("../../assets/DonorableHeartLogo.png")}
         styles={styles}
       />
 

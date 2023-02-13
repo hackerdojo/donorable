@@ -1,12 +1,12 @@
 import React, {useContext} from "react";
 import {Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
-import styleguide from "../../../styles/styleguide";
-import FormButton from "../../components/FormButton";
-import ImageLogo from "../../components/ImageLogo";
-import {PrincipalContext} from "../../contexts/PrincipalContext";
-import firebase from "../../firebase/config";
-import data from "../HomeScreen/data";
+import styleguide from "../../styles/styleguide";
+import FormButton from "../components/FormButton";
+import ImageLogo from "../components/ImageLogo";
+import {PrincipalContext} from "../contexts/PrincipalContext";
+import firebase from "../firebase/config";
+import data from "../mockdata/data";
 
 
 export default function TestScreen({navigation, route}) {
@@ -38,7 +38,7 @@ export default function TestScreen({navigation, route}) {
         keyboardShouldPersistTaps="always"
       >
         <ImageLogo
-          source={require("../../../assets/DonorableHeartLogo.png")}
+          source={require("../../assets/DonorableHeartLogo.png")}
           styles={styles}
         />
         <PrincipalContext.Consumer>

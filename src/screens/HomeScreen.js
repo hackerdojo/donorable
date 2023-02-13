@@ -14,10 +14,10 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Swiper from 'react-native-deck-swiper';
 import {Transitioning, Transition} from 'react-native-reanimated';
 //import { firebase } from "../../firebase/config";
-import {MapModal} from "../../modals";
-import styleguide from "../../../styles/styleguide";
-import theme from "../../../styles/theme.style";
-import data from './data';
+import {MapModal} from "../modals";
+import styleguide from "../../styles/styleguide";
+import theme from "../../styles/theme.style";
+import data from '../mockdata/data';
 
 /* new **************************/
 const {width} = Dimensions.get('window');

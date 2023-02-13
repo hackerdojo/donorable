@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import {Image, Text, StyleSheet, View} from "react-native";
-import styleguide from "../../../styles/styleguide";
-import firebase from "../../firebase/config";
+import styleguide from "../../styles/styleguide";
+import firebase from "../firebase/config";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
-import FormTextInput from "../../components/FormTextInput";
-import FormButton from "../../components/FormButton";
-import ImageLogo from "../../components/ImageLogo";
+import FormTextInput from "../components/FormTextInput";
+import FormButton from "../components/FormButton";
+import ImageLogo from "../components/ImageLogo";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
-import errorMessages from "../../firebase/errorMessages";
+import errorMessages from "../firebase/errorMessages";
 
 export default function RegScreen2({route, navigation}) {
 
@@ -63,7 +63,7 @@ export default function RegScreen2({route, navigation}) {
   return (
     <View style={styles.screen}>
       <ImageLogo
-        source={require("../../../assets/DonorableHeartLogo.png")}
+        source={require("../../assets/DonorableHeartLogo.png")}
         styles={styles}
       />
       <KeyboardAwareScrollView

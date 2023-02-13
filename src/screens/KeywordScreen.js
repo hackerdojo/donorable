@@ -1,10 +1,10 @@
 import React, {useState, useContext} from "react";
 import { Text, StyleSheet, View} from "react-native";
-import TagButton from "../../components/TagButton";
+import TagButton from "../components/TagButton";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
-import FormButton from "../../components/FormButton";
-import styleguide from "../../../styles/styleguide";
-import {PrincipalContext} from "../../contexts/PrincipalContext";
+import FormButton from "../components/FormButton";
+import styleguide from "../../styles/styleguide";
+import {PrincipalContext} from "../contexts/PrincipalContext";
 
 export default function KeywordScreen({navigation, route}) {
   const {from} = route.params;

@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import {Image, KeyboardAvoidingView, Text, StyleSheet, View} from "react-native";
-import firebase from "../../firebase/config";
-import FormButton from "../../components/FormButton";
-import FormTextInput from "../../components/FormTextInput";
-import styleguide from "../../../styles/styleguide";
-import errorMessages from "../../firebase/errorMessages";
-import ImageLogo from "../../components/ImageLogo";
+import firebase from "../firebase/config";
+import FormButton from "../components/FormButton";
+import FormTextInput from "../components/FormTextInput";
+import styleguide from "../../styles/styleguide";
+import errorMessages from "../firebase/errorMessages";
+import ImageLogo from "../components/ImageLogo";
 
 export default function RecoverScreen({navigation}) {
   const styles = StyleSheet.create(styleguide)
@@ -50,7 +50,7 @@ export default function RecoverScreen({navigation}) {
   return (
     <View style={[styles.screen, styles.screenFormMod]}>
       <ImageLogo
-        source={require("../../../assets/DonorableHeartLogo.png")}
+        source={require("../../assets/DonorableHeartLogo.png")}
         styles={styles}
       />
 

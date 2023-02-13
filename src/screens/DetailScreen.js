@@ -1,12 +1,12 @@
 import React, {useContext, useState} from "react";
 import {Text, View, Modal, StyleSheet, TouchableOpacity, Pressable} from "react-native";
 import {HStack} from 'react-native-stacks';
-import {ChatScreen, FormButton, ImageMask, PhotoGallery} from "../../components";
-import styleguide from "../../../styles/styleguide";
-import theme from "../../../styles/theme.style";
-import {PrincipalContext} from "../../contexts/PrincipalContext";
+import {ChatScreen, FormButton, ImageMask, PhotoGallery} from "../components";
+import styleguide from "../../styles/styleguide";
+import theme from "../../styles/theme.style";
+import {PrincipalContext} from "../contexts/PrincipalContext";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import {QuickDonateScreen} from "../QuickDonateScreen/QuickDonateScreen";
+import {QuickDonateScreen} from "./QuickDonateScreen";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 export default function DetailScreen({navigation, route}) {

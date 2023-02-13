@@ -1,7 +1,7 @@
 import React from "react";
 import {Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
-import styleguide from "../../../styles/styleguide";
-import {FormButton, Logo} from "../../components";
+import styleguide from "../../styles/styleguide";
+import {FormButton, Logo} from "../components";
 
 export default function IntroScreen({navigation}) {
   const styles = StyleSheet.create(styleguide);

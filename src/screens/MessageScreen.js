@@ -1,12 +1,12 @@
 import React, {useState, useContext} from "react";
 import {FlatList, Text, TouchableOpacity, View, StyleSheet} from "react-native";
 import {HStack, Spacer, VStack} from 'react-native-stacks';
-import styleguide from "../../../styles/styleguide";
-import theme from "../../../styles/theme.style";
-import {Circle, ImageMask, HR} from "../../components";
+import styleguide from "../../styles/styleguide";
+import theme from "../../styles/theme.style";
+import {Circle, ImageMask, HR} from "../components";
 
-import messagesdata from "./messasgesdata";
-import {PrincipalContext} from "../../contexts/PrincipalContext";
+import messagesdata from "../mockdata/messasgesdata";
+import {PrincipalContext} from "../contexts/PrincipalContext";
 
 export default function MessageScreen(props) {
 

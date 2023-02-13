@@ -1,10 +1,10 @@
 import React, {useState, useContext} from "react";
 import {StyleSheet, Text, View, Alert} from "react-native";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
-import firebase from "../../firebase/config";
-import styleguide from "../../../styles/styleguide";
-import {HR, FormTextInput, FormButton} from "../../components";
-import {PrincipalContext} from "../../contexts/PrincipalContext";
+import firebase from "../firebase/config";
+import styleguide from "../../styles/styleguide";
+import {HR, FormTextInput, FormButton} from "../components";
+import {PrincipalContext} from "../contexts/PrincipalContext";
 
 export default function SettingsScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);

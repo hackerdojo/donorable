@@ -1,13 +1,13 @@
 import React, { useContext} from "react";
 import {TouchableOpacity, FlatList, Text, StyleSheet, View} from "react-native";
 import {HStack, VStack} from 'react-native-stacks';
-import styleguide from "../../../styles/styleguide";
-import {HR, ImageMask} from "../../components";
-import {PrincipalContext} from "../../contexts/PrincipalContext";
-import theme from "../../../styles/theme.style";
+import styleguide from "../../styles/styleguide";
+import {HR, ImageMask} from "../components";
+import {PrincipalContext} from "../contexts/PrincipalContext";
+import theme from "../../styles/theme.style";
 
 // mock
-import data from '../HomeScreen/data';
+import data from '../mockdata/data';
 
 export default function FavoritesScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
