@@ -18,7 +18,7 @@ export default function SettingsTab() {
         }}
       />
       <Stack.Screen name="Test" component={TestScreen}/>
-      <Stack.Screen name="Keyword" component={KeywordScreen} options={({route}) => ({title: route.params.title})}/>
+      <Stack.Screen name="Search For" component={KeywordScreen} options={({route}) => ({title: route.params.title})}/>
     </Stack.Navigator>
   )
 }

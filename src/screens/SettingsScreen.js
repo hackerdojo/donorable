@@ -283,7 +283,7 @@ export default function SettingsScreen({navigation, route}) {
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
-          onPress={() => navigation.navigate("Keyword", {from: "Settings"})}
+          onPress={() => navigation.navigate("Search For", {from: "Settings"})}
           label={"Search Filters"}/>
         <FormButton
           buttonStyle={"secondary"}

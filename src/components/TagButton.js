@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {Text, TouchableOpacity} from "react-native";
 
 export default function TagButton(
-  {onPress, label, styles, tagState}
+  {onPress, label, styles, tagState, size = "medium"}
 ) {
 
   const [selected, setSelected] = useState(false);
@@ -16,12 +16,28 @@ export default function TagButton(
     onPress && onPress(!selected)
   }
 
+  let sizeName = size.toLowerCase();
+  sizeName = sizeName.charAt(0).toUpperCase() + sizeName.slice(1);
+
+
   return (
     <TouchableOpacity
-      style={selected ? styles.tagSelected : styles.tagUnselected}
+      style={[
+        styles.button,
+        selected ? styles.tagSelected : styles.tagUnselected,
+        styles["buttonSize" + sizeName]
+        ]
+      }
       onPress={handlePress}
     >
-      <Text style={styles.buttonTitle}>{label}</Text>
+      <Text
+        style={[
+          styles.buttonTitle,
+          styles["buttonTitleSize" + sizeName]
+        ]}
+      >{label}
+      </Text>
+
     </TouchableOpacity>
   );
 };

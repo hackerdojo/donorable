@@ -10,7 +10,7 @@ export {default as HomeScreen} from "./HomeScreen";
 export {default as SettingsScreen} from "./SettingsScreen";
 export {default as WelcomeScreen} from "./WelcomeScreen";
 export {default as MessageScreen} from "./MessageScreen";
-export {default as KeywordScreen} from "./KeywordScreen";
+export {default as KeywordScreen} from "./SearchForScreen";
 export {default as QuickDonateScreen} from "./QuickDonateScreen";
 export {default as LikedScreen} from "./DetailScreen";
 export {default as FavoritesScreen} from "./FavoritesScreen";

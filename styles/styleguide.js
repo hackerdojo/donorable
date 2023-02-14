@@ -277,11 +277,9 @@ export default {
     borderColor:theme.IMAGE_BORDER_COLOR,
     alignItems: "center",
     justifyContent: "center",
-    marginTop:20
   },
 
   tagUnselected: {
-    marginTop:20,
     backgroundColor: theme.TERTIARY_COLOR,
     width: "40%",
     height: theme.BUTTON_HEIGHT_LARGE,

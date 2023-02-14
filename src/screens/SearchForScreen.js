@@ -6,7 +6,8 @@ import FormButton from "../components/FormButton";
 import styleguide from "../../styles/styleguide";
 import {PrincipalContext} from "../contexts/PrincipalContext";
 
-export default function KeywordScreen({navigation, route}) {
+export default function
+  SearchForScreen({navigation, route}) {
   const {from} = route.params;
   const styles = StyleSheet.create(styleguide);
   /* Go to Welcome Screen, or return to Settings */
@@ -47,6 +48,7 @@ export default function KeywordScreen({navigation, route}) {
         style={styles.mainAreaForm}
         keyboardShouldPersistTaps="always"
       >
+        <Text/>
         <View>
           <Text style={styles.textCenteredP2}>What do you care about?</Text>
         </View>
@@ -55,6 +57,7 @@ export default function KeywordScreen({navigation, route}) {
             <TagButton
               key={tag}
               label={tag}
+              size={"medium"}
               styles={styles}
               tagState={filterSet.has(tag)}
               onPress={() => handlePress(tag)}
