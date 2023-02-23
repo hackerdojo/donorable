@@ -2,6 +2,15 @@ import theme from "./theme.style";
 import {StyleSheet} from "react-native";
 
 export default {
+
+  activeTabColor: {
+    color: theme.ACTIVE_TAB_ICON_COLOR,
+  },
+
+  inActiveTabColor: {
+    color: theme.INACTIVE_TAB_ICON_COLOR,
+  },
+
   textForegroundColor: {
     color: theme.TEXT_COLOR,
   },
@@ -12,6 +21,12 @@ export default {
 
   listScreen: {
     backgroundColor:theme.BACKGROUND_COLOR
+  },
+
+  emptyListScreen : {
+    flex: 1,
+    alignItems:"center",
+    justifyContent: "center"
   },
 
   screen: {
@@ -178,14 +193,17 @@ export default {
 
   textP2: {
     fontSize: theme.TEXT_FONT_P2,
+    color: theme.TEXT_COLOR
   },
 
   textP1: {
     fontSize: theme.TEXT_FONT_P1,
+    color: theme.TEXT_COLOR
   },
 
   textP3: {
     fontSize: theme.TEXT_FONT_P3,
+    color: theme.TEXT_COLOR
   },
 
   textCenteredP2: {
@@ -263,31 +281,49 @@ export default {
   tagContainer: {
     flexDirection:"row",
     flexWrap:"wrap",
-    gap:20,
     alignItems:"center",
     justifyContent:"space-between"
   },
 
+  tag : {
+    height: theme.BUTTON_HEIGHT_LARGE,
+    borderRadius: 0,
+    borderWidth: 0,
+    borderColor:theme.IMAGE_BORDER_COLOR,
+    alignItems:"flex-start",
+    justifyContent: "center",
+    marginTop:1,
+    paddingLeft:10,
+    paddingRight:10,
+    view:1
+  },
+
+  tagFirst : {
+    borderTopLeftRadius: theme.BUTTON_RADIUS_SMALL,
+    borderTopRightRadius: theme.BUTTON_RADIUS_SMALL,
+  },
+
+  tagLast : {
+    borderBottomLeftRadius: theme.BUTTON_RADIUS_SMALL,
+    borderBottomRightRadius: theme.BUTTON_RADIUS_SMALL,
+  },
+
+  tagMiddle : {
+  },
+
+  tagOnly : {
+    borderTopLeftRadius: theme.BUTTON_RADIUS_SMALL,
+    borderTopRightRadius: theme.BUTTON_RADIUS_SMALL,
+    borderBottomLeftRadius: theme.BUTTON_RADIUS_SMALL,
+    borderBottomRightRadius: theme.BUTTON_RADIUS_SMALL,
+  },
+
   tagSelected: {
     backgroundColor: theme.PRIMARY_COLOR,
-    width: "40%",
-    height: theme.BUTTON_HEIGHT_LARGE,
-    borderRadius: theme.BUTTON_RADIUS_LARGE,
-    borderWidth: 1,
-    borderColor:theme.IMAGE_BORDER_COLOR,
-    alignItems: "center",
-    justifyContent: "center",
   },
 
   tagUnselected: {
     backgroundColor: theme.TERTIARY_COLOR,
-    width: "40%",
-    height: theme.BUTTON_HEIGHT_LARGE,
-    borderRadius: theme.BUTTON_RADIUS_LARGE,
-    borderColor:theme.IMAGE_BORDER_COLOR,
-    borderWidth: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
 
   messageCard: {
@@ -350,8 +386,10 @@ export default {
 
   descriptionContainer: {
     flex: 1.5,
-    justifyContent: 'space-evenly',
-    width: "100%"
+    justifyContent: 'center',
+    alignItems: 'left',
+    width: "100%",
+    paddingLeft: 20
   },
 
   bottomContainerMeta: {
@@ -361,12 +399,10 @@ export default {
   },
 
   bottomContainerButtons: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignContent: 'center',
-    backgroundColor: 'transparent',
-    width: "100%"
+    width: "100%",
+    alignItems:"center",
+    paddingTop:5,
+    paddingBottom:5,
   },
 
   cardImage: {
@@ -388,6 +424,23 @@ export default {
     padding: 10
   },
 
+  alignItemsCenter: {
+    alignItems: 'center',
+  },
+
+  searchBox: {
+    height:40,
+    flex:1,
+    backgroundColor: "#eee",
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems:'center',
+    paddingLeft:5,
+    paddingRight:5,
+    marginLeft:5,
+    marginRight:5
+  },
+
   done: {
     textAlign: 'center',
     fontSize: 30,
@@ -400,5 +453,5 @@ export default {
     fontSize: 24,
     color: theme.TEXT_COLOR,
     fontWeight: "bold"
-  }
+  },
 }

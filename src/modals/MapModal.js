@@ -56,7 +56,7 @@ const MapModal = (
         <Slider
           style={styles.fullWidth}
           minimumValue={4000}
-          maximumValue={50000}
+          maximumValue={100000}
           value={searchRadius}
           onValueChange={(value) => setSearchRadius(value[0])}
         />

@@ -1,0 +1,142 @@
+{
+  "Arts, Culture, and Heritage": [
+    "Performing Arts",
+    "Visual Arts",
+    "Museum and Library Services",
+    "Historic Preservation and Cultural Heritage",
+    "Film and Media"
+  ],
+  "Community Development": [
+    "Neighborhood Revitalization",
+    "Housing and Homeless Services",
+    "Economic Development",
+    "Civic Engagement and Community Building",
+    "Access to Technology and Digital Inclusion"
+  ],
+  "Disaster Relief and Recovery": [
+    "Emergency Management and Response",
+    "Climate Adaptation and Resilience",
+    "Disaster Risk Reduction and Mitigation",
+    "Post-Disaster Recovery and Reconstruction",
+    "Disaster Preparedness and Awareness"
+  ],
+  "International Development and Aid": [
+    "Global Health",
+    "Agriculture and Livelihoods",
+    "Education and Skill Development",
+    "Human Rights and Democracy",
+    "Emergency Relief and Humanitarian Aid"
+  ],
+  "Religion and Spirituality": [
+    "Religious Education and Formation",
+    "Interfaith Dialogue and Understanding",
+    "Spiritual Care and Support",
+    "Social Justice and Advocacy",
+    "Community Building and Fellowship"
+  ],
+  "Animals and Wildlife": [
+    "Animal Welfare and Protection",
+    "Species Conservation and Biodiversity",
+    "Zoo and Aquarium Management",
+    "Wildlife Rehabilitation and Release",
+    "Humane Education and Awareness"
+  ],
+  "Health Research and Medical Science": [
+    "Biomedical Research",
+    "Clinical Trials and Drug Development",
+    "Public Health Research",
+    "Health Services Research",
+    "Global Health and Tropical Medicine"
+  ],
+  "Youth Development and Mentorship": [
+    "After-School Programs and Youth Centers",
+    "Summer Camps and Outdoor Education",
+    "Sports and Physical Education",
+    "College Preparation and Access",
+    "Career and Leadership Development"
+  ],
+  "Elder Care and Aging Services": [
+    "Home and Community-Based Care",
+    "Aging in Place and Independent Living",
+    "Geriatric Health and Wellness",
+    "Long-Term Care and Support Services",
+    "Elder Abuse Prevention and Advocacy"
+  ],
+  "Criminal Justice Reform and Advocacy": [
+    "Prison Reform and Reentry",
+    "Juvenile Justice Reform",
+    "Racial and Social Justice in the Criminal Justice System",
+    "Police Reform and Accountability",
+    "Alternatives to Incarceration"
+  ],
+  "Sports and Physical Fitness": [
+    "Youth Sports and Physical Education",
+    "Adaptive and Paralympic Sports",
+    "Outdoor Adventure and Exploration",
+    "Health and Fitness Promotion",
+    "Sports-Based Youth Development"
+  ],
+  "Technology and Innovation": [
+    "Science and Technology Education",
+    "Research and Development",
+    "Technology Access and Digital Inclusion",
+    "Entrepreneurship and Business Development",
+    "Cybersecurity and Data Privacy"
+  ],
+  "Humanitarian and Emergency Services": [
+    "Disaster Response and Relief",
+    "Emergency Medical Services",
+    "Search and Rescue Operations",
+    "Humanitarian Logistics and Supply Chain Management",
+    "Refugee Assistance and Resettlement"
+  ],
+  "Education Reform and Access": [
+    "Early Childhood Education",
+    "K-12 Education Reform",
+    "Higher Education Access and Affordability",
+    "Vocational and Trade School Programs",
+    "Educational Technology and Digital Learning"
+  ],
+  "Environmental Conservation and Sustainability": [
+    "Land and Wildlife Conservation",
+    "Marine and Coastal Conservation",
+    "Climate Change Mitigation and Adaptation",
+    "Renewable Energy and Clean Technology",
+    "Environmental Education and Outreach"
+  ],
+  "Human Services and Social Safety Net": [
+    "Food Assistance and Hunger Relief",
+    "Homelessness and Housing Support",
+    "Disability Services and Support",
+    "Domestic Violence and Sexual Assault Services",
+    "Mental Health and Substance Abuse Treatment"
+  ],
+  "Public Policy and Advocacy": [
+    "Environmental and Climate Policy",
+    "Healthcare Policy and Reform",
+    "Education Policy and Reform",
+    "Economic Policy and Reform",
+    "Social and Racial Justice Policy"
+  ],
+  "Veterans and Military Services": [
+    "Transition and Reintegration Services",
+    "Health and Wellness for Veterans",
+    "Employment and Career Services for Veterans",
+    "Homelessness and Housing Services for Veterans",
+    "Advocacy for Veterans' Rights and Benefits"
+  ],
+  "Mental Health and Substance Abuse Treatment": [
+    "Mental Health Counseling and Therapy",
+    "Substance Abuse Prevention and Treatment",
+    "Eating Disorders and Body Image",
+    "Trauma and PTSD Services",
+    "Youth Mental Health and Wellness"
+  ],
+  "Agriculture and Food Systems": [
+    "Sustainable Agriculture and Farming",
+    "Food Justice and Access",
+    "Agricultural Education and Outreach",
+    "Agricultural Research and Development",
+    "Agricultural Business and Entrepreneurship"
+  ]
+}

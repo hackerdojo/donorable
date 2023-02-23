@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import {Text, View, Modal, StyleSheet, TouchableOpacity, Pressable} from "react-native";
-import {HStack} from 'react-native-stacks';
+import {HStack, Spacer} from 'react-native-flex-layout';
 import {ChatScreen, FormButton, ImageMask, PhotoGallery} from "../components";
 import styleguide from "../../styles/styleguide";
 import theme from "../../styles/theme.style";
@@ -22,19 +22,20 @@ export default function DetailScreen({navigation, route}) {
   const onHeartPress = () => {
     // updateUsers favorites array.
     if (!user.favorites) user.favorites = [];
-    let nextUser;
+
+    let updatedUser;
     if (user.favorites.includes(params.id)) {
-      nextUser = {
+      updatedUser = {
         ...user,
         favorites: user.favorites.filter(favorite => favorite !== params.id)
       }
     } else {
-      nextUser = {
+      updatedUser = {
         ...user,
         favorites: [...user.favorites, params.id]
       }
     }
-    updateUser(nextUser);
+    updateUser(updatedUser);
   };
 
   /* Go to MessageScreen */
@@ -78,7 +79,8 @@ export default function DetailScreen({navigation, route}) {
         <Text style={styles.textCenteredP2}>Now, would you like to...</Text>
       </View>
 */}
-      <HStack spacing={5} style={{padding: 8}} alignment="center">
+
+      <HStack  style={{padding: 8}} spacing={8} alignment="center">
         <FormButton
           styles={styles}
           size={"small"}
@@ -86,6 +88,7 @@ export default function DetailScreen({navigation, route}) {
           buttonStyle={"Tertiary"}
           onPress={onMessagePress}
           label={"Message"}/>
+        <Spacer/>
         <FormButton
           styles={styles}
           width={"33%"}
@@ -93,6 +96,7 @@ export default function DetailScreen({navigation, route}) {
           buttonStyle={user.favorites.includes(params.id) ? "secondary" : "tertiary"}
           onPress={onHeartPress}
           label={user.favorites.includes(params.id) ? "Favorited" : "Favorite"}/>
+        <Spacer/>
         <FormButton
           styles={styles}
           size={"small"}
@@ -116,7 +120,7 @@ export default function DetailScreen({navigation, route}) {
           borderRadius: 100,
           alignItems: "center",
           borderWidth: 0,
-          backgroundColor: 'green',
+          backgroundColor: '#008800',
           bottom: 20,
           right: 20,
           position: "absolute",

@@ -73,7 +73,7 @@ export default function  App() {
   const handleUpdateUser = async (user) => {
     const userRef = firebase.doc(firebase.db, "users", user.id);
     await firebase.updateDoc(userRef, user);
-    setUser(user);
+//    setUser(user);
   }
 
   useEffect( ()  => {
@@ -102,9 +102,11 @@ export default function  App() {
     }
   );
 
+
   // Initialize React Navigation stack navigator
   // allows app to transition between screens and manage navigation history
   const Stack = createStackNavigator();
+
 
   if (!fontsLoaded) {
     return null;
@@ -115,14 +117,10 @@ export default function  App() {
   function MainTabs() {
     return (
       <Tab.Navigator
-        screenOptionsOff={{
-          tabBarActiveTintColor: 'white',
-          tabBarInactiveTintColor: '#ccc',
-          tabBarStyle: { backgroundColor: 'green' },
-        }}
+
         screenOptions={{
-          tabBarActiveTintColor: 'green',
-          tabBarInactiveTintColor: '#555',
+          tabBarActiveTintColor: theme.ACTIVE_TAB_ICON_COLOR,
+          tabBarInactiveTintColor: theme.INACTIVE_TAB_ICON_COLOR,
           tabBarStyle: { backgroundColor: 'white' },
         }}
 
@@ -137,7 +135,9 @@ export default function  App() {
             headerShown: false
           }}
         />
-        <Tab.Screen
+
+        {/*        <Tab.Screen
+
           name="Settings"
           component={SettingsTab}
           options = {{
@@ -147,6 +147,7 @@ export default function  App() {
             headerShown: false
           }}
         />
+
         <Tab.Screen
           name="Messages"
           component={MessagesTab}
@@ -157,16 +158,29 @@ export default function  App() {
             headerShown: false
           }}
         />
-        <Tab.Screen
+
+          */}
+          <Tab.Screen
           name="Favorites"
           component={FavoritesTab}
           options = {{
-            tabBarIcon: ({color, size}) => (
-              <MaterialCommunityIcons name="heart" color={color} size={size}/>
-            ),
-            headerShown: false
-          }}
-        />
+          tabBarIcon: ({color, size}) => (
+          <MaterialCommunityIcons name="heart" color={color} size={size}/>
+          ),
+          headerShown: false
+        }}
+          />
+          <Tab.Screen
+          name="Cart"
+          component={FavoritesTab}
+          options = {{
+          tabBarIcon: ({color, size}) => (
+          <MaterialCommunityIcons name="cart" color={color} size={size}/>
+          ),
+          headerShown: false
+        }}
+          />
+
       </Tab.Navigator>
     );
   }

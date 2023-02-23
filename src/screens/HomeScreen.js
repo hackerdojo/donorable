@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
+
 import {
   Image,
   StatusBar,
@@ -8,6 +9,7 @@ import {
   Dimensions,
   TouchableOpacity,
   StyleSheet,
+  TextInput,
   Modal
 } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
@@ -17,7 +19,10 @@ import {Transitioning, Transition} from 'react-native-reanimated';
 import {MapModal} from "../modals";
 import styleguide from "../../styles/styleguide";
 import theme from "../../styles/theme.style";
-import data from '../mockdata/data';
+import {data,indexedData} from '../mockdata/data';
+import {HStack, Spacer, VStack} from "react-native-flex-layout";
+import {HR} from "./../components";
+import {PrincipalContext} from "../contexts/PrincipalContext";
 
 /* new **************************/
 const {width} = Dimensions.get('window');
@@ -55,16 +60,43 @@ const transitionRef = React.createRef();
 const Card = ({card}) => {
   return (
     <View style={styles.card}>
+
+      <HStack spacing={5}>
+        <Spacer/>
+        <MaterialCommunityIcons name={"paw"} size={20}/>)}
+      </HStack>
       <Image source={{uri: card.image}} style={styles.cardImage}/>
+      <Text style={[styles.textCenteredP2,styles.textBold]} numberOfLines={2}>{card.name}</Text>
+      <Text style={[styles.textCenteredP1, styles.description]} numberOfLines={3}>{card.description}</Text>
+      <Text/>
+      <HStack spacing={5}>
+        <MaterialCommunityIcons name={"hammer-wrench"} size={20}/><MaterialCommunityIcons size={20} name={"account-clock"}/><MaterialCommunityIcons size={20} name={"currency-usd"}/>
+      </HStack>
+
     </View>
   );
 };
 
 const CardDetails = ({index}) => (
-  <View key={data[index].id} style={{alignItems: 'center'}}>
-    <Text style={[styles.name,styles.textBold]} numberOfLines={2}>{data[index].name}</Text>
-    <Text style={[styles.text, styles.description]} numberOfLines={3}>{data[index].description}</Text>
-  </View>
+  <VStack key={data[index].id}  style={{alignItems: 'flex-start'}}>
+    <Text/>
+    <Text/>
+    <HStack spacing={5} style={styles.alignItemsCenter}>
+      <MaterialCommunityIcons name={"map-marker"} size={20}/>
+      <Text>2.5 miles</Text>
+    </HStack>
+    <HStack spacing={5} style={styles.alignItemsCenter}>
+      <MaterialCommunityIcons name={"account-clock"} size={20}/>
+      <Text>Mural Painting, Talks, ...</Text>
+    </HStack>
+    <HStack spacing={5} style={styles.alignItemsCenter}>
+      <MaterialCommunityIcons name={"currency-usd"} size={20}/>
+      <Text>$100,000</Text>
+    </HStack>
+    <HStack spacing={5}>
+      <MaterialCommunityIcons name={"dots-horizontal"} size={20}/>
+    </HStack>
+  </VStack>
 );
 /** ************************************* */
 
@@ -72,15 +104,52 @@ const CardDetails = ({index}) => (
 export default function HomeScreen({navigation}) {
   const [index, setIndex] = React.useState(0);
   const [mapModalVisible, setMapModalVisible] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const {user, updateUser} = useContext(PrincipalContext);
+
   const handleSwipedRight = () => {
     transitionRef.current.animateNextTransition();
     setIndex((index + 1) % data.length);
-    navigation.navigate('Liked', {params: data[index], title: data[index].name});
+    if (!user.liked) user.liked = [];
+    let updatedUser = {
+      ...user,
+      liked: [...(user.liked.filter(likedItem => likedItem !== data[index].id)), data[index].id]
+    }
+    updateUser(updatedUser);
   };
 
   const handleSwipedLeft = () => {
     transitionRef.current.animateNextTransition();
     setIndex((index + 1) % data.length);
+    if (!user.disliked) user.disliked = [];
+    let updatedUser = {
+      ...user,
+      disliked: [...(user.disliked.filter(dislikedItem => dislikedItem !== data[index].id)), data[index].id]
+    }
+    updateUser(updatedUser);
+  }
+
+  const showLiked = () => {
+    navigation.navigate("Liked",
+      {
+        data: (user.liked || []).map((id, index, data) => (
+            indexedData[id]
+          )
+        ),
+          addToListVerb: "liked"
+      });
+  }
+
+  const showDisliked = () => {
+    navigation.navigate("Disliked",
+      {
+        data: (user.disliked || []).map((id, index, data) => (
+          indexedData[id]
+        )
+        ),
+        addToListVerb: "disliked"
+      }
+    )
   }
 
   /* View for the Home Screen */
@@ -150,6 +219,9 @@ export default function HomeScreen({navigation}) {
         />
       </View>
       {/* Bottom Container Main */}
+
+      <Spacer/>
+
       <View style={styles.descriptionContainer}>
         {/* Card Details or Description */}
         <Transitioning.View
@@ -161,13 +233,15 @@ export default function HomeScreen({navigation}) {
         </Transitioning.View>
       </View>
       {/* Bottom Container Buttons */}
+
+      {/*
       <View style={styles.bottomContainerButtons}>
 
-        {/* Undo Button */}
+
         <MaterialCommunityIcons
           style={styles.iconButton}
           name={"undo"} size={48} color={styles.iconButtonColor.color}/>
-        {/* Map Button */}
+
         <TouchableOpacity
           onPress={() => setMapModalVisible(true)}>
           <MaterialCommunityIcons
@@ -176,14 +250,14 @@ export default function HomeScreen({navigation}) {
             name={"map-marker-outline"} size={48} color={styles.iconButtonColor.color}/>
         </TouchableOpacity>
 
-        {/* Dislike button */}
+
         <TouchableOpacity
           onPress={() => swiperRef.current.swipeLeft()}>
           <MaterialCommunityIcons
             style={styles.iconButton}
             name={"thumb-down-outline"} size={48} color={styles.iconButtonColor.color}/>
         </TouchableOpacity>
-        {/* Like button */}
+
         <TouchableOpacity
           onPress={() => swiperRef.current.swipeRight()}>
           <MaterialCommunityIcons
@@ -191,6 +265,50 @@ export default function HomeScreen({navigation}) {
             name={"thumb-up-outline"} size={48} color={styles.iconButtonColor.color}/>
         </TouchableOpacity>
       </View>
+      */}
+      <Spacer/>
+
+      <HR width={"100%"}/>
+      <HStack spacing={5} style={styles.bottomContainerButtons} >
+        <TouchableOpacity
+          onPress={showDisliked}>
+          <HStack>
+          <MaterialCommunityIcons
+            name={"chevron-left"} size={30} color={styles.inActiveTabColor}/>
+          <MaterialCommunityIcons
+            name={"thumb-down-outline"} size={30} color={styles.inActiveTabColor}/>
+          </HStack>
+        </TouchableOpacity>
+
+        <HStack style={styles.searchBox}>
+          <MaterialCommunityIcons
+            name={"magnify"}
+            size={30}
+            color={"#333"}
+          />
+          <Spacer/>
+          <TextInput
+            value={searchText} onChangeText={setSearchText}
+            style={{view: 2, width:"70%"}}
+            placeholder={"Search"}
+          />
+          <Spacer/>
+          <MaterialCommunityIcons
+            name={"filter-outline"}
+            size={30}
+            color={"#333"}
+          />
+        </HStack>
+        <TouchableOpacity
+          onPress={showLiked}>
+          <HStack>
+          <MaterialCommunityIcons
+            name={"thumb-up-outline"} size={30} color={styles.inActiveTabColor}/>
+          <MaterialCommunityIcons
+            name={"chevron-right"} size={30} color={styles.inActiveTabColor}/>
+          </HStack>
+        </TouchableOpacity>
+      </HStack>
       <MapModal
         isPresented={mapModalVisible}
         onRequestToHide={() => setMapModalVisible(false)}

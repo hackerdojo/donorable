@@ -1,5 +1,6 @@
 //Organization Data
-export default [
+
+const data =  [
   {
     id: '40454230',
     description: 'Community Tech Hub',
@@ -176,3 +177,13 @@ export default [
   }
   ];
 */
+
+
+const indexedData = {};
+
+data.map( (datum) => {
+  indexedData[datum.id]= datum;
+})
+
+export {data, indexedData};
+

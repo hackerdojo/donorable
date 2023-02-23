@@ -12,6 +12,7 @@ export {default as WelcomeScreen} from "./WelcomeScreen";
 export {default as MessageScreen} from "./MessageScreen";
 export {default as KeywordScreen} from "./SearchForScreen";
 export {default as QuickDonateScreen} from "./QuickDonateScreen";
-export {default as LikedScreen} from "./DetailScreen";
-export {default as FavoritesScreen} from "./FavoritesScreen";
+export {default as DetailScreen} from "./DetailScreen";
+export {default as ListsScreen} from "./ListsScreen";
+
 export {default as TestScreen} from "./TestScreen";
