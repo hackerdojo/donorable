@@ -1,5 +1,6 @@
 //import "react-native-gesture-handler"; // gesture library of react-native
 import React, { useEffect, useState , useCallback} from "react"; // react library
+import { Provider, useDispatch } from 'react-redux'
 import {StyleSheet, Text, View} from 'react-native';
 import { NavigationContainer } from "@react-navigation/native"; // react libraries for the navigation
 import {createBottomTabNavigator} from  "@react-navigation/bottom-tabs";
@@ -8,24 +9,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import  * as SplashScreen from "expo-splash-screen";
 import { useFonts,  loadAsync } from "expo-font";
 import firebase from "./src/firebase/config"; // firebase configuration
-
+import store from './src/app/store'
+import {login} from "./src/features/principal/principalSlice";
 import theme from "./styles/theme.style"
-import { PrincipalContext} from './src/contexts/PrincipalContext';
-import {
-  IntroScreen,
-  LoginScreen,
-  RegScreen1,
-  RegScreen2,
-  WelcomeScreen,
-  RecoverScreen,
-} from "./src/screens"; // different screens of the app
-import {
-  HomeTab,
-  FavoritesTab,
-  SettingsTab,
-  MessagesTab
-} from "./src/tabs";
-import { decode, encode } from "base-64"; // for the decode and encode of the text
+import { decode, encode } from "base-64";
+import AppNavigation from "./src/navigation/AppNavigation"; // for the decode and encode of the text
 
 if (!global.btoa) {
   global.btoa = encode;
@@ -51,11 +39,7 @@ const styles = StyleSheet.create({
   }
 });
 
-
 export default function  App() {
-  const [loading, setLoading] = useState(true); // variable handling for user's data
-  const [user, setUser] = useState("checking");
-  const [authUser, setAuthUser] = useState(null);
 
   // Import custom fonts
   const [fontsLoaded] = useFonts({
@@ -64,155 +48,22 @@ export default function  App() {
     'Whitney-Medium':  require('./assets/fonts/Whitney-Medium.ttf')
   });
 
+
+
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
 
-  const handleUpdateUser = async (user) => {
-    const userRef = firebase.doc(firebase.db, "users", user.id);
-    await firebase.updateDoc(userRef, user);
-//    setUser(user);
-  }
-
-  useEffect( ()  => {
-    console.log(authUser);
-    let userData = null;
-    if (authUser === null ) {
-      setUser(null);
-      setLoading(false);
-      return;
-    }
-    const userRef = firebase.doc(firebase.db, "users", authUser.uid);
-    const userSnap = firebase.getDoc(userRef).then( (userSnap) => {
-      if (userSnap.exists()) {
-        userData = userSnap.data();
-        setUser(userData);
-        setLoading(false);
-      }
-    })
-    },[authUser]
-  );
-
-  // Firebase login handle authentication change returned from google generated from login page.
-  firebase
-    .onAuthStateChanged(firebase.auth, async (authUser) => {
-      setAuthUser(authUser);
-    }
-  );
-
-
-  // Initialize React Navigation stack navigator
-  // allows app to transition between screens and manage navigation history
-  const Stack = createStackNavigator();
-
-
   if (!fontsLoaded) {
     return null;
   }
 
-  const Tab = createBottomTabNavigator();
-
-  function MainTabs() {
-    return (
-      <Tab.Navigator
-
-        screenOptions={{
-          tabBarActiveTintColor: theme.ACTIVE_TAB_ICON_COLOR,
-          tabBarInactiveTintColor: theme.INACTIVE_TAB_ICON_COLOR,
-          tabBarStyle: { backgroundColor: 'white' },
-        }}
-
-      >
-        <Tab.Screen
-          name="Home"
-          component={HomeTab}
-          options = {{
-            tabBarIcon: ({color, size}) => (
-              <MaterialCommunityIcons name="home" color={color} size={size}/>
-            ),
-            headerShown: false
-          }}
-        />
-
-        {/*        <Tab.Screen
-
-          name="Settings"
-          component={SettingsTab}
-          options = {{
-            tabBarIcon: ({color, size}) => (
-              <MaterialCommunityIcons name="cog" color={color} size={size}/>
-            ),
-            headerShown: false
-          }}
-        />
-
-        <Tab.Screen
-          name="Messages"
-          component={MessagesTab}
-          options = {{
-            tabBarIcon: ({color, size}) => (
-              <MaterialCommunityIcons name="message-bulleted" color={color} size={size}/>
-            ),
-            headerShown: false
-          }}
-        />
-
-          */}
-          <Tab.Screen
-          name="Favorites"
-          component={FavoritesTab}
-          options = {{
-          tabBarIcon: ({color, size}) => (
-          <MaterialCommunityIcons name="heart" color={color} size={size}/>
-          ),
-          headerShown: false
-        }}
-          />
-          <Tab.Screen
-          name="Cart"
-          component={FavoritesTab}
-          options = {{
-          tabBarIcon: ({color, size}) => (
-          <MaterialCommunityIcons name="cart" color={color} size={size}/>
-          ),
-          headerShown: false
-        }}
-          />
-
-      </Tab.Navigator>
-    );
-  }
-
   // Routes & Navigation of different screens
   return (
-    <PrincipalContext.Provider value={{user:user, updateUser: handleUpdateUser}}>
-      <NavigationContainer onReady={onLayoutRootView}>
-        <Stack.Navigator>
-          { user === "checking" &&
-          <Stack.Screen name={"Checking"}>{() => (
-            <View style={styles.container} onLayout={onLayoutRootView}><Text style={styles.text} >Hello</Text></View>
-          )}
-          </Stack.Screen>
-          }
-          {(user && user !== "checking") && (
-            <>
-              <Stack.Screen name="Donorable" component={MainTabs} options={{ headerShown: false }} />
-              <Stack.Screen name="Welcome" component={WelcomeScreen} />
-            </>
-          )}
-          { !user && (
-            <>
-              <Stack.Screen name="Intro" component={IntroScreen} options={{title:"Donorable"}}/>
-              <Stack.Screen name="Login" component={LoginScreen}  />
-              <Stack.Screen name="Recover" component={RecoverScreen}  options={{title:"Recover Password"}}/>
-              <Stack.Screen name="Reg1" component={RegScreen1}  options={{title:"Register"}}/>
-              <Stack.Screen name="Reg2" component={RegScreen2}  options={{title:"New Account"}}/>
-            </>
-          )}
-        </Stack.Navigator>
-      </NavigationContainer>
-    </PrincipalContext.Provider>
+    <Provider store={store}>
+      <AppNavigation onReady={onLayoutRootView}/>
+    </Provider>
   );
 }

@@ -12,7 +12,6 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 export default function ListsScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
-  const {user, updateUser} = useContext(PrincipalContext);
   let data = route.params.data || [];
   let addToListVerb = route.params.addToListVerb || [];
 

@@ -1,12 +1,11 @@
 import React, {useState, useContext} from "react";
-
+import {useDispatch, useSelector} from 'react-redux';
 import {
   Image,
   StatusBar,
   Text,
   View,
   SafeAreaView,
-  Dimensions,
   TouchableOpacity,
   StyleSheet,
   TextInput,
@@ -15,21 +14,21 @@ import {
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Swiper from 'react-native-deck-swiper';
 import {Transitioning, Transition} from 'react-native-reanimated';
-//import { firebase } from "../../firebase/config";
+import {HStack, Spacer, VStack} from "react-native-flex-layout";
+
+import {HR} from "./../components";
 import {MapModal} from "../modals";
 import styleguide from "../../styles/styleguide";
-import theme from "../../styles/theme.style";
-import {data,indexedData} from '../mockdata/data';
-import {HStack, Spacer, VStack} from "react-native-flex-layout";
-import {HR} from "./../components";
-import {PrincipalContext} from "../contexts/PrincipalContext";
+
+import {addLiked, addDisliked} from "../features/principal/principalSlice";
+import {incrementIndex } from  "../features/cardDeckSlice/cardDeckSlice";
 
 /* new **************************/
-const {width} = Dimensions.get('window');
 const stackSize = 4;
 const ANIMATION_DURATION = 200;
 
 const styles = StyleSheet.create(styleguide);
+
 
 const transition = (
   <Transition.Sequence>
@@ -60,7 +59,6 @@ const transitionRef = React.createRef();
 const Card = ({card}) => {
   return (
     <View style={styles.card}>
-
       <HStack spacing={5}>
         <Spacer/>
         <MaterialCommunityIcons name={"paw"} size={20}/>)}
@@ -72,31 +70,31 @@ const Card = ({card}) => {
       <HStack spacing={5}>
         <MaterialCommunityIcons name={"hammer-wrench"} size={20}/><MaterialCommunityIcons size={20} name={"account-clock"}/><MaterialCommunityIcons size={20} name={"currency-usd"}/>
       </HStack>
-
+      <VStack key={card.id}  style={{alignItems: 'flex-start'}}>
+        <Text/>
+        <Text/>
+        <HStack spacing={5} style={styles.alignItemsCenter}>
+          <MaterialCommunityIcons name={"map-marker"} size={20}/>
+          <Text>2.5 miles</Text>
+        </HStack>
+        <HStack spacing={5} style={styles.alignItemsCenter}>
+          <MaterialCommunityIcons name={"account-clock"} size={20}/>
+          <Text>Mural Painting, Talks, ...</Text>
+        </HStack>
+        <HStack spacing={5} style={styles.alignItemsCenter}>
+          <MaterialCommunityIcons name={"currency-usd"} size={20}/>
+          <Text>$100,000</Text>
+        </HStack>
+        <HStack spacing={5}>
+          <MaterialCommunityIcons name={"dots-horizontal"} size={20}/>
+        </HStack>
+      </VStack>
     </View>
   );
 };
 
 const CardDetails = ({index}) => (
-  <VStack key={data[index].id}  style={{alignItems: 'flex-start'}}>
-    <Text/>
-    <Text/>
-    <HStack spacing={5} style={styles.alignItemsCenter}>
-      <MaterialCommunityIcons name={"map-marker"} size={20}/>
-      <Text>2.5 miles</Text>
-    </HStack>
-    <HStack spacing={5} style={styles.alignItemsCenter}>
-      <MaterialCommunityIcons name={"account-clock"} size={20}/>
-      <Text>Mural Painting, Talks, ...</Text>
-    </HStack>
-    <HStack spacing={5} style={styles.alignItemsCenter}>
-      <MaterialCommunityIcons name={"currency-usd"} size={20}/>
-      <Text>$100,000</Text>
-    </HStack>
-    <HStack spacing={5}>
-      <MaterialCommunityIcons name={"dots-horizontal"} size={20}/>
-    </HStack>
-  </VStack>
+<View/>
 );
 /** ************************************* */
 
@@ -105,63 +103,55 @@ export default function HomeScreen({navigation}) {
   const [index, setIndex] = React.useState(0);
   const [mapModalVisible, setMapModalVisible] = useState(false);
   const [searchText, setSearchText] = useState("");
-  const {user, updateUser} = useContext(PrincipalContext);
+  const principal = useSelector(state => state.principal);
+  const cardDeck = useSelector( state => state.cardDeck);
+  const dispatch = useDispatch();
 
   const handleSwipedRight = () => {
     transitionRef.current.animateNextTransition();
-    setIndex((index + 1) % data.length);
-    if (!user.liked) user.liked = [];
-    let updatedUser = {
-      ...user,
-      liked: [...(user.liked.filter(likedItem => likedItem !== data[index].id)), data[index].id]
-    }
-    updateUser(updatedUser);
+    const currentIndex = cardDeck.index;
+    dispatch(incrementIndex());
+    dispatch(addLiked(cardDeck.cards[currentIndex].id));
   };
 
   const handleSwipedLeft = () => {
     transitionRef.current.animateNextTransition();
-    setIndex((index + 1) % data.length);
-    if (!user.disliked) user.disliked = [];
-    let updatedUser = {
-      ...user,
-      disliked: [...(user.disliked.filter(dislikedItem => dislikedItem !== data[index].id)), data[index].id]
-    }
-    updateUser(updatedUser);
-  }
+    dispatch(addDisliked(cardDeck.cards[cardDeck.index].id));
+    dispatch(incrementIndex());
+  };
 
   const showLiked = () => {
     navigation.navigate("Liked",
       {
-        data: (user.liked || []).map((id, index, data) => (
-            indexedData[id]
+        data: (principal.liked || []).map((id, index, data) => (
+            cardDeck.indexedCards[id]
           )
         ),
-          addToListVerb: "liked"
+        addToListVerb: "liked"
       });
   }
 
   const showDisliked = () => {
     navigation.navigate("Disliked",
       {
-        data: (user.disliked || []).map((id, index, data) => (
-          indexedData[id]
-        )
+        data: (principal.disliked || []).map((id, index, data) => (
+          cardDeck.indexedCards[id]
+          )
         ),
         addToListVerb: "disliked"
-      }
-    )
+      });
   }
 
   /* View for the Home Screen */
-  return (
+  return  (
     <SafeAreaView style={[styles.screen, styles.defaultBackgroundColor]}>
       <StatusBar hidden={false}/>
       <View style={styles.swiperContainer}>
         {/* Profile Card Swiper */}
         <Swiper
           ref={swiperRef}
-          cards={data}
-          cardIndex={index}
+          cards={cardDeck.cards}
+          cardIndex={cardDeck.index}
           renderCard={card => <Card card={card}/>}
           infinite
           backgroundColor={'transparent'}

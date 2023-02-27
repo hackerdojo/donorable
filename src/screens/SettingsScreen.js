@@ -4,27 +4,30 @@ import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import firebase from "../firebase/config";
 import styleguide from "../../styles/styleguide";
 import {HR, FormTextInput, FormButton} from "../components";
-import {PrincipalContext} from "../contexts/PrincipalContext";
+import {updateUserSettings} from "../features/principal/principalSlice";
+import {useSelector, useDispatch} from "react-redux";
 
 export default function SettingsScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
-  const {user, updateUser} = useContext(PrincipalContext);
-  const [firstName, setFirstName] = useState(user.firstname);
-  const [lastName, setLastName] = useState(user.lastname);
-  const [phone, setPhone] = useState(user.phone);
-  const [enteredLocation, setEnteredLocation] = useState(user.enteredLocation);
+  const dispatch = useDispatch();
+  const principal = useSelector(state => state.principal);
+  const [firstName, setFirstName] = useState(principal.firstname);
+  const [lastName, setLastName] = useState(principal.lastname);
+  const [phone, setPhone] = useState(principal.phone);
+  const [enteredLocation, setEnteredLocation] = useState(principal.enteredLocation);
 
   let updateDisable = false;
 
   const saveChanges = async () => {
     updateDisable = true;
-    updateUser({
-      ...user,
-      firstname: firstName,
-      lastname: lastName,
-      phone: phone,
-      enteredLocation: enteredLocation
-    })
+    dispatch(updateUserSettings(
+      {
+        firstname: firstName,
+        lastname: lastName,
+        phone: phone,
+        enteredLocation: enteredLocation
+      }
+    ));
     updateDisable = false;
   }
 
@@ -241,7 +244,7 @@ export default function SettingsScreen({navigation, route}) {
         style={{width: "100%"}}>
         <FormTextInput
           label={"Email"}
-          text={user.email}
+          text={principal.email}
           styles={styles}
           disabled={true}
           // let's not let people change this for now because it is their login.
@@ -307,11 +310,11 @@ export default function SettingsScreen({navigation, route}) {
           styles={styles}
           label={"Delete Account"}
         />
-        { user.isAdmin &&
+        { principal.isAdmin &&
           <FormButton
             buttonStyle={"secondary"}
             styles={styles}
-            onPress={() => navigation.navigate("Test", {user, from: "Settings"})}
+            onPress={() => navigation.navigate("Test", {principal, from: "Settings"})}
             label={"Test"}/>
         }
         <Text/>

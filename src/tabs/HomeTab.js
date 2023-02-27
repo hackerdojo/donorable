@@ -4,14 +4,10 @@ import {createStackNavigator} from "@react-navigation/stack";
 import {HomeScreen, ListsScreen, DetailScreen, QuickDonateScreen} from "../screens";
 import DonorableNavLogo from "../components/DonorableNavLogo";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import {PrincipalContext} from "../contexts/PrincipalContext";
-import {indexedData} from "../mockdata/data";
+
 
 export default function HomeTab() {
   const Stack = createStackNavigator();
-  const [searchText, setSearchText] = useState("");
-  const {user, updateUser} = useContext(PrincipalContext);
-
 
   return (
     <Stack.Navigator>
@@ -20,7 +16,6 @@ export default function HomeTab() {
         component={HomeScreen}
         options={{
           headerLeft: () => <DonorableNavLogo/>,
-
           headerRight: () => <MaterialCommunityIcons style={{paddingRight: 10}} name={"cart"} size={30}/>
         }}
       />
@@ -43,7 +38,6 @@ export default function HomeTab() {
       <Stack.Screen
         name="Detail"
         component={DetailScreen}
-
       />
     </Stack.Navigator>
   )
