@@ -1,19 +1,17 @@
 import React, {useState, useContext} from "react";
-
+import {useSelector} from "react-redux";
 import {Text, StyleSheet, View, FlatList, TouchableOpacity} from "react-native";
 import TagButton from "../components/TagButton";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 import FormButton from "../components/FormButton";
 import styleguide from "../../styles/styleguide";
-import {PrincipalContext} from "../contexts/PrincipalContext";
-
 import nteecodes from "../data/nteecodes.js";
-import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
-export default function
-  SearchForScreen({navigation, route}) {
-  const {from} = route.params;
+
+export default function SearchForScreen({navigation, route}) {
+//  const {from} = route.params;
   const styles = StyleSheet.create(styleguide);
+  const principal = useSelector(state=> state.principal)
   /* Go to Welcome Screen, or return to Settings */
 //  const availableTags = ["Local", "Global", "Health", "STEM", "Arts", "Faith"]
 
@@ -21,21 +19,21 @@ export default function
     .keys(nteecodes)
     .filter( key => key.length==1)
     .map( key => ({key: key, name: nteecodes[key]}));
-  const {user, updateUser} = useContext(PrincipalContext);
-  const [filterSet, setFilterSet] = useState(new Set(user.searchFilter));
+  const [filterSet, setFilterSet] = useState(new Set(principal.searchFilter));
 
   let searchDisable = false;
 
   const onDonePress = async () => {
-    user["searchFilter"] = Array.from(filterSet);
+    principal.searchFilter = Array.from(filterSet);
     searchDisable = true;
-    await updateUser(user);
+    // dispatch actions here.
+//    await updateUser(principal);
     searchDisable = false;
-    if (from === 'Settings') {
-      navigation.goBack();
-    } else {
-      navigation.navigate("Welcome", {user});
-    }
+ //   if (from === 'goback') {
+//      navigation.goBack();
+//    } else {
+//      navigation.navigate("Welcome", {principal});
+//    }
   };
 
   const handlePress = (tag) => {

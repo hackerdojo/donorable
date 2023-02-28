@@ -1,10 +1,9 @@
-//import "react-native-gesture-handler"; // gesture library of react-native
 import React, { useEffect, useState , useCallback} from "react"; // react library
-import { Provider, useDispatch, useSelector } from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {StyleSheet, Text, View} from 'react-native';
-import { NavigationContainer } from "@react-navigation/native"; // react libraries for the navigation
+import {NavigationContainer} from "@react-navigation/native"; // react libraries for the navigation
 import {createBottomTabNavigator} from  "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
+import {createStackNavigator} from "@react-navigation/stack";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import  * as SplashScreen from "expo-splash-screen";
 import firebase from "../firebase/config"; // firebase configuration
@@ -31,20 +30,16 @@ SplashScreen.preventAutoHideAsync();
 
 
 export default function  AppNavigation({onReady}) {
-  const [loading, setLoading] = useState(true); // variable handling for user's data
   const [authUser, setAuthUser] = useState(null);
   const dispatch = useDispatch();
   const principal = useSelector(state => state.principal);
   const styles = StyleSheet.create(styleguide);
-  // Import custom fonts
-
 
   useEffect( ()  => {
       console.log(authUser);
       let userData = null;
       if (authUser === null ) {
         dispatch(nullUserToStart())
-        setLoading(false);
         return;
       }
       const userRef = firebase.doc(firebase.db, "users", authUser.uid);
@@ -52,7 +47,6 @@ export default function  AppNavigation({onReady}) {
         if (userSnap.exists()) {
           userData = userSnap.data();
           dispatch(login(userData));
-          setLoading(false);
         }
       })
     },[authUser]
@@ -90,7 +84,7 @@ export default function  AppNavigation({onReady}) {
             headerShown: false
           }}
         />
-
+        {/*
          <Tab.Screen
           name="Settings"
           component={SettingsTab}
@@ -101,7 +95,7 @@ export default function  AppNavigation({onReady}) {
             headerShown: false
           }}
         />
-        {/*
+
 
         <Tab.Screen
           name="Messages"

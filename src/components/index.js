@@ -10,3 +10,5 @@ export {default as ImageMask} from "./ImageMask";
 export {default as PhotoGallery} from "./PhotoGallery";
 export {default as NearbyMap} from "./NearbyMap";
 export {default as ChatScreen} from "./ChatScreen";
+export {default as DonorableNavLogo} from "./DonorableNavLogo";
+export {default as AccountButton} from "./AccountButton";

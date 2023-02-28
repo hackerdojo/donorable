@@ -1,14 +1,16 @@
-import React, {useContext} from 'react';
+import React from 'react';
+import {useSelector} from "react-redux";
 import {createStackNavigator} from "@react-navigation/stack";
 import {ListsScreen, DetailScreen} from "../screens";
 import DonorableNavLogo from "../components/DonorableNavLogo";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import {PrincipalContext} from "../contexts/PrincipalContext";
-import {indexedData} from "../mockdata/data";
+import SettingsTab from "./SettingsTab";
+import {AccountButton} from "../components";
 
 export default function FavoritesTab() {
   const Stack = createStackNavigator();
-  const {user, setUser} = useContext(PrincipalContext);
+  const principal = useSelector(state => state.principal);
+  const cards = useSelector(state=>state.cardDeck);
 
   return (
     <Stack.Navigator>
@@ -17,14 +19,18 @@ export default function FavoritesTab() {
         component={ListsScreen}
         options={{
           headerLeft: () => <DonorableNavLogo/>,
-          headerRight: () => <MaterialCommunityIcons style={{paddingRight: 10}} name={"cart"} size={30}/>
+          headerRight: () => <AccountButton/>
         }}
         initialParams={{
-          data:user.favorites.map( (id, index, data) => (
-            indexedData[id]
+          data:principal.favorites.map( (id, index, data) => (
+            cards.indexedCards[id]
           )),
           addToListVerb : "favorited"
         }}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={SettingsTab}
       />
       <Stack.Screen
         name="FavoriteDetails"

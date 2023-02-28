@@ -20,7 +20,7 @@ export default function IntroScreen({navigation}) {
   return (
     <View style={[styles.screen]}>
       <Logo width={200} height={80}/>
-      <Text style={styles.textCentered}>Fund your Purpose</Text>
+      <Text style={styles.textCentered}>Find and Fund Your Purpose</Text>
       <FormButton
         label={"Login"}
         styles={styles}

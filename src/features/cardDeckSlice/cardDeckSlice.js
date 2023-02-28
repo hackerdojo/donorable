@@ -11,6 +11,9 @@ const initialState = {
   indexedCards: indexedData
 }
 
+// cards expect the following:
+// TODO: fill this in.
+
 export const cardDeckSlice = createSlice({
   name: 'cardDeck',
   initialState: initialState,

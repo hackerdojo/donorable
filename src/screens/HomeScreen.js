@@ -15,11 +15,9 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Swiper from 'react-native-deck-swiper';
 import {Transitioning, Transition} from 'react-native-reanimated';
 import {HStack, Spacer, VStack} from "react-native-flex-layout";
-
 import {HR} from "./../components";
 import {MapModal} from "../modals";
 import styleguide from "../../styles/styleguide";
-
 import {addLiked, addDisliked} from "../features/principal/principalSlice";
 import {incrementIndex } from  "../features/cardDeckSlice/cardDeckSlice";
 
@@ -277,11 +275,15 @@ export default function HomeScreen({navigation}) {
             placeholder={"Search"}
           />
           <Spacer/>
-          <MaterialCommunityIcons
-            name={"filter-outline"}
-            size={30}
-            color={styles.inActiveTabColor.color}
-          />
+          <TouchableOpacity
+            onPress={()=> navigation.navigate("Search For",{from:"goback"})}
+            >
+            <MaterialCommunityIcons
+              name={"filter-outline"}
+              size={30}
+              color={styles.inActiveTabColor.color}
+            />
+          </TouchableOpacity>
         </HStack>
         <TouchableOpacity
           onPress={showLiked}>

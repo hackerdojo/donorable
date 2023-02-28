@@ -18,6 +18,7 @@ export default function DetailScreen({navigation, route}) {
   /* Get nonprofit name from HomeScreen */
   const {params} = route.params;
 
+  // TODO:  This screen needs to be updated to use redux
   /* Save nonprofit to heart list */
   const onHeartPress = () => {
     // updateUsers favorites array.

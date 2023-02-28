@@ -3,11 +3,7 @@ import {TouchableOpacity, FlatList, Text, StyleSheet, View} from "react-native";
 import {HStack, VStack} from 'react-native-stacks';
 import styleguide from "../../styles/styleguide";
 import {HR, ImageMask} from "../components";
-import {PrincipalContext} from "../contexts/PrincipalContext";
 import theme from "../../styles/theme.style";
-
-// mock
-import data from '../mockdata/data';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function ListsScreen({navigation, route}) {

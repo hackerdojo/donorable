@@ -1,10 +1,9 @@
-
-import React, {useContext, useState} from 'react';
+import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import {HomeScreen, ListsScreen, DetailScreen, QuickDonateScreen} from "../screens";
-import DonorableNavLogo from "../components/DonorableNavLogo";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
+import {HomeScreen, ListsScreen, DetailScreen, QuickDonateScreen, TestScreen} from "../screens";
+import {DonorableNavLogo,AccountButton} from "../components";
+import SettingsTab from "./SettingsTab";
+import SearchForScreen from "../screens/SearchForScreen";
 
 export default function HomeTab() {
   const Stack = createStackNavigator();
@@ -16,7 +15,7 @@ export default function HomeTab() {
         component={HomeScreen}
         options={{
           headerLeft: () => <DonorableNavLogo/>,
-          headerRight: () => <MaterialCommunityIcons style={{paddingRight: 10}} name={"cart"} size={30}/>
+          headerRight: () => <AccountButton />
         }}
       />
       <Stack.Screen
@@ -24,17 +23,26 @@ export default function HomeTab() {
         component={QuickDonateScreen}
         options={({route}) => ({title: route.params.title})}
       />
-
+      <Stack.Screen
+        name="Settings"
+        component={SettingsTab}
+      />
+      <Stack.Screen
+        name="Search For"
+        component={SearchForScreen}
+      />
+      <Stack.Screen
+        name="Test"
+        component={TestScreen}
+      />
       <Stack.Screen
         name="Liked"
         component={ListsScreen}
       />
-
       <Stack.Screen
         name="Disliked"
         component={ListsScreen}
       />
-
       <Stack.Screen
         name="Detail"
         component={DetailScreen}

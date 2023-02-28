@@ -26,7 +26,7 @@ const initialState = {
     searchFilter:[],
     liked: [],
     disliked:[],
-    favorites:[]
+    favorites:[],
 }
 
 export const principalSlice = createSlice({

@@ -96,8 +96,6 @@ export default function LoginScreen({navigation}) {
           onPress={onRecoverPress}
           label={"Forgot Password"}
         />
-
-
         <View style={styles.buttonContainer}>
           <FormButton
             styles={styles}

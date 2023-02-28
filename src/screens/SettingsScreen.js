@@ -286,7 +286,7 @@ export default function SettingsScreen({navigation, route}) {
         <FormButton
           buttonStyle={"secondary"}
           styles={styles}
-          onPress={() => navigation.navigate("Search For", {from: "Settings"})}
+          onPress={() => navigation.navigate("Search For", {principal,from: "Settings"})}
           label={"Search Filters"}/>
         <FormButton
           buttonStyle={"secondary"}
@@ -315,7 +315,7 @@ export default function SettingsScreen({navigation, route}) {
             buttonStyle={"secondary"}
             styles={styles}
             onPress={() => navigation.navigate("Test", {principal, from: "Settings"})}
-            label={"Test"}/>
+            label={"User is Admin: Test"}/>
         }
         <Text/>
         <Text/>

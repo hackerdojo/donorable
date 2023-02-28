@@ -1,19 +1,17 @@
 import React, {useContext} from "react";
+import {useSelector} from "react-redux";
 import {Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import styleguide from "../../styles/styleguide";
 import FormButton from "../components/FormButton";
 import ImageLogo from "../components/ImageLogo";
-import {PrincipalContext} from "../contexts/PrincipalContext";
 import firebase from "../firebase/config";
-import data from "../mockdata/data";
-
 
 export default function TestScreen({navigation, route}) {
 
   const styles = StyleSheet.create(styleguide);
-
-  const {user, updateUser} = useContext(PrincipalContext);
+  const principal = useSelector(state => state.principal);
+  const cardDeck = useSelector(state => state.cardDeck);
 
   /* Start walkthrough  */
   /*(needs to be implemented) */
@@ -21,7 +19,7 @@ export default function TestScreen({navigation, route}) {
   const onPopulatePress = async () => {
     const batch = firebase.writeBatch(firebase.db);
 
-    const results = data.map(org => {
+    const results = cardDeck.cards.map(org => {
       const docRef = firebase.doc(firebase.db, "organizations", org.id);
       batch.set(docRef, org);
     })
@@ -41,17 +39,12 @@ export default function TestScreen({navigation, route}) {
           source={require("../../assets/DonorableHeartLogo.png")}
           styles={styles}
         />
-        <PrincipalContext.Consumer>
-          {({user}) => (
             <View>
               <Text
-                style={styles.textCenteredP2}>{(user && user.firstname) ? "Welcome, " + user.firstname + "." : "Welcome!"}</Text>
+                style={styles.textCenteredP2}>{(principal && principal.firstname) ? "Welcome, " + principal.firstname + "." : "Welcome!"}</Text>
             </View>
-          )}
-        </PrincipalContext.Consumer>
-
         <Text>Do not touch the blinkin' lights unless you know what you are doing.</Text>
-        {user.isAdmin &&
+        {principal.isAdmin &&
         <FormButton onPress={onPopulatePress}
                     styles={styles}
                     buttonStyle={"Primary"}
