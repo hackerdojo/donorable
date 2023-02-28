@@ -3,12 +3,7 @@ import firebase from '../../firebase/config';
 
 /* Read https://redux-toolkit.js.org/usage/immer-reducers to understand how to change state here. */
 
-import {data} from "../../mockdata/data";
-import {useState} from "react";
-import {useSelector} from "react-redux";
-
 const gcpUpdateUser =  (state, updateFields) => {
-
   const userRef = firebase.doc(firebase.db, "users", state.id);
   firebase.updateDoc(userRef, updateFields)
     .then( (response) => {
@@ -37,7 +32,6 @@ const initialState = {
 export const principalSlice = createSlice({
   name: 'principal',
   initialState: initialState,
-
   reducers: {
     login: (state, action) => {
       return action.payload;
@@ -57,7 +51,9 @@ export const principalSlice = createSlice({
       const itemId = action.payload;
       const liked =  [...(state.liked.filter(item => item !== itemId)), itemId];
       state.liked =  liked;
-      gcpUpdateUser(state,{liked});
+      const disliked =  [...(state.disliked.filter(item => item !== itemId))];
+      state.disliked = disliked;
+      gcpUpdateUser(state,{liked,disliked});
     },
 
     removeLiked: (state,action) => {
@@ -71,7 +67,9 @@ export const principalSlice = createSlice({
       const itemId = action.payload;
       const disliked = [...(state.disliked.filter(item => item !== itemId)), itemId];
       state.disliked =  disliked;
-      gcpUpdateUser(state,{disliked});
+      const liked = [...(state.disliked.filter(item => item !== itemId))];
+      state.liked =  liked;
+      gcpUpdateUser(state,{liked,disliked});
     },
 
     removeDisliked: (state,action) => {
