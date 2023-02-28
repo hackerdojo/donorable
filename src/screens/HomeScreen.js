@@ -66,28 +66,22 @@ const Card = ({card}) => {
       <Image source={{uri: card.image}} style={styles.cardImage}/>
       <Text style={[styles.textCenteredP2,styles.textBold]} numberOfLines={2}>{card.name}</Text>
       <Text style={[styles.textCenteredP1, styles.description]} numberOfLines={3}>{card.description}</Text>
-      <Text/>
-      <HStack spacing={5}>
-        <MaterialCommunityIcons name={"hammer-wrench"} size={20}/><MaterialCommunityIcons size={20} name={"account-clock"}/><MaterialCommunityIcons size={20} name={"currency-usd"}/>
-      </HStack>
       <VStack key={card.id}  style={{alignItems: 'flex-start'}}>
         <Text/>
         <Text/>
         <HStack spacing={5} style={styles.alignItemsCenter}>
-          <MaterialCommunityIcons name={"map-marker"} size={20}/>
-          <Text>2.5 miles</Text>
+          <MaterialCommunityIcons name={"map-marker"} size={20} color={styles.inActiveTabColor.color}/>
+          <Text style={styles.inActiveTabColor}>2.5 miles</Text>
         </HStack>
         <HStack spacing={5} style={styles.alignItemsCenter}>
-          <MaterialCommunityIcons name={"account-clock"} size={20}/>
-          <Text>Mural Painting, Talks, ...</Text>
+          <MaterialCommunityIcons name={"account-clock"} size={20} color={styles.inActiveTabColor.color}/>
+          <Text style={styles.inActiveTabColor}>Mural Painting, Talks, ...</Text>
         </HStack>
         <HStack spacing={5} style={styles.alignItemsCenter}>
-          <MaterialCommunityIcons name={"currency-usd"} size={20}/>
-          <Text>$100,000</Text>
+          <MaterialCommunityIcons name={"currency-usd"} size={20} color={styles.inActiveTabColor.color}/>
+          <Text style={styles.inActiveTabColor}>$100,000</Text>
         </HStack>
-        <HStack spacing={5}>
-          <MaterialCommunityIcons name={"dots-horizontal"} size={20}/>
-        </HStack>
+
       </VStack>
     </View>
   );
@@ -161,7 +155,7 @@ export default function HomeScreen({navigation}) {
           cardVerticalMargin={20}
           stackSize={stackSize}
           stackScale={10}
-          stackSeparation={14}
+          stackSeparation={30}
           animateOverlayLabelsOpacity
           animateCardOpacity
           disableTopSwipe
@@ -264,9 +258,9 @@ export default function HomeScreen({navigation}) {
           onPress={showDisliked}>
           <HStack>
           <MaterialCommunityIcons
-            name={"chevron-left"} size={30} color={styles.inActiveTabColor}/>
+            name={"chevron-left"} size={30} color={styles.inActiveTabColor.color}/>
           <MaterialCommunityIcons
-            name={"thumb-down-outline"} size={30} color={styles.inActiveTabColor}/>
+            name={"thumb-down-outline"} size={30} color={styles.inActiveTabColor.color}/>
           </HStack>
         </TouchableOpacity>
 
@@ -274,7 +268,7 @@ export default function HomeScreen({navigation}) {
           <MaterialCommunityIcons
             name={"magnify"}
             size={30}
-            color={"#333"}
+            color={styles.inActiveTabColor.color}
           />
           <Spacer/>
           <TextInput
@@ -286,16 +280,16 @@ export default function HomeScreen({navigation}) {
           <MaterialCommunityIcons
             name={"filter-outline"}
             size={30}
-            color={"#333"}
+            color={styles.inActiveTabColor.color}
           />
         </HStack>
         <TouchableOpacity
           onPress={showLiked}>
           <HStack>
           <MaterialCommunityIcons
-            name={"thumb-up-outline"} size={30} color={styles.inActiveTabColor}/>
+            name={"thumb-up-outline"} size={30} color={styles.inActiveTabColor.color}/>
           <MaterialCommunityIcons
-            name={"chevron-right"} size={30} color={styles.inActiveTabColor}/>
+            name={"chevron-right"} size={30} color={styles.inActiveTabColor.color}/>
           </HStack>
         </TouchableOpacity>
       </HStack>

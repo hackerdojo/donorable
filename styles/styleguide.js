@@ -374,8 +374,13 @@ export default {
     elevation: 5,
   },
 /* TODO: Home Screen styles, need to blend in refactor*/
-  container: {
+  splashContainer: {
+    flex: 0.8,
     backgroundColor: "white",
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: theme.FONT_FAMILY,
+    fontSize: theme.FONT_SIZE_LARGE
   },
 
   swiperContainer: {
@@ -412,7 +417,7 @@ export default {
   },
 
   card: {
-    flex: 0.45,
+    flex: 0.6,
     borderRadius: 8,
     shadowRadius: 25,
     shadowColor: "black",

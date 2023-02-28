@@ -9,8 +9,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import  * as SplashScreen from "expo-splash-screen";
 import firebase from "../firebase/config"; // firebase configuration
 import {login, nullUserToStart} from "../features/principal/principalSlice";
-
-import theme from "../../styles/theme.style"
+import theme from "../../styles/theme.style";
+import styleguide from "../../styles/styleguide";
 
 import {
   IntroScreen,
@@ -29,29 +29,13 @@ import {
 
 SplashScreen.preventAutoHideAsync();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: "Montserrat_900Black",
-    fontSize: '40rem'
-  },
-  text: {
-    fontFamily: theme.FONT_FAMILY,
-    fontSize: '40rem'
-  }
-});
-
 
 export default function  AppNavigation({onReady}) {
   const [loading, setLoading] = useState(true); // variable handling for user's data
-
   const [authUser, setAuthUser] = useState(null);
   const dispatch = useDispatch();
   const principal = useSelector(state => state.principal);
-
+  const styles = StyleSheet.create(styleguide);
   // Import custom fonts
 
 
@@ -85,7 +69,6 @@ export default function  AppNavigation({onReady}) {
   // Initialize React Navigation stack navigator
   // allows app to transition between screens and manage navigation history
   const Stack = createStackNavigator();
-
   const Tab = createBottomTabNavigator();
 
   function MainTabs() {
@@ -162,8 +145,8 @@ export default function  AppNavigation({onReady}) {
       <NavigationContainer onReady={onReady}>
         <Stack.Navigator>
           { principal.status === "checking" &&
-          <Stack.Screen name={"Checking"}>{() => (
-            <View style={styles.container} onLayout={onReady}><Text style={styles.text} >Hello</Text></View>
+          <Stack.Screen name={" "}>{() => (
+            <View style={styles.splashContainer} onLayout={onReady}><Text numberOfLines={2} style={styles.textCenteredP2} >Find and Fund Your Passion</Text></View>
           )}
           </Stack.Screen>
           }
