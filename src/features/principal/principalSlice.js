@@ -67,7 +67,7 @@ export const principalSlice = createSlice({
       const itemId = action.payload;
       const disliked = [...(state.disliked.filter(item => item !== itemId)), itemId];
       state.disliked =  disliked;
-      const liked = [...(state.disliked.filter(item => item !== itemId))];
+      const liked = [...(state.liked.filter(item => item !== itemId))];
       state.liked =  liked;
       gcpUpdateUser(state,{liked,disliked});
     },
