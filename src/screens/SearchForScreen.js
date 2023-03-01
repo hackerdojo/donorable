@@ -60,7 +60,6 @@ export default function SearchForScreen({navigation, route}) {
       </HStack>
       <Text/>
       <FlatList
-
         data={availableTags.sort((a,b)=> (a.name > b.name))}
         keyExtractor={item => item.key}
         keyboardShouldPersistTaps="always"
@@ -77,7 +76,7 @@ export default function SearchForScreen({navigation, route}) {
                 size={"small"}
                 tagState={filterSet.has(item.key)}
                 onPress={ () => handlePress(item.key)}
-                />
+              />
             </TouchableOpacity>
 
           </View>)
@@ -85,10 +84,12 @@ export default function SearchForScreen({navigation, route}) {
       />
       <FormButton
         styles={styles}
-        buttonStyle={"Secondary"}
+        width={"90%"}
+        buttonStyle={"Tertiary"}
         label={"Search"}
         onPress={onDonePress}
       />
+      <Text/>
     </View>
   );
 }

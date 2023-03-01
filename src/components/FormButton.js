@@ -31,7 +31,7 @@ export default function FormButton(
       <Text style={[
         styleName === "Ghost" ?
           styles.buttonTitleGhost
-          : styles.buttonTitle,
+          : styles["button"+styleName],
         styles["buttonTitleSize" + sizeName]
       ]
       }>{label}</Text>

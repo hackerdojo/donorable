@@ -133,28 +133,26 @@ export default {
 
   buttonPrimary : {
     backgroundColor: theme.PRIMARY_COLOR,
+    color: theme.BUTTON_TITLE_PRIMARY_COLOR
   },
 
   buttonSecondary: {
     backgroundColor: theme.SECONDARY_COLOR,
+    color: theme.BUTTON_TITLE_SECONDARY_COLOR
   },
 
   buttonTertiary: {
     backgroundColor: theme.TERTIARY_COLOR,
+    color: theme.BUTTON_TITLE_TERTIARY_COLOR
   },
 
   buttonDanger: {
     backgroundColor: theme.DANGER_COLOR,
+    color: theme.BUTTON_TITLE_DANGER_COLOR
   },
 
   buttonGhost: {
     backgroundColor: "transparent",
-  },
-
-  buttonTitle: {
-    fontFamily: theme.FONT_FAMILY,
-    color: theme.BUTTON_TITLE_COLOR,
-    fontSize: theme.BUTTON_FONT_LARGE,
   },
 
   buttonTitleGhost: {

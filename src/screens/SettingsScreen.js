@@ -239,9 +239,9 @@ export default function SettingsScreen({navigation, route}) {
   /********************************************************************************* */
 
   return (
-    <View style={styles.screen}>
+    <View style={styles.listScreen}>
       <KeyboardAwareScrollView
-        style={{width: "100%"}}>
+        style={{width: "90%"}}>
         <FormTextInput
           label={"Email"}
           text={principal.email}
@@ -284,24 +284,24 @@ export default function SettingsScreen({navigation, route}) {
         <Text/>
         <HR/>
         <FormButton
-          buttonStyle={"secondary"}
+          buttonStyle={"tertiary"}
           styles={styles}
           onPress={() => navigation.navigate("Search For", {principal,from: "Settings"})}
           label={"Search Filters"}/>
         <FormButton
-          buttonStyle={"secondary"}
+          buttonStyle={"tertiary"}
           styles={styles}
           label={"Go Anonymous"}/>
         <FormButton
-          buttonStyle={"secondary"}
+          buttonStyle={"tertiary"}
           styles={styles}
           label={"Change Password"}/>
         <FormButton
-          buttonStyle={"secondary"}
+          buttonStyle={"tertiary"}
           styles={styles}
           label={"Notifications"}/>
         <FormButton
-          buttonStyle={"secondary"}
+          buttonStyle={"tertiary"}
           styles={styles}
           onPress={onLogoutPress}
           label={"Logout"}/>
