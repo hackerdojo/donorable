@@ -18,6 +18,7 @@ import {
   RegScreen2,
   WelcomeScreen,
   RecoverScreen,
+  SearchForScreen
 } from "../screens"; // different screens of the app
 import {
   HomeTab,
@@ -28,6 +29,7 @@ import {
 import DonorableLogo from "../components/DonorableLogo";
 import {DonorableNavLogo} from "../components";
 import {Spacer} from "react-native-flex-layout";
+import w from "../screens/SearchForScreen";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -74,7 +76,6 @@ export default function  AppNavigation({onReady}) {
   const Tab = createBottomTabNavigator();
 
   function MainTabs() {
-    alert("MainTabs render")
     return (
       <Tab.Navigator
         screenOptions={{
@@ -82,6 +83,7 @@ export default function  AppNavigation({onReady}) {
           tabBarInactiveTintColor: theme.INACTIVE_TAB_ICON_COLOR,
           tabBarStyle: { backgroundColor: 'white' },
         }}
+        initialRouteName={"Search For"}
       >
         <Tab.Screen
           name="Home"
@@ -104,20 +106,20 @@ export default function  AppNavigation({onReady}) {
             headerShown: false
           }}
         />
-
+        */}
 
         <Tab.Screen
-          name="Messages"
-          component={MessagesTab}
+          name="Search For"
+          component={SearchForScreen}
           options = {{
             tabBarIcon: ({color, size}) => (
-              <MaterialCommunityIcons name="message-bulleted" color={color} size={size}/>
+              <MaterialCommunityIcons name="magnify" color={color} size={size}/>
             ),
             headerShown: false
           }}
         />
 
-          */}
+
         <Tab.Screen
           name="Favorites"
           component={FavoritesTab}
@@ -143,7 +145,6 @@ export default function  AppNavigation({onReady}) {
     );
   }
 
-  alert("AppNav render")
   // Routes & Navigation of different screens
   return (
       <NavigationContainer onReady={onReady}>

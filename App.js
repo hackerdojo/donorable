@@ -33,7 +33,6 @@ export default function  App() {
   if (!fontsLoaded) {
     return null;
   }
-  alert("App render")
 
   // Routes & Navigation of different screens
   return (

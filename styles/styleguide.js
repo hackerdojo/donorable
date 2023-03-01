@@ -347,9 +347,7 @@ export default {
     borderBottomRightRadius: theme.BUTTON_RADIUS_SMALL,
   },
 
-
-
-  messageCard: {
+  listCard: {
     flexDirection: "row",
     paddingLeft: 10,
     paddingRight: 10,
@@ -357,12 +355,12 @@ export default {
     marginVertical: 5
   },
 
-  messagePreview: {
+  listPreview: {
     color:theme.TEXT_COLOR,
     maxWidth: "80%"
   },
 
-  messageSender: {
+  listHeader: {
     fontWeight: "bold",
     width:"100%",
     color:theme.TEXT_COLOR
@@ -396,8 +394,6 @@ export default {
     shadowRadius: 4,
     elevation: 5,
   },
-
-  /* TODO: Home Screen styles, need to blend in refactor*/
 
   splashContainer: {
     flex: 0.8,

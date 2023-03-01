@@ -2,28 +2,26 @@ import React, {useState, useContext} from "react";
 import {useSelector} from "react-redux";
 import {Button,Text, StyleSheet, View, FlatList, TouchableOpacity} from "react-native";
 import SearchCategoryEntry from "../components/SearchCategoryEntry";
-import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 import FormButton from "../components/FormButton";
 import styleguide from "../../styles/styleguide";
-import nteecodes from "../data/nteecodes.js";
+import nteecodes from "../data/nteecodes";
+import nteecodesicons from "../data/nteecodesicons";
 import {HStack} from "react-native-flex-layout";
 
 
 export default function SearchForScreen({navigation, route}) {
-//  const {from} = route.params;
   const styles = StyleSheet.create(styleguide);
   const principal = useSelector(state=> state.principal)
-  /* Go to Welcome Screen, or return to Settings */
-//  const availableTags = ["Local", "Global", "Health", "STEM", "Arts", "Faith"]
 
   const availableTags = Object
     .keys(nteecodes)
-    .filter( key => key.length==1)
-    .map( key => ({key: key, name: nteecodes[key]}));
+    .filter( key => key.length==1 )  // Grab the top level entries
+    .map( key => ({key: key, name: nteecodes[key], icon: nteecodesicons[key]}));
   const [filterSet, setFilterSet] = useState(new Set(principal.searchFilter));
 
   let searchDisable = false;
 
+  /* Go to Welcome Screen, or return to Settings */
   const onDonePress = async () => {
     principal.searchFilter = Array.from(filterSet);
     searchDisable = true;
@@ -71,6 +69,7 @@ export default function SearchForScreen({navigation, route}) {
               <SearchCategoryEntry
                 key={item.key}
                 label={item.name}
+                icon={item.icon}
                 styles={styles}
                 position = {index === 0 ? "First" : index === availableTags.length - 1 ? "Last" : availableTags.length === 1 ? "Only" : "Middle"}
                 size={"small"}

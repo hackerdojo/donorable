@@ -35,7 +35,7 @@ export default function ListsScreen({navigation, route}) {
 
   return (
     <View style={styles.listScreen}>
-      <FlatList
+      <FlatList style={{width:"100%"}}
         data={data}
         keyExtractor={(array, index) => index}
         renderItem={({item, index, separator}) => (
@@ -43,7 +43,7 @@ export default function ListsScreen({navigation, route}) {
             <TouchableOpacity
               onPress={(message) => onCardPress(item)}
             >
-              <HStack style={styles.messageCard} spacing={7}>
+              <HStack style={styles.listCard} spacing={7}>
                 <ImageMask
                   source={{uri: item.image}}
                   size={70}
@@ -54,12 +54,12 @@ export default function ListsScreen({navigation, route}) {
                 />
                 <VStack alignment={"left"}>
                   <View style={{flex: 1}}>
-                    <Text style={styles.messageSender}>
+                    <Text style={styles.listHeader}>
                       {item.name}
                     </Text>
                   </View>
                   <View style={{flex: 22}}>
-                    <Text style={styles.messagePreview}
+                    <Text style={styles.listPreview}
                           numberOfLines={3}
                     >
                       {item.about}

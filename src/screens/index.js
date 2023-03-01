@@ -14,5 +14,6 @@ export {default as KeywordScreen} from "./SearchForScreen";
 export {default as QuickDonateScreen} from "./QuickDonateScreen";
 export {default as DetailScreen} from "./DetailScreen";
 export {default as ListsScreen} from "./ListsScreen";
+export {default as SearchForScreen} from "./SearchForScreen";
 
 export {default as TestScreen} from "./TestScreen";
