@@ -35,7 +35,12 @@ SplashScreen.preventAutoHideAsync();
 export default function  AppNavigation({onReady}) {
   const [authUser, setAuthUser] = useState(null);
   const dispatch = useDispatch();
-  const principal = useSelector(state => state.principal);
+
+  // I learned a thing here with principalStatus and selecting only principal.status
+  // instead of principal.  Keep the selection to only the state you need so that
+  // changes to the rest of the principal don't cause the app to completely
+  // rerender and lose navigation state when submitting a simple form.
+  const principalStatus = useSelector(state => state.principal.status);
   const styles = StyleSheet.create(styleguide);
 
   useEffect( ()  => {
@@ -69,6 +74,7 @@ export default function  AppNavigation({onReady}) {
   const Tab = createBottomTabNavigator();
 
   function MainTabs() {
+    alert("MainTabs render")
     return (
       <Tab.Navigator
         screenOptions={{
@@ -137,11 +143,12 @@ export default function  AppNavigation({onReady}) {
     );
   }
 
+  alert("AppNav render")
   // Routes & Navigation of different screens
   return (
       <NavigationContainer onReady={onReady}>
         <Stack.Navigator>
-          { principal.status === "checking" &&
+          { principalStatus === "checking" &&
           <Stack.Screen name={" "}>{() => (
             <View style={styles.screen} >
               <View style={styles.splashContainer} onLayout={onReady}>
@@ -154,13 +161,13 @@ export default function  AppNavigation({onReady}) {
           )}
           </Stack.Screen>
           }
-          { principal.status !== "loggedin" && (
+          { principalStatus !== "loggedin" && (
             <>
               <Stack.Screen name="Donorable" component={MainTabs} options={{ headerShown: false }} />
               <Stack.Screen name="Welcome" component={WelcomeScreen} />
             </>
           )}
-          { principal.status == "guest" && (
+          { principalStatus == "guest" && (
             <>
               <Stack.Screen name="Intro" component={IntroScreen} options={{title:"Donorable"}}/>
               <Stack.Screen name="Login" component={LoginScreen}  />

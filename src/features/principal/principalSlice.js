@@ -44,7 +44,10 @@ export const principalSlice = createSlice({
     updateUserSettings: (state, action) => {
       const userSettings = action.payload;
       gcpUpdateUser(state,userSettings);
-      return {...state, ...userSettings };
+      state.firstname = userSettings.firstname;
+      state.lastname = userSettings.lastname;
+      state.phone = userSettings.phone;
+      state.enteredLocation = userSettings.enteredLocation;
     },
 
     addLiked: (state,action) => {

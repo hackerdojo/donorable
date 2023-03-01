@@ -18,7 +18,8 @@ export default function SettingsScreen({navigation, route}) {
 
   let updateDisable = false;
 
-  const saveChanges = async () => {
+
+  const saveChanges =  () => {
     updateDisable = true;
     dispatch(updateUserSettings(
       {
