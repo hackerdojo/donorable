@@ -256,9 +256,9 @@ export default function HomeScreen({navigation}) {
           onPress={showDisliked}>
           <HStack>
           <MaterialCommunityIcons
-            name={"chevron-left"} size={30} color={styles.inActiveTabColor.color}/>
+            name={"chevron-left"} size={28} color={styles.inActiveTabColor.color}/>
           <MaterialCommunityIcons
-            name={"thumb-down-outline"} size={30} color={styles.inActiveTabColor.color}/>
+            name={"thumb-down-outline"} size={28} color={styles.inActiveTabColor.color}/>
           </HStack>
         </TouchableOpacity>
 
@@ -280,7 +280,7 @@ export default function HomeScreen({navigation}) {
             >
             <MaterialCommunityIcons
               name={"filter-outline"}
-              size={30}
+              size={28}
               color={styles.inActiveTabColor.color}
             />
           </TouchableOpacity>
@@ -289,9 +289,9 @@ export default function HomeScreen({navigation}) {
           onPress={showLiked}>
           <HStack>
           <MaterialCommunityIcons
-            name={"thumb-up-outline"} size={30} color={styles.inActiveTabColor.color}/>
+            name={"thumb-up-outline"} size={28} color={styles.inActiveTabColor.color}/>
           <MaterialCommunityIcons
-            name={"chevron-right"} size={30} color={styles.inActiveTabColor.color}/>
+            name={"chevron-right"} size={28} color={styles.inActiveTabColor.color}/>
           </HStack>
         </TouchableOpacity>
       </HStack>

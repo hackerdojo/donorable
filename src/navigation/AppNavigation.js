@@ -25,6 +25,9 @@ import {
   SettingsTab,
   MessagesTab
 } from "../tabs";
+import DonorableLogo from "../components/DonorableLogo";
+import {DonorableNavLogo} from "../components";
+import {Spacer} from "react-native-flex-layout";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -140,7 +143,14 @@ export default function  AppNavigation({onReady}) {
         <Stack.Navigator>
           { principal.status === "checking" &&
           <Stack.Screen name={" "}>{() => (
-            <View style={styles.splashContainer} onLayout={onReady}><Text numberOfLines={2} style={styles.textCenteredP2} >Find and Fund Your Passion</Text></View>
+            <View style={styles.screen} >
+              <View style={styles.splashContainer} onLayout={onReady}>
+
+                <DonorableLogo height={100} width={200}/>
+                <Text numberOfLines={2} style={styles.textCenteredP2} >Find and Fund Your Passion</Text>
+                <Spacer/>
+              </View>
+            </View>
           )}
           </Stack.Screen>
           }

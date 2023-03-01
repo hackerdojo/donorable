@@ -19,14 +19,41 @@ export default {
     fontWeight: "bold"
   },
 
-  listScreen: {
-    backgroundColor:theme.BACKGROUND_COLOR
+  listSelected: {
+    backgroundColor: "lightgreen",
   },
 
-  emptyListScreen : {
+  listUnselected: {
+    backgroundColor: "white",
+  },
+
+  listItem: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: theme.LIGHT_NEUTRAL_COLOR,
+    height:35,
+    alignItems:"flex-start",
+    justifyContent:"center",
+    flex:1,
+    paddingLeft:10,
+    marginLeft: theme.VIEW_PADDING/2,
+    marginRight: theme.VIEW_PADDING/2,
+  },
+
+  listItemFirst : {
+    borderTopLeftRadius: theme.BUTTON_RADIUS_MEDIUM,
+    borderTopRightRadius: theme.BUTTON_RADIUS_MEDIUM,
+  },
+
+  listItemLast : {
+    borderBottomLeftRadius: theme.BUTTON_RADIUS_MEDIUM,
+    borderBottomRightRadius: theme.BUTTON_RADIUS_MEDIUM,
+  },
+
+  listScreen : {
     flex: 1,
     alignItems:"center",
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor:theme.LIGHT_NEUTRAL_COLOR,
   },
 
   screen: {
@@ -81,6 +108,10 @@ export default {
 
   defaultBackgroundColor: {
     backgroundColor: theme.BACKGROUND_COLOR
+  },
+
+  neutralBackgroundColor: {
+    backgroundColor: theme.NEUTRAL_COLOR
   },
 
   fullWidth: {
@@ -286,7 +317,7 @@ export default {
   },
 
   tag : {
-    height: theme.BUTTON_HEIGHT_LARGE,
+    height: theme.BUTTON_HEIGHT_MEDIUM,
     borderRadius: 0,
     borderWidth: 0,
     borderColor:theme.IMAGE_BORDER_COLOR,
@@ -318,13 +349,7 @@ export default {
     borderBottomRightRadius: theme.BUTTON_RADIUS_SMALL,
   },
 
-  tagSelected: {
-    backgroundColor: theme.PRIMARY_COLOR,
-  },
 
-  tagUnselected: {
-    backgroundColor: theme.TERTIARY_COLOR,
-  },
 
   messageCard: {
     flexDirection: "row",
@@ -373,7 +398,9 @@ export default {
     shadowRadius: 4,
     elevation: 5,
   },
-/* TODO: Home Screen styles, need to blend in refactor*/
+
+  /* TODO: Home Screen styles, need to blend in refactor*/
+
   splashContainer: {
     flex: 0.8,
     backgroundColor: "white",

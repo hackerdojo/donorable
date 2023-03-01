@@ -1,11 +1,12 @@
 import React, {useState, useContext} from "react";
 import {useSelector} from "react-redux";
-import {Text, StyleSheet, View, FlatList, TouchableOpacity} from "react-native";
-import TagButton from "../components/TagButton";
+import {Button,Text, StyleSheet, View, FlatList, TouchableOpacity} from "react-native";
+import SearchCategoryEntry from "../components/SearchCategoryEntry";
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 import FormButton from "../components/FormButton";
 import styleguide from "../../styles/styleguide";
 import nteecodes from "../data/nteecodes.js";
+import {HStack} from "react-native-flex-layout";
 
 
 export default function SearchForScreen({navigation, route}) {
@@ -50,13 +51,16 @@ export default function SearchForScreen({navigation, route}) {
 
   /* View for the KeywordScreen */
   return (
-    <View style={[styles.screen, styles.screenFormMod]}>
+    <View style={styles.listScreen}>
       <Text/>
-      <View>
-        <Text style={styles.textCenteredP1}>Select your interests.</Text>
-      </View>
+      <HStack style={{backgroundColor:"white", borderRadius:20, paddingLeft:20, paddingRight:20}}>
+        <Button title={"Interests"} style={[styles.neutralBackgroundColor]}/>
+        <Button title={"Needs"}/>
+        <Button title={"Goals"}/>
+      </HStack>
+      <Text/>
       <FlatList
-        style={[{flex:10},styles.fullWidth]}
+
         data={availableTags.sort((a,b)=> (a.name > b.name))}
         keyExtractor={item => item.key}
         keyboardShouldPersistTaps="always"
@@ -65,7 +69,7 @@ export default function SearchForScreen({navigation, route}) {
             <TouchableOpacity
               onPress={(message) => {}}
             >
-              <TagButton
+              <SearchCategoryEntry
                 key={item.key}
                 label={item.name}
                 styles={styles}

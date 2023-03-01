@@ -6,6 +6,7 @@ export default {
   FONT_SIZE_LARGE: 16,
   FOREGROUND_COLOR: 'white',
   NEUTRAL_COLOR: '#cccccc',
+  LIGHT_NEUTRAL_COLOR: '#eeeeee',
   ICON_BUTTON_COLOR: '#3f7e3f',
   IMAGE_BORDER_COLOR: '#cccccc',
   IMAGE_BORDER_WIDTH: 0,

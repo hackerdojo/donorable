@@ -5,7 +5,7 @@ export {default as HR} from "./HR";
 export {default as Logo} from "./Logo";
 export {default as ImageLogo} from "./ImageLogo";
 export {default as SvgLogo} from "./SvgLogo";
-export {default as TagButton} from "./TagButton";
+export {default as TagButton} from "./SearchCategoryEntry";
 export {default as ImageMask} from "./ImageMask";
 export {default as PhotoGallery} from "./PhotoGallery";
 export {default as NearbyMap} from "./NearbyMap";

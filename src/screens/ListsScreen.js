@@ -26,7 +26,7 @@ export default function ListsScreen({navigation, route}) {
   // ]
 
   if ( data.length === 0) return (
-    <View  style={styles.emptyListScreen}>
+    <View  style={styles.listScreen}>
       <MaterialCommunityIcons name={"cat"} size={50} />
       <Text>No items found.</Text>
       <Text numberOfLines={3}>Items that you have {addToListVerb} will show up here.</Text>
