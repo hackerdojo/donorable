@@ -10,9 +10,9 @@ export default function ListsScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
   let data = route.params.data || [];
   let addToListVerb = route.params.addToListVerb || [];
-
+// TODO: Make properties to make listscreen more generic
   const onCardPress = (item) => {
-    navigation.push("FavoriteDetails", {params: item, title: item.name, from: "Favorites"})
+    navigation.push("Detail", {params: item, title: item.name, from: "Favorites"})
 // navigate to DetailScreen for this item.  Push, so person can come back to Favorites.
   }
 

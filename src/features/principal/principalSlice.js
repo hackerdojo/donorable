@@ -82,18 +82,18 @@ export const principalSlice = createSlice({
       gcpUpdateUser(state,{disliked});
     },
 
-    addFavorite: (state) => {
+    addFavorite: (state, action) => {
       const itemId = action.payload;
-      const favorite = [...(state.favorite.filter(item => item !== itemId)), itemId];
-      state.favorite =  favorite;
-      gcpUpdateUser(state,{favorite});
+      const favorites = [...(state.favorites.filter(item => item !== itemId)), itemId];
+      state.favorites =  favorites;
+      gcpUpdateUser(state,{favorites});
     },
 
-    removeFavorite: (state)=> {
+    removeFavorite: (state,action)=> {
       const itemId = action.payload;
-      const favorite = state.favorite =  [...(state.favorite.filter(item => item !== itemId))];
-      state.favorite =  favorite;
-      gcpUpdateUser(state,{favorite});
+      const favorites = state.favorites =  [...(state.favorites.filter(item => item !== itemId))];
+      state.favorites =  favorites;
+      gcpUpdateUser(state,{favorites});
     },
   },
 })

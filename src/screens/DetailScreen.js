@@ -1,17 +1,19 @@
 import React, {useContext, useState} from "react";
+import {useSelector, useDispatch} from 'react-redux';
 import {Text, View, Modal, StyleSheet, TouchableOpacity, Pressable} from "react-native";
 import {HStack, Spacer} from 'react-native-flex-layout';
 import {ChatScreen, FormButton, ImageMask, PhotoGallery} from "../components";
 import styleguide from "../../styles/styleguide";
 import theme from "../../styles/theme.style";
-import {PrincipalContext} from "../contexts/PrincipalContext";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {QuickDonateScreen} from "./QuickDonateScreen";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import {addFavorite,removeFavorite} from "../features/principal/principalSlice";
 
 export default function DetailScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
-  const {user, updateUser} = useContext(PrincipalContext);
+  const principal = useSelector(state=>state.principal);
+  const dispatch = useDispatch();
   const [showDonatePanel, setShowDonatePanel] = useState(false);
   const [showChatPanel, setShowChatPanel] = useState(false);
 
@@ -20,23 +22,12 @@ export default function DetailScreen({navigation, route}) {
 
   // TODO:  This screen needs to be updated to use redux
   /* Save nonprofit to heart list */
-  const onHeartPress = () => {
-    // updateUsers favorites array.
-    if (!user.favorites) user.favorites = [];
-
-    let updatedUser;
-    if (user.favorites.includes(params.id)) {
-      updatedUser = {
-        ...user,
-        favorites: user.favorites.filter(favorite => favorite !== params.id)
-      }
+  const handleHeartPress = () => {
+    if (principal.favorites.includes(params.id)) {
+      dispatch(removeFavorite(params.id));
     } else {
-      updatedUser = {
-        ...user,
-        favorites: [...user.favorites, params.id]
-      }
+      dispatch(addFavorite(params.id));
     }
-    updateUser(updatedUser);
   };
 
   /* Go to MessageScreen */
@@ -94,9 +85,9 @@ export default function DetailScreen({navigation, route}) {
           styles={styles}
           width={"33%"}
           size={"small"}
-          buttonStyle={user.favorites.includes(params.id) ? "secondary" : "tertiary"}
-          onPress={onHeartPress}
-          label={user.favorites.includes(params.id) ? "Favorited" : "Favorite"}/>
+          buttonStyle={principal.favorites.includes(params.id) ? "secondary" : "tertiary"}
+          onPress={handleHeartPress}
+          label={principal.favorites.includes(params.id) ? "❤️ Favorited" : "🤍 Favorite"}/>
         <Spacer/>
         <FormButton
           styles={styles}

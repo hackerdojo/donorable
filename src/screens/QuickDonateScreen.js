@@ -23,7 +23,6 @@ export default function QuickDonateScreen({navigation, route}) {
     navigation.goBack();
   }
 
-
   /* View for the QuickDonateScreen */
   return (
     <View style={styles.screenDetail}>
