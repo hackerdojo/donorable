@@ -31,7 +31,7 @@ export default {
     flex:1,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: theme.LIGHT_NEUTRAL_COLOR,
-    height:35,
+    height:40,
     maxWidth:"90%",
     alignItems:"flex-start",
     justifyContent:"center",

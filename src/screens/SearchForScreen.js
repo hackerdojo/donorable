@@ -18,6 +18,7 @@ export default function SearchForScreen({navigation, route}) {
     .keys(nteecodes)
     .filter( key => key.length==1 )  // Grab the top level entries
     .map( key => ({key: key, name: nteecodes[key], icon: nteecodesicons[key]}));
+  const listData = availableTags.sort((a, b) => (a.name > b.name));
   const [filterSet, setFilterSet] = useState(new Set(principal.searchFilter));
 
   let searchDisable = false;
@@ -35,6 +36,10 @@ export default function SearchForScreen({navigation, route}) {
 //      navigation.navigate("Welcome", {principal});
 //    }
   };
+
+  const handleTabChange = (selection) => {
+    alert(selection);
+  }
 
   const handlePress = (tag) => {
     if (filterSet.has(tag)) {
@@ -54,6 +59,7 @@ export default function SearchForScreen({navigation, route}) {
       <Text/>
       <TabBar
         styles={styles}
+        onChange={handleTabChange}
         selections={{
           interests : "Interests",
           needs: "Needs",
@@ -64,7 +70,7 @@ export default function SearchForScreen({navigation, route}) {
       <Text/>
       <FlatList
         style={{width: "100%", borderRadius: 10}}
-        data={availableTags.sort((a, b) => (a.name > b.name))}
+        data={listData}
         keyExtractor={item => item.key}
         keyboardShouldPersistTaps="always"
         renderItem={({item, index, separators}) => (

@@ -27,9 +27,11 @@ export default function ListsScreen({navigation, route}) {
 
   if ( data.length === 0) return (
     <View  style={styles.listScreen}>
-      <MaterialCommunityIcons name={"cat"} size={50} />
+      <MaterialCommunityIcons name={"cat"} size={50} color={styles.inActiveTabColor.color}/>
       <Text>No items found.</Text>
-      <Text numberOfLines={3}>Items that you have {addToListVerb} will show up here.</Text>
+      <Text
+        numberOfLines={3}
+      >Items that you have {addToListVerb} will show up here.</Text>
     </View>
   )
 
@@ -43,7 +45,10 @@ export default function ListsScreen({navigation, route}) {
             <TouchableOpacity
               onPress={(message) => onCardPress(item)}
             >
-              <HStack style={styles.listCard} spacing={7}>
+              <HStack
+                style={[styles.listCard]}
+                spacing={7}
+              >
                 <ImageMask
                   source={{uri: item.image}}
                   size={70}
