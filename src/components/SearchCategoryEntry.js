@@ -37,8 +37,7 @@ export default function SearchCategoryEntry(
           style={[
             styles.textLeft,
           ]}
-        >{label}
-        </Text>
+        >{label}</Text>
       </HStack>
     </TouchableOpacity>
   );
