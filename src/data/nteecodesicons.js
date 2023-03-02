@@ -317,7 +317,7 @@ export default {
   "M41": "First Aid Training, Services",
   "M42": "Automotive Safety",
   "M99": "Public Safety, Disaster Preparedness, and Relief N.E.C.",
-  "N": "md-football-outline",
+  "N": "volleyball",
   "N01": "Alliance/Advocacy Organizations",
   "N02": "Management & Technical Assistance",
   "N03": "Professional Societies, Associations",
@@ -417,7 +417,7 @@ export default {
   "P86": "Blind/Visually Impaired Centers, Services",
   "P87": "Deaf/Hearing Impaired Centers, Services",
   "P99": "Human Services - Multipurpose and Other N.E.C.",
-  "Q": "globe-outline",
+  "Q": "globe-model",
   "Q01": "Alliance/Advocacy Organizations",
   "Q02": "Management & Technical Assistance",
   "Q03": "Professional Societies, Associations",
@@ -611,7 +611,7 @@ export default {
   "Y44": "Voluntary Employees Beneficiary Associations (Government)",
   "Y50": "Cemeteries, Burial Services",
   "Y99": "Mutual/Membership Benefit Organizations, Other N.E.C.",
-  "Z": "question-mark-outline",
+  "Z": "progress-question",
   "Z99": "Unknown"
 }
 

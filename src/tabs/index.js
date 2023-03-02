@@ -8,3 +8,5 @@ export {default as FavoritesTab} from "./FavoritesTab";
 export {default as SettingsTab} from "./SettingsTab";
 
 export {default as MessagesTab} from "./MessagesTab";
+
+export {default as SearchTab} from "./SearchTab";

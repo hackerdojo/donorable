@@ -30,12 +30,13 @@ export default function SearchCategoryEntry(
       }
       onPress={handlePress}
     >
-      <HStack>
-        <MaterialCommunityIcons name={selected ? "checkbox-marked-circle": "circle-outline"} size={24} color={selected ? "#137dfb":"grey"} />
-        <MaterialCommunityIcons name={icon} size={24} color={styles.text.color}/>
-        <Text
+      <HStack spacing={5}>
+        <MaterialCommunityIcons name={selected ? "checkbox-marked-circle": "circle-outline"} size={20} color={selected ? "#137dfb":"grey"} />
+        <MaterialCommunityIcons name={icon} size={20} color={styles.text.color}/>
+        <Text numberOfLines={2}
           style={[
             styles.textLeft,
+            {maxWidth:"80%"}
           ]}
         >{label}</Text>
       </HStack>

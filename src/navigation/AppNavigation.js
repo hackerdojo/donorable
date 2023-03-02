@@ -24,7 +24,7 @@ import {
   HomeTab,
   FavoritesTab,
   SettingsTab,
-  MessagesTab
+  MessagesTab, SearchTab
 } from "../tabs";
 import DonorableLogo from "../components/DonorableLogo";
 import {DonorableNavLogo} from "../components";
@@ -83,7 +83,6 @@ export default function  AppNavigation({onReady}) {
           tabBarInactiveTintColor: theme.INACTIVE_TAB_ICON_COLOR,
           tabBarStyle: { backgroundColor: 'white' },
         }}
-        initialRouteName={"Search For"}
       >
         <Tab.Screen
           name="Home"
@@ -110,7 +109,7 @@ export default function  AppNavigation({onReady}) {
 
         <Tab.Screen
           name="Search For"
-          component={SearchForScreen}
+          component={SearchTab}
           options = {{
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons name="magnify" color={color} size={size}/>
@@ -118,7 +117,6 @@ export default function  AppNavigation({onReady}) {
             headerShown: false
           }}
         />
-
 
         <Tab.Screen
           name="Favorites"

@@ -51,18 +51,25 @@ export default function SearchForScreen({navigation, route}) {
   return (
     <View style={styles.listScreen}>
       <Text/>
-      <HStack style={{backgroundColor:"white", borderRadius:20, paddingLeft:20, paddingRight:20}}>
+      <HStack spacing={10} justify={"between"}
+        style={{
+          backgroundColor:"white",
+          borderRadius:20,
+          paddingLeft:20,
+          paddingRight:20,
+          width:"90%"
+        }}>
         <Button title={"Interests"} style={[styles.neutralBackgroundColor]}/>
         <Button title={"Needs"}/>
         <Button title={"Goals"}/>
       </HStack>
       <Text/>
       <FlatList
+        style={{width:"100%", borderRadius:10}}
         data={availableTags.sort((a,b)=> (a.name > b.name))}
         keyExtractor={item => item.key}
         keyboardShouldPersistTaps="always"
         renderItem={({item, index, separators}) => (
-          <View key={item.key} style={styles.fullWidth}>
             <TouchableOpacity
               onPress={(message) => {}}
             >
@@ -77,16 +84,8 @@ export default function SearchForScreen({navigation, route}) {
                 onPress={ () => handlePress(item.key)}
               />
             </TouchableOpacity>
-
-          </View>)
+        )
         }
-      />
-      <FormButton
-        styles={styles}
-        width={"90%"}
-        buttonStyle={"Tertiary"}
-        label={"Search"}
-        onPress={onDonePress}
       />
       <Text/>
     </View>

@@ -28,12 +28,14 @@ export default {
   },
 
   listItem: {
+    flex:1,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: theme.LIGHT_NEUTRAL_COLOR,
     height:35,
+    maxWidth:"90%",
     alignItems:"flex-start",
     justifyContent:"center",
-    flex:1,
+
     paddingLeft:10,
     marginLeft: theme.VIEW_PADDING/2,
     marginRight: theme.VIEW_PADDING/2,
@@ -54,6 +56,7 @@ export default {
     alignItems:"center",
     justifyContent: "center",
     backgroundColor:theme.LIGHT_NEUTRAL_COLOR,
+    overflow:"hidden",
   },
 
   screen: {
