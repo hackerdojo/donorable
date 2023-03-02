@@ -4,7 +4,7 @@ import {HStack} from 'react-native-stacks';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function SearchCategoryEntry(
-  {onPress, label, icon, styles, tagState, size = "medium"}, position
+  {onPress, label, icon, styles, tagState, size = "medium", position}
 ) {
   const [selected, setSelected] = useState(false);
 
