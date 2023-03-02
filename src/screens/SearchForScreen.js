@@ -1,12 +1,13 @@
 import React, {useState, useContext} from "react";
 import {useSelector} from "react-redux";
 import {Button,Text, StyleSheet, View, FlatList, TouchableOpacity} from "react-native";
-import SearchCategoryEntry from "../components/SearchCategoryEntry";
+import {TabBar,SearchCategoryEntry} from "../components";
 import FormButton from "../components/FormButton";
 import styleguide from "../../styles/styleguide";
 import nteecodes from "../data/nteecodes";
 import nteecodesicons from "../data/nteecodesicons";
 import {HStack} from "react-native-flex-layout";
+import * as PropTypes from "prop-types";
 
 
 export default function SearchForScreen({navigation, route}) {
@@ -51,39 +52,37 @@ export default function SearchForScreen({navigation, route}) {
   return (
     <View style={styles.listScreen}>
       <Text/>
-      <HStack spacing={10} justify={"between"}
-        style={{
-          backgroundColor:"white",
-          borderRadius:20,
-          paddingLeft:20,
-          paddingRight:20,
-          width:"90%"
-        }}>
-        <Button title={"Interests"} style={[styles.neutralBackgroundColor]}/>
-        <Button title={"Needs"}/>
-        <Button title={"Goals"}/>
-      </HStack>
+      <TabBar
+        styles={styles}
+        selections={{
+          interests : "Interests",
+          needs: "Needs",
+          goals: "Goals",
+          location: "Location"
+        }}
+      />
       <Text/>
       <FlatList
-        style={{width:"100%", borderRadius:10}}
-        data={availableTags.sort((a,b)=> (a.name > b.name))}
+        style={{width: "100%", borderRadius: 10}}
+        data={availableTags.sort((a, b) => (a.name > b.name))}
         keyExtractor={item => item.key}
         keyboardShouldPersistTaps="always"
         renderItem={({item, index, separators}) => (
-            <TouchableOpacity
-              onPress={(message) => {}}
-            >
-              <SearchCategoryEntry
-                key={item.key}
-                label={item.name}
-                icon={item.icon}
-                styles={styles}
-                position = {index === 0 ? "First" : index === availableTags.length - 1 ? "Last" : availableTags.length === 1 ? "Only" : "Middle"}
-                size={"small"}
-                tagState={filterSet.has(item.key)}
-                onPress={ () => handlePress(item.key)}
-              />
-            </TouchableOpacity>
+          <TouchableOpacity
+            onPress={(message) => {
+            }}
+          >
+            <SearchCategoryEntry
+              key={item.key}
+              label={item.name}
+              icon={item.icon}
+              styles={styles}
+              position={index === 0 ? "First" : index === availableTags.length - 1 ? "Last" : availableTags.length === 1 ? "Only" : "Middle"}
+              size={"small"}
+              tagState={filterSet.has(item.key)}
+              onPress={() => handlePress(item.key)}
+            />
+          </TouchableOpacity>
         )
         }
       />
