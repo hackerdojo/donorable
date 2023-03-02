@@ -287,7 +287,16 @@ export default {
     height: 30,
     paddingLeft:5,
     overflow: "hidden",
-    width: "100%",
+    width:"100%"
+  },
+
+  listElementInput :{
+    fontFamily: theme.FONT_FAMILY,
+    fontSize: 14,
+    height: 30,
+    paddingLeft:5,
+    overflow: "hidden",
+    width:"65%"
   },
 
   inputNumeric: {

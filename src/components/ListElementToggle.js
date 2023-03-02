@@ -10,15 +10,14 @@ export default function ListElementToggle(
 ) {
   const styles = StyleSheet.create(styleguide);
   return (
-
-      <HStack
-        style={[styles.listItem, styles["listItem"+position],{ alignItems:"center", justifyContent:"space-between"}]}>
-        <Text style={styles.textLeft}>{text}</Text>
-        <Spacer/>
-        <Switch
-          onValueChange={onToggle}
-          value={value}/>
-      </HStack>
-
+    <HStack
+      style={[styles.listItem, styles["listItem"+position],{ alignItems:"center", justifyContent:"space-between"}]}>
+      <Text style={styles.textLeft}>{text}</Text>
+      <Spacer/>
+      <Switch
+        onValueChange={onToggle}
+        value={value}/>
+      <Text>&nbsp;&nbsp;</Text>
+    </HStack>
   );
 };

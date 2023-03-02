@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import {HomeScreen, ListsScreen, DetailScreen, QuickDonateScreen, TestScreen} from "../screens";
+import {HomeScreen, ListsScreen, DetailScreen, QuickDonateScreen, TestScreen, ProfileScreen} from "../screens";
 import {DonorableNavLogo,AccountButton} from "../components";
 import SettingsTab from "./SettingsTab";
 import SearchForScreen from "../screens/SearchForScreen";
@@ -9,13 +9,13 @@ export default function HomeTab() {
   const Stack = createStackNavigator();
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator >
       <Stack.Screen
         name="Home"
         component={HomeScreen}
         options={{
           headerLeft: () => <DonorableNavLogo/>,
-          headerRight: () => <AccountButton />
+          headerRight: () => <AccountButton/>
         }}
       />
       <Stack.Screen
@@ -34,6 +34,10 @@ export default function HomeTab() {
       <Stack.Screen
         name="Test"
         component={TestScreen}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={ProfileScreen}
       />
       <Stack.Screen
         name="Liked"

@@ -1,58 +1,13 @@
 import React, {useState, useContext} from "react";
 import {StyleSheet, Text, View, Alert, TouchableOpacity} from "react-native";
-import {HStack, Spacer} from "react-native-stacks";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import firebase from "../firebase/config";
 import styleguide from "../../styles/styleguide";
-import {HR, FormTextInput, FormButton, ListElement, ListElementNav, ListElementToggle} from "../components";
+import {HR, ListElementNav, ListElementToggle} from "../components";
 import {updateUserSettings} from "../features/principal/principalSlice";
 import {useSelector, useDispatch} from "react-redux";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-function ProfileScreen(props) {
-  return <>
-    <FormTextInput
-      label={"Email"}
-      text={props.principal.email}
-      styles={props.styles}
-      disabled={true}
-      // let's not let people change this for now because it is their login.
-      // so many security issues...
-    />
-    <FormTextInput
-      label={"First Name"}
-      text={props.text}
-      styles={props.styles}
-      onChangeText={props.onChangeText}
-    />
-    <FormTextInput
-      label={"Last Name"}
-      text={props.text1}
-      styles={props.styles}
-      onChangeText={props.onChangeText1}
-    />
-    <FormTextInput
-      label={"Phone Number"}
-      styles={props.styles}
-      keyboardType="numeric"
-      text={props.text2}
-      onChangeText={props.onChangeText2}
-    />
-    <FormTextInput
-      label={"Location"}
-      styles={props.styles}
-      text={props.text3}
-      onChangeText={props.onChangeText3}
-    />
-    <FormButton
-      buttonStyle={"primary"}
-      styles={props.styles}
-      onPress={props.onPress}
-      disabled={props.disabled}
-      label={props.disabled ? "Updating" : "Update"}/>
-    <Text/>
-  </>;
-}
 
 export default function SettingsScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
@@ -291,7 +246,7 @@ export default function SettingsScreen({navigation, route}) {
         <Text/>
         <ListElementNav
           text={principal.firstname +" " + principal.lastname}
-          onPress={()=> {alert("Todo")}}
+          onPress={() => navigation.navigate("Profile", {principal, from: "Settings"})}
           position={"First"}
         />
         <ListElementNav
@@ -303,42 +258,31 @@ export default function SettingsScreen({navigation, route}) {
           onToggle={toggleAnonymous}
           value={anonymous}
         />
-        <FormButton
-          buttonStyle={"tertiary"}
-          styles={styles}
-          label={"Go Anonymous"}/>
-        <FormButton
-          buttonStyle={"tertiary"}
-          styles={styles}
-          label={"Change Password"}/>
-        <FormButton
-          buttonStyle={"tertiary"}
-          styles={styles}
-          label={"Notifications"}/>
-        <FormButton
-          buttonStyle={"tertiary"}
-          styles={styles}
-          onPress={onLogoutPress}
-          label={"Logout"}/>
-        <FormButton
-          buttonStyle={"danger"}
-          styles={styles}
-          label={"Delete Account"}
+        <ListElementNav
+          text={"Change Password"}
+          onPress={() => alert("todo")}
         />
-        {principal.isAdmin &&
-        <FormButton
-          buttonStyle={"secondary"}
-          styles={styles}
+        <ListElementToggle
+          text={"Notifications"}
+          onToggle={toggleAnonymous}
+          value={anonymous}
+        />
+        <ListElementNav
+          text={"Logout"}
+          onPress={() => alert("todo")}
+        />
+        <ListElementNav
+          text={"Delete Account"}
+          onPress={() => alert("todo")}
+        />
+        <ListElementNav
+          text={"User is admin: Test"}
           onPress={() => navigation.navigate("Test", {principal, from: "Settings"})}
-          label={"User is Admin: Test"}/>
-        }
+        />
         <Text/>
         <Text/>
         <Text/>
-        <ProfileScreen principal={principal} styles={styles} text={firstName} onChangeText={setFirstName}
-                       text1={lastName} onChangeText1={setLastName} text2={phone} onChangeText2={setPhone}
-                       text3={enteredLocation} onChangeText3={setEnteredLocation} onPress={saveChanges}
-                       disabled={updateDisable}/>
+
         <HR/>
       </KeyboardAwareScrollView>
   );
