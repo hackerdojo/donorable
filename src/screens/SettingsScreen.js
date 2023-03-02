@@ -1,11 +1,58 @@
 import React, {useState, useContext} from "react";
-import {StyleSheet, Text, View, Alert} from "react-native";
+import {StyleSheet, Text, View, Alert, TouchableOpacity} from "react-native";
+import {HStack, Spacer} from "react-native-stacks";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import firebase from "../firebase/config";
 import styleguide from "../../styles/styleguide";
-import {HR, FormTextInput, FormButton, FormNav} from "../components";
+import {HR, FormTextInput, FormButton, ListElement, ListElementNav, ListElementToggle} from "../components";
 import {updateUserSettings} from "../features/principal/principalSlice";
 import {useSelector, useDispatch} from "react-redux";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+
+function ProfileScreen(props) {
+  return <>
+    <FormTextInput
+      label={"Email"}
+      text={props.principal.email}
+      styles={props.styles}
+      disabled={true}
+      // let's not let people change this for now because it is their login.
+      // so many security issues...
+    />
+    <FormTextInput
+      label={"First Name"}
+      text={props.text}
+      styles={props.styles}
+      onChangeText={props.onChangeText}
+    />
+    <FormTextInput
+      label={"Last Name"}
+      text={props.text1}
+      styles={props.styles}
+      onChangeText={props.onChangeText1}
+    />
+    <FormTextInput
+      label={"Phone Number"}
+      styles={props.styles}
+      keyboardType="numeric"
+      text={props.text2}
+      onChangeText={props.onChangeText2}
+    />
+    <FormTextInput
+      label={"Location"}
+      styles={props.styles}
+      text={props.text3}
+      onChangeText={props.onChangeText3}
+    />
+    <FormButton
+      buttonStyle={"primary"}
+      styles={props.styles}
+      onPress={props.onPress}
+      disabled={props.disabled}
+      label={props.disabled ? "Updating" : "Update"}/>
+    <Text/>
+  </>;
+}
 
 export default function SettingsScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
@@ -17,8 +64,9 @@ export default function SettingsScreen({navigation, route}) {
   const [enteredLocation, setEnteredLocation] = useState(principal.enteredLocation);
 
   let updateDisable = false;
+  const [anonymous, setAnonymous] = useState(false);
 
-
+  const toggleAnonymous = () => { setAnonymous(!anonymous)}
   const saveChanges =  () => {
     updateDisable = true;
     dispatch(updateUserSettings(
@@ -239,93 +287,59 @@ export default function SettingsScreen({navigation, route}) {
   /********************************************************************************* */
 
   return (
-    <View style={styles.listScreen}>
-      <Text/>
-      <KeyboardAwareScrollView style={{width: "90%"}}>
-        <View style={{backgroundColor:"red", borderRadius:"10px"}}>
-          <FormNav
-            text={"Louis Roehrs"}
-          />
-          <FormTextInput
-            label={"Email"}
-            text={principal.email}
-            styles={styles}
-            disabled={true}
-            // let's not let people change this for now because it is their login.
-            // so many security issues...
-          />
-          <FormTextInput
-            label={"First Name"}
-            text={firstName}
-            styles={styles}
-            onChangeText={setFirstName}
-          />
-          <FormTextInput
-            label={"Last Name"}
-            text={lastName}
-            styles={styles}
-            onChangeText={setLastName}
-          />
-          <FormTextInput
-            label={"Phone Number"}
-            styles={styles}
-            keyboardType='numeric'
-            text={phone}
-            onChangeText={setPhone}
-          />
-          <FormTextInput
-            label={"Location"}
-            styles={styles}
-            text={enteredLocation}
-            onChangeText={setEnteredLocation}
-          />
-          <FormButton
-            buttonStyle={"primary"}
-            styles={styles}
-            onPress={saveChanges}
-            disabled={updateDisable}
-            label={updateDisable ? "Updating" : "Update"}/>
-          <Text/>
-          <HR/>
-          <FormButton
-            buttonStyle={"tertiary"}
-          styles={styles}
-            onPress={() => navigation.navigate("Search For", {principal,from: "Settings"})}
-            label={"Search Filters"}/>
-          <FormButton
-            buttonStyle={"tertiary"}
-          styles={styles}
-            label={"Go Anonymous"}/>
-          <FormButton
-            buttonStyle={"tertiary"}
-          styles={styles}
-            label={"Change Password"}/>
-          <FormButton
-            buttonStyle={"tertiary"}
-          styles={styles}
-            label={"Notifications"}/>
-          <FormButton
-            buttonStyle={"tertiary"}
-          styles={styles}
-            onPress={onLogoutPress}
-            label={"Logout"}/>
-          <FormButton
-            buttonStyle={"danger"}
-          styles={styles}
-            label={"Delete Account"}
-          />
-          { principal.isAdmin &&
-          <FormButton
-            buttonStyle={"secondary"}
-            styles={styles}
-            onPress={() => navigation.navigate("Test", {principal, from: "Settings"})}
-            label={"User is Admin: Test"}/>
-          }
-          <Text/>
-          <Text/>
-        </View>
+      <KeyboardAwareScrollView style={{width: "100%"}}>
         <Text/>
+        <ListElementNav
+          text={principal.firstname +" " + principal.lastname}
+          onPress={()=> {alert("Todo")}}
+          position={"First"}
+        />
+        <ListElementNav
+          text={"Search For"}
+          onPress={() => navigation.navigate("Search For", {principal, from: "Settings"})}
+        />
+        <ListElementToggle
+          text={"Donate Anonymously"}
+          onToggle={toggleAnonymous}
+          value={anonymous}
+        />
+        <FormButton
+          buttonStyle={"tertiary"}
+          styles={styles}
+          label={"Go Anonymous"}/>
+        <FormButton
+          buttonStyle={"tertiary"}
+          styles={styles}
+          label={"Change Password"}/>
+        <FormButton
+          buttonStyle={"tertiary"}
+          styles={styles}
+          label={"Notifications"}/>
+        <FormButton
+          buttonStyle={"tertiary"}
+          styles={styles}
+          onPress={onLogoutPress}
+          label={"Logout"}/>
+        <FormButton
+          buttonStyle={"danger"}
+          styles={styles}
+          label={"Delete Account"}
+        />
+        {principal.isAdmin &&
+        <FormButton
+          buttonStyle={"secondary"}
+          styles={styles}
+          onPress={() => navigation.navigate("Test", {principal, from: "Settings"})}
+          label={"User is Admin: Test"}/>
+        }
+        <Text/>
+        <Text/>
+        <Text/>
+        <ProfileScreen principal={principal} styles={styles} text={firstName} onChangeText={setFirstName}
+                       text1={lastName} onChangeText1={setLastName} text2={phone} onChangeText2={setPhone}
+                       text3={enteredLocation} onChangeText3={setEnteredLocation} onPress={saveChanges}
+                       disabled={updateDisable}/>
+        <HR/>
       </KeyboardAwareScrollView>
-    </View>
   );
 }

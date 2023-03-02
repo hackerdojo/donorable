@@ -36,7 +36,7 @@ export default {
     backgroundColor:theme.LIGHT_NEUTRAL_COLOR,
     overflow:"hidden",
   },
-
+// used by the lists screen of liked, disliked, favorites
   listCard: {
     flexDirection: "row",
     paddingLeft: 10,
@@ -45,6 +45,7 @@ export default {
     marginVertical: 5,
   },
 
+// used by the search and filter screen
   listItem: {
     flex:1,
     borderBottomWidth: StyleSheet.hairlineWidth,
