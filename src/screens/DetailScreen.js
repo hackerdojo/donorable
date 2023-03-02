@@ -6,7 +6,7 @@ import {ChatScreen, FormButton, ImageMask, PhotoGallery} from "../components";
 import styleguide from "../../styles/styleguide";
 import theme from "../../styles/theme.style";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import {QuickDonateScreen} from "./QuickDonateScreen";
+import QuickDonateScreen from "./QuickDonateScreen";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import {addFavorite,removeFavorite} from "../features/principal/principalSlice";
 
@@ -150,7 +150,7 @@ export default function DetailScreen({navigation, route}) {
               width: 50,
               height: 5,
               borderRadius: 5
-            }}></View>
+            }}/>
           </Pressable>
 
         </View>

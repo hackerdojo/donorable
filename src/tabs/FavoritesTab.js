@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import {DetailScreen} from "../screens";
+import {DetailScreen,ListsScreen} from "../screens";
 import DonorableNavLogo from "../components/DonorableNavLogo";
 import SettingsTab from "./SettingsTab";
 import {AccountButton} from "../components";
@@ -15,8 +15,7 @@ export default function FavoritesTab() {
         name="Favorites"
         component={PrincipalListsDataLoader}
         options={{
-          headerLeft: () => <DonorableNavLogo/>,
-          headerRight: () => <AccountButton/>
+          headerLeft: () => <DonorableNavLogo/>
         }}
         initialParams={
           {
@@ -29,7 +28,7 @@ export default function FavoritesTab() {
         component={SettingsTab}
       />
       <Stack.Screen
-        name="FavoriteDetails"
+        name="Detail"
         component={DetailScreen}
         options={({route}) => ({title: route.params.title})}
       />
