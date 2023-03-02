@@ -19,28 +19,6 @@ export default {
     fontWeight: "bold"
   },
 
-  listSelected: {
-    backgroundColor: "lightgreen",
-  },
-
-  listUnselected: {
-    backgroundColor: "white",
-  },
-
-  listItem: {
-    flex:1,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: theme.LIGHT_NEUTRAL_COLOR,
-    height:40,
-    maxWidth:"90%",
-    alignItems:"flex-start",
-    justifyContent:"center",
-
-    paddingLeft:10,
-    marginLeft: theme.VIEW_PADDING/2,
-    marginRight: theme.VIEW_PADDING/2,
-  },
-
   listItemFirst : {
     borderTopLeftRadius: theme.BUTTON_RADIUS_MEDIUM,
     borderTopRightRadius: theme.BUTTON_RADIUS_MEDIUM,
@@ -57,6 +35,39 @@ export default {
     justifyContent: "center",
     backgroundColor:theme.LIGHT_NEUTRAL_COLOR,
     overflow:"hidden",
+  },
+
+  listCard: {
+    flexDirection: "row",
+    paddingLeft: 10,
+    paddingRight: 10,
+    width: "100%",
+    marginVertical: 5,
+  },
+
+  listItem: {
+    flex:1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: theme.LIGHT_NEUTRAL_COLOR,
+    height:40,
+    maxWidth:"90%",
+    alignItems:"flex-start",
+    justifyContent:"center",
+    paddingLeft:10,
+    marginLeft: theme.VIEW_PADDING/2,
+    marginRight: theme.VIEW_PADDING/2,
+    backgroundColor: "white",
+  },
+
+  listPreview: {
+    color:theme.TEXT_COLOR,
+    maxWidth: "80%"
+  },
+
+  listHeader: {
+    fontWeight: "bold",
+    width:"100%",
+    color:theme.TEXT_COLOR
   },
 
   screen: {
@@ -348,25 +359,6 @@ export default {
     borderTopRightRadius: theme.BUTTON_RADIUS_SMALL,
     borderBottomLeftRadius: theme.BUTTON_RADIUS_SMALL,
     borderBottomRightRadius: theme.BUTTON_RADIUS_SMALL,
-  },
-
-  listCard: {
-    flexDirection: "row",
-    paddingLeft: 10,
-    paddingRight: 10,
-    width: "100%",
-    marginVertical: 5
-  },
-
-  listPreview: {
-    color:theme.TEXT_COLOR,
-    maxWidth: "80%"
-  },
-
-  listHeader: {
-    fontWeight: "bold",
-    width:"100%",
-    color:theme.TEXT_COLOR
   },
 
   iconButton: {

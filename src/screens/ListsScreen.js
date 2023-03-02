@@ -13,7 +13,6 @@ export default function ListsScreen({navigation, route}) {
 // TODO: Make properties to make listscreen more generic
   const onCardPress = (item) => {
     navigation.push("Detail", {params: item, title: item.name, from: "Favorites"})
-// navigate to DetailScreen for this item.  Push, so person can come back to Favorites.
   }
 
   // Lists wants an array of objects passed to route.params.data property
@@ -41,12 +40,12 @@ export default function ListsScreen({navigation, route}) {
         data={data}
         keyExtractor={(array, index) => index}
         renderItem={({item, index, separator}) => (
-          <View key={item}>
             <TouchableOpacity
               onPress={(message) => onCardPress(item)}
+              key={item}
             >
               <HStack
-                style={[styles.listCard]}
+                style={styles.listCard}
                 spacing={7}
               >
                 <ImageMask
@@ -57,7 +56,7 @@ export default function ListsScreen({navigation, route}) {
                   borderColor={theme.IMAGE_BORDER_COLOR}
                   backgroundColor={theme.IMAGE_BACKGROUND_COLOR}
                 />
-                <VStack alignment={"left"}>
+                <VStack alignment={"left"} style={{width:"90%"}}>
                   <View style={{flex: 1}}>
                     <Text style={styles.listHeader}>
                       {item.name}
@@ -70,11 +69,13 @@ export default function ListsScreen({navigation, route}) {
                       {item.about}
                     </Text>
                   </View>
+                  <HR/>
                 </VStack>
+
               </HStack>
             </TouchableOpacity>
-            <HR/>
-          </View>
+
+
         )}
       />
     </View>

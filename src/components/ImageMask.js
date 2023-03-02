@@ -27,6 +27,7 @@ export const ImageMask = (
       backgroundColor: backgroundColor,
       borderRadius: radius,
       height: size + (borderWidth + backgroundWidth) * 2,
+      marginBottom: 10
     }}
     >
       <Image

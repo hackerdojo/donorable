@@ -24,7 +24,6 @@ export default function SearchCategoryEntry(
     <TouchableOpacity
       style={[
         styles.listItem,
-        styles.listUnselected,
         styles["listItem"+position]
         ]
       }
