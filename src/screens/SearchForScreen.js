@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 import {useSelector} from "react-redux";
-import {Button,Text, StyleSheet, View, FlatList, TouchableOpacity} from "react-native";
+import {Text, StyleSheet, View, FlatList, TouchableOpacity} from "react-native";
 import {TabBar,SearchCategoryEntry} from "../components";
 import FormButton from "../components/FormButton";
 import styleguide from "../../styles/styleguide";

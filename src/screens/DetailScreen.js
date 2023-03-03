@@ -72,7 +72,13 @@ export default function DetailScreen({navigation, route}) {
       </View>
 */}
 
-      <HStack  style={{padding: 8}} spacing={8} alignment="center">
+      <HStack
+        style={{paddingBottom: 8}}
+        alignment="center"
+        spacing={10}
+        justify={"center"}
+      >
+        {/*  TODO: let's do messages later as this is a burden on the non-profit
         <FormButton
           styles={styles}
           size={"small"}
@@ -81,21 +87,24 @@ export default function DetailScreen({navigation, route}) {
           onPress={onMessagePress}
           label={"Message"}/>
         <Spacer/>
+        */}
+        <View style={{flex:1}}>
         <FormButton
           styles={styles}
-          width={"33%"}
           size={"small"}
           buttonStyle={principal.favorites.includes(params.id) ? "secondary" : "tertiary"}
           onPress={handleHeartPress}
           label={principal.favorites.includes(params.id) ? "❤️ Favorited" : "🤍 Favorite"}/>
-        <Spacer/>
-        <FormButton
-          styles={styles}
-          size={"small"}
-          width={"33%"}
-          buttonStyle={"Primary"}
-          onPress={onDonatePress}
-          label={"Donate now"}/>
+        </View>
+
+        <View style={{flex:1}}>
+          <FormButton
+            styles={styles}
+            size={"small"}
+            buttonStyle={"Primary"}
+            onPress={onDonatePress}
+            label={"Donate now"}/>
+        </View>
       </HStack>
       <KeyboardAwareScrollView enableAutomaticScroll={true}>
         <PhotoGallery photos={params.carousel}/>
@@ -107,6 +116,8 @@ export default function DetailScreen({navigation, route}) {
         </Text>
         <View style={{height: 200}}/>
       </KeyboardAwareScrollView>
+
+      {/* TODO: Chat feature looks great, but it can wait
       <View
         style={{
           borderRadius: 100,
@@ -127,7 +138,7 @@ export default function DetailScreen({navigation, route}) {
           <MaterialCommunityIcons name={"chat"} size={50} color={"white"}/>
         </TouchableOpacity>
       </View>
-
+*/}
       <Modal
         animationType="slide"
         transparent={true}

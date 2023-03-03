@@ -128,6 +128,7 @@ export default function  AppNavigation({onReady}) {
             headerShown: false
           }}
         />
+        {/*  TODO: cart come later, let's do quick donate for now.
         <Tab.Screen
           name="Cart"
           component={FavoritesTab}
@@ -138,7 +139,7 @@ export default function  AppNavigation({onReady}) {
             headerShown: false
           }}
         />
-
+*/}
       </Tab.Navigator>
     );
   }
