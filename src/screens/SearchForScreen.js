@@ -2,18 +2,15 @@ import React, {useState, useContext, useEffect} from "react";
 import {useSelector} from "react-redux";
 import {Text, StyleSheet, View, FlatList, TouchableOpacity} from "react-native";
 import {TabBar, SearchCategoryEntry, NearbyMap, Map} from "../components";
-import FormButton from "../components/FormButton";
 import styleguide from "../../styles/styleguide";
 import nteecodes from "../data/nteecodes";
 import nteecodesicons from "../data/nteecodesicons";
-import {HStack} from "react-native-flex-layout";
-import * as PropTypes from "prop-types";
-
 
 
 export default function SearchForScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
   const principal = useSelector(state=> state.principal)
+  const cardDeck = useSelector(state => state.cardDeck)
 
   const availableTags = Object
     .keys(nteecodes)
@@ -101,7 +98,7 @@ export default function SearchForScreen({navigation, route}) {
         </>
         }
         { selectedTab === "location" &&
-        <Map/>
+          <Map places={cardDeck.cards}/>
         }
       </View>
   );

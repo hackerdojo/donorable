@@ -9,7 +9,8 @@ export default function Map(
     latitude = 37.53313,
     longitude=  -122.216233,
     latitudeDelta = 0.8,
-    longitudeDelta = 0.8
+    longitudeDelta = 0.8,
+    places
   })
 {
 
@@ -39,6 +40,7 @@ export default function Map(
         style={[styles.fullWidth, {height: 400}]}
         region={region}
         searchRadius={searchRadius}
+        places={places}
       />
       <Text/>
       <Text>Search within {Math.floor(searchRadius / 100 / 1.6)/10} miles</Text>

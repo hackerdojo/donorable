@@ -5,7 +5,8 @@ import MapView, {Circle, Marker} from 'react-native-maps';
 const NearbyMap = (
   {
     region,
-    searchRadius = 4000
+    searchRadius = 4000,
+    places
   }) => {
 
   const userLocation = {
@@ -30,18 +31,15 @@ const NearbyMap = (
           fillColor={"#b5d7e480"}
         />
         {/* Example markers for non-profit businesses within a 10 mile radius */}
-        <Marker
-          coordinate={{latitude: 37.3963152, longitude: -122.049020}}
-          title="Hacker Dojo"
-        />
-        <Marker
-          coordinate={{latitude: 37.3978835, longitude: -122.04344}}
-          title="Non-Profit Business 2"
-        />
-        <Marker
-          coordinate={{latitude: 37.3978845, longitude: -122.04364}}
-          title="Non-Profit Business 3"
-        />
+
+        { places.map(place => (
+            place.latlon &&
+            <Marker
+              coordinate={{latitude: place.latlon[0], longitude: place.latlon[1]}}
+              title={place.name}
+            />
+          )
+        )}
       </MapView>
     </View>
   );
