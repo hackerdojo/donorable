@@ -20,6 +20,7 @@ import {MapModal} from "../modals";
 import styleguide from "../../styles/styleguide";
 import {addLiked, addDisliked} from "../features/principal/principalSlice";
 import {incrementIndex } from  "../features/cardDeckSlice/cardDeckSlice";
+import nteecodesicons from "../data/nteecodesicons";
 
 /* new **************************/
 const stackSize = 4;
@@ -56,31 +57,32 @@ const transitionRef = React.createRef();
 
 const Card = ({card}) => {
   return (
-    <View style={styles.card}>
-      <HStack spacing={5}>
-        <Spacer/>
-        <MaterialCommunityIcons name={"paw"} size={20}/>)}
-      </HStack>
+    <View style={styles.card} >
       <Image source={{uri: card.image}} style={styles.cardImage}/>
       <Text style={[styles.textCenteredP2,styles.textBold]} numberOfLines={2}>{card.name}</Text>
       <Text style={[styles.textCenteredP1, styles.description]} numberOfLines={3}>{card.description}</Text>
-      <VStack key={card.id}  style={{alignItems: 'flex-start'}}>
-        <Text/>
-        <Text/>
-        <HStack spacing={5} style={styles.alignItemsCenter}>
-          <MaterialCommunityIcons name={"map-marker"} size={20} color={styles.inActiveTabColor.color}/>
-          <Text style={styles.inActiveTabColor}>2.5 miles</Text>
+      <HStack justify={"between"} style={styles.fullWidth}>
+        <VStack key={card.id}  style={{view:3,alignItems: 'flex-start'}}>
+          <Text/>
+          <Text/>
+          <HStack spacing={5} style={styles.alignItemsCenter}>
+            <MaterialCommunityIcons name={"map-marker"} size={20} color={styles.inActiveTabColor.color}/>
+            <Text style={styles.inActiveTabColor}>2.5 miles</Text>
+          </HStack>
+          <HStack spacing={5} style={styles.alignItemsCenter}>
+            <MaterialCommunityIcons name={"account-clock"} size={20} color={styles.inActiveTabColor.color}/>
+            <Text style={styles.inActiveTabColor}>Mural Painting, Talks, ...</Text>
+          </HStack>
+          <HStack spacing={5} style={styles.alignItemsCenter}>
+            <MaterialCommunityIcons name={"currency-usd"} size={20} color={styles.inActiveTabColor.color}/>
+            <Text style={styles.inActiveTabColor}>$100,000</Text>
+          </HStack>
+        </VStack>
+        <HStack spacing={5} items={"end"}
+                style={{view:1}}>
+          { card.ntee && card.ntee.map( ntee => <MaterialCommunityIcons name={nteecodesicons[ntee]} color={styles.inActiveTabColor.color} size={18}/>)})}
         </HStack>
-        <HStack spacing={5} style={styles.alignItemsCenter}>
-          <MaterialCommunityIcons name={"account-clock"} size={20} color={styles.inActiveTabColor.color}/>
-          <Text style={styles.inActiveTabColor}>Mural Painting, Talks, ...</Text>
-        </HStack>
-        <HStack spacing={5} style={styles.alignItemsCenter}>
-          <MaterialCommunityIcons name={"currency-usd"} size={20} color={styles.inActiveTabColor.color}/>
-          <Text style={styles.inActiveTabColor}>$100,000</Text>
-        </HStack>
-
-      </VStack>
+      </HStack>
     </View>
   );
 };

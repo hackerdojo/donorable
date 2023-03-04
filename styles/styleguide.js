@@ -453,6 +453,7 @@ export default {
   },
 
   card: {
+    width:"100%",
     flex: 0.6,
     borderRadius: 8,
     shadowRadius: 25,

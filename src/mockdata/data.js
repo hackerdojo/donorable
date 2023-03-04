@@ -31,7 +31,7 @@ const data =  [
     latlon: [37.3963152, -122.049020],
     ntee: ["C"],
   },
- 
+
   {
     id: '99305926',
     description: 'Domestic Violence Support and Prevention',

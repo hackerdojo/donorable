@@ -47,7 +47,7 @@ export default function DetailScreen({navigation, route}) {
   };
 
 
-  /* View for the KeywordScreen */
+  /* View for the DetailScreen */
   return (
     <View style={styles.screenDetail}>
       <HStack spacing={10} alignment="center">
