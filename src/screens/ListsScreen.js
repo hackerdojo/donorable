@@ -2,9 +2,9 @@ import React, { useContext} from "react";
 import {TouchableOpacity, FlatList, Text, StyleSheet, View} from "react-native";
 import {HStack, VStack, Spacer} from 'react-native-flex-layout';
 import styleguide from "../../styles/styleguide";
-import {HR, ImageMask} from "../components";
 import theme from "../../styles/theme.style";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import {ImageMask, HR} from "../components";
 
 export default function ListsScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
