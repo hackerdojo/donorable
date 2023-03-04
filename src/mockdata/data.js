@@ -16,6 +16,20 @@ const data =  [
     latlon: [37.3963152, -122.049020]
   },
   {
+    id: '40454130',
+    description: 'Talks & Worskhops include infosec/hacking topics',
+    name: "Pacific Hacker's Association",
+    about: 'We believe that by sharing knowledge and providing mentorship, we can help individuals advance their careers and contribute to a safer internet and industry, where individual values, digital rights, and proper use of technology prevail.',
+    image:
+    'https://static.wixstatic.com/media/6c0d0a_11d8be0b4d914185a0f7090ec0a4917b~mv2.png/v1/fill/w_1200,h_392,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/6c0d0a_11d8be0b4d914185a0f7090ec0a4917b~mv2.png',
+    carousel: [
+      'https://static.wixstatic.com/media/6c0d0a_e76555d1c72f482bb94854071b17684d~mv2.jpeg/v1/fill/w_720,h_540,al_c,lg_1,q_85,enc_auto/6c0d0a_e76555d1c72f482bb94854071b17684d~mv2.jpeg',
+      'https://static.wixstatic.com/media/6c0d0a_218ffb4a10c1465493b7c90089dc13f6~mv2.jpeg/v1/fill/w_719,h_540,al_c,lg_1,q_85,enc_auto/6c0d0a_218ffb4a10c1465493b7c90089dc13f6~mv2.jpeg'
+
+    ],
+    latlon: [37.3963152, -122.049020]
+  },
+  {
     id: '70078463',
     description: 'Support Your Community by Volunteering',
     name: 'HandsOn',

@@ -45,7 +45,6 @@
     "metro": "^0.73.6",
     "metro-core": "^0.73.6",
     "react-native-maps": "^1.4.0",
-    "react-native-stacks": "^1.0.1",
     "react-native-svg": "^13.8.0",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.5"

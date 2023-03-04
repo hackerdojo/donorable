@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button} from 'react-native';
-import {HStack} from 'react-native-stacks';
+import {HStack} from 'react-native-flex-layout';
 
 // selections: an object of keys and display names
 // { interests : "Interests",
@@ -21,6 +21,7 @@ export default function TabBar(
   }
   return (
     <HStack
+      divider={true}
       style={{
         backgroundColor: "white",
         borderRadius: 20,

@@ -1,0 +1,58 @@
+
+
+Donorable Todo List.
+
+Define the required org data model
+Scrape for orgs in the bay area
+Implement the search filter.
+Implement the location filter and add in the screen.
+Get the tab bar working and the needs and goals screen designed. (or punt for now).
+Push the scraped org data into the app.
+
+Do we want a way for the app to check for org updates to load from a json file somewhere on gcp?
+
+Research understand stripe.
+         How do orgs provide payment info?
+         Design donation tracking schema.
+         Google function for stripe.
+
+Remove the search field for now on the home screen.
+
+Since we have like and dislike lists, is there a way to skip an org without judgement?  Tap?
+
+Finish account settings screens.
+       Implement Donate Anonymously.  Flag on user object
+       Change password screen
+       Remove notifications for now?  Or do we support enough for stripe.
+       Design and Implement stripe setup screen.
+       Implement Logout
+       Implement Delete Account
+       Add donation review screen. And maybe add donations to date on the lists screen cards?
+
+Design the desktop experience.
+Register a domain name.
+
+Define our bundle id for apple and play store.
+       Test on google phone.
+       Test bundling on iphone.
+
+Implement the card details
+          Category indicator icons on the top right of the card.
+          Add the categories for each org into the data.  ntee code, single letter for now.
+          Implement the distance indicator from currently selected location
+          Implement the needs for the org.
+          Implement the goal fund raising or punt.
+
+
+Implement the default (hidden) campaign.
+
+
+UI Roadmap and Design the desktop experience.
+
+
+
+
+
+Competitors:
+donorbox.org
+

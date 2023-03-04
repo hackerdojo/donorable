@@ -5,7 +5,6 @@ import {HStack, Spacer} from 'react-native-flex-layout';
 import {ChatScreen, FormButton, ImageMask, PhotoGallery} from "../components";
 import styleguide from "../../styles/styleguide";
 import theme from "../../styles/theme.style";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import QuickDonateScreen from "./QuickDonateScreen";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import {addFavorite,removeFavorite} from "../features/principal/principalSlice";
@@ -61,9 +60,9 @@ export default function DetailScreen({navigation, route}) {
           borderWidth={theme.IMAGE_BORDER_WIDTH}
         />
         <View style={{flex: 3, alignItems:"center"}}>
-          <Text style={[styles.textCenteredP2, styles.textBold]}>{params.name}</Text>
+          <Text style={[styles.textCenteredP1, styles.textBold]}>{params.name}</Text>
           <Text numberOfLines={3}
-                style={[styles.textCenteredP1, {maxWidth: "90%"}]}
+                style={[styles.textCenteredP0, {maxWidth: "90%"}]}
           >{params.description}</Text>
         </View>
       </HStack>
@@ -89,14 +88,13 @@ export default function DetailScreen({navigation, route}) {
         <Spacer/>
         */}
         <View style={{flex:1}}>
-        <FormButton
-          styles={styles}
-          size={"small"}
-          buttonStyle={principal.favorites.includes(params.id) ? "secondary" : "tertiary"}
-          onPress={handleHeartPress}
-          label={principal.favorites.includes(params.id) ? "❤️ Favorited" : "🤍 Favorite"}/>
+          <FormButton
+            styles={styles}
+            size={"small"}
+            buttonStyle={principal.favorites.includes(params.id) ? "secondary" : "tertiary"}
+            onPress={handleHeartPress}
+            label={principal.favorites.includes(params.id) ? "❤️ Favorited" : "🤍 Favorite"}/>
         </View>
-
         <View style={{flex:1}}>
           <FormButton
             styles={styles}

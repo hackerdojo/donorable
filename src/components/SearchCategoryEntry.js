@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {Text, TouchableOpacity} from "react-native";
-import {HStack} from 'react-native-stacks';
+import {HStack} from 'react-native-flex-layout';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function SearchCategoryEntry(

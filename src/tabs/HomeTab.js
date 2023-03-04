@@ -21,7 +21,6 @@ export default function HomeTab() {
       <Stack.Screen
         name="QuickDonate"
         component={QuickDonateScreen}
-        options={({route}) => ({title: route.params.title})}
       />
       <Stack.Screen
         name="Settings"

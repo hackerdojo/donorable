@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {StyleSheet, Text, TouchableOpacity,Switch} from "react-native";
-import {HStack, Spacer} from 'react-native-stacks';
+import {HStack, Spacer} from 'react-native-flex-layout';
 
 import styleguide from "../../styles/styleguide";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";

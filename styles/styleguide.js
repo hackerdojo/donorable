@@ -223,9 +223,18 @@ export default {
     textAlign: "center",
     color: theme.TEXT_COLOR
   },
-
+  textCenteredP2: {
+    fontSize: theme.TEXT_FONT_P2,
+    textAlign: "center",
+    color: theme.TEXT_COLOR
+  },
   textCenteredP1: {
     fontSize: theme.TEXT_FONT_P1,
+    textAlign: "center",
+    color: theme.TEXT_COLOR
+  },
+  textCenteredP0: {
+    fontSize: theme.TEXT_FONT_P0,
     textAlign: "center",
     color: theme.TEXT_COLOR
   },
@@ -235,8 +244,8 @@ export default {
     color: theme.TEXT_COLOR
   },
 
-  textP2: {
-    fontSize: theme.TEXT_FONT_P2,
+  textP0: {
+    fontSize: theme.TEXT_FONT_P0,
     color: theme.TEXT_COLOR
   },
 
@@ -245,16 +254,17 @@ export default {
     color: theme.TEXT_COLOR
   },
 
+  textP2: {
+    fontSize: theme.TEXT_FONT_P2,
+    color: theme.TEXT_COLOR
+  },
+
   textP3: {
     fontSize: theme.TEXT_FONT_P3,
     color: theme.TEXT_COLOR
   },
 
-  textCenteredP2: {
-    fontSize: theme.TEXT_FONT_P2,
-    textAlign: "center",
-    color: theme.TEXT_COLOR
-  },
+
 
   iconButtonColor: {
     color: theme.ICON_BUTTON_COLOR

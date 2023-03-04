@@ -1,6 +1,6 @@
 import React, { useContext} from "react";
 import {TouchableOpacity, FlatList, Text, StyleSheet, View} from "react-native";
-import {HStack, VStack} from 'react-native-stacks';
+import {HStack, VStack, Spacer} from 'react-native-flex-layout';
 import styleguide from "../../styles/styleguide";
 import {HR, ImageMask} from "../components";
 import theme from "../../styles/theme.style";
@@ -46,7 +46,6 @@ export default function ListsScreen({navigation, route}) {
             >
               <HStack
                 style={styles.listCard}
-                spacing={7}
               >
                 <ImageMask
                   source={{uri: item.image}}
@@ -56,6 +55,7 @@ export default function ListsScreen({navigation, route}) {
                   borderColor={theme.IMAGE_BORDER_COLOR}
                   backgroundColor={theme.IMAGE_BACKGROUND_COLOR}
                 />
+                <Text>&nbsp;&nbsp;&nbsp;</Text>
                 <VStack alignment={"left"} style={{width:"90%"}}>
                   <View style={{flex: 1}}>
                     <Text style={styles.listHeader}>
@@ -71,11 +71,8 @@ export default function ListsScreen({navigation, route}) {
                   </View>
                   <HR/>
                 </VStack>
-
               </HStack>
             </TouchableOpacity>
-
-
         )}
       />
     </View>

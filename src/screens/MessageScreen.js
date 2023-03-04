@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 import {FlatList, Text, TouchableOpacity, View, StyleSheet} from "react-native";
-import {HStack, Spacer, VStack} from 'react-native-stacks';
+import {HStack, Spacer, VStack} from 'react-native-flex-layout';
 import styleguide from "../../styles/styleguide";
 import theme from "../../styles/theme.style";
 import {Circle, ImageMask, HR} from "../components";

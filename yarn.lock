@@ -9842,11 +9842,6 @@ react-native-sliders@^2.0.2:
   dependencies:
     prop-types "^15.5.6"
 
-react-native-stacks@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-stacks/-/react-native-stacks-1.0.1.tgz#3fb6a0e9233f140ec795e152b76b8f557f121bc2"
-  integrity sha512-OZkG0Exx0Ddmm06mVKfxfxm5JFluzop1gwhv4TFS6euZPAObs5K1CIPPAZ/c+AvuU9eD7IBHF0v6OMgEccr95g==
-
 react-native-svg@^13.8.0:
   version "13.8.0"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-13.8.0.tgz#b6a22cf77f8098f910490a13aeb160a37e182f97"
