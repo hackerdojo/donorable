@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import {DetailScreen,ListsScreen} from "../screens";
+import {DetailScreen, ListsScreen, QuickDonateScreen} from "../screens";
 import DonorableNavLogo from "../components/DonorableNavLogo";
 import SettingsTab from "./SettingsTab";
 import {AccountButton} from "../components";
@@ -22,6 +22,10 @@ export default function FavoritesTab() {
             principalListProperty:"favorites",
             addToListVerb :"favorited"
         }}
+      />
+      <Stack.Screen
+        name="QuickDonate"
+        component={QuickDonateScreen}
       />
       <Stack.Screen
         name="Settings"

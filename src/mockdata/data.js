@@ -70,7 +70,7 @@ const data =  [
     name: 'STAND!',
     latlon:[37.97150640604684, -122.04656424016211],
     ntee:["P","I","F"],
-    about: ' STAND! For Families Free of Violence is a catalyst for breaking the multi-generational cycle of violence, promoting safe and strong relationships, and rebuilding lives.',
+    about: 'STAND! For Families Free of Violence is a catalyst for breaking the multi-generational cycle of violence, promoting safe and strong relationships, and rebuilding lives.',
     image:
       'https://www.standffov.org/wp-content/uploads/2020/07/STANDlogo_allblueberry-01.png'
   },
