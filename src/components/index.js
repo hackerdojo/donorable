@@ -13,7 +13,8 @@ export {default as AccountButton} from "./AccountButton";
 export {default as SearchCategoryEntry} from "./SearchCategoryEntry";
 export {default as TabBar} from "./TabBar";
 export {default as ListElement} from "./ListElement";
-
 export {default as ListElementNav} from "./ListElementNav";
 export {default as ListElementInput} from "./ListElementInput";
 export {default as ListElementToggle} from "./ListElementToggle";
+export {default as Map} from "./Map";
+
