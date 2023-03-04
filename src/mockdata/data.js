@@ -13,7 +13,8 @@ const data =  [
       'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372fef624f6d8a55fb93_play-card-image-p-500.webp',
       'https://uploads-ssl.webflow.com/62db364a3371ce4590628770/6357372f30fe818b90865741_build-card-image-p-500.webp'
     ],
-    latlon: [37.3963152, -122.049020]
+    latlon: [37.3963152, -122.049020],
+    ntee: ["B"],
   },
   {
     id: '40454130',
@@ -27,29 +28,27 @@ const data =  [
       'https://static.wixstatic.com/media/6c0d0a_218ffb4a10c1465493b7c90089dc13f6~mv2.jpeg/v1/fill/w_719,h_540,al_c,lg_1,q_85,enc_auto/6c0d0a_218ffb4a10c1465493b7c90089dc13f6~mv2.jpeg'
 
     ],
-    latlon: [37.3963152, -122.049020]
+    latlon: [37.3963152, -122.049020],
+    ntee: ["C"],
   },
-  {
-    id: '70078463',
-    description: 'Support Your Community by Volunteering',
-    name: 'HandsOn',
-    about: '...',
-    image:
-      'https://www.handsonconnect.org/wp-content/uploads/2018/05/client_id_43683_logo_1451932800-1.jpg'
-  },
+ 
   {
     id: '99305926',
     description: 'Domestic Violence Support and Prevention',
     name: 'La Casa de las Madres',
     about: '...',
+    latlon:[37.77976550281608, -122.41317985497938],
     image:
-      'https://cdn.greatnonprofits.org/images/logos/Redlogo.jpg'
+      'https://cdn.greatnonprofits.org/images/logos/Redlogo.jpg',
+    ntee:["P","I","F"],
   },
   {
     id: '99305927',
     description: 'Bay Area Tutoring',
     name: 'Aspire',
     about: '...',
+    latlon:[37.79686549849196, -122.27536299824509],
+    ntee:["I","P"],
     image:
       'https://res.cloudinary.com/dktp1ybbx/image/upload/f_auto,fl_lossy,q_auto/v1554482830/organization/prod/78637/9ECisDNEkn.png'
   },
@@ -69,7 +68,9 @@ const data =  [
     id: '99305928',
     description: 'For Families Free of Violence',
     name: 'STAND!',
-    about: '...',
+    latlon:[37.97150640604684, -122.04656424016211],
+    ntee:["P","I","F"],
+    about: ' STAND! For Families Free of Violence is a catalyst for breaking the multi-generational cycle of violence, promoting safe and strong relationships, and rebuilding lives.',
     image:
       'https://www.standffov.org/wp-content/uploads/2020/07/STANDlogo_allblueberry-01.png'
   },
@@ -77,7 +78,9 @@ const data =  [
     id: '99305929',
     description: 'Filipino Community Center',
     name: 'Bayanihan',
-    about: '...',
+    ntee: ["A"],
+    latlon: [37.77976550281608, -122.40768669095041],
+    about: 'The Filipino-American Development Foundation (FADF) is a nonprofit organization founded in 1997  to develop initiatives and resources to strengthen the social, physical, and economic well being of the Filipino-American community in San Francisco.',
     image:
       'https://www.bayanihancc.org/uploads/1/0/8/6/108621871/published/1396417967.png?1499277227'
   }
