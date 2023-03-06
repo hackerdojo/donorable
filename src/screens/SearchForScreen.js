@@ -1,7 +1,8 @@
-import React, {useState, useContext, useEffect} from "react";
-import {useSelector} from "react-redux";
-import {Text, StyleSheet, View, FlatList, TouchableOpacity} from "react-native";
+import React, {useState, useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {Button, Text, StyleSheet, View, FlatList, TouchableOpacity} from "react-native";
 import {TabBar, SearchCategoryEntry, NearbyMap, Map} from "../components";
+import {updateProfile} from "../features/principal/principalSlice";
 import styleguide from "../../styles/styleguide";
 import nteecodes from "../data/nteecodes";
 import nteecodesicons from "../data/nteecodesicons";
@@ -11,45 +12,53 @@ export default function SearchForScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
   const principal = useSelector(state=> state.principal)
   const cardDeck = useSelector(state => state.cardDeck)
+  const dispatch = useDispatch();
 
   const availableTags = Object
     .keys(nteecodes)
     .filter( key => key.length==1 )  // Grab the top level entries
     .map( key => ({key: key, name: nteecodes[key], icon: nteecodesicons[key]}));
   const listData = availableTags.sort((a, b) => (a.name > b.name));
-  const [filterSet, setFilterSet] = useState(new Set(principal.searchFilter));
-
   const [selectedTab, setSelectedTab] = useState("interests");
 
-  let searchDisable = false;
+  const [searchForInterests, setSearchForInterests] = useState(new Set(principal.searchForInterests));
+  const [searchForNeeds, setSearchForNeeds] = useState(new Set(principal.searchForNeeds));
+  const [searchForGoals, setSearchForGoals] = useState(new Set(principal.searchForGoals));
+  const [searchForLocation, setSearchForLocation] = useState(principal.searchForLocation);
 
-  /* Go to Welcome Screen, or return to Settings */
-  const onDonePress = async () => {
-    principal.searchFilter = Array.from(filterSet);
-    searchDisable = true;
-    // dispatch actions here.
-//    await updateUser(principal);
-    searchDisable = false;
- //   if (from === 'goback') {
-//      navigation.goBack();
-//    } else {
-//      navigation.navigate("Welcome", {principal});
-//    }
-  };
+  useEffect( () => {
+    navigation.setOptions({
+      headerRight: () => <Button
+        title="Done"
+        onPress={() => {
+          dispatch(
+            updateProfile(
+              {
+                searchForInterests: Array.from(searchForInterests),
+//                searchForNeeds: Array.from(searchForNeeds),
+//                searchForGoals: Array.from(searchForGoals),
+//                searchForLocation: searchForLocation
+              }
+            ));
+          navigation.goBack();
+        }}
+      />
+    })
+  });
 
   const handleTabChange = (selection) => {
     setSelectedTab(selection);
   }
 
-  const handlePress = (tag) => {
-    if (filterSet.has(tag)) {
-      let myFilterSet = new Set(filterSet);
+  const handleInterestPress = (tag) => {
+    if (searchForInterests.has(tag)) {
+      let myFilterSet = new Set(searchForInterests);
       myFilterSet.delete(tag);
-      setFilterSet(myFilterSet);
+      setSearchForInterests(myFilterSet);
     } else {
-      let myFilterSet = new Set(filterSet);
+      let myFilterSet = new Set(searchForInterests);
       myFilterSet.add(tag);
-      setFilterSet(myFilterSet);
+      setSearchForInterests(myFilterSet);
     }
   }
 
@@ -87,8 +96,8 @@ export default function SearchForScreen({navigation, route}) {
                   styles={styles}
                   position={index === 0 ? "First" : index === availableTags.length - 1 ? "Last" : availableTags.length === 1 ? "Only" : "Middle"}
                   size={"small"}
-                  tagState={filterSet.has(item.key)}
-                  onPress={() => handlePress(item.key)}
+                  tagState={searchForInterests.has(item.key)}
+                  onPress={() => handleInterestPress(item.key)}
                 />
               </TouchableOpacity>
             )

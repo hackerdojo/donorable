@@ -30,6 +30,9 @@ export default function HomeTab() {
       <Stack.Screen
         name="Search For"
         component={SearchForScreen}
+        options={{
+          headerRight: () => <Button title={"Done"}/>
+        }}
       />
       <Stack.Screen
         name="Test"
