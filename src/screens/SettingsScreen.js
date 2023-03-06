@@ -4,7 +4,7 @@ import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import firebase from "../firebase/config";
 import styleguide from "../../styles/styleguide";
 import {HR, ListElementNav, ListElementToggle} from "../components";
-import {updateUserSettings} from "../features/principal/principalSlice";
+import {updateProfile} from "../features/principal/principalSlice";
 import {useSelector, useDispatch} from "react-redux";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -13,26 +13,16 @@ export default function SettingsScreen({navigation, route}) {
   const styles = StyleSheet.create(styleguide);
   const dispatch = useDispatch();
   const principal = useSelector(state => state.principal);
-  const [firstName, setFirstName] = useState(principal.firstname);
-  const [lastName, setLastName] = useState(principal.lastname);
-  const [phone, setPhone] = useState(principal.phone);
-  const [enteredLocation, setEnteredLocation] = useState(principal.enteredLocation);
 
-  let updateDisable = false;
-  const [anonymous, setAnonymous] = useState(false);
+  const [donateAnonymously, setDonateAnonymously] = useState(principal.donateAnonymously);
 
-  const toggleAnonymous = () => { setAnonymous(!anonymous)}
-  const saveChanges =  () => {
-    updateDisable = true;
-    dispatch(updateUserSettings(
+  const toggleAnonymous =  () => {
+    dispatch(updateProfile(
       {
-        firstname: firstName,
-        lastname: lastName,
-        phone: phone,
-        enteredLocation: enteredLocation
+        donateAnonymously: !donateAnonymously,
       }
     ));
-    updateDisable = false;
+    setDonateAnonymously(!donateAnonymously);
   }
 
   /* Click to finish changing settings and return home */
@@ -256,7 +246,7 @@ export default function SettingsScreen({navigation, route}) {
         <ListElementToggle
           text={"Donate Anonymously"}
           onToggle={toggleAnonymous}
-          value={anonymous}
+          value={donateAnonymously}
         />
         <ListElementNav
           text={"Change Password"}
@@ -264,8 +254,7 @@ export default function SettingsScreen({navigation, route}) {
         />
         <ListElementToggle
           text={"Notifications"}
-          onToggle={toggleAnonymous}
-          value={anonymous}
+
         />
         <ListElementNav
           text={"Logout"}

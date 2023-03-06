@@ -9,25 +9,29 @@ const gcpUpdateUser =  (state, updateFields) => {
     .then( (response) => {
 
       }
-    );
+    ).catch(error => {
+    console.log(error)
+  }
+  )
 }
 
 const initialState = {
   status: "checking",
-    id:"",
-    email:"",
-    firstname :"",
-    middlename: "",
-    lastname:"",
-    phone:"",
-    registered:"",
-    registeredAs:"",
-    enteredLocation:"",
-    isAdmin: false,
-    searchFilter:[],
-    liked: [],
-    disliked:[],
-    favorites:[],
+  id:"",
+  email:"",
+  firstname :"",
+  middlename: "",
+  lastname:"",
+  phone:"",
+  registered:"",
+  registeredAs:"",
+  enteredLocation:"",
+  isAdmin: false,
+  searchFilter:[],
+  liked: [],
+  disliked:[],
+  favorites:[],
+  donateAnonymously:false
 }
 
 export const principalSlice = createSlice({
@@ -45,11 +49,7 @@ export const principalSlice = createSlice({
     updateProfile: (state, action) => {
       const profile = action.payload;
       gcpUpdateUser(state,profile);
-      state.firstname = profile.firstname || "";
-      state.middlename = profile.middlename || "";
-      state.lastname = profile.lastname || "";
-      state.phone = profile.phone || "";
-      state.enteredLocation = profile.enteredLocation || "";
+      Object.keys(profile).map( key => state[key] = profile[key]);
     },
 
     addLiked: (state,action) => {
