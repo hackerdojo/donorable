@@ -17,6 +17,7 @@ const initialState = {
     id:"",
     email:"",
     firstname :"",
+    middlename: "",
     lastname:"",
     phone:"",
     registered:"",
@@ -41,13 +42,14 @@ export const principalSlice = createSlice({
       return initialState;
     },
 
-    updateUserSettings: (state, action) => {
-      const userSettings = action.payload;
-      gcpUpdateUser(state,userSettings);
-      state.firstname = userSettings.firstname;
-      state.lastname = userSettings.lastname;
-      state.phone = userSettings.phone;
-      state.enteredLocation = userSettings.enteredLocation;
+    updateProfile: (state, action) => {
+      const profile = action.payload;
+      gcpUpdateUser(state,profile);
+      state.firstname = profile.firstname || "";
+      state.middlename = profile.middlename || "";
+      state.lastname = profile.lastname || "";
+      state.phone = profile.phone || "";
+      state.enteredLocation = profile.enteredLocation || "";
     },
 
     addLiked: (state,action) => {
@@ -108,7 +110,7 @@ export const {
   removeFavorite,
   nullUserToStart,
   login,
-  updateUserSettings
+  updateProfile
 } = principalSlice.actions
 
 export default principalSlice.reducer

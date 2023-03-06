@@ -29,6 +29,15 @@ export default {
     borderBottomRightRadius: theme.BUTTON_RADIUS_MEDIUM,
   },
 
+  listElementInput :{
+    fontFamily: theme.FONT_FAMILY,
+    fontSize: 14,
+    height: 30,
+    paddingLeft:5,
+    overflow: "hidden",
+    width:"65%"
+  },
+
   listScreen : {
     flex: 1,
     alignItems:"center",
@@ -143,6 +152,8 @@ export default {
     alignItems: "center",
     justifyContent: "center",
     marginTop:15,
+    marginLeft:"auto",
+    marginRight:"auto",
     view:1
   },
 
@@ -298,15 +309,6 @@ export default {
     paddingLeft:5,
     overflow: "hidden",
     width:"100%"
-  },
-
-  listElementInput :{
-    fontFamily: theme.FONT_FAMILY,
-    fontSize: 14,
-    height: 30,
-    paddingLeft:5,
-    overflow: "hidden",
-    width:"65%"
   },
 
   inputNumeric: {

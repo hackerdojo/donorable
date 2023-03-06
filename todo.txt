@@ -2,6 +2,14 @@
 
 Donorable Todo List.
 
+Badges for donors to social.
+
+Interview questions.
+Bumble layout.
+Talk with non-profits about pain-points.
+Partner with Venmo, donate some of your account to non-profits via Donorable.
+Fidelity charitable giving.
+
 Define the required org data model
 Scrape for orgs in the bay area
 Implement the search filter.
@@ -48,7 +56,6 @@ Implement the default (hidden) campaign.
 
 
 UI Roadmap and Design the desktop experience.
-
 
 
 

@@ -35,7 +35,6 @@ export default function ListElementInput(
           autoCapitalize="none"
           secureTextEntry={secureTextEntry}
         />
-
     </HStack>
   );
 };

@@ -1,9 +1,10 @@
-import React, {useState} from "react";
-import {useSelector} from "react-redux";
-import {Text,StyleSheet} from "react-native";
+import React, {useState, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {Text, StyleSheet, View, Button} from "react-native";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import {FormButton, FormTextInput, ListElementInput, ListElementNav} from "../components";
 import {useNavigation} from "@react-navigation/native";
+import {updateProfile} from "../features/principal/principalSlice";
 
 import styleguide from "../../styles/styleguide";
 
@@ -19,8 +20,25 @@ export default function ProfileScreen(props) {
   const [phone, setPhone] = useState(principal.phone);
   const [enteredLocation, setEnteredLocation] = useState(principal.enteredLocation);
 
+  const dispatch = useDispatch();
+
+  useEffect( () => {
+    navigation.setOptions({
+      headerRight: () => <Button
+        title={"Done"}
+        onPress={() =>
+        {
+          dispatch(updateProfile({firstname, lastname, middlename, email, phone, enteredLocation}));
+          navigation.goBack();
+        }}
+      />
+    })
+  })
+
   return (
-    <KeyboardAwareScrollView style={{width: "100%"}}>
+    <KeyboardAwareScrollView
+      style={{width: "100%"}}
+    >
       <Text/>
       <ListElementInput
         label={"Email"}
@@ -60,13 +78,6 @@ export default function ProfileScreen(props) {
         position={"Last"}
 
       />
-    <FormButton
-      buttonStyle={"primary"}
-      styles={styles}
-      onPress={()=> {}}
-      disabled={false}
-      label={false ? "Updating" : "Update"}/>
-    <Text/>
     </KeyboardAwareScrollView>
   );
 }

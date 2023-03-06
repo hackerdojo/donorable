@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from 'react-native';
 import {createStackNavigator} from "@react-navigation/stack";
 import {HomeScreen, ListsScreen, DetailScreen, QuickDonateScreen, TestScreen, ProfileScreen} from "../screens";
 import {DonorableNavLogo,AccountButton} from "../components";
@@ -37,7 +38,10 @@ export default function HomeTab() {
       <Stack.Screen
         name="Profile"
         component={ProfileScreen}
-      />
+        options={{
+          headerRight: () => <Button title={"Done"}/>
+        }}
+          />
       <Stack.Screen
         name="Liked"
         component={ListsScreen}

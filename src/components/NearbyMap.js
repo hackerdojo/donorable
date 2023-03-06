@@ -66,7 +66,6 @@ const NearbyMap = (
 
   return (
     <View style={{flex: 1, width: "100%", height: "100%"}}>
-      <Text>{JSON.stringify(location)}</Text>
       <MapView
         style={{flex: 1}}
         region={region}
