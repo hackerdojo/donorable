@@ -28,7 +28,7 @@ export default function TabBar(
       style={{
         backgroundColor: "#fff",
         borderRadius: 20,
-        justifyContent: "center",
+        justifyContent: "space-around",
         width: "90%"
       }}>
       {Object.keys(selections).map((key, index) => (

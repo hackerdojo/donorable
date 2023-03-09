@@ -30,11 +30,8 @@ const initialState = {
   searchForInterests:[],
   searchForNeeds:[],
   searchForGoals:[],
-  searchForLocation:{
-    latitude:37.3963152,
-    longitude:-122.049020,
-    radius : 1000,
-  },
+  searchForLocation:[37.3963152,-122.049020],
+  searchForRadius:4000,
   liked: [],
   disliked:[],
   favorites:[],
@@ -46,7 +43,11 @@ export const principalSlice = createSlice({
   initialState: initialState,
   reducers: {
     login: (state, action) => {
-      return action.payload;
+      // add in new fields with app release from initial state
+      const user = action.payload;
+
+      const loginUser = {...initialState, ...user}
+      return user;
     },
 
     nullUserToStart: () => {

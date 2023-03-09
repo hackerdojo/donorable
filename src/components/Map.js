@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {Text,StyleSheet} from 'react-native';
+import {Text,StyleSheet, View} from 'react-native';
 import Slider from "react-native-sliders";
 import NearbyMap from "./NearbyMap";
 import styleguide from "../../styles/styleguide";
@@ -10,12 +10,16 @@ export default function Map(
     longitude=  -122.216233,
     latitudeDelta = 0.8,
     longitudeDelta = 0.8,
-    places
+    places,
+    searchForLocation,
+    searchForRadius
   })
 {
 
   const styles = StyleSheet.create(styleguide);
-  const [searchRadius, setSearchRadius] = useState(4000)
+  const [searchRadius, setSearchRadius] = useState(searchForRadius || 4000);
+  const [searchLocation, setSearchLocation] = useState(searchForLocation);
+  // Map location
   const [region, setRegion] = useState(
     {
       latitude: latitude,
@@ -23,7 +27,7 @@ export default function Map(
       latitudeDelta: latitudeDelta,
       longitudeDelta: longitudeDelta,
     })
-
+  // Map location
   useEffect(() => {
     setRegion({
       latitude: latitude,
@@ -34,12 +38,13 @@ export default function Map(
   }, [latitudeDelta, longitudeDelta, longitude, latitude]);
 
   return (
-    <>
+    <View style={{flex: 1, width: "90%", height: "100%"}}>
       <Text/>
       <NearbyMap
         style={[styles.fullWidth, {height: 400}]}
         region={region}
-        searchRadius={searchRadius}
+        searchForRadius={searchRadius}
+        searchForLatLon = {searchLocation}
         places={places}
       />
       <Text/>
@@ -52,6 +57,6 @@ export default function Map(
         onValueChange={(value) => setSearchRadius(value[0])}
       />
       <Text/>
-    </>
+    </View>
   )
 }

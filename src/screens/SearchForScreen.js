@@ -24,7 +24,8 @@ export default function SearchForScreen({navigation, route}) {
   const [searchForInterests, setSearchForInterests] = useState(new Set(principal.searchForInterests));
   const [searchForNeeds, setSearchForNeeds] = useState(new Set(principal.searchForNeeds));
   const [searchForGoals, setSearchForGoals] = useState(new Set(principal.searchForGoals));
-  const [searchForLocation, setSearchForLocation] = useState(principal.searchForLocation);
+  const [searchForLocation, setSearchForLocation] = useState(principal.searchForLocation );
+  const [searchForRadius, setSearchForRadius] = useState(principal.searchForRadius );
 
   useEffect( () => {
     navigation.setOptions({
@@ -37,7 +38,7 @@ export default function SearchForScreen({navigation, route}) {
                 searchForInterests: Array.from(searchForInterests),
 //                searchForNeeds: Array.from(searchForNeeds),
 //                searchForGoals: Array.from(searchForGoals),
-//                searchForLocation: searchForLocation
+                searchForLocation: searchForLocation
               }
             ));
           navigation.goBack();
@@ -71,8 +72,8 @@ export default function SearchForScreen({navigation, route}) {
           onChange={handleTabChange}
           selections={{
             interests : "Interests",
-            needs: "Needs",
-            goals: "Goals",
+       //     needs: "Needs",
+       //     goals: "Goals",
             location: "Location"
           }}
         />
@@ -107,7 +108,15 @@ export default function SearchForScreen({navigation, route}) {
         </>
         }
         { selectedTab === "location" &&
-          <Map places={cardDeck.cards}/>
+        <Map
+          places={cardDeck.cards}
+          onChange={ (searchForLocation, searchForRadius) => {
+            setSearchForLocation(searchForLocation)
+            setSearchForRadius(searchForRadius)
+            searchForLocation = {searchForLocation}
+            searchForRadius = {searchForRadius}
+          }}
+        />
         }
       </View>
   );

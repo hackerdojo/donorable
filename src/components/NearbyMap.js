@@ -5,8 +5,9 @@ import MapView, {Circle, Marker} from 'react-native-maps';
 const NearbyMap = (
   {
     region,
-    searchRadius = 4000,
-    places
+    places,
+    searchForRadius = 4000,
+    searchForLatLon = [37.3963152,-122.049020],
   }) => {
 /*
   RNLocation.configure({
@@ -40,13 +41,8 @@ const NearbyMap = (
   })
 */
 
-  const userLocation = {
-    latitude: 37.3963152,
-    longitude: -122.049020
-  }
+
   const [userRegion, setUserRegion] = useState({});
-  const [location, setLocation] = useState(userLocation);
-  const [error, setError] = useState(null);
 
 /*
   useEffect(() => {
@@ -73,8 +69,8 @@ const NearbyMap = (
         onRegionChange={setUserRegion}
       >
         <Circle
-          center={location}
-          radius={searchRadius}
+          center={{latitude: searchForLatLon[0], longitude: searchForLatLon[1]}}
+          radius={searchForRadius}
           strokeWidth={2}
           strokeColor={"blue"}
           fillColor={"#b5d7e480"}
