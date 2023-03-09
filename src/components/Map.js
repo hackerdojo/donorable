@@ -12,13 +12,22 @@ export default function Map(
     longitudeDelta = 0.8,
     places,
     searchForLocation,
-    searchForRadius
+    searchForRadius,
+    onSearchRadiusChange,
   })
 {
 
   const styles = StyleSheet.create(styleguide);
   const [searchRadius, setSearchRadius] = useState(searchForRadius || 4000);
   const [searchLocation, setSearchLocation] = useState(searchForLocation);
+
+  const handleSearchRadiusChange= (radius) => {
+    setSearchRadius(radius);
+    if (onSearchRadiusChange) {
+      onSearchRadiusChange(radius)
+    }
+  }
+
   // Map location
   const [region, setRegion] = useState(
     {
@@ -54,7 +63,7 @@ export default function Map(
         minimumValue={500}
         maximumValue={100000}
         value={searchRadius}
-        onValueChange={(value) => setSearchRadius(value[0])}
+        onValueChange={(value) => handleSearchRadiusChange(value[0])}
       />
       <Text/>
     </View>

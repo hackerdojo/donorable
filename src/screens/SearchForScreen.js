@@ -38,7 +38,8 @@ export default function SearchForScreen({navigation, route}) {
                 searchForInterests: Array.from(searchForInterests),
 //                searchForNeeds: Array.from(searchForNeeds),
 //                searchForGoals: Array.from(searchForGoals),
-                searchForLocation: searchForLocation
+                searchForLocation: searchForLocation,
+                searchForRadius: searchForRadius
               }
             ));
           navigation.goBack();
@@ -110,11 +111,9 @@ export default function SearchForScreen({navigation, route}) {
         { selectedTab === "location" &&
         <Map
           places={cardDeck.cards}
-          onChange={ (searchForLocation, searchForRadius) => {
-            setSearchForLocation(searchForLocation)
-            setSearchForRadius(searchForRadius)
-            searchForLocation = {searchForLocation}
-            searchForRadius = {searchForRadius}
+          searchForRadius = {searchForRadius}
+          onSearchRadiusChange={ (radius) => {
+            setSearchForRadius(radius)
           }}
         />
         }
