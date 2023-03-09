@@ -101,7 +101,7 @@ export default function DetailScreen({navigation, route}) {
             size={"small"}
             buttonStyle={"Primary"}
             onPress={onDonatePress}
-            label={"Donate now"}/>
+            label={"Donate"}/>
         </View>
       </HStack>
       <KeyboardAwareScrollView enableAutomaticScroll={true}>

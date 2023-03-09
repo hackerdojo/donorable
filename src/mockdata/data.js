@@ -18,7 +18,7 @@ const data =  [
   },
   {
     id: '40454130',
-    description: 'Talks & Worskhops include infosec/hacking topics',
+    description: 'Talks & Workshops include infosec/hacking topics',
     name: "Pacific Hacker's Association",
     about: 'We believe that by sharing knowledge and providing mentorship, we can help individuals advance their careers and contribute to a safer internet and industry, where individual values, digital rights, and proper use of technology prevail.',
     image:

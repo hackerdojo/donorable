@@ -9,18 +9,20 @@ import {
   TouchableOpacity,
   StyleSheet,
   TextInput,
-  Modal
+  Modal,
+  ScrollView
 } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Swiper from 'react-native-deck-swiper';
 import {Transitioning, Transition} from 'react-native-reanimated';
 import {HStack, Spacer, VStack} from "react-native-flex-layout";
-import {HR} from "./../components";
-import {MapModal} from "../modals";
+import {DetailsScreen} from "../screens";
+import {HR, PhotoGallery} from "./../components";
 import styleguide from "../../styles/styleguide";
 import {addLiked, addDisliked} from "../features/principal/principalSlice";
 import {incrementIndex } from  "../features/cardDeckSlice/cardDeckSlice";
 import nteecodesicons from "../data/nteecodesicons";
+import {distanceInMiles, userLocation} from "../hooks/useLocationTools";
 
 /* new **************************/
 const stackSize = 4;
@@ -56,8 +58,23 @@ const swiperRef = React.createRef();
 const transitionRef = React.createRef();
 
 const Card = ({card}) => {
+  const miles = (card) => {
+    if (card.latlon) {
+      const location = userLocation();
+      const distance = distanceInMiles(
+        card.latlon[0],
+        card.latlon[1],
+        location.latitude,
+        location.longitude
+      )
+      return ( Math.floor(distance*10)/10 + " miles")
+    } else return "Location unknown";
+  }
+
+  const distance = miles(card);
+
   return (
-    <View style={styles.card} >
+    <View style={styles.card}>
       <Image source={{uri: card.image}} style={styles.cardImage}/>
       <Text style={[styles.textCenteredP2,styles.textBold]} numberOfLines={2}>{card.name}</Text>
       <Text style={[styles.textCenteredP1, styles.description]} numberOfLines={3}>{card.description}</Text>
@@ -67,16 +84,19 @@ const Card = ({card}) => {
           <Text/>
           <HStack spacing={5} style={styles.alignItemsCenter}>
             <MaterialCommunityIcons name={"map-marker"} size={20} color={styles.inActiveTabColor.color}/>
-            <Text style={styles.inActiveTabColor}>2.5 miles</Text>
+            <Text style={styles.inActiveTabColor}>{distance}</Text>
           </HStack>
-          <HStack spacing={5} style={styles.alignItemsCenter}>
+          {/*  TODO: Needs
+                    <HStack spacing={5} style={styles.alignItemsCenter}>
             <MaterialCommunityIcons name={"account-clock"} size={20} color={styles.inActiveTabColor.color}/>
             <Text style={styles.inActiveTabColor}>Mural Painting, Talks, ...</Text>
           </HStack>
+          TODO: Campaign goals
           <HStack spacing={5} style={styles.alignItemsCenter}>
             <MaterialCommunityIcons name={"currency-usd"} size={20} color={styles.inActiveTabColor.color}/>
             <Text style={styles.inActiveTabColor}>$100,000</Text>
           </HStack>
+          */}
         </VStack>
         <HStack spacing={5} items={"end"}
                 style={{view:1}}>
@@ -95,11 +115,14 @@ const CardDetails = ({index}) => (
 
 export default function HomeScreen({navigation}) {
   const [index, setIndex] = React.useState(0);
-  const [mapModalVisible, setMapModalVisible] = useState(false);
   const [searchText, setSearchText] = useState("");
   const principal = useSelector(state => state.principal);
   const cardDeck = useSelector( state => state.cardDeck);
   const dispatch = useDispatch();
+
+  const handleTapCard = () => {
+    navigation.navigate("Detail",{params: cardDeck.cards[cardDeck.index]})
+  }
 
   const handleSwipedRight = () => {
     transitionRef.current.animateNextTransition();
@@ -143,6 +166,7 @@ export default function HomeScreen({navigation}) {
       <View style={styles.swiperContainer}>
         {/* Profile Card Swiper */}
         <Swiper
+          useViewOverflow={true}
           ref={swiperRef}
           cards={cardDeck.cards}
           cardIndex={cardDeck.index}
@@ -151,7 +175,7 @@ export default function HomeScreen({navigation}) {
           backgroundColor={'transparent'}
           onSwipedLeft={handleSwipedLeft}
           onSwipedRight={handleSwipedRight}
-          onTapCard={() => swiperRef.current.swipeLeft()}
+          onTapCard={handleTapCard}
           cardVerticalMargin={20}
           stackSize={stackSize}
           stackScale={10}
@@ -297,10 +321,6 @@ export default function HomeScreen({navigation}) {
           </HStack>
         </TouchableOpacity>
       </HStack>
-      <MapModal
-        isPresented={mapModalVisible}
-        onRequestToHide={() => setMapModalVisible(false)}
-      />
     </SafeAreaView>
   );
 }
