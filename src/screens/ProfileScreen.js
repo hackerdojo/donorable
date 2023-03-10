@@ -76,8 +76,14 @@ export default function ProfileScreen(props) {
         text={enteredLocation}
         onChange={setEnteredLocation}
         position={"Last"}
-
       />
+      <Text/>
+      <ListElementNav
+        text={"Password"}
+        onPress={() => navigation.navigate("ChangePassword")}
+        position={"Alone"}
+      />
+      <Text/>
     </KeyboardAwareScrollView>
   );
 }

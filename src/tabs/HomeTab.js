@@ -1,7 +1,15 @@
 import React from 'react';
 import {Button} from 'react-native';
 import {createStackNavigator} from "@react-navigation/stack";
-import {HomeScreen, ListsScreen, DetailScreen, QuickDonateScreen, TestScreen, ProfileScreen} from "../screens";
+import {
+  HomeScreen,
+  ListsScreen,
+  DetailScreen,
+  QuickDonateScreen,
+  TestScreen,
+  ProfileScreen,
+  PasswordChangeScreen
+} from "../screens";
 import {DonorableNavLogo,AccountButton} from "../components";
 import SettingsTab from "./SettingsTab";
 import SearchForScreen from "../screens/SearchForScreen";
@@ -44,7 +52,14 @@ export default function HomeTab() {
         options={{
           headerRight: () => <Button title={"Done"}/>
         }}
-          />
+      />
+      <Stack.Screen
+        name="ChangePassword"
+        component={PasswordChangeScreen}
+        options={{
+          headerRight: () => <Button title={"Done"}/>
+        }}
+      />
       <Stack.Screen
         name="Liked"
         component={ListsScreen}

@@ -29,6 +29,14 @@ export default {
     borderBottomRightRadius: theme.BUTTON_RADIUS_MEDIUM,
   },
 
+
+  listItemAlone : {
+    borderBottomLeftRadius: theme.BUTTON_RADIUS_MEDIUM,
+    borderBottomRightRadius: theme.BUTTON_RADIUS_MEDIUM,
+    borderTopLeftRadius: theme.BUTTON_RADIUS_MEDIUM,
+    borderTopRightRadius: theme.BUTTON_RADIUS_MEDIUM,
+
+  },
   listElementInput :{
     fontFamily: theme.FONT_FAMILY,
     fontSize: 14,

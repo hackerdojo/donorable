@@ -338,7 +338,9 @@ export default function HomeScreen({navigation}) {
             name={"thumb-down-outline"} size={28} color={styles.inActiveTabColor.color}/>
           </HStack>
         </TouchableOpacity>
+      <Spacer />
 
+      {/*
         <HStack style={styles.searchBox}>
           <MaterialCommunityIcons
             name={"magnify"}
@@ -362,6 +364,8 @@ export default function HomeScreen({navigation}) {
             />
           </TouchableOpacity>
         </HStack>
+        */}
+
         <TouchableOpacity
           onPress={showLiked}>
           <HStack>

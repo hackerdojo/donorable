@@ -248,10 +248,7 @@ export default function SettingsScreen({navigation, route}) {
           onToggle={toggleAnonymous}
           value={donateAnonymously}
         />
-        <ListElementNav
-          text={"Change Password"}
-          onPress={() => alert("todo")}
-        />
+
         <ListElementToggle
           text={"Notifications"}
 
@@ -263,9 +260,12 @@ export default function SettingsScreen({navigation, route}) {
         <ListElementNav
           text={"Delete Account"}
           onPress={() => alert("todo")}
+          position={"Last"}
         />
+        <Text/>
         <ListElementNav
           text={"User is admin: Test"}
+          position={"Alone"}
           onPress={() => navigation.navigate("Test", {principal, from: "Settings"})}
         />
         <Text/>
