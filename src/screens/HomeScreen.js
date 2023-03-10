@@ -80,7 +80,7 @@ const Card = ({card}) => {
         <Text style={[styles.textCenteredP2, styles.textBold]} numberOfLines={2}>{card.name}</Text>
         <Text style={[styles.textCenteredP1, styles.description]} numberOfLines={3}>{card.description}</Text>
         <HStack justify={"between"} style={styles.fullWidth}>
-          <VStack key={card.id} style={{view: 3, alignItems: 'flex-start'}}>
+          <VStack key={"vstack" + card.id} style={{view: 3, alignItems: 'flex-start'}}>
             <Text/>
             <Text/>
             <HStack spacing={5} style={styles.alignItemsCenter}>
