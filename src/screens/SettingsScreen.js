@@ -255,7 +255,7 @@ export default function SettingsScreen({navigation, route}) {
         />
         <ListElementNav
           text={"Logout"}
-          onPress={() => alert("todo")}
+          onPress={() => navigation.navigate("Logout", {principal, from: "Settings"})}
         />
         <ListElementNav
           text={"Legal"}

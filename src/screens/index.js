@@ -3,6 +3,7 @@
 
 export {default as IntroScreen} from "./IntroScreen";
 export {default as LoginScreen} from "./LoginScreen";
+export {default as LogoutScreen} from "./LogoutScreen";
 export {default as RecoverScreen} from "./RecoverScreen";
 export {default as RegScreen1} from "./RegScreen1";
 export {default as RegScreen2} from "./RegScreen2";

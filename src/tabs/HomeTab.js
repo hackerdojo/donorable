@@ -9,7 +9,7 @@ import {
   TestScreen,
   ProfileScreen,
   ChangePasswordScreen,
-  LegalScreen
+  LegalScreen, LogoutScreen
 } from "../screens";
 import {DonorableNavLogo,AccountButton} from "../components";
 import SettingsTab from "./SettingsTab";
@@ -60,6 +60,10 @@ export default function HomeTab() {
         options={{
           headerRight: () => <Button title={"Done"}/>
         }}
+      />
+      <Stack.Screen
+        name="Logout"
+        component={LogoutScreen}
       />
       <Stack.Screen
         name="Liked"
