@@ -75,7 +75,7 @@ const Card = ({card}) => {
     {
       card
       &&
-      <View key={card.id} style={styles.card}>
+      <View key={card.id} style={styles.card} >
         <Image source={{uri: card.image}} style={styles.cardImage}/>
         <Text style={[styles.textCenteredP2, styles.textBold]} numberOfLines={2}>{card.name}</Text>
         <Text style={[styles.textCenteredP1, styles.description]} numberOfLines={3}>{card.description}</Text>
@@ -196,7 +196,7 @@ export default function HomeScreen({navigation}) {
   return  (
     <SafeAreaView style={[styles.screen, styles.defaultBackgroundColor]}>
       <StatusBar hidden={false}/>
-      <View style={styles.swiperContainer}>
+      <View style={styles.cardDeckContainer}>
         {/* Profile Card Swiper */}
         {
           cardDeck.filteredCards.length > 0

@@ -609,7 +609,7 @@ class Swiper extends Component {
     let overlayLabelStyle = dynamicStyle ? dynamicStyle.label : {}
 
     if (this.state.labelType === LABEL_TYPES.NONE) {
-      overlayLabelStyle = this.styles.hideOverlayLabel
+      overlayLabelStyle = this.styles.swiperHideOverlayLabel
     }
 
     return [this.props.overlayLabelStyle, overlayLabelStyle]
@@ -632,7 +632,7 @@ class Swiper extends Component {
     const rotation = this.interpolateRotation()
 
     return [
-      this.styles.card,
+      this.styles.swiperCard,
       this.getCardStyle(),
       {
         zIndex: 1,
@@ -648,7 +648,7 @@ class Swiper extends Component {
   }
 
   calculateStackCardZoomStyle = (position) => [
-    this.styles.card,
+    this.styles.swiperCard,
     this.getCardStyle(),
     {
       zIndex: position * -1,
@@ -658,7 +658,7 @@ class Swiper extends Component {
   ]
 
   calculateSwipeBackCardStyle = () => [
-    this.styles.card,
+    this.styles.swiperCard,
     this.getCardStyle(),
     {
       zIndex: 4,
@@ -722,7 +722,7 @@ class Swiper extends Component {
       <View
         pointerEvents={pointerEvents}
         style={[
-          this.styles.container,
+          this.styles.swiperContainer,
           {
             backgroundColor: backgroundColor,
             marginTop: marginTop,
@@ -750,7 +750,7 @@ class Swiper extends Component {
     }
 
     return (
-      <View pointerEvents='box-none' style={[this.styles.childrenViewStyle, { zIndex: zIndex }]}>
+      <View pointerEvents='box-none' style={[this.styles.swiperChildrenViewStyle, { zIndex: zIndex }]}>
         {children}
       </View>
     )
