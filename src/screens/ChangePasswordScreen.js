@@ -8,7 +8,7 @@ import {updateProfile} from "../features/principal/principalSlice";
 
 import styleguide from "../../styles/styleguide";
 
-export default function PasswordChangeScreen(props) {
+export default function ChangePasswordScreen(props) {
   const styles = StyleSheet.create(styleguide);
   const principal = useSelector(state=> state.principal);
   const navigation = useNavigation();

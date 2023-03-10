@@ -8,7 +8,7 @@ import {
   QuickDonateScreen,
   TestScreen,
   ProfileScreen,
-  PasswordChangeScreen
+  ChangePasswordScreen
 } from "../screens";
 import {DonorableNavLogo,AccountButton} from "../components";
 import SettingsTab from "./SettingsTab";
@@ -55,7 +55,7 @@ export default function HomeTab() {
       />
       <Stack.Screen
         name="ChangePassword"
-        component={PasswordChangeScreen}
+        component={ChangePasswordScreen}
         options={{
           headerRight: () => <Button title={"Done"}/>
         }}
