@@ -267,11 +267,11 @@ export default function HomeScreen({navigation}) {
           />
         }
         {cardDeck.filteredCards.length < 1 &&
-        <View>
-          <MaterialCommunityIcons name={"cat"} size={"60"} color={"grey"}/>
+        <View style={styles.card}>
+          <MaterialCommunityIcons name={"cat"} size={"100"} color={"grey"}/>
           <Text>No Organizations Found</Text>
           <Text>Please widen your search or reset your search</Text>
-          <Button title={"reset search"}/>
+          <Button title={"Update search filters"} onPress={() => navigation.navigate("Search For")} />
         </View>
         }
       </View>
