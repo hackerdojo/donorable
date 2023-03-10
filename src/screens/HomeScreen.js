@@ -148,9 +148,10 @@ export default function HomeScreen({navigation}) {
       <
       radiusToMiles(principal.searchForRadius)
       &&
-      principal.searchForInterests.filter(interest => card.ntee.includes(interest)).length>0
+    ( principal.searchForInterests.filter(interest => card.ntee.includes(interest)).length>0
       ||
       principal.searchForInterests.length === 0
+    )
   )
 
   // update based on filters
@@ -269,8 +270,8 @@ export default function HomeScreen({navigation}) {
         {cardDeck.filteredCards.length < 1 &&
         <View style={styles.card}>
           <MaterialCommunityIcons name={"cat"} size={"100"} color={"grey"}/>
-          <Text>No Organizations Found</Text>
-          <Text>Please widen your search or reset your search</Text>
+          <Text style={styles.textForegroundColor}>No Organizations Found</Text>
+          <Text style={styles.textForegroundColor}>Please widen your search or reset your search</Text>
           <Button title={"Update search filters"} onPress={() => navigation.navigate("Search For")} />
         </View>
         }
@@ -325,7 +326,7 @@ export default function HomeScreen({navigation}) {
       </View>
       */}
       <Spacer/>
-      <Text>{cardDeck.filteredCards.length} organizations found in {radiusToMiles(principal.searchForRadius)} miles. {cardDeck.index}</Text>
+      <Text style={styles.textForegroundColor}>{cardDeck.filteredCards.length} organizations found within {radiusToMiles(principal.searchForRadius)} miles.</Text>
       <HR width={"100%"}/>
       <HStack spacing={5} style={styles.bottomContainerButtons} >
         <TouchableOpacity

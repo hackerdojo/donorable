@@ -210,11 +210,10 @@ export default {
     borderBottomWidth: StyleSheet.hairlineWidth
   },
 
-  text : {
+  text: {
     fontFamily: theme.FONT_FAMILY,
     textAlign:"center",
     color: theme.TEXT_COLOR,
-    fontSize: 50,
   },
 
   description: {
