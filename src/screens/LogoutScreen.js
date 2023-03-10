@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Text, StyleSheet, View, Button} from "react-native";
+import {Text, StyleSheet} from "react-native";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
-import {FormButton, ListElement, ListElementInput} from "../components";
+import {ListElement,ListElementButton, ListElementPostIt} from "../components";
 import {useNavigation} from "@react-navigation/native";
 import styleguide from "../../styles/styleguide";
-import ListElementButton from "../components/ListElementButton";
+
 
 export default function LogoutScreen(props) {
   const styles = StyleSheet.create(styleguide);
@@ -20,7 +20,6 @@ export default function LogoutScreen(props) {
     <KeyboardAwareScrollView
       style={{width: "100%"}}
     >
-
       <Text/>
       <ListElement
         position={"Alone"}
@@ -29,24 +28,18 @@ export default function LogoutScreen(props) {
       </ListElement>
       <Text/>
       <ListElementButton
-        styles={styles}
         buttonStyle={"secondary"}
         label={"Cancel"}
-
       />
       <Text/>
       <ListElementButton
-        styles={styles}
-        buttonStyle={"ghost"}
+        buttonStyle={"tertiary"}
         label={"Logout"}
       />
       <Text/>
-      <ListElement
-        styles={styles}
-        position={"Alone"}
-      >      <Text> TODO: Need to hookup to google auth</Text>
-      </ListElement>
-
+      <ListElementPostIt
+      ><Text> TODO: Need to hookup to google auth</Text>
+      </ListElementPostIt>
     </KeyboardAwareScrollView>
   );
 }

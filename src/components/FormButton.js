@@ -1,15 +1,20 @@
 import React, {useState} from "react";
-import {Text, TouchableOpacity, View} from "react-native";
+import {Text, TouchableOpacity, StyleSheet} from "react-native";
+
+import styleguide from "../../styles/styleguide";
 
 export default function FormButton(
   {
-    onPress, label, styles,
+    onPress,
+    label,
     buttonStyle = "primary",
     width = "100%",
     size = "medium",
     disabled = false
   }
 ) {
+
+  const styles = StyleSheet.create(styleguide);
 
   let styleName = buttonStyle.toLowerCase();
   styleName = styleName.charAt(0).toUpperCase() + styleName.slice(1);

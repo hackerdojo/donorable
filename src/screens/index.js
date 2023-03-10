@@ -19,6 +19,7 @@ export {default as SearchForScreen} from "./SearchForScreen";
 export {default as ProfileScreen} from  "./ProfileScreen";
 export {default as ChangePasswordScreen} from "./ChangePasswordScreen";
 export {default as LegalScreen} from "./LegalScreen";
+export {default as DeleteAccountScreen} from "./DeleteAccountScreen";
 //export {default as LogoutScreen} from "./LogoutScreen";
 export {default as TestScreen} from "./TestScreen";
 

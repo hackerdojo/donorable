@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Text, StyleSheet, View, Button} from "react-native";
+import {Text, StyleSheet, Button} from "react-native";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
-import {ListElement, ListElementInput} from "../components";
+import {ListElement, ListElementInput, ListElementPostIt} from "../components";
 import {useNavigation} from "@react-navigation/native";
 import {updateProfile} from "../features/principal/principalSlice";
 
@@ -74,7 +74,13 @@ export default function ChangePasswordScreen(props) {
         secureTextEntry={true}
         position={"Last"}
       />
-      <Text> TODO: Need to hookup to google auth</Text>
+      <ListElementPostIt
+        position={"Last"}
+      >
+        <Text style={styles.textLeft}>TODO: Need to hookup to google auth</Text>
+      </ListElementPostIt>
+
+
     </KeyboardAwareScrollView>
   );
 }

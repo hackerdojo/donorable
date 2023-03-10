@@ -16,6 +16,7 @@ export default {
 // PRIMARY_COLOR: '#2f6e1d',
 //  BACKGROUND_COLOR: '#e3e3e3',
   BACKGROUND_COLOR: '#ffffff',
+  BACKGROUND_COLOR_POSTIT : "#FFFF8F",
   PRIMARY_COLOR: '#2f6e1d',
   SECONDARY_COLOR: 'rgb(30, 147, 242)',
   TERTIARY_COLOR: '#ccc',
@@ -42,6 +43,7 @@ export default {
   BUTTON_FONT_SMALL: 14,
   BUTTON_RADIUS_SMALL: 5,
   FONT_FAMILY: "Montserrat_400Regular",
+  FONT_FAMILY_POSTIT: "Chalkduster",
   VIEW_PADDING: 40,
   VIEW_PADDING_DETAIL: 10,
   APP_TITLE: "Donorable"

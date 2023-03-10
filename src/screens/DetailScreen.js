@@ -19,6 +19,8 @@ export default function DetailScreen({navigation, route}) {
   /* Get nonprofit name from HomeScreen */
   const {params} = route.params;
 
+  navigation.setOptions({title:params.name});
+
   // TODO:  This screen needs to be updated to use redux
   /* Save nonprofit to heart list */
   const handleHeartPress = () => {
@@ -79,7 +81,6 @@ export default function DetailScreen({navigation, route}) {
       >
         {/*  TODO: let's do messages later as this is a burden on the non-profit
         <FormButton
-          styles={styles}
           size={"small"}
           width={"33%"}
           buttonStyle={"Tertiary"}
@@ -89,7 +90,6 @@ export default function DetailScreen({navigation, route}) {
         */}
         <View style={{flex:1}}>
           <FormButton
-            styles={styles}
             size={"small"}
             buttonStyle={principal.favorites.includes(params.id) ? "secondary" : "tertiary"}
             onPress={handleHeartPress}
@@ -97,7 +97,6 @@ export default function DetailScreen({navigation, route}) {
         </View>
         <View style={{flex:1}}>
           <FormButton
-            styles={styles}
             size={"small"}
             buttonStyle={"Primary"}
             onPress={onDonatePress}

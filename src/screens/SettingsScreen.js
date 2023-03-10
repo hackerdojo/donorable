@@ -2,15 +2,11 @@ import React, {useState, useContext} from "react";
 import {StyleSheet, Text, View, Alert, TouchableOpacity} from "react-native";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 import firebase from "../firebase/config";
-import styleguide from "../../styles/styleguide";
 import {HR, ListElementNav, ListElementToggle} from "../components";
 import {updateProfile} from "../features/principal/principalSlice";
 import {useSelector, useDispatch} from "react-redux";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
 
 export default function SettingsScreen({navigation, route}) {
-  const styles = StyleSheet.create(styleguide);
   const dispatch = useDispatch();
   const principal = useSelector(state => state.principal);
 
@@ -251,7 +247,6 @@ export default function SettingsScreen({navigation, route}) {
 
         <ListElementToggle
           text={"Notifications"}
-
         />
         <ListElementNav
           text={"Logout"}
@@ -265,7 +260,7 @@ export default function SettingsScreen({navigation, route}) {
         <Text/>
         <ListElementNav
           text={"Delete Account"}
-          onPress={() => alert("todo")}
+          onPress={() => navigation.navigate("Delete Account", {principal, from: "Settings"})}
           position={"Alone"}
         />
         <Text/>

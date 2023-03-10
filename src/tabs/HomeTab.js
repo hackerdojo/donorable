@@ -9,7 +9,7 @@ import {
   TestScreen,
   ProfileScreen,
   ChangePasswordScreen,
-  LegalScreen, LogoutScreen
+  LegalScreen, LogoutScreen, DeleteAccountScreen
 } from "../screens";
 import {DonorableNavLogo,AccountButton} from "../components";
 import SettingsTab from "./SettingsTab";
@@ -55,7 +55,7 @@ export default function HomeTab() {
         }}
       />
       <Stack.Screen
-        name="ChangePassword"
+        name="Change Password"
         component={ChangePasswordScreen}
         options={{
           headerRight: () => <Button title={"Done"}/>
@@ -72,6 +72,10 @@ export default function HomeTab() {
       <Stack.Screen
         name="Disliked"
         component={ListsScreen}
+      />
+      <Stack.Screen
+        name="Delete Account"
+        component={DeleteAccountScreen}
       />
       <Stack.Screen
         name="Detail"

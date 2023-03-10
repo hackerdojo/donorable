@@ -16,7 +16,9 @@ export {default as ListElement} from "./ListElement";
 export {default as ListElementNav} from "./ListElementNav";
 export {default as ListElementText} from "./ListElementText";
 export {default as ListElementInput} from "./ListElementInput";
+export {default as ListElementPostIt} from "./ListElementPostIt";
 export {default as ListElementToggle} from "./ListElementToggle";
+export {default as ListElementButton} from "./ListElementButton";
 export {default as Map} from "./Map";
 export {default as Swiper} from "./Swiper";
 

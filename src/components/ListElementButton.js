@@ -1,9 +1,11 @@
-import React,  from "react";
-import {Text, TouchableOpacity} from "react-native";
+import React  from "react";
+import {Text, TouchableOpacity, StyleSheet} from "react-native";
+import styleguide from "../../styles/styleguide";
 
 export default function ListElementButton(
   {
-    onPress, label, styles,
+    onPress,
+    label,
     buttonStyle = "primary",
     width = "100%",
     position = "Alone",
@@ -18,6 +20,7 @@ export default function ListElementButton(
   let sizeName = size.toLowerCase();
   sizeName = sizeName.charAt(0).toUpperCase() + sizeName.slice(1);
 
+  const styles = StyleSheet.create(styleguide);
   return (
     <TouchableOpacity
       style={[

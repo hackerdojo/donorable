@@ -80,7 +80,7 @@ export default function ProfileScreen(props) {
       <Text/>
       <ListElementNav
         text={"Password"}
-        onPress={() => navigation.navigate("ChangePassword")}
+        onPress={() => navigation.navigate("Change Password")}
         position={"Alone"}
       />
       <Text/>

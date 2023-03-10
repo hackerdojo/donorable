@@ -19,6 +19,20 @@ export default {
     fontWeight: "bold"
   },
 
+  listItem: {
+    flex:1,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: theme.LIGHT_NEUTRAL_COLOR,
+    height:40,
+    maxWidth:"90%",
+    alignItems:"flex-start",
+    justifyContent:"center",
+    paddingLeft:10,
+    marginLeft: theme.VIEW_PADDING/2,
+    marginRight: theme.VIEW_PADDING/2,
+    backgroundColor: "white",
+  },
+
   listItemFirst : {
     borderTopLeftRadius: theme.BUTTON_RADIUS_MEDIUM,
     borderTopRightRadius: theme.BUTTON_RADIUS_MEDIUM,
@@ -42,7 +56,16 @@ export default {
     fontFamily: theme.FONT_FAMILY,
     fontSize: 14,
     paddingLeft:5,
+    paddingTop:5,
     height:"auto"
+  },
+
+  listItemPostIt: {
+    fontFamily: theme.FONT_FAMILY_POSTIT,
+    backgroundColor: theme.BACKGROUND_COLOR_POSTIT,
+    padding:5,
+    height:"auto",
+    minHeight:40,
   },
 
   listElementInput :{
@@ -70,20 +93,7 @@ export default {
     marginVertical: 5,
   },
 
-// used by the search and filter screen
-  listItem: {
-    flex:1,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: theme.LIGHT_NEUTRAL_COLOR,
-    height:40,
-    maxWidth:"90%",
-    alignItems:"flex-start",
-    justifyContent:"center",
-    paddingLeft:10,
-    marginLeft: theme.VIEW_PADDING/2,
-    marginRight: theme.VIEW_PADDING/2,
-    backgroundColor: "white",
-  },
+// used by the search and filter screen and listelements
 
   listPreview: {
     color:theme.TEXT_COLOR,
