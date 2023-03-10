@@ -3,6 +3,7 @@ import {Text,StyleSheet, View} from 'react-native';
 import Slider from "react-native-sliders";
 import NearbyMap from "./NearbyMap";
 import styleguide from "../../styles/styleguide";
+import {radiusToMiles} from "../hooks/useLocationTools";
 
 export default function Map(
   {
@@ -57,7 +58,7 @@ export default function Map(
         places={places}
       />
       <Text/>
-      <Text>Search within {Math.floor(searchRadius / 100 / 1.6)/10} miles</Text>
+      <Text>Search within {radiusToMiles(searchRadius)} miles</Text>
       <Slider
         style={styles.fullWidth}
         minimumValue={500}

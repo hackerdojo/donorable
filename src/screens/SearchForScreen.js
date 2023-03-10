@@ -112,6 +112,7 @@ export default function SearchForScreen({navigation, route}) {
         <Map
           places={cardDeck.cards}
           searchForRadius = {searchForRadius}
+          searchForLocation={searchForLocation}
           onSearchRadiusChange={ (radius) => {
             setSearchForRadius(radius)
           }}

@@ -6,9 +6,10 @@ import {data, indexedData} from "../../mockdata/data";
 
 const initialState = {
   status: "checking",
-  index: 2,
+  index: 0,
   cards : data,
-  indexedCards: indexedData
+  indexedCards: indexedData,
+  filteredCards : data,
 }
 
 // cards expect the following:
@@ -19,16 +20,25 @@ export const cardDeckSlice = createSlice({
   initialState: initialState,
 
   reducers: {
-    incrementIndex: (state) => {
+    incrementIndex: (state,action) => {
       state.index = (state.index + 1) % state.cards.length;
     },
+    setIndex: (state,action) => {
+      state.index = action.payload;
+    },
+    setFilteredCards: (state, action) => {
+      JSON.stringify(action.payload)
+      state.filteredCards = action.payload;
+      state.index=0;
+    }
   }
 });
 
 // Action creators are generated for each case reducer function
 export const {
   incrementIndex,
-
+  setIndex,
+  setFilteredCards,
 } = cardDeckSlice.actions
 
 export default cardDeckSlice.reducer

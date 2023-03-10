@@ -4,6 +4,9 @@ const toRadians = (degrees) => {
   return degrees * (Math.PI / 180);
 }
 
+    const radiusToMiles = (radius) => {
+      return Math.floor(radius / 100 / 1.6)/10
+    }
 
     const distanceInMiles = (lat1, lon1, lat2, lon2) => {
       const earthRadiusMiles = 3958.8; // Radius of the earth in miles
@@ -31,5 +34,6 @@ const toRadians = (degrees) => {
 
 export {
   distanceInMiles,
-  userLocation
+  userLocation,
+  radiusToMiles
 };
