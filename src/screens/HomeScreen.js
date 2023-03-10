@@ -161,13 +161,13 @@ export default function HomeScreen({navigation}) {
   const handleSwipedRight = (swipedCardIndex) => {
 //    transitionRef.current.animateNextTransition();
     dispatch(setIndex(swipedCardIndex+1));
-//    dispatch(addLiked(cardDeck.filteredCards[swipedCardIndex].id));
+    dispatch(addLiked(cardDeck.filteredCards[swipedCardIndex].id));
   };
 
   const handleSwipedLeft = (swipedCardIndex) => {
 //    transitionRef.current.animateNextTransition();
     dispatch(setIndex(swipedCardIndex+1));
-//    dispatch(addDisliked(cardDeck.filteredCards[swipedCardIndex].id));
+    dispatch(addDisliked(cardDeck.filteredCards[swipedCardIndex].id));
   };
 
   const showLiked = () => {
