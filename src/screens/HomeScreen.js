@@ -147,12 +147,16 @@ export default function HomeScreen({navigation}) {
       )
       <
       radiusToMiles(principal.searchForRadius)
+      &&
+      principal.searchForInterests.filter(interest => card.ntee.includes(interest)).length>0
+      ||
+      principal.searchForInterests.length === 0
   )
 
   // update based on filters
   useEffect( () => {
     dispatch(setFilteredCards(cardDeck.cards.filter(cardFilter)));
-  }, [principal.searchForRadius, cardDeck.cards] );
+  }, [principal.searchForRadius, principal.searchForInterests, cardDeck.cards] );
 
   const handleTapCard = () => {
     navigation.navigate("Detail",{params: cardDeck.filteredCards[(cardDeck.index)%cardDeck.filteredCards.length]})
@@ -213,7 +217,7 @@ export default function HomeScreen({navigation}) {
             onSwipedRight={handleSwipedRight}
             onTapCard={handleTapCard}
             cardVerticalMargin={20}
-            stackSize={stackSize}
+            stackSize={Math.min(stackSize, cardDeck.filteredCards.length)}
             stackScale={10}
             stackSeparation={30}
             animateOverlayLabelsOpacity
