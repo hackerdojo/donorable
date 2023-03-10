@@ -3,7 +3,6 @@ import {StyleSheet, Text, TextInput} from "react-native";
 import {HStack, Spacer} from 'react-native-flex-layout';
 
 import styleguide from "../../styles/styleguide";
-import View from "react-native-web/dist/vendor/react-native/Animated/components/AnimatedView";
 
 export default function ListElementInput(
   {

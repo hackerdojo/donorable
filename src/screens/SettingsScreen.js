@@ -258,9 +258,15 @@ export default function SettingsScreen({navigation, route}) {
           onPress={() => alert("todo")}
         />
         <ListElementNav
+          text={"Legal"}
+          onPress={() => navigation.navigate("Legal", {principal, from: "Settings"})}
+          position={"Last"}
+        />
+        <Text/>
+        <ListElementNav
           text={"Delete Account"}
           onPress={() => alert("todo")}
-          position={"Last"}
+          position={"Alone"}
         />
         <Text/>
         <ListElementNav

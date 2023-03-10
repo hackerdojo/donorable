@@ -1,11 +1,16 @@
 import React, {useState} from "react";
 import {View, Text} from 'react-native';
+import {ListElementText} from "../components";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 const LegalScreen = () => {
   return (
-    <View>
-      <Text>Legal</Text>
-      <Text numberOfLines={10000}>
+    <KeyboardAwareScrollView style={{width: "100%"}}>
+      <Text/>
+      <ListElementText
+        position={"Alone"}
+      >
+        <Text numberOfLines={10000}>
         react-native-maps:
         Copyright (c) 2017 Airbnb
 
@@ -21,7 +26,8 @@ const LegalScreen = () => {
         See the License for the specific language governing permissions and
         limitations under the License.
       </Text>
-    </View>
+      </ListElementText>
+    </KeyboardAwareScrollView>
   )
 }
 

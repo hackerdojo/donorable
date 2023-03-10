@@ -8,7 +8,8 @@ import {
   QuickDonateScreen,
   TestScreen,
   ProfileScreen,
-  ChangePasswordScreen
+  ChangePasswordScreen,
+  LegalScreen
 } from "../screens";
 import {DonorableNavLogo,AccountButton} from "../components";
 import SettingsTab from "./SettingsTab";
@@ -71,7 +72,10 @@ export default function HomeTab() {
       <Stack.Screen
         name="Detail"
         component={DetailScreen}
-      />
+      /><Stack.Screen
+      name="Legal"
+      component={LegalScreen}
+    />
     </Stack.Navigator>
   )
 }

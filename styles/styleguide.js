@@ -37,6 +37,14 @@ export default {
     borderTopRightRadius: theme.BUTTON_RADIUS_MEDIUM,
 
   },
+
+  listItemText: {
+    fontFamily: theme.FONT_FAMILY,
+    fontSize: 14,
+    paddingLeft:5,
+    height:"auto"
+  },
+
   listElementInput :{
     fontFamily: theme.FONT_FAMILY,
     fontSize: 14,
