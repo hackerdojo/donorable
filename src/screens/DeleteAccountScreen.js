@@ -8,7 +8,6 @@ import {updateProfile} from "../features/principal/principalSlice";
 
 import styleguide from "../../styles/styleguide";
 
-
 export default function DeleteAccountScreen(props) {
   const styles = StyleSheet.create(styleguide);
   const principal = useSelector(state=> state.principal);
@@ -17,6 +16,8 @@ export default function DeleteAccountScreen(props) {
   const [confirmEmail, setConfirmEmail] = useState("");
 
   const email = principal.email;
+
+  const dispatch = useDispatch();
 
   const confirmDeleteAccount = () => {
     if (confirmEmail === email) {
@@ -39,7 +40,6 @@ export default function DeleteAccountScreen(props) {
       alert("Please enter your email to delete your account.")
     }
   }
-  const dispatch = useDispatch();
 
   useEffect( () => {
     navigation.setOptions({

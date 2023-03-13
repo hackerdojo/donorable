@@ -19,7 +19,7 @@ export default function SearchForScreen({navigation, route}) {
     .filter( key => key.length==1 )  // Grab the top level entries
     .map( key => ({key: key, name: nteecodes[key], icon: nteecodesicons[key]}));
   const listData = availableTags.sort((a, b) => (a.name > b.name));
-  const [selectedTab, setSelectedTab] = useState("interests");
+  const [selectedTab, setSelectedTab] = useState((route.params && route.params.selectedTab) || "interests");
 
   const [searchForInterests, setSearchForInterests] = useState(new Set(principal.searchForInterests));
   const [searchForNeeds, setSearchForNeeds] = useState(new Set(principal.searchForNeeds));

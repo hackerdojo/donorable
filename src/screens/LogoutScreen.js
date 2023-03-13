@@ -14,8 +14,6 @@ export default function LogoutScreen(props) {
 
   const dispatch = useDispatch();
 
-
-
   return (
     <KeyboardAwareScrollView
       style={{width: "100%"}}

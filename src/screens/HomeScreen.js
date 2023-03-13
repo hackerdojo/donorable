@@ -326,8 +326,7 @@ export default function HomeScreen({navigation}) {
       </View>
       */}
       <Spacer/>
-      <Text style={styles.textForegroundColor}>{cardDeck.filteredCards.length} organizations found within {radiusToMiles(principal.searchForRadius)} miles.</Text>
-      <HR width={"100%"}/>
+         <HR width={"100%"}/>
       <HStack spacing={5} style={styles.bottomContainerButtons} >
         <TouchableOpacity
           onPress={showDisliked}>
@@ -338,8 +337,20 @@ export default function HomeScreen({navigation}) {
             name={"thumb-down-outline"} size={28} color={styles.inActiveTabColor.color}/>
           </HStack>
         </TouchableOpacity>
-      <Spacer />
-
+        <Spacer/>
+        <View style={{width:"50%"}}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Search For", {params: "location"})}
+          >
+            <Text numberOfLines={2}
+                  lineBreakStrategyIOS={'standard'}
+                  style={[styles.textForegroundColor,{textAlign:"center"}]}
+            >
+              {cardDeck.filteredCards.length} organization{cardDeck.filteredCards.length === 1 ? "":"s"} found within {radiusToMiles(principal.searchForRadius)} miles.
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <Spacer/>
       {/*
         <HStack style={styles.searchBox}>
           <MaterialCommunityIcons

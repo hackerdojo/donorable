@@ -29,7 +29,7 @@ export default function HomeTab() {
         }}
       />
       <Stack.Screen
-        name="QuickDonate"
+        name="Donate To"
         component={QuickDonateScreen}
       />
       <Stack.Screen

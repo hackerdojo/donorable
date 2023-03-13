@@ -44,7 +44,7 @@ export default function DetailScreen({navigation, route}) {
 
   /* Go to QuickDonateScreen */
   const onDonatePress = () => {
-    navigation.navigate('QuickDonate', {params: params, title: "Donate"});
+    navigation.navigate('Donate To', {params: params, title: "Donate"});
 //    setShowDonatePanel(true);
   };
 
